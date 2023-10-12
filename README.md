@@ -10,10 +10,7 @@ irm https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/setup_win
 - Ubuntu
 
 ```
-cd ~
-git clone https:nhattruongNeoVim/dotfiles
-sudo chmod 777 setup_ubuntu.sh
-bash setup_ubuntu.sh
+bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/setup_ubuntu.sh)
 ```
 
 - Font cần thiết
