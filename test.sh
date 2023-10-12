@@ -28,10 +28,11 @@ write_ask() {
 
 # Start script
 # Set local time
-write_ask "Are you dual booting Windows and Ubuntu? (y/n): "
-read answer
-if [ "$answer" = 'y' ]; then
-    write_start "I will set the local time on Ubuntu to display the correct time on Windows."
-    echo 'timedatectl set-local-rtc 1 --adjust-system-clock'
+
+read -rep $'[\e[1;33mACTION\e[0m] - Would you like to continue with the install (y,n) ' CONTINST
+if [[ $CONTINST == "Y" || $CONTINST == "y" ]]; then
+    echo -e "$CNT - Setup starting..."
+else
+    echo -e "$CNT - This script will now exit, no changes were made to your system."
+    exit
 fi
-write_done
