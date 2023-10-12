@@ -1,38 +1,37 @@
-#!/bin/bash
+#!/bin/sh
 
-echo -e "\e[34m   ____   __ __   ____  ______      ______  ____   __ __   ___   ____    ____ "
-echo -e "  |    \ |  |  | /    ||      |    |      ||    \ |  |  | /   \ |    \  /    |"
-echo -e "  |  _  ||  |  ||  o  ||      |    |      ||  D  )|  |  ||     ||  _  ||   __|"
-echo -e "  |  |  ||  _  ||     ||_|  |_|    |_|  |_||    / |  |  ||  O  ||  |  ||  |  |"
-echo -e "  |  |  ||  |  ||  _  |  |  |        |  |  |    \ |  :  ||     ||  |  ||  |_ |"
-echo -e "  |  |  ||  |  ||  |  |  |  |        |  |  |  .  \|     ||     ||  |  ||     |"
-echo -e "  |__|__||__|__||__|__|  |__|        |__|  |__|\_| \__,_| \___/ |__|__||___,_|"
-echo -e ""
-echo -e ""
-echo -e "-------------------- Script developed by nhattruongNeoVim --------------------"
-echo -e " -------------- Github: https://github.com/nhattruongNeoVim -----------------"
-echo -e ""
+echo "   ____   __ __   ____  ______      ______  ____   __ __   ___   ____    ____ "
+echo "  |    \\ |  |  | /    ||      |    |      ||    \\ |  |  | /   \ |    \\  /    |"
+echo "  |  _  ||  |  ||  o  ||      |    |      ||  D  )|  |  ||     ||  _  ||   __|"
+echo "  |  |  ||  _  ||     ||_|  |_|    |_|  |_||    / |  |  ||  O  ||  |  ||  |  |"
+echo "  |  |  ||  |  ||  _  |  |  |        |  |  |    \\ |  :  ||     ||  |  ||  |_ |"
+echo "  |  |  ||  |  ||  |  |  |  |        |  |  |  .  \|     ||     ||  |  ||     |"
+echo "  |__|__||__|__||__|__|  |__|        |__|  |__|\\_| \\__,_| \\___/ |__|__||___,_|"
+echo ""
+echo ""
+echo "-------------------- Script developed by nhattruongNeoVim --------------------"
+echo " -------------- Github: https://github.com/nhattruongNeoVim -----------------"
+echo ""
 
 # Function util
 write_start() {
-    echo -e "\e[32m>> $1\e[0m"
+    echo ">> $1"
 }
 
 write_done() {
-    echo -e "\e[34mDone\e[0m"
+    echo "Done"
 }
 
 write_ask() {
-    echo -en "\e[32m>> $1\e[0m"
+    echo -n ">> $1"
 }
 
 # Start script
 # Set local time
-
-read -rep $'[\e[1;33mACTION\e[0m] - Would you like to continue with the install (y,n) ' CONTINST
-if [[ $CONTINST == "Y" || $CONTINST == "y" ]]; then
-    echo -e "$CNT - Setup starting..."
-else
-    echo -e "$CNT - This script will now exit, no changes were made to your system."
-    exit
+write_ask "Are you dual booting Windows and Ubuntu? (y/n): "
+read answer
+if [ "$answer" = 'y' ]; then
+    write_start "I will set the local time on Ubuntu to display the correct time on Windows."
+    echo 'timedatectl set-local-rtc 1 --adjust-system-clock'
 fi
+write_done
