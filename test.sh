@@ -28,10 +28,29 @@ write_ask() {
 
 # Start script
 # Set local time
-write_ask "Are you dual booting Windows and Ubuntu? (y/n): "
-read answer
-if [ "$answer" = 'y' ]; then
-    write_start "I will set the local time on Ubuntu to display the correct time on Windows."
-    echo 'timedatectl set-local-rtc 1 --adjust-system-clock'
-fi
-write_done
+# Start script
+# Set local time
+# write_ask "Are you dual booting Windows and Ubuntu? (y/n): "
+# read answer
+# if [ "$answer" = 'y' ]; then
+#     write_start "I will set the local time on Ubuntu to display the correct time on Windows."
+#     timedatectl set-local-rtc 1 --adjust-system-clock
+# fi
+# write_done
+
+while [[ true ]]; do
+    write_ask "Are you dual booting Windows and Ubuntu? (y/n): "
+    read answer
+    case $answer in
+        [Yy]* )
+            write_start "I will set the local time on Ubuntu to display the correct time on Windows."
+            echo 'timedatectl set-local-rtc 1 --adjust-system-clock'
+            break;;
+        [Nn]* )
+            break;;
+        *) 
+            echo -en '\e[34m Please answer yes or no !'
+    esac
+done
+
+write_start "test"

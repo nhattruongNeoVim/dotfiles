@@ -28,20 +28,27 @@ write_ask() {
 
 # Start script
 # Set local time
-write_ask "Are you dual booting Windows and Ubuntu? (y/n): "
-read answer
-if [ "$answer" = 'y' ]; then
-    write_start "I will set the local time on Ubuntu to display the correct time on Windows."
-    timedatectl set-local-rtc 1 --adjust-system-clock
-fi
-write_done
+while [[ true ]]; do
+    write_ask "Are you dual booting Windows and Ubuntu? (y/n): "
+    read answer
+    case $answer in
+        [Yy]* )
+            write_start "I will set the local time on Ubuntu to display the correct time on Windows."
+            timedatectl set-local-rtc 1 --adjust-system-clock
+            break;;
+        [Nn]* )
+            break;;
+        *) 
+            echo -en '\e[34m Please answer yes or no !'
+    esac
+done
 
 # Set background
-write_start "Change background..."
-    cd ~/dotfiles/picture
-    mkdir ~/Pictures/Wallpapers
-    mv background.jpg ~/Pictures/Wallpapers
-write_done
+# write_start "Change background..."
+#     cd ~/dotfiles/picture
+#     mkdir ~/Pictures/Wallpapers
+#     mv background.jpg ~/Pictures/Wallpapers
+# write_done
 
 # Install and init nala
 write_start "Check nala..."
@@ -56,7 +63,7 @@ fi
 # Init nala
 write_start "Initializing Nala..."
     sudo nala update && sudo nala upgrade -y
-    write_start "Press 1 2 3 and press Enter"
+    write_start "Press 1 2 3 and press Enter \n"
     sudo nala fetch
 write_done
 
@@ -64,19 +71,12 @@ write_done
 write_start "Installing packages..."
     sudo nala install git neofetch xclip zsh kitty cargo bat ibus-unikey default-jre default-jdk
     sudo nala install fzf make cmake pip tmux
-    curl -sS https://starship.rs/install.sh | sh
-    zsh -c '{url="https://gist.githubusercontent.com/poetaman/bdc598ee607e9767fe33da50e993c650/raw/8487de3cf4cf4a7feff5d3a0d97defad95164eb3/arttime_online_installer.sh"; zsh -c "$(curl -fsSL $url || wget -qO- $url)"}'
-write_done
-
-# Change shell
-write_start "Change shell to zsh..."
-    chsh -s /bin/zsh
-write_done 
-
-# Install grub-customizer
-write_start "Install grub-customizer..."
     sudo add-apt-repository ppa:danielrichter2007/grub-customizer
+    sudo nala update && sudo nala upgrade
     sudo nala install grub-customizer
+    # curl -sS https://starship.rs/install.sh | sh
+    # Install arttime
+    zsh -c '{url="https://gist.githubusercontent.com/poetaman/bdc598ee607e9767fe33da50e993c650/raw/8487de3cf4cf4a7feff5d3a0d97defad95164eb3/arttime_online_installer.sh"; zsh -c "$(curl -fsSL $url || wget -qO- $url)"}'
 write_done
 
 # Install and config neovim
@@ -120,3 +120,25 @@ write_start "Install Rust..."
     cargo install lsd --locked
     cargo --version
 write_done
+
+# Install Nodejs
+write_start "Install Nodejs..."
+    sudo nala update
+    sudo nala install -y ca-certificates curl gnupg
+    sudo mkdir -p /etc/apt/keyrings
+    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+    NODE_MAJOR=20
+    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+    sudo nala update
+    sudo nala install nodejs -y
+    # How to uninstall:
+    # apt-get purge nodejs &&\
+    # rm -r /etc/apt/sources.list.d/nodesource.list &&\
+    # rm -r /etc/apt/keyrings/nodesource.gpg
+write_done
+
+# Change shell
+write_start "Change shell to zsh..."
+    chsh -s /bin/zsh
+write_done 
+

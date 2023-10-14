@@ -41,19 +41,21 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export VISUAL="/home/albedo/.local/bin/nvim"
 
 alias vim='nvim'
-alias update='sudo nala update && sudo nala upgrade -y'
-alias install='sudo nala install -y'
-alias remove='sudo nala remove'
+alias snu='sudo nala update && sudo nala upgrade -y'
+alias sni='sudo nala install -y'
+alias snr='sudo nala remove'
 alias nf='neofetch'
 alias pipes='pipes.sh'
 alias dl='aria2c --optimize-concurrent-downloads -j 16 -s 16 -x 16 -k 4M'
 alias ls='lsd'
 alias la='lsd -la'
 alias ll='lsd -ll'
+alias lt='lsd --tree'
+alias ltl='lsd --tree --long'
 alias cd..='cd ..'
 alias bat='batcat'
 alias win='sudo efibootmgr --bootnext 0006 && reboot'
 alias ip="echo $(ifconfig | grep broadcast | awk '{print $2}')"
+alias time="arttime --nolearn -a kissingcats -b kissingcats2 -t 'Since we found love within, we do not bother rats - Wise cats' --ac 6"
 
 neofetch
-
