@@ -50,7 +50,7 @@ done
 #     mv background.jpg ~/Pictures/Wallpapers
 # write_done
 
-# Install and init nala
+# Install nala
 write_start "Check nala..."
 if ! command -v nala &> /dev/null
 then
@@ -77,23 +77,6 @@ write_start "Installing packages..."
     # curl -sS https://starship.rs/install.sh | sh
     # Install arttime
     zsh -c '{url="https://gist.githubusercontent.com/poetaman/bdc598ee607e9767fe33da50e993c650/raw/8487de3cf4cf4a7feff5d3a0d97defad95164eb3/arttime_online_installer.sh"; zsh -c "$(curl -fsSL $url || wget -qO- $url)"}'
-write_done
-
-# Install and config neovim
-write_start "Install and config neovim version 0.9.2..."
-    cd ~/dotfiles/config/ubuntu/nvim
-    sudo nala remove nvim -y
-    mkdir -p ~/.local/bin
-    mv nvim-linux64.tar.gz ~/.local/bin
-    cd ~/.local/bin
-    tar xzvf nvim-linux64.tar.gz
-    rm -fr nvim-linux64.tar.gz
-    ln -s ./nvim-linux64/bin/nvim ./nvim
-    nvim --version
-    cd ~/dotfiles/config/ubuntu
-    mv nvim ~/.config
-    pip install pynvim
-    sudo npm install neovim -g
 write_done
 
 # Install pipes.sh
@@ -143,4 +126,26 @@ write_done
 write_start "Change shell to zsh..."
     chsh -s /bin/zsh
 write_done 
+
+write_start "Clone and coppy config file..."
+    cd ~
+    got clone https://nhattruongNeoVim/dotfiles
+    cd dotfiles/config/ubuntu
+    mv kitty ~/.config
+    mv tmux ~/.config
+    write_start "Install and config neovim version 0.9.2..."
+    cd ~/dotfiles/config/ubuntu/nvim
+    sudo nala remove nvim -y
+    mkdir -p ~/.local/bin
+    mv nvim-linux64.tar.gz ~/.local/bin
+    cd ~/.local/bin
+    tar xzvf nvim-linux64.tar.gz
+    rm -fr nvim-linux64.tar.gz
+    ln -s ./nvim-linux64/bin/nvim ./nvim
+    nvim --version
+    cd ~/dotfiles/config/ubuntu
+    mv nvim ~/.config
+    pip install pynvim
+    sudo npm install neovim -g
+write_done
 
