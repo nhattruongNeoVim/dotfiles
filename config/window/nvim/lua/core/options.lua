@@ -21,9 +21,9 @@ opt.smartcase = true
 opt.cursorline = true
 
 -- giao diện
--- opt.termguicolors = true
--- opt.background = "dark"
--- opt.signcolumn = "yes"
+opt.termguicolors = true
+opt.background = "dark"
+opt.signcolumn = "yes"
 
 -- backspace
 opt.backspace = "indent,eol,start"

@@ -45,5 +45,6 @@ mason_null_ls.setup({
     "stylua",                   -- lua formatter
     "eslint_d",                 -- ts/js linter
     "clang-format",
+    "black"
   },
 })

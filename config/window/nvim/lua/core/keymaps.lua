@@ -1,6 +1,6 @@
 vim.g.mapleader = " "           -- set leader
 
-local keymap = vim.keymap       -- cho nhanh
+local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
 --------------------------------------------- phím tắt tổng quan------------------------------------------------
@@ -36,14 +36,12 @@ keymap.set("n", "<M-z>", ":set wrap<CR>",       {silent = true})
 keymap.set("n", "<M-x>", ":set nowrap<CR>",     {silent = true})
 
 -- format code Ctrl + f
-keymap.set("n", "<C-f>", ":lua vim.lsp.buf.format{async=true}<CR>",          {silent = true})
-
--- thoát khỏi chế độ insert của terminal với Ctrl + x
-keymap.set("t", "<C-x>", "<C-\\><C-n>")
-keymap.set("t", "<esc>", "<C-\\><C-n>")
+keymap.set("n", "<C-f>", ":lua vim.lsp.buf.format{async=true}<CR>",             {silent = true})
 
 -- open terminal
-keymap.set("n", "<M-i>", ":ToggleTerm direction=float<CR>",                   {silent = true})
+keymap.set("n", "<M-i>", ":ToggleTerm direction=float<CR>",                     {silent = true})
+keymap.set("n", "<M-v>", ":ToggleTerm direction=vertical<CR>",          {silent = true})
+keymap.set("n", "<M-h>", ":ToggleTerm direction=horizontal<CR>",        {silent = true})
 
 ---------------------------------------------- keymap cho plugin ------------------------------------------------
 

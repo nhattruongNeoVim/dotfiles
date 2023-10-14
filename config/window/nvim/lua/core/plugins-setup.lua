@@ -112,8 +112,6 @@ return packer.startup({
             after = "nvim-treesitter"
         })
 
-        use("NvChad/nvterm")                            -- terminal
-
         use({
             "akinsho/toggleterm.nvim",                  -- terminal
             tag = "*",

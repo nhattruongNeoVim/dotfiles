@@ -27,6 +27,7 @@ toggleterm.setup{
     persist_size = true,
     direction = "float",
     close_on_exit = true,
+    shell = vim.o.shell,
     -- shell = "powershell.exe -NoExit",
     -- shell = "wsl.exe",
     float_opts = {
@@ -44,7 +45,7 @@ toggleterm.setup{
 function _G.set_terminal_keymaps()
   local opts = {buffer = 0}
   vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
-  vim.keymap.set('t', 'hj', [[<C-\><C-n>]], opts)
+  -- vim.keymap.set('t', 'hj', [[<C-\><C-n>]], opts)
   vim.keymap.set('t', '<c-x>', [[<C-\><C-n>]], opts)
   vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
   vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)

@@ -127,6 +127,7 @@ write_start "Change shell to zsh..."
     chsh -s /bin/zsh
 write_done 
 
+write_start "Start config"
 write_start "Clone and coppy config file..."
     cd ~
     got clone https://nhattruongNeoVim/dotfiles

@@ -53,4 +53,11 @@ while [[ true ]]; do
     esac
 done
 
-write_start "test"
+write_start "Check nala..."
+if ! command -v nala &> /dev/null
+then
+    write_start "Installing nala..."
+    sudo apt install nala -y
+else
+    write_start "Nala is already installed"
+fi

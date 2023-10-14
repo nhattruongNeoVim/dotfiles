@@ -64,7 +64,7 @@ Write-Done
 Write-Start -msg "Config Powershell"
     New-Item -Path $PROFILE -Type File -Force
     $PROFILEPath = $PROFILE
-    $profileContent = Get-Content -Path ".\config\powershell\Microsoft.PowerShell_profile.ps1"
+    $profileContent = Get-Content -Path ".\config\window\powershell\Microsoft.PowerShell_profile.ps1"
     $profileContent | Set-Content -Path $PROFILEPath
 Write-Done
 
@@ -74,7 +74,7 @@ Write-Start -msg "Config Alacritty"
     If (-not (Test-Path $DestinationPath)) {
         New-Item -ItemType Directory -Path $DestinationPath -Force
     }
-    Copy-Item ".\config\alacritty\alacritty.yml" -Destination $DestinationPath -Force
+    Copy-Item ".\config\window\alacritty\alacritty.yml" -Destination $DestinationPath -Force
 Write-Done
 
 # Config Neovim
@@ -83,7 +83,7 @@ Write-Start -msg "Config Neovim"
     If (-not (Test-Path $DestinationPath)) {
         New-Item -ItemType Directory -Path $DestinationPath -Force
     }
-    Copy-Item ".\config\nvim" -Destination $DestinationPath -Force -Recurse
+    Copy-Item ".\config\window\nvim" -Destination $DestinationPath -Force -Recurse
     pip install pynvim
     npm install neovim -g
 Write-Done
