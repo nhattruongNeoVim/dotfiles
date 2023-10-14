@@ -112,6 +112,8 @@ write_start "Install POP_OS..."
     git clone https://github.com/pop-os/shell.git
     cd shell
     make local-install
+    cd ..
+    rm -rf shell
 write_done
 
 # Install Rust
