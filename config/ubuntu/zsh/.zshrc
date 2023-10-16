@@ -40,10 +40,19 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export VISUAL="/home/albedo/.local/bin/nvim"
 
-alias vim='nvim'
-alias snu='sudo nala update && sudo nala upgrade -y'
-alias sni='sudo nala install -y'
+# Nala
+alias snuu='sudo nala update && sudo nala upgrade -y'
+alias snu='sudo nala update'
+alias sai='sudo apt install -y'
 alias snr='sudo nala remove'
+# Apt
+alias sauu='sudo apt update && sudo apt upgrade -y'
+alias sau='sudo apt update'
+alias sni='sudo nala install -y'
+alias sar='sudo apt remove'
+alias saa='sudo add-apt-repository'
+
+alias vim='nvim'
 alias nf='neofetch'
 alias pipes='pipes.sh'
 alias dl='aria2c --optimize-concurrent-downloads -j 16 -s 16 -x 16 -k 4M'
