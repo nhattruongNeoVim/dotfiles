@@ -70,7 +70,7 @@ write_done
 # Install packages
 write_start "Installing packages..."
     sudo nala install git neofetch xclip zsh kitty bat ibus-unikey default-jre default-jdk
-    sudo nala install fzf make cmake pip tmux
+    sudo nala install fzf make cmake pip tmux cava
     sudo add-apt-repository ppa:danielrichter2007/grub-customizer
     sudo nala update && sudo nala upgrade
     sudo nala install grub-customizer
