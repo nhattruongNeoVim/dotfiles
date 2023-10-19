@@ -150,3 +150,12 @@ write_start "Clone and coppy config file..."
     sudo npm install neovim -g
 write_done
 
+write_start "Config neofetch..."
+    cd ~/dotfiles/config/ubuntu/neofetch
+    mkdir -p ~/.config/neofetch
+    cp config.conf ~/.config/neofetch
+    # sudo rm /usr/bin/neofetch
+    # sudo cp neofetch /usr/bin
+    # cd /usr/bin
+    # sudo chmod 777 neofetch
+write_done
