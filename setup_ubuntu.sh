@@ -139,7 +139,7 @@ write_start "Clone and coppy config file..."
     # sudo chmod 777 neofetch
 write_done
 
-write_start "Add theme, icon..."
+write_start "Add theme, font, icon..."
     cd ~/dotfiles/config/ubuntu/ui
     mkdir -p ~/.themes
     cp -r nhattruongNeoVimTheme ~/.themes
@@ -148,6 +148,10 @@ write_start "Add theme, icon..."
     cd ~/.themes/nhattruongNeoVimTheme
     mkdir -p ~/.config/gtk-4.0
     cp -r gtk-4.0 ~/.config
+    cd ~/dotfiles/config/ubuntu/ui
+    mkdir -p ~/.fonts
+    cp -r MesloLGS\ NF ~/.fonts
+    fc-cache -fv
 write_done
     
 write_start "Install and config neovim version 0.9.2..."
