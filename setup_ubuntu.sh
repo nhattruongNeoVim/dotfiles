@@ -153,13 +153,13 @@ write_start "Install and config neovim version 0.9.2..."
 write_done
 
 # Install POP_OS
-write_start "Install POP_OS..."
-    cd ~
-    sudo nala install git node-typescript make
-    sudo npm install -g typescript@next --force
-    git clone https://github.com/pop-os/shell.git
-    cd shell
-    make local-install
-    cd ..
-    rm -rf shell
-write_done
+#write_start "Install POP_OS..."
+    #cd ~
+    #sudo nala install git node-typescript make
+    #sudo npm install -g typescript@next --force
+    #git clone https://github.com/pop-os/shell.git
+    #cd shell
+    #make local-install
+    #cd ..
+    #rm -rf shell
+#write_done
