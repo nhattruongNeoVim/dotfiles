@@ -42,5 +42,3 @@ require("plugins.notify")
 require("plugins.smartsplit")
 require("plugins.neoscroll")
 require("plugins.hop")
-
-vim.cmd("cd~/UserData/Code")
