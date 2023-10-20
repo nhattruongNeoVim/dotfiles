@@ -123,8 +123,8 @@ write_start "Clone and coppy config file..."
     cd ~
     git clone https://github.com/nhattruongNeoVim/dotfiles
     cd dotfiles/config/ubuntu
-    mv kitty ~/.config
-    mv tmux ~/.config
+    cp -r kitty ~/.config
+    cp -r tmux ~/.config
     cd ~/dotfiles/config/ubuntu/neofetch
     mkdir -p ~/.config/neofetch
     cp config.conf ~/.config/neofetch
