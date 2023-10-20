@@ -120,7 +120,7 @@ write_done
 write_start "Start config"
 write_start "Clone and coppy config file..."
     cd ~
-    got clone https://nhattruongNeoVim/dotfiles
+    got clone https://github.com/nhattruongNeoVim/dotfiles
     cd dotfiles/config/ubuntu
     mv kitty ~/.config
     mv tmux ~/.config
@@ -153,6 +153,7 @@ write_done
 # Install POP_OS
 write_start "Install POP_OS..."
     cd ~
+    sudo nala install git node-typescript make
     git clone https://github.com/pop-os/shell.git
     cd shell
     make local-install
