@@ -125,7 +125,16 @@ write_start "Clone and coppy config file..."
     cd dotfiles/config/ubuntu
     mv kitty ~/.config
     mv tmux ~/.config
-    write_start "Install and config neovim version 0.9.2..."
+    cd ~/dotfiles/config/ubuntu/neofetch
+    mkdir -p ~/.config/neofetch
+    cp config.conf ~/.config/neofetch
+    # sudo rm /usr/bin/neofetch
+    # sudo cp neofetch /usr/bin
+    # cd /usr/bin
+    # sudo chmod 777 neofetch
+write_done
+    
+write_start "Install and config neovim version 0.9.2..."
     cd ~/dotfiles/config/ubuntu/nvim
     sudo nala remove nvim -y
     mkdir -p ~/.local/bin
@@ -138,17 +147,7 @@ write_start "Clone and coppy config file..."
     cd ~/dotfiles/config/ubuntu
     mv nvim ~/.config
     pip install pynvim
-    sudo npm install neovim -g
-write_done
-
-write_start "Config neofetch..."
-    cd ~/dotfiles/config/ubuntu/neofetch
-    mkdir -p ~/.config/neofetch
-    cp config.conf ~/.config/neofetch
-    # sudo rm /usr/bin/neofetch
-    # sudo cp neofetch /usr/bin
-    # cd /usr/bin
-    # sudo chmod 777 neofetch
+    sudo npm install neovim -g  
 write_done
 
 # Install POP_OS
