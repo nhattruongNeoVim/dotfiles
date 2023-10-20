@@ -145,7 +145,7 @@ write_start "Install and config neovim version 0.9.2..."
     ln -s ./nvim-linux64/bin/nvim ./nvim
     nvim --version
     cd ~/dotfiles/config/ubuntu/nvim
-    mv nvim ~/.config
+    cp -r nvim ~/.config
     pip install pynvim
     sudo npm install neovim -g  
 write_done
