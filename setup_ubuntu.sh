@@ -49,6 +49,9 @@ done
 #     mkdir ~/Pictures/Wallpapers
 #     mv background.jpg ~/Pictures/Wallpapers
 # write_done
+write_start "Check for update..."
+    sudo apt update && sudo apt upgrade -y
+write_done
 
 # Install nala
 write_start "Check nala..."
@@ -165,7 +168,7 @@ write_done
 # Install POP_OS
 #write_start "Install POP_OS..."
     #cd ~
-    #sudo nala install git node-typescript make
+    #sudo nala install git node-typescript make -y
     #sudo npm install -g typescript@next --force
     #git clone https://github.com/pop-os/shell.git
     #cd shell
