@@ -35,6 +35,7 @@ mason_lspconfig.setup({
     "emmet_ls",
     "clangd",
     "jdtls",
+    "pyright",
   },
   automatic_installation = true,
 })
