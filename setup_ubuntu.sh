@@ -154,6 +154,7 @@ write_done
 write_start "Install POP_OS..."
     cd ~
     sudo nala install git node-typescript make
+    npm install -D typescript@next
     git clone https://github.com/pop-os/shell.git
     cd shell
     make local-install
