@@ -128,6 +128,8 @@ write_start "Clone and coppy config file..."
     cd ~/dotfiles/config/ubuntu/neofetch
     mkdir -p ~/.config/neofetch
     cp config.conf ~/.config/neofetch
+    cd ~/dotfiles/config/ubuntu/zsh
+    cp .zshrc ~
     # sudo rm /usr/bin/neofetch
     # sudo cp neofetch /usr/bin
     # cd /usr/bin
