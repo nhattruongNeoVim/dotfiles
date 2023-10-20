@@ -70,7 +70,7 @@ write_done
 # Install packages
 write_start "Installing packages..."
     sudo nala install git neofetch xclip zsh kitty bat ibus-unikey default-jre default-jdk
-    sudo nala install fzf make cmake pip tmux cava
+    sudo nala install fzf make cmake pip tmux cava pip
     sudo add-apt-repository ppa:danielrichter2007/grub-customizer
     sudo nala update && sudo nala upgrade
     sudo nala install grub-customizer
@@ -87,16 +87,6 @@ write_start "Install pipes.sh..."
     make PREFIX=$HOME/.local install
     cd ..
     rm -rf pipes.sh
-write_done
-
-# Install POP_OS
-write_start "Install POP_OS..."
-    cd ~
-    git clone https://github.com/pop-os/shell.git
-    cd shell
-    make local-install
-    cd ..
-    rm -rf shell
 write_done
 
 # Install Rust
@@ -158,4 +148,14 @@ write_start "Config neofetch..."
     # sudo cp neofetch /usr/bin
     # cd /usr/bin
     # sudo chmod 777 neofetch
+write_done
+
+# Install POP_OS
+write_start "Install POP_OS..."
+    cd ~
+    git clone https://github.com/pop-os/shell.git
+    cd shell
+    make local-install
+    cd ..
+    rm -rf shell
 write_done
