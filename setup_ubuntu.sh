@@ -122,7 +122,7 @@ write_start "Start config"
 write_start "Clone and coppy config file..."
     cd ~
     git clone https://github.com/nhattruongNeoVim/dotfiles
-    cd dotfiles/config/ubuntu
+    cd ~/dotfiles/config/ubuntu
     cp -r kitty ~/.config
     cp -r tmux ~/.config
     cd ~/dotfiles/config/ubuntu/neofetch
@@ -134,6 +134,17 @@ write_start "Clone and coppy config file..."
     # sudo cp neofetch /usr/bin
     # cd /usr/bin
     # sudo chmod 777 neofetch
+write_done
+
+write_start "Add theme, icon..."
+    cd ~/dotfiles/config/ubuntu/ui
+    mkdir -p ~/.themes
+    cp -r nhattruongNeoVimTheme ~/.themes
+    mkdir -p ~/.icons
+    cp -r candy-icons ~/.icons
+    cd ~/.themes/nhattruongNeoVimTheme
+    mkdir -p ~/.config/gtk-4.0
+    cp -r gtk-4.0 ~/.config
 write_done
     
 write_start "Install and config neovim version 0.9.2..."
