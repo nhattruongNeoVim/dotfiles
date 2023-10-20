@@ -180,3 +180,4 @@ write_done
     #cd ..
     #rm -rf shell
 #write_done
+reboot
