@@ -120,7 +120,7 @@ write_done
 write_start "Start config"
 write_start "Clone and coppy config file..."
     cd ~
-    got clone https://github.com/nhattruongNeoVim/dotfiles
+    git clone https://github.com/nhattruongNeoVim/dotfiles
     cd dotfiles/config/ubuntu
     mv kitty ~/.config
     mv tmux ~/.config
