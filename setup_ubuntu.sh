@@ -128,6 +128,8 @@ write_start "Clone and coppy config file..."
     cd ~/dotfiles/config/ubuntu
     cp -r kitty ~/.config
     cp -r tmux ~/.config
+    cp -r rofi ~/.config
+    cp -r alacritty ~/.config
     cd ~/dotfiles/config/ubuntu/neofetch
     mkdir -p ~/.config/neofetch
     cp config.conf ~/.config/neofetch
