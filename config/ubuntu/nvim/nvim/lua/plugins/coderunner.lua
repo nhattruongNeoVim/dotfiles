@@ -11,8 +11,8 @@ coderunner.setup({
         javascript = "node $dir/$fileName",
         dart = "dart $fileName",
         rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
-        -- cpp = "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir/$fileNameWithoutExt",
-        cpp = "cd $dir && g++ $fileName -o ~/UserData/Code/c++/out/$fileNameWithoutExt && ~/UserData/Code/c++/out/$fileNameWithoutExt",
+        cpp = "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir/$fileNameWithoutExt",
+        -- cpp = "cd $dir && g++ $fileName -o ~/UserData/Code/c++/out/$fileNameWithoutExt && ~/UserData/Code/c++/out/$fileNameWithoutExt",
         scss = "sass $dir/$fileName $dir/$fileNameWithoutExt.css",
         lua = "cd $dir && lua $fileName"
     },
