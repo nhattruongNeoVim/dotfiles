@@ -45,12 +45,19 @@ alias snuu='sudo nala update && sudo nala upgrade -y'
 alias snu='sudo nala update'
 alias sai='sudo apt install -y'
 alias snr='sudo nala remove'
+
 # Apt
 alias sauu='sudo apt update && sudo apt upgrade -y'
 alias sau='sudo apt update'
 alias sni='sudo nala install -y'
 alias sar='sudo apt remove'
 alias saa='sudo add-apt-repository'
+
+# Git
+alias ga='git add .'
+alias gs='git status'
+alias gc='git commit -m'
+alias gp='git push origin master'
 
 alias vim='nvim'
 alias nf='neofetch'
