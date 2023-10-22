@@ -160,7 +160,8 @@ write_start "Install and config neovim version 0.9.2..."
     cd ~/dotfiles/config/ubuntu/nvim
     sudo nala remove nvim -y
     mkdir -p ~/.local/bin
-    mv nvim-linux64.tar.gz ~/.local/bin
+    cp nvim-linux64.tar.gz ~/.local/bin
+    cp .ideavimrc ~
     cd ~/.local/bin
     tar xzvf nvim-linux64.tar.gz
     rm -fr nvim-linux64.tar.gz
