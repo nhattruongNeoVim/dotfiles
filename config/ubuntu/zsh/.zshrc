@@ -58,6 +58,7 @@ alias ga='git add .'
 alias gs='git status'
 alias gc='git commit -m'
 alias gp='git push origin master'
+alias gg="git add . && git commit -m 'update' && git push origin master"
 
 alias vim='nvim'
 alias nf='neofetch'
@@ -69,6 +70,7 @@ alias ll='lsd -ll'
 alias lt='lsd --tree'
 alias ltl='lsd --tree --long'
 alias cd..='cd ..'
+alias cd-='cd -'
 alias bat='batcat'
 alias win='sudo efibootmgr --bootnext 0006 && reboot'
 alias ip="echo $(ifconfig | grep broadcast | awk '{print $2}')"

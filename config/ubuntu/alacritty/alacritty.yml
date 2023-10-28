@@ -13,13 +13,13 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 24
-    y: 24
+    x: 20
+    y: 20
   decorations: none
   dimensions:
     columns: 80
     lines: 35
-  opacity: 0.7
+  opacity: 0.8
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -79,8 +79,10 @@ font:
 colors:
   # Default colors
   primary:
-    background: "0x131621"
-    foreground: "0xa6accd"
+    background: "#14151e"
+    foreground: "#98b0d3"
+    # foreground: "0xa6accd"
+    # background: "0x131621"
 
   # Cursor colors
   cursor:
