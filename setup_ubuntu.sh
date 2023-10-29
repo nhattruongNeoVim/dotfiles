@@ -96,8 +96,9 @@ write_done
 write_start "Install Rust..."
     curl --proto '=https' --tlsv1.2 -sSf "https://sh.rustup.rs" | sh
     #bash
-    #cargo --version
-    #cargo install lsd --locked
+    source $HOME/.cargo/env
+    cargo --version
+    cargo install lsd --locked
 write_done
 
 # Install Nodejs
