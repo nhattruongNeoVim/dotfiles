@@ -38,7 +38,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export VISUAL="/home/albedo/.local/bin/nvim"
+export VISUAL="$HOME/.local/bin/nvim"
 
 # Nala
 alias snuu='sudo nala update && sudo nala upgrade -y'
