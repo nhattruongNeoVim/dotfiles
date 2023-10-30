@@ -52,7 +52,7 @@ function nvims() {
   if [[ -z $config ]]; then
     echo "Nothing selected"
     return 0
-  elif [[ $config == "default" ]]; then
+  elif [[ $config == "Default" ]]; then
     config=""
   fi
   NVIM_APPNAME=$config nvim $@
