@@ -94,7 +94,7 @@ alias cd-='cd -'
 alias bat='batcat'
 alias win='sudo efibootmgr --bootnext 0006 && reboot'
 alias ip="echo $(ifconfig | grep broadcast | awk '{print $2}')"
-# alias time="arttime --nolearn -a kissingcats -b kissingcats2 -t 'Since we found love within, we do not bother rats - Wise cats' --ac 6"
 alias time="arttime --nolearn -a kissingcats -b kissingcats2 -t 'nhattruongNeoVim' --ac 6"
+# alias time="arttime --nolearn -a kissingcats -b kissingcats2 -t 'Since we found love within, we do not bother rats - Wise cats' --ac 6"
 
 neofetch
