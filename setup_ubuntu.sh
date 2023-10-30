@@ -173,6 +173,12 @@ write_start "Install and config neovim version 0.9.2..."
     sudo npm install neovim -g  
 write_done
 
+write_start "Config neovim switcher..."
+    git clone https://github.com/LazyVim/starter ~/.config/LazyVim
+    git clone https://github.com/NvChad/NvChad ~/.config/NvChad
+    git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/AstroNvim
+write_done
+
 # Install POP_OS
 #write_start "Install POP_OS..."
     #cd ~

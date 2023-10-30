@@ -41,14 +41,14 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export VISUAL="$HOME/.local/bin/nvim"
 
 # NeoVim Switcher
-alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
-alias nvim-kick="NVIM_APPNAME=kickstart nvim"
 alias nvim-chad="NVIM_APPNAME=NvChad nvim"
+alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
+alias nvim-kick="NVIM_APPNAME=Kickstart nvim"
 alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
 
 function nvims() {
-  items=("default" "kickstart" "LazyVim" "NvChad" "AstroNvim")
-  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=20% --layout=reverse --border --exit-0 --bind='j:down,k:up')
+  items=("Default" "Kickstart" "NvChad" "LazyVim" "AstroNvim")
+  config=$(printf "%s\n" "${items[@]}" | fzf --no-sort --preview-window=wrap --preview='echo {}' --prompt=" Neovim Config  " --height=10% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"
     return 0
