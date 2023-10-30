@@ -127,10 +127,10 @@ write_start "Clone and coppy config file..."
     cd ~
     git clone https://github.com/nhattruongNeoVim/dotfiles
     cd ~/dotfiles/config/ubuntu
-    cp -r kitty ~/.config
-    cp -r tmux ~/.config
-    cp -r rofi ~/.config
-    cp -r alacritty ~/.config
+    cp -rf kitty ~/.config
+    cp -rf tmux ~/.config
+    cp -rf rofi ~/.config
+    cp -rf alacritty ~/.config
     cd ~/dotfiles/config/ubuntu/neofetch
     mkdir -p ~/.config/neofetch
     cp config.conf ~/.config/neofetch
@@ -146,15 +146,15 @@ write_done
 write_start "Add theme, font, icon..."
     cd ~/dotfiles/config/ubuntu/ui
     mkdir -p ~/.themes
-    cp -r nhattruongNeoVimTheme ~/.themes
+    cp -rf nhattruongNeoVimTheme ~/.themes
     mkdir -p ~/.icons
-    cp -r candy-icons ~/.icons
+    cp -rf candy-icons ~/.icons
     cd ~/.themes/nhattruongNeoVimTheme
     mkdir -p ~/.config/gtk-4.0
-    cp -r gtk-4.0 ~/.config
+    cp -rf gtk-4.0 ~/.config
     cd ~/dotfiles/config/ubuntu/ui
     mkdir -p ~/.fonts
-    cp -r MesloLGS\ NF ~/.fonts
+    cp -rf MesloLGS\ NF ~/.fonts
     fc-cache -fv
 write_done
     
@@ -170,7 +170,7 @@ write_start "Install and config neovim version 0.9.2..."
     rm -fr nvim-linux64.tar.gz
     ln -s ./nvim-linux64/bin/nvim ./nvim
     cd ~/dotfiles/config/ubuntu/nvim
-    cp -r nvim ~/.config
+    cp -rf nvim ~/.config
     pip install pynvim
     sudo npm install neovim -g  
 write_done
