@@ -39,7 +39,7 @@ while [[ true ]]; do
         [Nn]* )
             break;;
         *) 
-            echo -en '\e[34m Please answer yes or no !'
+            echo -en '\e[34m Please answer yes or no !\n'
     esac
 done
 
@@ -142,6 +142,7 @@ write_start "Clone and coppy config file..."
     # sudo chmod 777 neofetch
 write_done
 
+# Add UI
 write_start "Add theme, font, icon..."
     cd ~/dotfiles/config/ubuntu/ui
     mkdir -p ~/.themes
@@ -157,6 +158,7 @@ write_start "Add theme, font, icon..."
     fc-cache -fv
 write_done
     
+# Install neovim
 write_start "Install and config neovim version 0.9.2..."
     cd ~/dotfiles/config/ubuntu/nvim
     sudo nala remove nvim -y
@@ -173,11 +175,24 @@ write_start "Install and config neovim version 0.9.2..."
     sudo npm install neovim -g  
 write_done
 
-write_start "Config neovim switcher..."
-    git clone https://github.com/LazyVim/starter ~/.config/LazyVim
-    git clone https://github.com/NvChad/NvChad ~/.config/NvChad
-    git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/AstroNvim
-write_done
+# Config neovim switcher
+while [[ true ]]; do
+    write_ask "Are you want to config neovim switcher(use multiple nvim)? (y/n): "
+    read answer1
+    case $answer1 in
+        [Yy]* )
+            echo -e "\n"
+            write_start "Use neovim with: LazyVim, NvChad, AstroNvim"
+            write_start "git clone --depth 1 https://github.com/LazyVim/starter ~/.config/LazyVim"
+            write_start "git clone --depth 1 https://github.com/NvChad/NvChad ~/.config/NvChad"
+            write_start "git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/AstroNvim"
+            break;;
+        [Nn]* )
+            break;;
+        *) 
+            echo -en '\e[34m Please answer yes or no !\n'
+    esac
+done
 
 # Install POP_OS
 #write_start "Install POP_OS..."
