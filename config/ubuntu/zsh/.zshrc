@@ -80,7 +80,7 @@ alias gc='git commit -m'
 alias gp='git push origin master'
 alias gg="git add . && git commit -m 'update' && git push origin master"
 
-alias vim='nvim'
+alias vim='nvims'
 alias nf='neofetch'
 alias pipes='pipes.sh'
 alias dl='aria2c --optimize-concurrent-downloads -j 16 -s 16 -x 16 -k 4M'
