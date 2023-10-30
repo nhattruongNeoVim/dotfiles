@@ -183,9 +183,9 @@ while [[ true ]]; do
         [Yy]* )
             echo -e "\n"
             write_start "Use neovim with: LazyVim, NvChad, AstroNvim"
-            write_start "git clone --depth 1 https://github.com/LazyVim/starter ~/.config/LazyVim"
-            write_start "git clone --depth 1 https://github.com/NvChad/NvChad ~/.config/NvChad"
-            write_start "git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/AstroNvim"
+            git clone --depth 1 https://github.com/LazyVim/starter ~/.config/LazyVim
+            git clone --depth 1 https://github.com/NvChad/NvChad ~/.config/NvChad
+            git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/AstroNvim
             break;;
         [Nn]* )
             break;;
