@@ -72,7 +72,7 @@ write_done
 
 # Install packages
 write_start "Installing packages..."
-    sudo nala install git neofetch xclip zsh kitty bat rofi ibus-unikey default-jre default-jdk -y
+    sudo nala install git neofetch xclip zsh kitty bat rofi ibus-unikey default-jre default-jdk htop -y
     sudo nala install fzf make cmake aria2 pip tmux cava pip net-tools python3.10-venv unzip -y
     sudo add-apt-repository ppa:danielrichter2007/grub-customizer
     sudo nala update && sudo nala upgrade -y
