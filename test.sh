@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Function util
 write_start() {
     echo -e "\e[32m>> $1\e[0m"
