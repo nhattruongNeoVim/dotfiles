@@ -1,3 +1,4 @@
+
 #!/bin/bash
 # Function util
 write_start() {
