@@ -119,7 +119,12 @@ lspconfig["pyright"].setup({
 })
 
 lspconfig["jdtls"].setup({
+    cmd = {"jdtls"},
     capabilities = capabilities,
     on_attach = on_attach,
-    filetypes = { "java" }
+    filetypes = { "java" },
+    -- root_dir = vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1]),
+    root_dir = lspconfig.util.root_pattern(
+        '.git', '.iml', 'mvnw', 'gradlew'
+    )
 })
