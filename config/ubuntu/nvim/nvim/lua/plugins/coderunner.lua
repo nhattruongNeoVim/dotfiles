@@ -5,14 +5,15 @@ end
 
 coderunner.setup({
     filetype = {
-        java = "cd $dir && javac $fileName && java $fileNameWithoutExt",
+        -- java = "cd $dir && javac $fileName && java $fileNameWithoutExt",
+        java = "cd $dir && javac -d ~/out $fileName && java -cp ~/out $fileNameWithoutExt",
         python = "python3 -u",
         typescript = "deno run",
         javascript = "node $dir/$fileName",
         dart = "dart $fileName",
         rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
-        cpp = "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir/$fileNameWithoutExt",
-        -- cpp = "cd $dir && g++ $fileName -o ~/UserData/out/$fileNameWithoutExt && ~/UserData/out/$fileNameWithoutExt",
+        -- cpp = "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir/$fileNameWithoutExt",
+        cpp = "cd $dir && g++ $fileName -o ~/out/$fileNameWithoutExt && ~/out/$fileNameWithoutExt",
         scss = "sass $dir/$fileName $dir/$fileNameWithoutExt.css",
         lua = "cd $dir && lua $fileName"
     },

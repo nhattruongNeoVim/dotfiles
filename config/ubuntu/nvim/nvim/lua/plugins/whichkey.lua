@@ -98,6 +98,7 @@ local mappings = {
         name = "Find",
         f = { "<cmd>Telescope find_files<CR>", "Find files" },
         o = { "<cmd>Telescope oldfiles<cr>", "Find oldfiles" },
+        b = { "<cmd>Telescope marks<cr>", "Find bookmarks"},
     },
     p = {
         name = "Packer",

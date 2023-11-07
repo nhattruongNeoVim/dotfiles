@@ -67,6 +67,11 @@ return packer.startup({
         use("hrsh7th/cmp-nvim-lua")                     -- nguồn cho cmp
         use("hrsh7th/cmp-nvim-lsp")                     -- nguồn cho cmp
         use("hrsh7th/cmp-cmdline")                      -- nguồn cho cmpline
+        use({
+            "tzachar/cmp-tabnine",
+            run="./install.sh",
+            requires = "hrsh7th/nvim-cmp"
+        })
 
         -- snippets
         use("L3MON4D3/LuaSnip")                         -- snippet engine

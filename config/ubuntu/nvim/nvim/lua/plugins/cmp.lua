@@ -35,7 +35,8 @@ cmp.setup({
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
     }),
     sources = cmp.config.sources({
-        { name = "nvim_lsp" }, -- lsp
+        { name = "cmp_tabnine"}, -- TabNine
+        { name = "nvim_lsp"  }, -- lsp
         { name = "nvim_lua" }, -- lsp
         { name = "luasnip" }, -- snippets
         { name = "buffer" }, -- text within current buffer
