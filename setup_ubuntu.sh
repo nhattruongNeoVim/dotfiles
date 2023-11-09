@@ -169,6 +169,9 @@ write_start "Install and config neovim version 0.9.2..."
     tar xzvf nvim-linux64.tar.gz
     rm -fr nvim-linux64.tar.gz
     ln -s ./nvim-linux64/bin/nvim ./nvim
+
+    bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/config/ubuntu/nvim/nvim_setup.sh)
+    git clone git@github.com:nhattruongNeoVim/MYnvim ~/.config/nvim
 write_done
 
 # Config neovim switcher
