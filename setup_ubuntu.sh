@@ -72,8 +72,8 @@ write_done
 
 # Install packages
 write_start "Installing packages..."
-    sudo nala install git neofetch xclip zsh kitty bat rofi ibus-unikey openjdk-19-jre-headless  openjdk-19-jdk-headless htop -y
-    sudo nala install fzf make cmake aria2 pip tmux cava pip net-tools python3.10-venv unzip -y
+    sudo nala install git neofetch xclip zsh kitty bat rofi ibus-unikey openjdk-19-jre-headless openjdk-19-jdk-headless htop -y
+    sudo nala install fzf make cmake aria2 pip tmux cava net-tools python3.10-venv unzip -y
     sudo add-apt-repository ppa:danielrichter2007/grub-customizer
     sudo nala update && sudo nala upgrade -y
     sudo nala install grub-customizer -y
@@ -169,11 +169,6 @@ write_start "Install and config neovim version 0.9.2..."
     tar xzvf nvim-linux64.tar.gz
     rm -fr nvim-linux64.tar.gz
     ln -s ./nvim-linux64/bin/nvim ./nvim
-    cd ~/dotfiles/config/ubuntu/nvim
-    cp -rf nvim ~/.config
-    mkdir -p ~/out
-    pip install pynvim
-    sudo npm install neovim -g  
 write_done
 
 # Config neovim switcher
