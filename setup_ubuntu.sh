@@ -73,7 +73,7 @@ write_done
 # Install packages
 write_start "Installing packages..."
     sudo nala install git neofetch xclip zsh kitty bat rofi ibus-unikey openjdk-19-jre-headless openjdk-19-jdk-headless htop -y
-    sudo nala install fzf make cmake aria2 pip tmux cava net-tools python3.10-venv unzip -y
+    sudo nala install fzf make cmake aria2 pip tmux cava net-tools python3.10-venv unzip lolcat cpufetch bpytop figlet -y
     sudo add-apt-repository ppa:danielrichter2007/grub-customizer
     sudo nala update && sudo nala upgrade -y
     sudo nala install grub-customizer -y
@@ -149,13 +149,13 @@ write_start "Add theme, font, icon..."
     cp -rf nhattruongNeoVimTheme ~/.themes
     mkdir -p ~/.icons
     cp -rf candy-icons ~/.icons
-    cd ~/.themes/nhattruongNeoVimTheme
-    mkdir -p ~/.config/gtk-4.0
-    cp -rf gtk-4.0 ~/.config
-    cd ~/dotfiles/config/ubuntu/ui
     mkdir -p ~/.fonts
     cp -rf MesloLGS\ NF ~/.fonts
     fc-cache -fv
+    sudo cp ANSIShadow.flf /usr/share/figlet/
+    cd ~/.themes/nhattruongNeoVimTheme
+    mkdir -p ~/.config/gtk-4.0
+    cp -rf gtk-4.0 ~/.config
 write_done
     
 # Install neovim

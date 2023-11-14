@@ -58,8 +58,6 @@ function nvims() {
   NVIM_APPNAME=$config nvim $@
 }
 
-bindkey -s ^a "nvims\n"
-
 # Nala
 alias snuu='sudo nala update && sudo nala upgrade -y'
 alias snu='sudo nala update'
@@ -92,9 +90,12 @@ alias ltl='lsd --tree --long'
 alias cd..='cd ..'
 alias cd-='cd -'
 alias bat='batcat'
+alias cf='cpufetch'
+alias nf='neofetch'
+alias btop='bpytop'
+alias lc='lolcat'
 alias win='sudo efibootmgr --bootnext 0006 && reboot'
 alias ip="echo $(ifconfig | grep broadcast | awk '{print $2}')"
 alias time="arttime --nolearn -a kissingcats -b kissingcats2 -t 'nhattruongNeoVim' --ac 6"
-# alias time="arttime --nolearn -a kissingcats -b kissingcats2 -t 'Since we found love within, we do not bother rats - Wise cats' --ac 6"
 
-neofetch
+figlet -f ANSIShadow "nhat truong" | lolcat -F 0.2
