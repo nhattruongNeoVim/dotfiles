@@ -93,6 +93,7 @@ alias bat='batcat'
 alias cf='cpufetch'
 alias nf='neofetch'
 alias btop='bpytop'
+alias matrix='cmatrix'
 alias lc='lolcat'
 alias win='sudo efibootmgr --bootnext 0006 && reboot'
 alias ip="echo $(ifconfig | grep broadcast | awk '{print $2}')"
