@@ -81,8 +81,6 @@ colors:
   primary:
     background: "#14151e"
     foreground: "#98b0d3"
-    # foreground: "0xa6accd"
-    # background: "0x131621"
 
   # Cursor colors
   cursor:
@@ -126,7 +124,7 @@ colors:
 
   # Normal colors
   normal:
-    black: "0x1b1e28"
+    black: "#ff00ff"
     red: "0xd0679d"
     green: "0x5de4c7"
     yellow: "0xfffac2"
