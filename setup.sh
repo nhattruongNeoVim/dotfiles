@@ -72,7 +72,7 @@ write_done
 
 # Install packages
 write_start "Installing packages..."
-    sudo nala install git neofetch xclip zsh kitty bat rofi ibus-unikey openjdk-19-jre-headless openjdk-19-jdk-headless htop -y
+    sudo nala install git neofetch xclip zsh kitty bat rofi ibus-unikey openjdk-19-jre-headless openjdk-19-jdk-headless htop stow -y
     sudo nala install fzf make cmake aria2 pip tmux cava net-tools python3.10-venv unzip lolcat cpufetch bpytop figlet sl cmatrix trash-cli ranger hollywood -y
     sudo add-apt-repository ppa:danielrichter2007/grub-customizer
     sudo nala update && sudo nala upgrade -y
@@ -123,36 +123,18 @@ write_start "Change shell to zsh..."
 write_done 
 
 write_start "Start config"
-write_start "Clone and coppy config file..."
+write_start "Clone dotfiles..."
+    git clone https://github.com/nhattruongNeoVim/dotfiles ~
     cd ~
-    git clone https://github.com/nhattruongNeoVim/dotfiles
-    cd ~/dotfiles/config/ubuntu
-    cp -rf kitty ~/.config
-    cp -rf tmux ~/.config
-    cp -rf rofi ~/.config
-    cp -rf alacritty ~/.config
-    cd ~/dotfiles/config/ubuntu/neofetch
-    mkdir -p ~/.config/neofetch
-    cp config.conf ~/.config/neofetch
-    cd ~/dotfiles/config/ubuntu/zsh
-    cp .zshrc ~
-    # sudo rm /usr/bin/neofetch
-    # sudo cp neofetch /usr/bin
-    # cd /usr/bin
-    # sudo chmod 777 neofetch
-write_done
-
-# Add UI
-write_start "Add theme, font, icon..."
-    cd ~/dotfiles/config/ubuntu/ui
-    mkdir -p ~/.themes
-    cp -rf nhattruongNeoVimTheme ~/.themes
-    mkdir -p ~/.icons
-    cp -rf candy-icons ~/.icons
-    mkdir -p ~/.fonts
-    cp -rf MesloLGS\ NF ~/.fonts
+    rm .zshrc .ideavimrc
+    rm -rf .fonts .icons .themes
+    cd .config
+    rm -rf alacritty kitty neofetch ranger rofi tmux
+    cd ~/dotfiles
+    stow config home
+    
     fc-cache -fv
-    sudo cp ANSIShadow.flf /usr/share/figlet/
+    sudo cp ~/dotfiles/others/ANSIShadow.flf /usr/share/figlet/
     cd ~/.themes/nhattruongNeoVimTheme
     mkdir -p ~/.config/gtk-4.0
     cp -rf gtk-4.0 ~/.config
@@ -160,17 +142,14 @@ write_done
     
 # Install neovim
 write_start "Install and config neovim version 0.9.2..."
-    cd ~/dotfiles/config/ubuntu/nvim
+    cd ~/dotfiles/others
     sudo nala remove nvim -y
     mkdir -p ~/.local/bin
     cp nvim-linux64.tar.gz ~/.local/bin
-    cp .ideavimrc ~
     cd ~/.local/bin
     tar xzvf nvim-linux64.tar.gz
     rm -fr nvim-linux64.tar.gz
     ln -s ./nvim-linux64/bin/nvim ./nvim
-
-    # bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/config/ubuntu/nvim/nvim_setup.sh)
     git clone git@github.com:nhattruongNeoVim/MYnvim ~/.config/nvim
 write_done
 
