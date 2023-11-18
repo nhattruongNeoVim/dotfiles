@@ -100,4 +100,4 @@ alias win='sudo efibootmgr --bootnext 0006 && reboot'
 alias ip="echo $(ifconfig | grep broadcast | awk '{print $2}')"
 alias time="arttime --nolearn -a kissingcats -b kissingcats2 -t 'nhattruongNeoVim' --ac 6"
 
-#figlet -f ANSIShadow "nhat truong" | lolcat -F 0.2
+figlet -f ANSIShadow "nhat truong" | lolcat -F 0.2
