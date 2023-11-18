@@ -1,6 +1,6 @@
 ## Dotfiles
 
-You will need `git` and GNU `stow`
+<!-- You will need `git` and GNU `stow` -->
 
 ```bash
 sudo apt install curl -y
