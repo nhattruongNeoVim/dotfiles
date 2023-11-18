@@ -1,6 +1,7 @@
 #!/bin/bash
-
 # Setup Neovim
+
+# Update packages
 sudo apt update && sudo apt upgrade && sudo apt install nala && sudo nala update && sudo nala upgrade
 
 # Install NodeJS
