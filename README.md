@@ -10,9 +10,9 @@ bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/maste
 
 - GTK Themes: Based on [(Modded) Catppuccin-Mocha-Standard-Mauve-Dark](https://github.com/ART3MISTICAL/dotfiles)
 
-- GTK Icons:[Candy icons ](https://github.com/EliverLara/candy-icons)
+- GTK Icons: [Candy icons ](https://github.com/EliverLara/candy-icons)
 
-- GRUB Themes (for dual boot user):[Gnome Grub Theme](https://www.gnome-look.org/p/2076542)
+- GRUB Themes (for dual boot user): [Gnome Grub Theme](https://www.gnome-look.org/p/2076542)
 
 - [Gnome Shell Extensions](https://extensions.gnome.org/):
 
