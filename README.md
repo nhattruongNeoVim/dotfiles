@@ -43,6 +43,7 @@ bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/maste
   #                               -> Applications -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
   ```
     - Then open Tweaks -> Appearance -> Shell -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
+
     -                                -> Applications -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
 
 
