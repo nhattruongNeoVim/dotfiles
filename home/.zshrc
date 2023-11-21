@@ -101,3 +101,6 @@ alias ip="echo $(ifconfig | grep broadcast | awk '{print $2}')"
 alias time="arttime --nolearn -a kissingcats -b kissingcats2 -t 'nhattruongNeoVim' --ac 6"
 
 figlet -f ANSIShadow "nhat truong" | lolcat -F 0.2
+
+# eval "$(starship init zsh)"
+source <(/usr/local/bin/starship init zsh --print-full-init)

@@ -77,7 +77,7 @@ write_start "Installing packages..."
     sudo add-apt-repository ppa:danielrichter2007/grub-customizer
     sudo nala update && sudo nala upgrade -y
     sudo nala install grub-customizer -y
-    # curl -sS https://starship.rs/install.sh | sh
+    curl -sS https://starship.rs/install.sh | sh
     # Install arttime
     zsh -c '{url="https://gist.githubusercontent.com/poetaman/bdc598ee607e9767fe33da50e993c650/raw/8487de3cf4cf4a7feff5d3a0d97defad95164eb3/arttime_online_installer.sh"; zsh -c "$(curl -fsSL $url || wget -qO- $url)"}'
 write_done
