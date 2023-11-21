@@ -38,6 +38,7 @@ bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/maste
   ```zsh
   sudo apt update && sudo apt upgrade
   sudo apt install gnome-tweaks
+
   #Then open Tweaks -> Appearance -> Shell -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
   #                               -> Applications -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
   ```
