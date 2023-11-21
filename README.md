@@ -1,4 +1,4 @@
-## Dotfiles
+## Ubuntu configs 
 
 <!-- You will need `git` and GNU `stow` -->
 

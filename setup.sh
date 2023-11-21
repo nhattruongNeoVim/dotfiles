@@ -49,6 +49,7 @@ done
 #     mkdir ~/Pictures/Wallpapers
 #     mv background.jpg ~/Pictures/Wallpapers
 # write_done
+
 write_start "Check for update..."
     sudo apt update && sudo apt upgrade -y
 write_done
