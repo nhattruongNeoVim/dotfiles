@@ -1,4 +1,7 @@
-# Overview 💫
+<div align="center">
+    <h1>Overview 💫</h1>
+</div>
+
 ![](https://github.com/nhattruongNeoVim/dotfiles/blob/master/pictures/rice1.png?raw=true)
 ![](https://github.com/nhattruongNeoVim/dotfiles/blob/master/pictures/rice2.png?raw=true)
 
