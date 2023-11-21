@@ -7,6 +7,7 @@ sudo apt install curl -y
 bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/setup.sh)
 ```
 <!-- <details><summary> Gnome configs </summary><blockquote> -->
+## Gnome configs
 
 - GTK Icons: [Candy icons ](https://github.com/EliverLara/candy-icons)
 
