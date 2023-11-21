@@ -6,8 +6,8 @@
 sudo apt install curl -y
 bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/setup.sh)
 ```
-<!-- <details><summary> Gnome configs </summary><blockquote> -->
-## Gnome configs
+<details><summary> Gnome configs </summary><blockquote>
+<!-- ## Gnome configs -->
 
 - GTK Icons: [Candy icons ](https://github.com/EliverLara/candy-icons)
 
@@ -43,7 +43,6 @@ bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/maste
   #                               -> Applications -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
   ```
     - Then open Tweaks -> Appearance -> Shell -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
-
     -                                -> Applications -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
 
 
