@@ -1,12 +1,13 @@
-## Ubuntu configs 
+# Overview
+![](https://github.com/nhattruongNeoVim/dotfiles/blob/master/pictures/rice1.png?raw=true)
 
-<!-- You will need `git` and GNU `stow` -->
+## Ubuntu configs 
 
 ```bash
 sudo apt install curl -y
 bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/setup.sh)
 ```
-<!-- <details><summary> Gnome configs </summary><blockquote> -->
+
 ## Gnome configs
 
 - GTK Icons: [Candy icons ](https://github.com/EliverLara/candy-icons)
