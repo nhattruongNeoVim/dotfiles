@@ -1,4 +1,4 @@
-# Overview
+## Overview
 ![](https://github.com/nhattruongNeoVim/dotfiles/blob/master/pictures/rice1.png?raw=true)
 
 ## Ubuntu configs 
