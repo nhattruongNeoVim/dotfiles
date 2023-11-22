@@ -46,12 +46,9 @@ bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/maste
   ```
 
     > Then open Tweaks:
-    >
-    > Go to Appearance -> Shell -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
-    >
-    > Go to Appearance -> Applications -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
-    >
-    >Go to Appearance -> Icons -> Candy-icons
+    > - Go to Appearance -> Shell -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
+    > - Go to Appearance -> Applications -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
+    > -Go to Appearance -> Icons -> Candy-icons
 
 **Congratulations!** at this point you successfully have configured your linux distribution.
 # (￣ y▽ ￣)╭ Ohohoho.....
