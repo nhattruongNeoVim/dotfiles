@@ -20,8 +20,7 @@ bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/maste
 
 - GTK Themes (Base on): [(Modded) Catppuccin-Mocha-Standard-Mauve-Dark](https://github.com/ART3MISTICAL/dotfiles)
 
-<!-- - [Gnome Shell Extensions](https://extensions.gnome.org/): -->
-- Gnome Shell Extensions:
+- [Gnome Shell Extensions](https://extensions.gnome.org/):
 
   - [Aylur's Widget](https://extensions.gnome.org/extension/5338/aylurs-widgets/): Beautiful Plugins with customizable bar
   - [Blur My Shell](https://extensions.gnome.org/extension/3193/blur-my-shell/): Blur the gnome shell
