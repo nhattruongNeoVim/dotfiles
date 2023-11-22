@@ -106,4 +106,4 @@ alias time="arttime --nolearn -a kissingcats -b kissingcats2 -t 'nhattruongNeoVi
 
 eval "$(starship init zsh)"
 # figlet -f ANSIShadow "nhat truong" | lolcat -F 0.2
-colorscript -e tiefighter2 
+colorscript -e tiefighter2
