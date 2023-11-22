@@ -44,9 +44,8 @@ bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/maste
   sudo apt update && sudo apt upgrade
   sudo apt install gnome-tweaks
   ```
-# Customizing Appearance with Tweaks
 
-Follow these steps to customize your system appearance using Tweaks:
+    Follow these steps to customize your system appearance using Tweaks:
 
 - **Open Tweaks:**
     - Navigate to the "Tweaks" application on your system.
