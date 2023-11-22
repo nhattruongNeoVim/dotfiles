@@ -46,11 +46,8 @@ bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/maste
   ```
 
     Then open Tweaks:
-
     Go to Appearance -> Shell -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
-
     Go to Appearance -> Applications -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
-
     Go to Appearance -> Icons -> Candy-icons
 
 # (￣ y▽ ￣)╭ Ohohoho.....
