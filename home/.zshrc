@@ -78,26 +78,29 @@ alias gc='git commit -m'
 alias gp='git push origin master'
 alias gg="git add . && git commit -m 'update' && git push origin master"
 
-alias vim='nvims'
-alias nf='neofetch'
-alias pipes='pipes.sh'
-alias dl='aria2c --optimize-concurrent-downloads -j 16 -s 16 -x 16 -k 4M'
+# Lsd
 alias ls='lsd'
 alias la='lsd -la'
 alias ll='lsd -ll'
 alias lt='lsd --tree'
 alias ltl='lsd --tree --long'
+
+# Tools
 alias cd..='cd ..'
 alias cd-='cd -'
+alias lc='lolcat'
+alias vim='nvims'
 alias bat='batcat'
+alias nf='neofetch'
 alias cf='cpufetch'
 alias nf='neofetch'
 alias btop='bpytop'
+alias pipes='pipes.sh'
 alias matrix='cmatrix'
 alias hack='hollywood'
-alias lc='lolcat'
 alias win='sudo efibootmgr --bootnext 0006 && reboot'
 alias ip="echo $(ifconfig | grep broadcast | awk '{print $2}')"
+alias dl='aria2c --optimize-concurrent-downloads -j 16 -s 16 -x 16 -k 4M'
 alias time="arttime --nolearn -a kissingcats -b kissingcats2 -t 'nhattruongNeoVim' --ac 6"
 
 figlet -f ANSIShadow "nhat truong" | lolcat -F 0.2
