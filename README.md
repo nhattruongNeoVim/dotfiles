@@ -53,5 +53,5 @@ bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/maste
     >
     >Go to Appearance -> Icons -> Candy-icons
 
-Congratulations, at this point you successfully have configured your linux distribution.
+**Congratulations!** at this point you successfully have configured your linux distribution.
 # (￣ y▽ ￣)╭ Ohohoho.....
