@@ -2,7 +2,7 @@
     <h1>Overview 💫</h1>
 </div>
 
-![](https://github.com/nhattruongNeoVim/dotfiles/blob/master/pictures/rice1.png?raw=true)
+<!-- ![](https://github.com/nhattruongNeoVim/dotfiles/blob/master/pictures/rice1.png?raw=true) -->
 ![](https://github.com/nhattruongNeoVim/dotfiles/blob/master/pictures/rice2.png?raw=true)
 
 ## Ubuntu configs 
@@ -46,8 +46,8 @@ bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/maste
   ```
 
     > Then open Tweaks:
-    > - Go to Appearance -> Shell -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
     > - Go to Appearance -> Applications -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
+    > - Go to Appearance -> Shell -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
     > - Go to Appearance -> Icons -> Candy-icons
 
 **Congratulations!** at this point you successfully have configured your linux distribution.
