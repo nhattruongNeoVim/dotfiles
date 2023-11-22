@@ -44,9 +44,25 @@ bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/maste
   sudo apt update && sudo apt upgrade
   sudo apt install gnome-tweaks
   ```
-    > Then open Tweaks:
-    Go to Appearance -> Shell -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
-      > Go to Appearance -> Applications -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
-      > Go to Appearance -> Icons -> Candy-icons
+# Customizing Appearance with Tweaks
+
+To customize the appearance of your system, you can use Tweaks. Follow these steps:
+
+1. **Open Tweaks:**
+    - Navigate to the "Tweaks" application on your system.
+
+2. **Shell Theme:**
+    - Go to "Appearance" -> "Shell."
+    - Select the "(Modded) Catppuccin-Mocha-Standard-Mauve-Dark" theme.
+
+3. **Application Theme:**
+    - Go to "Appearance" -> "Applications."
+    - Choose the "(Modded) Catppuccin-Mocha-Standard-Mauve-Dark" theme.
+
+4. **Icons:**
+    - Go to "Appearance" -> "Icons."
+    - Select the "Candy-icons" set.
+
+These steps will allow you to personalize the shell, application, and icon themes using Tweaks.
 
 # (￣ y▽ ￣)╭ Ohohoho.....
