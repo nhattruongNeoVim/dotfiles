@@ -43,13 +43,6 @@ while [[ true ]]; do
     esac
 done
 
-# Set background
-# write_start "Change background..."
-#     cd ~/dotfiles/picture
-#     mkdir ~/Pictures/Wallpapers
-#     mv background.jpg ~/Pictures/Wallpapers
-# write_done
-
 write_start "Check for update..."
     sudo apt update && sudo apt upgrade -y
 write_done
