@@ -15,6 +15,8 @@ bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/maste
 
 ## Gnome configs
 
+![](https://i.imgur.com/nVPqYEN.png)
+
 - GTK Icons: [Candy icons ](https://github.com/EliverLara/candy-icons)
 
 - GRUB Themes (For dual boot user): [Gnome Grub Theme](https://www.gnome-look.org/p/2076542)
