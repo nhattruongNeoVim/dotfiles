@@ -3,7 +3,7 @@
 </div>
 
 <!-- ![](https://github.com/nhattruongNeoVim/dotfiles/blob/master/pictures/rice1.png?raw=true) -->
-![](https://github.com/nhattruongNeoVim/dotfiles/blob/master/pictures/rice2.png?raw=true)
+![](https://i.imgur.com/rs21nXk.png)
 
 ## Ubuntu configs 
 
