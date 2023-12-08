@@ -75,8 +75,8 @@ alias saa='sudo add-apt-repository'
 alias ga='git add .'
 alias gs='git status'
 alias gc='git commit -m'
-alias gp='git push origin master'
-alias gg="git add . && git commit -m 'update' && git push origin master"
+alias gp='git push origin'
+alias gg="git add . && git commit -m 'update' && git push origin"
 
 # Lsd
 alias ls='lsd'
