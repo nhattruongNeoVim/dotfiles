@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/albedo/Pictures/wallpapers/Dynamic-Wallpapers/Light/Forest_light.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#04142D",
+        "foreground": "#eaccc4",
+        "cursor": "#eaccc4"
+    },
+    "colors": {
+        "color0": "#04142D",
+        "color1": "#1F6D8C",
+        "color2": "#606F88",
+        "color3": "#2D94A9",
+        "color4": "#59A5B1",
+        "color5": "#58BDC9",
+        "color6": "#AABFBD",
+        "color7": "#eaccc4",
+        "color8": "#a38e89",
+        "color9": "#1F6D8C",
+        "color10": "#606F88",
+        "color11": "#2D94A9",
+        "color12": "#59A5B1",
+        "color13": "#58BDC9",
+        "color14": "#AABFBD",
+        "color15": "#eaccc4"
+    }
+}

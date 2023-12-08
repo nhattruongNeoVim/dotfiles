@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/albedo/Pictures/wallpapers/patterns.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0a0c0d",
+        "foreground": "#f0efe1",
+        "cursor": "#f0efe1"
+    },
+    "colors": {
+        "color0": "#0a0c0d",
+        "color1": "#7F8071",
+        "color2": "#898979",
+        "color3": "#A7A794",
+        "color4": "#C1BEA9",
+        "color5": "#CECCB5",
+        "color6": "#DDDBC4",
+        "color7": "#f0efe1",
+        "color8": "#a8a79d",
+        "color9": "#7F8071",
+        "color10": "#898979",
+        "color11": "#A7A794",
+        "color12": "#C1BEA9",
+        "color13": "#CECCB5",
+        "color14": "#DDDBC4",
+        "color15": "#f0efe1"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/albedo/Pictures/wallpapers/River.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#160f18",
+        "foreground": "#bfbbcc",
+        "cursor": "#bfbbcc"
+    },
+    "colors": {
+        "color0": "#160f18",
+        "color1": "#925070",
+        "color2": "#714F88",
+        "color3": "#766C8A",
+        "color4": "#8C5891",
+        "color5": "#9E6697",
+        "color6": "#CC699F",
+        "color7": "#bfbbcc",
+        "color8": "#85828e",
+        "color9": "#925070",
+        "color10": "#714F88",
+        "color11": "#766C8A",
+        "color12": "#8C5891",
+        "color13": "#9E6697",
+        "color14": "#CC699F",
+        "color15": "#bfbbcc"
+    }
+}

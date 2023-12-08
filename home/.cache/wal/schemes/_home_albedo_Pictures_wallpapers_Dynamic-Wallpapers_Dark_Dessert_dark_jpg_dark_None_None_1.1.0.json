@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/albedo/Pictures/wallpapers/Dynamic-Wallpapers/Dark/Dessert_dark.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0a080d",
+        "foreground": "#a39ba8",
+        "cursor": "#a39ba8"
+    },
+    "colors": {
+        "color0": "#0a080d",
+        "color1": "#38304A",
+        "color2": "#483A51",
+        "color3": "#623E47",
+        "color4": "#4B3C63",
+        "color5": "#554358",
+        "color6": "#6E4C56",
+        "color7": "#a39ba8",
+        "color8": "#726c75",
+        "color9": "#38304A",
+        "color10": "#483A51",
+        "color11": "#623E47",
+        "color12": "#4B3C63",
+        "color13": "#554358",
+        "color14": "#6E4C56",
+        "color15": "#a39ba8"
+    }
+}

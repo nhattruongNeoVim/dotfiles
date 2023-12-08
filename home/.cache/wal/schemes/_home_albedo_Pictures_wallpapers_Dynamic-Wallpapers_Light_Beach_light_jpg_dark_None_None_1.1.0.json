@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/albedo/Pictures/wallpapers/Dynamic-Wallpapers/Light/Beach_light.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0E060A",
+        "foreground": "#e4cdc3",
+        "cursor": "#e4cdc3"
+    },
+    "colors": {
+        "color0": "#0E060A",
+        "color1": "#33989A",
+        "color2": "#67ABA9",
+        "color3": "#19C7D0",
+        "color4": "#30C4C9",
+        "color5": "#47C1C3",
+        "color6": "#9BB1A6",
+        "color7": "#e4cdc3",
+        "color8": "#9f8f88",
+        "color9": "#33989A",
+        "color10": "#67ABA9",
+        "color11": "#19C7D0",
+        "color12": "#30C4C9",
+        "color13": "#47C1C3",
+        "color14": "#9BB1A6",
+        "color15": "#e4cdc3"
+    }
+}

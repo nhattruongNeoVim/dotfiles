@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/albedo/Pictures/wallpapers/Dynamic-Wallpapers/Light/Mountain_light.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#1c1923",
+        "foreground": "#f6e9e3",
+        "cursor": "#f6e9e3"
+    },
+    "colors": {
+        "color0": "#1c1923",
+        "color1": "#3E4583",
+        "color2": "#5F659C",
+        "color3": "#7F83B5",
+        "color4": "#8F8BB9",
+        "color5": "#B4A5C8",
+        "color6": "#FBD1D0",
+        "color7": "#f6e9e3",
+        "color8": "#aca39e",
+        "color9": "#3E4583",
+        "color10": "#5F659C",
+        "color11": "#7F83B5",
+        "color12": "#8F8BB9",
+        "color13": "#B4A5C8",
+        "color14": "#FBD1D0",
+        "color15": "#f6e9e3"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/albedo/Pictures/wallpapers/wall.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0a0c0a",
+        "foreground": "#d6c6a6",
+        "cursor": "#d6c6a6"
+    },
+    "colors": {
+        "color0": "#0a0c0a",
+        "color1": "#6B4F39",
+        "color2": "#776438",
+        "color3": "#5E5647",
+        "color4": "#8E6039",
+        "color5": "#976D49",
+        "color6": "#779470",
+        "color7": "#d6c6a6",
+        "color8": "#958a74",
+        "color9": "#6B4F39",
+        "color10": "#776438",
+        "color11": "#5E5647",
+        "color12": "#8E6039",
+        "color13": "#976D49",
+        "color14": "#779470",
+        "color15": "#d6c6a6"
+    }
+}

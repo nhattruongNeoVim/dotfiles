@@ -1,0 +1,21 @@
+set $wallpaper /home/albedo/dotfiles/home/Pictures/wallpapers/arch-chan_to.png
+
+set $background #030207
+set $foreground #f4def6
+
+set $color0 #030207
+set $color1 #6253B8
+set $color2 #4776B7
+set $color3 #956EE7
+set $color4 #A2A0A4
+set $color5 #AB8FFC
+set $color6 #DCAAFE
+set $color7 #f4def6
+set $color8 #aa9bac
+set $color9 #6253B8
+set $color10 #4776B7
+set $color11 #956EE7
+set $color12 #A2A0A4
+set $color13 #AB8FFC
+set $color14 #DCAAFE
+set $color15 #f4def6

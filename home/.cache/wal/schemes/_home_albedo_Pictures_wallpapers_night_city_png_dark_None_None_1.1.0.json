@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/albedo/Pictures/wallpapers/night_city.png",
+    "alpha": "100",
+    "special": {
+        "background": "#0F1318",
+        "foreground": "#d8c9cf",
+        "cursor": "#d8c9cf"
+    },
+    "colors": {
+        "color0": "#0F1318",
+        "color1": "#495364",
+        "color2": "#823E45",
+        "color3": "#9E555D",
+        "color4": "#E15F65",
+        "color5": "#D86166",
+        "color6": "#A47D94",
+        "color7": "#d8c9cf",
+        "color8": "#978c90",
+        "color9": "#495364",
+        "color10": "#823E45",
+        "color11": "#9E555D",
+        "color12": "#E15F65",
+        "color13": "#D86166",
+        "color14": "#A47D94",
+        "color15": "#d8c9cf"
+    }
+}
