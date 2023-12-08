@@ -4,6 +4,7 @@
 
 <!-- ![](https://github.com/nhattruongNeoVim/dotfiles/blob/master/pictures/rice1.png?raw=true) -->
 ![](https://i.imgur.com/rs21nXk.png)
+![](https://i.imgur.com/3wixTfu.png)
 
 ## Ubuntu configs 
 
