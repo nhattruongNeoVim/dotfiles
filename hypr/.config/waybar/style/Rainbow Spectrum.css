@@ -57,6 +57,8 @@ tooltip label{
 #cpu,
 #disk,
 #idle_inhibitor,
+#keyboard-state label,
+#keyboard-state label.locked,
 #keyboard-state,
 #memory,
 #mode,
@@ -74,7 +76,6 @@ tooltip label{
 #custom-backlight,
 #custom-cycle_wall,
 #custom-keybinds,
-#custom-keyboard,
 #custom-light_dark,
 #custom-lock,
 #custom-menu,
@@ -137,7 +138,6 @@ tooltip label{
 	background-color: #a6e3a1;
 }
 
-#custom-keyboard,
 #keyboard-state,
 #keyboard-state label,
 #keyboard-state label.locked,

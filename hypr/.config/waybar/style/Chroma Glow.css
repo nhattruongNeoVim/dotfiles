@@ -72,7 +72,6 @@ tooltip label{
 
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.2);
-	color: #D3D3D3;
     padding-left: 2px;
     padding-right: 2px;
     animation: gradient_f 20s ease-in infinite;
@@ -103,6 +102,8 @@ tooltip label{
 #cpu,
 #disk,
 #idle_inhibitor,
+#keyboard-state label,
+#keyboard-state label.locked,
 #keyboard-state,
 #memory,
 #mode,
@@ -120,7 +121,6 @@ tooltip label{
 #custom-backlight,
 #custom-cycle_wall,
 #custom-keybinds,
-#custom-keyboard,
 #custom-light_dark,
 #custom-lock,
 #custom-menu,
@@ -194,7 +194,6 @@ label:focus {
     background-color: #000000;
 }
 
-#custom-keyboard,
 #custom-menu{
     color: yellow;
     /*padding: 3px;*/
