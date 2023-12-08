@@ -4,7 +4,6 @@
 
 <!-- ![](https://github.com/nhattruongNeoVim/dotfiles/blob/master/pictures/rice1.png?raw=true) -->
 ![](https://i.imgur.com/rs21nXk.png)
-![](https://i.imgur.com/3wixTfu.png)
 
 ## Ubuntu configs 
 
@@ -52,6 +51,10 @@ bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/maste
     > - Go to Appearance -> Applications -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
     > - Go to Appearance -> Shell -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
     > - Go to Appearance -> Icons -> Candy-icons
+
+## Hyprland config
+
+![](https://i.imgur.com/3wixTfu.png)
 
 **Congratulations!** at this point you successfully have configured your linux distribution.
 # (￣ y▽ ￣)╭ Ohohoho.....
