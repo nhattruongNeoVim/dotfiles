@@ -127,27 +127,10 @@ write_start "Change shell to zsh..."
     chsh -s /bin/zsh
 write_done 
 
-write_start "Start config"
-write_start "Clone dotfiles..."
-    git clone https://github.com/nhattruongNeoVim/dotfiles ~
-    cd ~
-    rm .zshrc .ideavimrc
-    rm -rf .fonts .icons .themes
-    cd .config
-    rm -rf alacritty kitty neofetch ranger rofi tmux
-    cd ~/dotfiles
-    stow config home
-    
-    fc-cache -fv
-    sudo cp ~/dotfiles/others/ANSIShadow.flf /usr/share/figlet/
-    cd ~/.themes/nhattruongNeoVimTheme
-    mkdir -p ~/.config/gtk-4.0
-    cp -rf gtk-4.0 ~/.config
-write_done
-    
 # Install neovim
 write_start "Install and config neovim version 0.9.2..."
-    cd ~/dotfiles/others
+    git clone git@github.com:nhattruongNeoVim/dotfiles.git ~ --depth 1
+    cd ~/dotfiles/assets
     sudo nala remove nvim -y
     mkdir -p ~/.local/bin
     cp nvim-linux64.tar.gz ~/.local/bin
@@ -155,6 +138,8 @@ write_start "Install and config neovim version 0.9.2..."
     tar xzvf nvim-linux64.tar.gz
     rm -fr nvim-linux64.tar.gz
     ln -s ./nvim-linux64/bin/nvim ./nvim
+    rm -rf ~/.config/nvim
+    rm -rf ~/.local/share/nvim
     git clone git@github.com:nhattruongNeoVim/MYnvim ~/.config/nvim
 write_done
 
