@@ -2,14 +2,13 @@
     <h1>Overview 💫</h1>
 </div>
 
-<!-- ![](https://github.com/nhattruongNeoVim/dotfiles/blob/master/pictures/rice1.png?raw=true) -->
 ![](https://i.imgur.com/rs21nXk.png)
 
 ## Ubuntu configs 
 
 ```bash
 sudo apt install curl -y
-bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/setup.sh)
+bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/ubuntu_setup.sh)
 ```
 
 ## Gnome configs
