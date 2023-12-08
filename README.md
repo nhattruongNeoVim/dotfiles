@@ -45,6 +45,7 @@ bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/maste
   ```zsh
   sudo apt update && sudo apt upgrade
   sudo apt install gnome-tweaks
+  bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/gnome_setup.sh)
   ```
 
     > Then open Tweaks:
