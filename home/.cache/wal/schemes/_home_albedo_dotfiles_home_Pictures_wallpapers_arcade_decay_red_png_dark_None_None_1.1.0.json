@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/albedo/dotfiles/home/Pictures/wallpapers/arcade_decay_red.png",
+    "alpha": "100",
+    "special": {
+        "background": "#0a0c0f",
+        "foreground": "#b3dcca",
+        "cursor": "#b3dcca"
+    },
+    "colors": {
+        "color0": "#0a0c0f",
+        "color1": "#545861",
+        "color2": "#843E45",
+        "color3": "#9E555B",
+        "color4": "#DB5F65",
+        "color5": "#838A7A",
+        "color6": "#709E8E",
+        "color7": "#b3dcca",
+        "color8": "#7d9a8d",
+        "color9": "#545861",
+        "color10": "#843E45",
+        "color11": "#9E555B",
+        "color12": "#DB5F65",
+        "color13": "#838A7A",
+        "color14": "#709E8E",
+        "color15": "#b3dcca"
+    }
+}

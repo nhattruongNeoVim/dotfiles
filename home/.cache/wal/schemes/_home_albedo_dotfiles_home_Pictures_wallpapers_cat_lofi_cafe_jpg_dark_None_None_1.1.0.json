@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/albedo/dotfiles/home/Pictures/wallpapers/cat_lofi_cafe.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0c0c13",
+        "foreground": "#e4d4c8",
+        "cursor": "#e4d4c8"
+    },
+    "colors": {
+        "color0": "#0c0c13",
+        "color1": "#685C61",
+        "color2": "#996A67",
+        "color3": "#C99575",
+        "color4": "#636D92",
+        "color5": "#927E80",
+        "color6": "#6B8FB8",
+        "color7": "#e4d4c8",
+        "color8": "#9f948c",
+        "color9": "#685C61",
+        "color10": "#996A67",
+        "color11": "#C99575",
+        "color12": "#636D92",
+        "color13": "#927E80",
+        "color14": "#6B8FB8",
+        "color15": "#e4d4c8"
+    }
+}
