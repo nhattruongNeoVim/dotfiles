@@ -66,7 +66,7 @@ write_done
 
 # Install packages
 write_start "Installing packages..."
-    sudo nala install git neofetch xclip zsh kitty bat rofi ibus-unikey openjdk-19-jre-headless openjdk-19-jdk-headless htop stow -y
+    sudo nala install git neofetch xclip zsh kitty bat rofi ibus-unikey default-jdk htop stow -y
     sudo nala install fzf make cmake aria2 pip tmux cava net-tools python3.10-venv unzip lolcat cpufetch bpytop figlet sl cmatrix trash-cli ranger hollywood -y
     sudo add-apt-repository ppa:danielrichter2007/grub-customizer
     sudo nala update && sudo nala upgrade -y
