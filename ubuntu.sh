@@ -129,9 +129,9 @@ write_done
 
 # Install neovim
 write_start "Install and config neovim version 0.9.2..."
-    git clone git@github.com:nhattruongNeoVim/dotfiles.git ~ --depth 1
+    git clone https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1
     cd ~/dotfiles/assets
-    sudo nala remove nvim -y
+    sudo nala remove neovim -y
     mkdir -p ~/.local/bin
     cp nvim-linux64.tar.gz ~/.local/bin
     cd ~/.local/bin
