@@ -140,6 +140,7 @@ write_start "Install and config neovim version 0.9.2..."
     ln -s ./nvim-linux64/bin/nvim ./nvim
     rm -rf ~/.config/nvim
     rm -rf ~/.local/share/nvim
+    rm -rf ~/dotfiles
     git clone git@github.com:nhattruongNeoVim/MYnvim ~/.config/nvim
 write_done
 
