@@ -4,13 +4,6 @@
 
 ![](https://i.imgur.com/rs21nXk.png)
 
-## Ubuntu setup 
-
-```bash
-sudo apt install curl -y
-bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/ubuntu.sh)
-```
-
 ## Window setup
 
 - Necessary fonts: 
@@ -21,6 +14,13 @@ bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/maste
 ```
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 irm https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/window.ps1 | iex
+```
+
+## Ubuntu setup 
+
+```bash
+sudo apt install curl -y
+bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/ubuntu.sh)
 ```
 
 ## Gnome configs
