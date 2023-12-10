@@ -8,7 +8,7 @@
 
 ```bash
 sudo apt install curl -y
-bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/ubuntu_setup.sh)
+bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/ubuntu.sh)
 ```
 
 ## Gnome configs
