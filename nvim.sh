@@ -18,7 +18,7 @@ sudo nala install nodejs -y
 # rm -r /etc/apt/keyrings/nodesource.gpg
 
 # Install some packages
-sudo nala install fzf make cmake pip python3.10-venv unzip gzip tar openjdk-19-jre-headless openjdk-19-jdk-headless -y
+sudo nala install fzf make cmake pip unzip gzip tar default-jdk -y
 pip install pynvim
 sudo npm install neovim -g  
 mkdir -p ~/out
