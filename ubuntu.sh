@@ -144,7 +144,7 @@ write_start "Install and config neovim version 0.9.2..."
     rm -rf ~/.config/nvim
     rm -rf ~/.local/share/nvim
     rm -rf ~/dotfiles
-    git clone git@github.com:nhattruongNeoVim/MYnvim ~/.config/nvim
+    git clone https://github.com/nhattruongNeoVim/MYnvim ~/.config/nvim --depth 1
 write_done
 
 # Config neovim switcher
