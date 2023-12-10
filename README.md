@@ -53,6 +53,8 @@ bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/maste
 
 - Copy config file:
 
+    By default, this script will be auto copy config file to ~/.config, it also will add themes, icons and font which you can change by gnome-tweaks. However, you can you GNU stow if you want.
+
   ```zsh
   # Use script:
   bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/gnome.sh)
@@ -61,8 +63,6 @@ bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/maste
   git clone -b gnome https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles
   cd dotfiles && stow home
   ```
-
-    By default, this script will be auto copy config file to ~/.config, it also will add themes, icons and font which you can change by gnome-tweaks. However, you can you GNU stow if you want.
 
 - Gnome tweaks (for apply themes and icons ) installation:
 
