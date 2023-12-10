@@ -53,9 +53,10 @@ bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/maste
 
 - Copy config file:
 
-    By default, this script will be auto copy config file to ~/.config, it also add fonts, themes and icons which you can change by gnome-tweaks. However, you can you GNU stow if you want.
 
   ```zsh
+  # By default, this script will be auto copy config file to ~/.config, it also add fonts, themes and icons which you can change by gnome-tweaks. However, you can you GNU stow if you want.
+
   # Use script
   bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/gnome.sh)
 
