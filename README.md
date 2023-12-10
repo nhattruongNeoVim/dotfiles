@@ -51,12 +51,21 @@ bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/maste
   - [User Themes](https://extensions.gnome.org/extension/19/user-themes/): Load shell themes from user directories
   - [Vitals](https://extensions.gnome.org/extension/1460/vitals/): A simple system monitor on the top bar
 
+- Copy config file:
+  ```zsh
+  # Default:
+  bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/gnome.sh)
+
+  # Use GNU stow:
+  git clone -b gnome https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles
+  cd dotfiles && stow home
+  ```
+
 - Gnome tweaks (for apply themes and icons ) installation:
 
   ```zsh
   sudo apt update && sudo apt upgrade
   sudo apt install gnome-tweaks
-  bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/gnome.sh)
   ```
 
     > Then open Tweaks:

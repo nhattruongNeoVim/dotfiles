@@ -24,6 +24,7 @@ write_done() {
 
 write_start "Start config"
 write_start "Clone dotfiles..."
+    sudo apt update && sudo apt upgrade && sudo apt install git
     cd ~
     git clone -b gnome https://github.com/nhattruongNeoVim/dotfiles --depth 1
     rm ~/.zshrc ~/.ideavimrc
