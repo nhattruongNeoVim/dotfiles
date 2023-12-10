@@ -79,12 +79,15 @@ write_start "Installing packages..."
     zsh -c '{url="https://gist.githubusercontent.com/poetaman/bdc598ee607e9767fe33da50e993c650/raw/8487de3cf4cf4a7feff5d3a0d97defad95164eb3/arttime_online_installer.sh"; zsh -c "$(curl -fsSL $url || wget -qO- $url)"}'
 
     # Install colorscript
-    git clone https://gitlab.com/dwt1/shell-color-scripts.git ~
+    cd ~
+    git clone https://gitlab.com/dwt1/shell-color-scripts.git
     cd ~/shell-color-scripts
     sudo make install
     # optional for zsh completion
     sudo cp completions/_colorscript /usr/share/zsh/site-functions
     # Removal: sudo make uninstall
+    cd ~
+    rm -rf shell-color-scripts
 write_done
 
 # Install pipes.sh
