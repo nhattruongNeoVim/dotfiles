@@ -24,8 +24,8 @@ write_done() {
 
 write_start "Start config"
 write_start "Clone dotfiles..."
-    git clone -b gnome https://github.com/nhattruongNeoVim/dotfiles ~ --depth 1
     cd ~
+    git clone -b gnome https://github.com/nhattruongNeoVim/dotfiles --depth 1
     rm ~/.zshrc ~/.ideavimrc
     rm -rf ~/.fonts ~/.icons ~/.themes
     rm -rf ~/.config/alacritty ~/.config/kitty ~/.config/neofetch ~/.config/ranger ~/.config/rofi ~/.config/tmux
