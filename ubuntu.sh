@@ -15,7 +15,7 @@ echo -e ""
 
 # Function util
 write_start() {
-    echo -e "\e[32m>> $1\e[0m"
+    echo -e "\e[32m $1\e[0m"
 }
 
 write_done() {
@@ -23,8 +23,13 @@ write_done() {
 }
 
 write_ask() {
-    echo -en "\e[32m>> $1\e[0m"
+    echo -en "\e[32m $1\e[0m"
 }
+
+# Color util
+OK="$(tput setaf 2)[OK]$(tput sgr0)"
+ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
+NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
 
 # Start script
 # Set local time
@@ -35,6 +40,8 @@ while [[ true ]]; do
         [Yy]* )
             write_start "I will set the local time on Ubuntu to display the correct time on Windows."
             timedatectl set-local-rtc 1 --adjust-system-clock
+            write_start "Add grub-customizer repository."
+            sudo add-apt-repository ppa:danielrichter2007/grub-customizer
             break;;
         [Nn]* )
             break;;
@@ -64,14 +71,66 @@ write_start "Initializing Nala..."
     sudo nala fetch
 write_done
 
+# Packages
+dependencies=(    
+    git 
+    neofetch 
+    xclip 
+    zsh 
+    kitty 
+    bat 
+    rofi 
+    ibus-unikey 
+    default-jdk 
+    htop 
+    stow
+    fzf 
+    make 
+    cmake 
+    aria2 
+    pip 
+    tmux 
+    cava 
+    net-tools 
+    unzip 
+    lolcat 
+    cpufetch 
+    bpytop 
+    figlet 
+    sl 
+    cmatrix 
+    trash-cli 
+    ranger 
+    hollywood
+    python3.11-venv
+    grub-customizer
+)
+
+# Function to install packages
+install_package() {
+    if sudo dpkg -l | grep -q -w "$1" ; then
+        echo -e "${OK} $1 is already installed. Skipping..."
+    else
+        echo -e "${NOTE} Installing $1 ..."
+        sudo nala install -y "$1"
+        if sudo dpkg -l | grep -q -w "$1" ; then
+            echo -e "\e[1A\e[K${OK} $1 was installed."
+        else
+            echo -e "\e[1A\e[K${ERROR} $1 failed to install :( You may need to install manually! Sorry, I have tried :("
+            exit 1
+        fi
+    fi
+}
+
 # Install packages
 write_start "Installing packages..."
-    sudo nala install git neofetch xclip zsh kitty bat rofi ibus-unikey default-jdk htop stow -y
-    sudo nala install fzf make cmake aria2 pip tmux cava net-tools unzip lolcat cpufetch bpytop figlet sl cmatrix trash-cli ranger hollywood -y
-    sudo nala install python3.11-venv
-    sudo add-apt-repository ppa:danielrichter2007/grub-customizer
-    sudo nala update && sudo nala upgrade -y
-    sudo nala install grub-customizer -y
+    for PKG1 in "${dependencies[@]}"; do
+        install_package "$PKG1"
+        if [ $? -ne 0 ]; then
+            echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed, please check the script."
+            exit 1
+        fi
+    done
 
     # Install starship
     curl -sS https://starship.rs/install.sh | sh
@@ -179,4 +238,12 @@ done
     #rm -rf shell
 #write_done
 
-reboot
+write_start "System will reboot in:"
+
+for i in {10..1}; do
+  write_start $i
+  sleep 1
+done
+
+echo "Rebooting..."
+sudo reboot
