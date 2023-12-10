@@ -68,6 +68,7 @@ write_done
 write_start "Installing packages..."
     sudo nala install git neofetch xclip zsh kitty bat rofi ibus-unikey default-jdk htop stow -y
     sudo nala install fzf make cmake aria2 pip tmux cava net-tools unzip lolcat cpufetch bpytop figlet sl cmatrix trash-cli ranger hollywood -y
+    sudo nala install python3.11-venv
     sudo add-apt-repository ppa:danielrichter2007/grub-customizer
     sudo nala update && sudo nala upgrade -y
     sudo nala install grub-customizer -y
