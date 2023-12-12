@@ -13,14 +13,14 @@
     - [MesloLGS NF Bold Italic.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf)
 ```
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-irm https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/window.ps1 | iex
+irm https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/window.ps1 | iex
 ```
 
 ## Ubuntu setup 
 
 ```bash
 sudo apt install curl -y
-bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/ubuntu.sh)
+bash <(curl -sSL https://bit.ly/3tcED6e)
 ```
 
 ## Gnome configs
@@ -57,7 +57,7 @@ bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/maste
 
   ```zsh
   # Use script
-  bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/gnome.sh)
+  bash <(curl -sSL https://bit.ly/484NVjK)
 
   # Use GNU stow
   git clone -b gnome https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles
