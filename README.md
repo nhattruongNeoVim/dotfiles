@@ -84,3 +84,7 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
 
 **Congratulations!** at this point you successfully have configured your linux distribution.
 # (￣ y▽ ￣)╭ Ohohoho.....
+
+<!-- https://is.gd/nhattruongNeoVim_nvim -->
+<!-- https://is.gd/nhattruongNeoVim_window -->
+<!-- https://is.gd/nhattruongNeoVim_hyprland -->
