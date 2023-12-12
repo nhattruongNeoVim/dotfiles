@@ -20,7 +20,7 @@ irm https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/w
 
 ```bash
 sudo apt install curl -y
-bash <(curl -sSL https://bit.ly/3tcED6e)
+bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
 ```
 
 ## Gnome configs
@@ -53,14 +53,16 @@ bash <(curl -sSL https://bit.ly/3tcED6e)
 
 - Copy config file:
 
-  > By default, this script will be auto copy config file to ~/.config, it also add fonts, themes and icons which you can change by gnome-tweaks. However, you can you GNU stow if you want.
+  > By default, this script will be auto copy config file to ~/.config, it also add fonts, themes and icons which you can change by gnome-tweaks.
 
   ```zsh
-  # Use script
-  bash <(curl -sSL https://bit.ly/484NVjK)
+  bash <(curl -sSL https://is.gd/nhattruongNeoVim_gnome)
+  ```
 
-  # Use GNU stow
-  git clone -b gnome https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles
+  > However, you can you GNU stow if you want.
+
+  ```
+  git clone -b gnome https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1
   cd dotfiles && stow home
   ```
 
