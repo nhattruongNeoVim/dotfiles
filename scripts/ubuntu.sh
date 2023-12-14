@@ -86,6 +86,7 @@ dependencies=(
     stow
     fzf 
     make 
+    ripgrep
     cmake 
     aria2 
     pip 
