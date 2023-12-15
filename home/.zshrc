@@ -63,6 +63,7 @@ alias snuu='sudo nala update && sudo nala upgrade -y'
 alias snu='sudo nala update'
 alias sai='sudo apt install -y'
 alias snr='sudo nala remove'
+alias snl='sudo nala list --installed | grep'
 
 # Apt
 alias sauu='sudo apt update && sudo apt upgrade -y'
@@ -74,6 +75,7 @@ alias saa='sudo add-apt-repository'
 # Git
 alias ga='git add .'
 alias gs='git status'
+alias go='git checkout'
 alias gc='git commit -m'
 alias gp='git push origin'
 alias gg="git add . && git commit -m 'update' && git push origin"
