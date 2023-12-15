@@ -91,6 +91,7 @@ dependencies=(
     aria2 
     pip 
     tmux 
+    yarn
     cava 
     net-tools 
     unzip 
