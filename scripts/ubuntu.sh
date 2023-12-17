@@ -91,6 +91,7 @@ dependencies=(
     aria2 
     pip 
     tmux 
+    libsecret-tools
     yarn
     cava 
     net-tools 
@@ -240,8 +241,34 @@ done
     #rm -rf shell
 #write_done
 
-write_start "System will reboot in:"
+# Set battery change limit
+write_ask "Do you want to set battery change limit? (y/n): "
+read -p "" answer2
 
+if [ "$answer2" == "y" ] || [ "$answer2" == "Y" ]; then
+    write_ask "Enter a number of battery you want to set: "
+    read -p "" number
+
+    if [[ $number =~ ^[0-9]+$ ]]; then
+        if [ -d "/sys/class/power_supply/BAT1" ]; then
+            write_start "Configuring crontab for BAT1..."
+            echo "@reboot root echo $number > /sys/class/power_supply/BAT1/charge_control_end_threshold" | sudo tee -a /etc/crontab
+            write_done
+        elif [ -d "/sys/class/power_supply/BAT0" ]; then
+            write_start "Configuring crontab for BAT0..."
+            echo "@reboot root echo $number > /sys/class/power_supply/BAT0/charge_control_end_threshold" | sudo tee -a /etc/crontab
+            write_done
+        else
+            write_start "BAT not found."
+        fi
+    else
+        write_start "Invalid input. Please enter a valid number."
+    fi
+else
+    write_start "Crontab configuration canceled."
+fi
+
+# Reboot
 for i in {10..1}; do
   write_start $i
   sleep 1
