@@ -13,7 +13,7 @@
     - [MesloLGS NF Bold Italic.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf)
 ```
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-irm https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/window.ps1 | iex
+irm https://is.gd/nhattruongNeoVim_window | iex
 ```
 
 ## Ubuntu setup 
@@ -100,5 +100,4 @@ cd ~/dotfiles && chmod +x hyprland.sh && ./hyprland.sh
 # (￣ y▽ ￣)╭ Ohohoho.....
 
 <!-- https://is.gd/nhattruongNeoVim_nvim -->
-<!-- https://is.gd/nhattruongNeoVim_window -->
 <!-- https://is.gd/nhattruongNeoVim_hyprland -->
