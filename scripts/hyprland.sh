@@ -168,8 +168,18 @@ get_backup_dirname() {
   echo "back-up_${timestamp}"
 }
 
-for DIR in btop cava dunst hypr kitty Kvantum qt5ct qt6ct rofi swappy swaylock wal waybar wlogout; do 
+for DIR in alacrity neofetch ranger tmux btop cava dunst hypr kitty Kvantum qt5ct qt6ct rofi swappy swaylock wal waybar wlogout; do 
   DIRPATH=~/.config/"$DIR"
+  if [ -d "$DIRPATH" ]; then 
+    echo -e "${NOTE} - Config for $DIR found, attempting to back up."
+    BACKUP_DIR=$(get_backup_dirname)
+    mv "$DIRPATH" "$DIRPATH-backup-$BACKUP_DIR" 2>&1 | tee -a "$LOG"
+    echo -e "${NOTE} - Backed up $DIR to $DIRPATH-backup-$BACKUP_DIR."
+  fi
+done
+
+for DIR in .fonts .icons .themes; do 
+  DIRPATH=~/"$DIR"
   if [ -d "$DIRPATH" ]; then 
     echo -e "${NOTE} - Config for $DIR found, attempting to back up."
     BACKUP_DIR=$(get_backup_dirname)
@@ -188,15 +198,28 @@ for DIRw in wallpapers; do
   fi
 done
 
+if [[ -d ~/.config/starship.toml ]]; then
+    rm ~/.config/starship.toml
+fi
+
+if [[ -d ~/.ideavimrc ]]; then
+    rm ~/.ideavimrc
+fi
+
+if [[ -d ~/.zshrc]]; then
+    rm ~/.zshrc
+fi
+
+
 printf "\n%.0s" {1..2}
 
 # Copying config files
 mkdir -p ~/.config
 cp -r config/* ~/.config/ && { echo "${OK}Copy completed!"; } || { echo "${ERROR} Failed to copy config files."; exit 1; } 2>&1 | tee -a "$LOG"
 
-# copying Wallpapers
+# Copying home 
 mkdir -p ~/Pictures/wallpapers
-cp -r wallpapers ~/Pictures/ && { echo "${OK}Copy completed!"; } || { echo "${ERROR} Failed to copy wallpapers."; exit 1; } 2>&1 | tee -a "$LOG"
+cp -r home/* ~/ && { echo "${OK}Copy completed!"; } || { echo "${ERROR} Failed to copy home."; exit 1; } 2>&1 | tee -a "$LOG"
  
 # Set some files as executable
 chmod +x ~/.config/hypr/scripts/* 2>&1 | tee -a "$LOG"
