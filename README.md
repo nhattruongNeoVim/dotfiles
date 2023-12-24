@@ -82,7 +82,10 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
 
 ![](https://i.imgur.com/3wixTfu.png)
 
+If you use hyprland on ubuntu, i recommend you use this repository first: [JaKooLit/Debian-Hyprland](https://github.com/JaKooLit/Debian-Hyprland)
+
 ```bash
+# Then run this command
 sudo apt install curl -y
 bash <(curl -sSL https://is.gd/nhattruongNeoVim_hyprland)
 ```
