@@ -82,7 +82,9 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
 
 ![](https://i.imgur.com/3wixTfu.png)
 
-If you use hyprland on ubuntu, i recommend you use this repository first: [JaKooLit/Debian-Hyprland](https://github.com/JaKooLit/Debian-Hyprland)
+- Hyprland on ubuntu: [JaKooLit/Debian-Hyprland](https://github.com/JaKooLit/Debian-Hyprland)
+
+- Hyprland on arch: [JaKooLit/Arch-Hyprland](https://github.com/JaKooLit/Arch-Hyprland)
 
 ```bash
 # Then run this command
