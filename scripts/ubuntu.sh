@@ -15,15 +15,15 @@ echo -e ""
 
 # Function util
 write_start() {
-    echo -e "\e[32m $1\e[0m"
+	echo -e "\e[32m $1\e[0m"
 }
 
 write_done() {
-    echo -e "\e[34mDone\e[0m"
+	echo -e "\e[34mDone\e[0m"
 }
 
 write_ask() {
-    echo -en "\e[32m $1\e[0m"
+	echo -en "\e[32m $1\e[0m"
 }
 
 # Color util
@@ -34,211 +34,216 @@ NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
 # Start script
 # Set local time
 while [[ true ]]; do
-    write_ask "Are you dual booting Windows and Ubuntu? (y/n): "
-    read answer
-    case $answer in
-        [Yy]* )
-            write_start "I will set the local time on Ubuntu to display the correct time on Windows."
-            timedatectl set-local-rtc 1 --adjust-system-clock
-            write_start "Add grub-customizer repository."
-            sudo add-apt-repository ppa:danielrichter2007/grub-customizer
-            break;;
-        [Nn]* )
-            break;;
-        *) 
-            echo -en '\e[34m Please answer yes or no !\n'
-    esac
+	write_ask "Are you dual booting Windows and Ubuntu? (y/n): "
+	read answer
+	case $answer in
+	[Yy]*)
+		write_start "I will set the local time on Ubuntu to display the correct time on Windows."
+		timedatectl set-local-rtc 1 --adjust-system-clock
+		write_start "Add grub-customizer repository."
+		sudo add-apt-repository ppa:danielrichter2007/grub-customizer
+		break
+		;;
+	[Nn]*)
+		break
+		;;
+	*)
+		echo -en '\e[34m Please answer yes or no !\n'
+		;;
+	esac
 done
 
 write_start "Check for update..."
-    sudo apt update && sudo apt upgrade -y
+sudo apt update && sudo apt upgrade -y
 write_done
 
 # Install nala
 write_start "Check nala..."
-if ! command -v nala &> /dev/null
-then
-    write_start "Installing nala..."
-    sudo apt install nala -y
+if ! command -v nala &>/dev/null; then
+	write_start "Installing nala..."
+	sudo apt install nala -y
 else
-    write_start "Nala is already installed"
+	write_start "Nala is already installed"
 fi
 
 # Init nala
 write_start "Initializing Nala..."
-    sudo nala update && sudo nala upgrade -y
-    write_start "Press 1 2 3 and press Enter \n"
-    sudo nala fetch
+sudo nala update && sudo nala upgrade -y
+write_start "Press 1 2 3 and press Enter \n"
+sudo nala fetch
 write_done
 
 # Packages
-dependencies=(    
-    git 
-    neofetch 
-    xclip 
-    zsh 
-    kitty 
-    bat 
-    rofi 
-    ibus-unikey 
-    default-jdk 
-    htop 
-    stow
-    fzf 
-    make 
-    ripgrep
-    cmake 
-    aria2 
-    pip 
-    tmux 
-    libsecret-tools
-    yarn
-    cava 
-    net-tools 
-    unzip 
-    lolcat 
-    cpufetch 
-    bpytop 
-    figlet 
-    sl 
-    cmatrix 
-    trash-cli 
-    ranger 
-    hollywood
-    python3.11-venv
-    grub-customizer
+dependencies=(
+	git
+	neofetch
+	xclip
+	zsh
+	kitty
+	bat
+	rofi
+	ibus-unikey
+	default-jdk
+	htop
+	stow
+	fzf
+	make
+	ripgrep
+	cmake
+	aria2
+	pip
+	tmux
+	libsecret-tools
+	yarn
+	cava
+	net-tools
+	unzip
+	lolcat
+	cpufetch
+	bpytop
+	figlet
+	sl
+	cmatrix
+	trash-cli
+	ranger
+	hollywood
+	python3.11-venv
+	grub-customizer
 )
 
 # Function to install packages
 install_package() {
-    if sudo dpkg -l | grep -q -w "$1" ; then
-        echo -e "${OK} $1 is already installed. Skipping..."
-    else
-        echo -e "${NOTE} Installing $1 ..."
-        sudo nala install -y "$1"
-        if sudo dpkg -l | grep -q -w "$1" ; then
-            echo -e "\e[1A\e[K${OK} $1 was installed."
-        else
-            echo -e "\e[1A\e[K${ERROR} $1 failed to install :( You may need to install manually! Sorry, I have tried :("
-            exit 1
-        fi
-    fi
+	if sudo dpkg -l | grep -q -w "$1"; then
+		echo -e "${OK} $1 is already installed. Skipping..."
+	else
+		echo -e "${NOTE} Installing $1 ..."
+		sudo nala install -y "$1"
+		if sudo dpkg -l | grep -q -w "$1"; then
+			echo -e "\e[1A\e[K${OK} $1 was installed."
+		else
+			echo -e "\e[1A\e[K${ERROR} $1 failed to install :( You may need to install manually! Sorry, I have tried :("
+			exit 1
+		fi
+	fi
 }
 
 # Install packages
 write_start "Installing packages..."
-    for PKG1 in "${dependencies[@]}"; do
-        install_package "$PKG1"
-        if [ $? -ne 0 ]; then
-            echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed, please check the script."
-            exit 1
-        fi
-    done
+for PKG1 in "${dependencies[@]}"; do
+	install_package "$PKG1"
+	if [ $? -ne 0 ]; then
+		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed, please check the script."
+		exit 1
+	fi
+done
 
-    # Install starship
-    curl -sS https://starship.rs/install.sh | sh
+# Install starship
+curl -sS https://starship.rs/install.sh | sh
 
-    # Install arttime
-    zsh -c '{url="https://gist.githubusercontent.com/poetaman/bdc598ee607e9767fe33da50e993c650/raw/8487de3cf4cf4a7feff5d3a0d97defad95164eb3/arttime_online_installer.sh"; zsh -c "$(curl -fsSL $url || wget -qO- $url)"}'
+# Install arttime
+zsh -c '{url="https://gist.githubusercontent.com/poetaman/bdc598ee607e9767fe33da50e993c650/raw/8487de3cf4cf4a7feff5d3a0d97defad95164eb3/arttime_online_installer.sh"; zsh -c "$(curl -fsSL $url || wget -qO- $url)"}'
 
-    # Install colorscript
-    cd ~
-    git clone https://gitlab.com/dwt1/shell-color-scripts.git
-    cd ~/shell-color-scripts
-    sudo make install
-    # optional for zsh completion
-    sudo cp completions/_colorscript /usr/share/zsh/site-functions
-    # Removal: sudo make uninstall
-    cd ~
-    rm -rf shell-color-scripts
+# Install colorscript
+cd ~
+git clone https://gitlab.com/dwt1/shell-color-scripts.git
+cd ~/shell-color-scripts
+sudo make install
+# optional for zsh completion
+sudo cp completions/_colorscript /usr/share/zsh/site-functions
+# Removal: sudo make uninstall
+cd ~
+rm -rf shell-color-scripts
 write_done
 
 # Install pipes.sh
 write_start "Install pipes.sh..."
-    cd ~
-    git clone https://github.com/pipeseroni/pipes.sh
-    cd pipes.sh
-    make PREFIX=$HOME/.local install
-    cd ..
-    rm -rf pipes.sh
+cd ~
+git clone https://github.com/pipeseroni/pipes.sh
+cd pipes.sh
+make PREFIX=$HOME/.local install
+cd ..
+rm -rf pipes.sh
 write_done
 
 # Install Rust
 write_start "Install Rust..."
-    curl --proto '=https' --tlsv1.2 -sSf "https://sh.rustup.rs" | sh
-    #bash
-    source $HOME/.cargo/env
-    cargo --version
-    cargo install lsd --locked
+curl --proto '=https' --tlsv1.2 -sSf "https://sh.rustup.rs" | sh
+#bash
+source $HOME/.cargo/env
+cargo --version
+cargo install lsd --locked
 write_done
 
 # Install Nodejs
 write_start "Install Nodejs..."
-    sudo nala update
-    sudo nala install -y ca-certificates curl gnupg
-    sudo mkdir -p /etc/apt/keyrings
-    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-    NODE_MAJOR=21
-    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
-    sudo nala update
-    sudo nala install nodejs -y
-    # How to uninstall:
-    # apt-get purge nodejs &&\
-    # rm -r /etc/apt/sources.list.d/nodesource.list &&\
-    # rm -r /etc/apt/keyrings/nodesource.gpg
+sudo nala update
+sudo nala install -y ca-certificates curl gnupg
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+NODE_MAJOR=21
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+sudo nala update
+sudo nala install nodejs -y
+# How to uninstall:
+# apt-get purge nodejs &&\
+# rm -r /etc/apt/sources.list.d/nodesource.list &&\
+# rm -r /etc/apt/keyrings/nodesource.gpg
 write_done
 
 # Change shell
 write_start "Change shell to zsh..."
-    chsh -s /bin/zsh
-write_done 
+chsh -s /bin/zsh
+write_done
 
 # Install neovim
 write_start "Install and config neovim version 0.9.2..."
-    git clone https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1
-    cd ~/dotfiles/assets
-    sudo nala remove neovim -y
-    mkdir -p ~/.local/bin
-    cp nvim-linux64.tar.gz ~/.local/bin
-    cd ~/.local/bin
-    tar xzvf nvim-linux64.tar.gz
-    rm -fr nvim-linux64.tar.gz
-    ln -s ./nvim-linux64/bin/nvim ./nvim
-    rm -rf ~/.config/nvim
-    rm -rf ~/.local/share/nvim
-    rm -rf ~/dotfiles
-    git clone https://github.com/nhattruongNeoVim/MYnvim ~/.config/nvim --depth 1
+git clone https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1
+cd ~/dotfiles/assets
+sudo nala remove neovim -y
+mkdir -p ~/.local/bin
+cp nvim-linux64.tar.gz ~/.local/bin
+cd ~/.local/bin
+tar xzvf nvim-linux64.tar.gz
+rm -fr nvim-linux64.tar.gz
+ln -s ./nvim-linux64/bin/nvim ./nvim
+rm -rf ~/.config/nvim
+rm -rf ~/.local/share/nvim
+rm -rf ~/dotfiles
+git clone https://github.com/nhattruongNeoVim/MYnvim ~/.config/nvim --depth 1
 write_done
 
 # Config neovim switcher
 while [[ true ]]; do
-    write_ask "Are you want to config neovim switcher(use multiple nvim)? (y/n): "
-    read answer1
-    case $answer1 in
-        [Yy]* )
-            echo -e "\n"
-            write_start "Use neovim with: LazyVim, NvChad, AstroNvim"
-            git clone --depth 1 https://github.com/LazyVim/starter ~/.config/LazyVim
-            git clone --depth 1 https://github.com/NvChad/NvChad ~/.config/NvChad
-            git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/AstroNvim
-            break;;
-        [Nn]* )
-            break;;
-        *) 
-            echo -en '\e[34m Please answer yes or no !\n'
-    esac
+	write_ask "Are you want to config neovim switcher(use multiple nvim)? (y/n): "
+	read answer1
+	case $answer1 in
+	[Yy]*)
+		echo -e "\n"
+		write_start "Use neovim with: LazyVim, NvChad, AstroNvim"
+		git clone --depth 1 https://github.com/LazyVim/starter ~/.config/LazyVim
+		git clone --depth 1 https://github.com/NvChad/NvChad ~/.config/NvChad
+		git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/AstroNvim
+		break
+		;;
+	[Nn]*)
+		break
+		;;
+	*)
+		echo -en '\e[34m Please answer yes or no !\n'
+		;;
+	esac
 done
 
 # Install POP_OS
 #write_start "Install POP_OS..."
-    #cd ~
-    #sudo nala install git node-typescript make -y
-    #sudo npm install -g typescript@next --force
-    #git clone https://github.com/pop-os/shell.git
-    #cd shell
-    #make local-install
-    #cd ..
-    #rm -rf shell
+#cd ~
+#sudo nala install git node-typescript make -y
+#sudo npm install -g typescript@next --force
+#git clone https://github.com/pop-os/shell.git
+#cd shell
+#make local-install
+#cd ..
+#rm -rf shell
 #write_done
 
 # Set battery change limit
@@ -246,32 +251,32 @@ write_ask "Do you want to set battery change limit? (y/n): "
 read -p "" answer2
 
 if [ "$answer2" == "y" ] || [ "$answer2" == "Y" ]; then
-    write_ask "Enter a number of battery you want to set: "
-    read -p "" number
+	write_ask "Enter a number of battery you want to set: "
+	read -p "" number
 
-    if [[ $number =~ ^[0-9]+$ ]]; then
-        if [ -d "/sys/class/power_supply/BAT1" ]; then
-            write_start "Configuring crontab for BAT1..."
-            echo "@reboot root echo $number > /sys/class/power_supply/BAT1/charge_control_end_threshold" | sudo tee -a /etc/crontab
-            write_done
-        elif [ -d "/sys/class/power_supply/BAT0" ]; then
-            write_start "Configuring crontab for BAT0..."
-            echo "@reboot root echo $number > /sys/class/power_supply/BAT0/charge_control_end_threshold" | sudo tee -a /etc/crontab
-            write_done
-        else
-            write_start "BAT not found."
-        fi
-    else
-        write_start "Invalid input. Please enter a valid number."
-    fi
+	if [[ $number =~ ^[0-9]+$ ]]; then
+		if [ -d "/sys/class/power_supply/BAT1" ]; then
+			write_start "Configuring crontab for BAT1..."
+			echo "@reboot root echo $number > /sys/class/power_supply/BAT1/charge_control_end_threshold" | sudo tee -a /etc/crontab
+			write_done
+		elif [ -d "/sys/class/power_supply/BAT0" ]; then
+			write_start "Configuring crontab for BAT0..."
+			echo "@reboot root echo $number > /sys/class/power_supply/BAT0/charge_control_end_threshold" | sudo tee -a /etc/crontab
+			write_done
+		else
+			write_start "BAT not found."
+		fi
+	else
+		write_start "Invalid input. Please enter a valid number."
+	fi
 else
-    write_start "Crontab configuration canceled."
+	write_start "Crontab configuration canceled."
 fi
 
 # Reboot
 for i in {10..1}; do
-  write_start $i
-  sleep 1
+	write_start $i
+	sleep 1
 done
 
 echo "Rebooting..."
