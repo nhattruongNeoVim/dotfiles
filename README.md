@@ -2,7 +2,7 @@
     <h1>Overview 💫</h1>
 </div>
 
-![](https://i.imgur.com/rs21nXk.png)
+![](images/rice1.png)
 
 ## Window setup
 
@@ -25,7 +25,7 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
 
 ## Gnome configs
 
-![](https://i.imgur.com/nVPqYEN.png)
+![](images/rice2.png)
 
 - GTK Icons: [Candy icons ](https://github.com/EliverLara/candy-icons)
 
@@ -80,7 +80,7 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
 
 ## Hyprland config
 
-![](https://i.imgur.com/3wixTfu.png)
+![](images/rice3.png)
 
 - Hyprland on ubuntu: [JaKooLit/Debian-Hyprland](https://github.com/JaKooLit/Debian-Hyprland)
 
