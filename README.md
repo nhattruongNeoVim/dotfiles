@@ -18,7 +18,7 @@ irm https://is.gd/nhattruongNeoVim_window | iex
 
 ## Ubuntu setup 
 
-```bash
+```bash 
 sudo apt install curl -y
 bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
 ```
