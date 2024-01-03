@@ -8,33 +8,34 @@ notification(){
 }
 
 menu(){
-printf "1. Lofi Girl\n"
-printf "2. 96.3 Easy Rock - FM Radio\n"
-printf "3. Ghibli Music (Instrumental)\n"
+printf "1. Hối duyên\n"
+printf "2. Ông bà già tao lo\n"
+printf "3. Nhất thân\n"
 printf "4. Top Youtube Music 2023\n"
 printf "5. Chillhop\n"
 printf "6. SmoothChill\n"
 printf "7. Relaxing Music\n"
 printf "8. Youtube Remix\n"
-printf "9. Korean Drama OST"
+printf "9. Korean Drama OST\n"
+printf "10. Nhạc"
 }
 main() {
 choice=$(menu | rofi -dmenu -config ~/.config/rofi/config-rofi-Beats.rasi | cut -d. -f1)
 
 case $choice in
 1)
-	notification "Lofi Girl ☕️🎶";
-    mpv "https://play.streamafrica.net/lofiradio"
+	notification "Hối duyên ☕️🎶";
+    mpv --vid=no "https://youtu.be/HScTQOhUKDA?si=FPICK-ju4bSgyQuP"
     return
     ;;
 2)
-   	notification "96.3 Easy Rock 📻🎶";
-   	mpv "https://radio-stations-philippines.com/easy-rock"
+   	notification "Ông bà già tao lo📻🎶";
+   	mpv --vid=no "https://youtu.be/lr_AUJLqo4w?si=0WvlbDZph0D_hNs5"
    	return
 	;; 
 3)
-  	notification "Ghibli Music 🎻🎶";
-   	mpv --shuffle --vid=no "https://youtube.com/playlist?list=PLNi74S754EXbrzw-IzVhpeAaMISNrzfUy&si=rqnXCZU5xoFhxfOl"
+  	notification "Nhất thân🎻🎶";
+   	mpv --vid=no "https://youtu.be/ceAJCDDEuBk?si=3OKOdXsUuLI6Q9IS"
    	return
    	;;
 4)
@@ -67,6 +68,11 @@ case $choice in
   	mpv --shuffle  --vid=no "https://youtube.com/playlist?list=PLUge_o9AIFp4HuA-A3e3ZqENh63LuRRlQ"
   	return
 	;;
+10)
+    notification "Nhạc";
+    mpv --shuffle --vid=no "https://youtube.com/playlist?list=PLJOwSCcWqDV1DMnF0xU0khtDjrB_2w9PL&si=NMJvs_2kxpV26vgQ"
+    return
+    ;;
 esac
 }
 
