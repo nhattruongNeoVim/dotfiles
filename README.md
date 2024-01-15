@@ -6,19 +6,20 @@
 
 ## Window setup
 
-- Necessary fonts: 
-    - [MesloLGS NF Regular.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf)
-    - [MesloLGS NF Bold.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf)
-    - [MesloLGS NF Italic.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf)
-    - [MesloLGS NF Bold Italic.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf)
+- Necessary fonts:
+  - [MesloLGS NF Regular.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf)
+  - [MesloLGS NF Bold.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf)
+  - [MesloLGS NF Italic.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf)
+  - [MesloLGS NF Bold Italic.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf)
+
 ```
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 irm https://is.gd/nhattruongNeoVim_window | iex
 ```
 
-## Ubuntu setup 
+## Ubuntu setup
 
-```bash 
+```bash
 sudo apt install curl -y
 bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
 ```
@@ -73,10 +74,11 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
   sudo apt install gnome-tweaks
   ```
 
-    > Then open Tweaks:
-    > - Go to Appearance -> Applications -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
-    > - Go to Appearance -> Shell -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
-    > - Go to Appearance -> Icons -> Candy-icons
+  > Then open Tweaks:
+  >
+  > - Go to Appearance -> Applications -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
+  > - Go to Appearance -> Shell -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
+  > - Go to Appearance -> Icons -> Candy-icons
 
 ## Hyprland config
 
@@ -91,17 +93,21 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
 sudo apt install curl -y
 bash <(curl -sSL https://is.gd/nhattruongNeoVim_hyprland)
 ```
-> [!Note] 
+
+> [!Note]
 > The auto copy script will create backups of intended folders to be copied. However, still a good idea to manually backup just incase script failed to backup!
+
 - ~/.config (btop cava dunst hypr kitty rofi swappy swaylock waybar wlogout) - These are folders to be copied.
 - ~/Pictures/wallpapers - Will be backed up
 - clone this repo by using git. Change directory, make executable and run the script
+
 ```bash
 git clone https://github.com/nhattruongNeoVim/dotfiles ~/dotfiles --depth 1
 cd ~/dotfiles && chmod +x hyprland.sh && ./hyprland.sh
 ```
 
 **Congratulations!** at this point you successfully have configured your linux distribution.
+
 # (￣ y▽ ￣)╭ Ohohoho.....
 
 <!-- https://is.gd/nhattruongNeoVim_nvim -->
