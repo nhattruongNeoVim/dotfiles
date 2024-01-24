@@ -106,7 +106,7 @@ git clone https://github.com/nhattruongNeoVim/dotfiles ~/dotfiles --depth 1
 cd ~/dotfiles && chmod +x hyprland.sh && ./hyprland.sh
 ```
 
-**Congratulations!** at this point you successfully have configured your linux distribution.
+**Congratulations!** at this point have successfully configured your linux distribution.
 
 # (￣ y▽ ￣)╭ Ohohoho.....
 
