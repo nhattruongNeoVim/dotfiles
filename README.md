@@ -82,7 +82,7 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
 
 ## Hyprland config
 
-> ![Important]
+> [!Important]
 > Fix 
 
 <!-- ![](images/rice3.png) -->
