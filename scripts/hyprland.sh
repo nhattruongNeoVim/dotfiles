@@ -120,17 +120,13 @@ ask_yes_no "-Install & configure SDDM log-in Manager plus (OPTIONAL) SDDM Theme?
 printf "\n"
 ask_yes_no "-Install XDG-DESKTOP-PORTAL-HYPRLAND? (For proper Screen Share ie OBS)" xdph
 printf "\n"
-ask_yes_no "-Install zsh, oh-my-zsh & (Optional) pokemon-colorscripts?" zsh
-printf "\n"
-ask_yes_no "-Installing in a Asus ROG Laptops?" rog
-printf "\n"
 ask_yes_no "-Do you want to download pre-configured Hyprland dotfiles?" dots
 printf "\n"
 
 # Ensuring base-devel is installed
-execute_script "base.sh"
+bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/base.sh)
 sleep 0.5
-execute_script "pacman.sh"
+bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/pacman.sh)
 
 # Check if dotfiles exist
 cd ~
@@ -145,16 +141,16 @@ fi
 
 # Execute AUR helper script based on user choice
 if [ "$aur_helper" == "paru" ]; then
-	execute_script "paru.sh"
+	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/paru.sh)
 elif [ "$aur_helper" == "yay" ]; then
-	execute_script "yay.sh"
+	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/yay.sh)
 fi
 
 # Install hyprland packages
-execute_script "hypr_pkgs.sh"
+bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/hypr_pkgs.sh)
 
 # Install pipewire and pipewire-audio
-execute_script "pipewire.sh"
+bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/pipewire.sh)
 
 if [ "$dual_boot" == "Y" ]; then
 	echo -e "${NOTE} I will set the local time on Ubuntu to display the correct time on Windows."
@@ -181,35 +177,31 @@ if [ "$dual_boot" == "Y" ]; then
 fi
 
 if [ "$nvidia" == "Y" ]; then
-	execute_script "nvidia.sh"
+	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/nvidia.sh)
 fi
 
 if [ "$gtk_themes" == "Y" ]; then
-	execute_script "gtk_themes.sh"
+	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/gtk_themes.sh)
 fi
 
 if [ "$bluetooth" == "Y" ]; then
-	execute_script "bluetooth.sh"
+	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/bluetooth.sh)
 fi
 
 if [ "$thunar" == "Y" ]; then
-	execute_script "thunar.sh"
+	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/thunar.sh)
 fi
 
 if [ "$sddm" == "Y" ]; then
-	execute_script "sddm.sh"
+	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/sddm.sh)
 fi
 
 if [ "$xdph" == "Y" ]; then
-	execute_script "xdph.sh"
-fi
-
-if [ "$zsh" == "Y" ]; then
-	execute_script "zsh.sh"
+	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/xdph.sh)
 fi
 
 if [ "$dots" == "Y" ]; then
-	execute_script "dotfiles.sh"
+	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/dotfiles.sh)
 fi
 
 if rm -rf ~/dotfiles; then

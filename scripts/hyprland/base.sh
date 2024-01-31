@@ -33,6 +33,7 @@ base=(
 extra=(
     starship
     tlp
+    zsh
 )
 
 # Installation of main components
