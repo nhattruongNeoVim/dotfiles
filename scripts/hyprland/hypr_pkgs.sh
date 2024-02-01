@@ -24,7 +24,7 @@ install_package() {
 		if $ISAUR -Q "$1" &>>/dev/null; then
 			echo -e "\e[1A\e[K${OK} $1 was installed."
 		else
-			echo -e "\e[1A\e[K${ERROR} $1 failed to install :(. You may need to install manually! Sorry I have tried :("
+			echo -e "\e[1A\e[K${ERROR} $1 failed to install. You may need to install manually! Sorry I have tried :("
 			exit 1
 		fi
 	fi
