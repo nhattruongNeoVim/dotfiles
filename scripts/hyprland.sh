@@ -124,9 +124,9 @@ ask_yes_no "-Do you want to download pre-configured Hyprland dotfiles?" dots
 printf "\n"
 
 # Ensuring base-devel is installed
-bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/base.sh)
+# bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/base.sh)
 sleep 0.5
-bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/pacman.sh)
+# bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/pacman.sh)
 
 # Check if dotfiles exist
 cd ~
@@ -141,16 +141,16 @@ fi
 
 # Execute AUR helper script based on user choice
 if [ "$aur_helper" == "paru" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/paru.sh)
+	# bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/paru.sh)
 elif [ "$aur_helper" == "yay" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/yay.sh)
+	# bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/yay.sh)
 fi
 
 # Install hyprland packages
-bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/hypr_pkgs.sh)
+# bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/hypr_pkgs.sh)
 
 # Install pipewire and pipewire-audio
-bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/pipewire.sh)
+# bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/pipewire.sh)
 
 if [ "$dual_boot" == "Y" ]; then
 	echo -e "${NOTE} I will set the local time on Ubuntu to display the correct time on Windows."
@@ -158,35 +158,35 @@ if [ "$dual_boot" == "Y" ]; then
 fi
 
 if [ "$battery" == "Y" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/battery.sh)
+	# bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/battery.sh)
 fi
 
 if [ "$nvidia" == "Y" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/nvidia.sh)
+	# bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/nvidia.sh)
 fi
 
 if [ "$gtk_themes" == "Y" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/gtk_themes.sh)
+	# bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/gtk_themes.sh)
 fi
 
 if [ "$bluetooth" == "Y" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/bluetooth.sh)
+	# bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/bluetooth.sh)
 fi
 
 if [ "$thunar" == "Y" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/thunar.sh)
+	# bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/thunar.sh)
 fi
 
 if [ "$sddm" == "Y" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/sddm.sh)
+	# bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/sddm.sh)
 fi
 
 if [ "$xdph" == "Y" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/xdph.sh)
+	# bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/xdph.sh)
 fi
 
 if [ "$dots" == "Y" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/dotfiles.sh)
+	# bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/dotfiles.sh)
 fi
 
 if rm -rf ~/dotfiles; then
