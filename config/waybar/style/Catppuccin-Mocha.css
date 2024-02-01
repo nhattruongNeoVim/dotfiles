@@ -54,7 +54,6 @@ window#waybar.hidden {
 #backlight-slider,
 #battery,
 #bluetooth,
-#cava,
 #clock,
 #cpu,
 #disk,
@@ -62,7 +61,7 @@ window#waybar.hidden {
 #keyboard-state,
 #memory,
 #mode,
-#mpd,
+#mpris,
 #network,
 #pulseaudio,
 #pulseaudio-slider,
@@ -82,7 +81,7 @@ window#waybar.hidden {
 #custom-menu,
 #custom-power_vertical,
 #custom-power,
-#custom-speaker,
+#custom-swaync,
 #custom-updater,
 #custom-weather,
 #custom-weather.clearNight,
@@ -95,16 +94,17 @@ window#waybar.hidden {
 #custom-weather.showyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
-	padding-top: 2px;
-	padding-bottom: 2px;
-	padding-right: 4px;
-	padding-left: 4px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-right: 6px;
+	padding-left: 6px;
 }
 
 #idle_inhibitor {
   color: @blue;
 }
 
+#bluetooth,
 #backlight {
   color: @blue;
 }
@@ -218,6 +218,10 @@ window#waybar.hidden {
     padding-right: 2px;
     animation: gradient_f 20s ease-in infinite;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#custom-cava_mviz {
+	color: @pink;
 }
 
 #custom-menu {

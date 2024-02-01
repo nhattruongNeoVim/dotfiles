@@ -7,7 +7,7 @@
 * {
 	font-family: "JetBrains Mono Nerd Font";
 	font-weight: bold;
-	min-height: 0;
+	min-height: 0;	
 	/* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
 	font-size: 97%;
 	font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
@@ -124,7 +124,6 @@ tooltip {
 #backlight-slider,
 #battery,
 #bluetooth,
-#cava,
 #clock,
 #cpu,
 #disk,
@@ -132,7 +131,7 @@ tooltip {
 #keyboard-state,
 #memory,
 #mode,
-#mpd,
+#mpris,
 #network,
 #pulseaudio,
 #pulseaudio-slider,
@@ -144,6 +143,7 @@ tooltip {
 #wireplumber,
 #workspaces,
 #custom-backlight,
+#custom-cava_mviz,
 #custom-cycle_wall,
 #custom-keybinds,
 #custom-keyboard,
@@ -152,7 +152,7 @@ tooltip {
 #custom-menu,
 #custom-power_vertical,
 #custom-power,
-#custom-speaker,
+#custom-swaync,
 #custom-updater,
 #custom-weather,
 #custom-weather.clearNight,
@@ -166,8 +166,8 @@ tooltip {
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
 	color: whitesmoke;
-	padding-top: 2px;
-	padding-bottom: 2px;
+	padding-top: 1px;
+	padding-bottom: 1px;
 	padding-right: 4px;
 	padding-left: 4px;
 
