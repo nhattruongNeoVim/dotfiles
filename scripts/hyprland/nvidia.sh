@@ -117,5 +117,3 @@ if [[ $blacklist_nouveau =~ ^[Yy]$ ]]; then
 else
 	printf "${NOTE} Skipping nouveau blacklisting.\n"
 fi
-
-clear

@@ -52,5 +52,3 @@ $ISAUR -Syu --noconfirm || {
 	printf "%s - Failed to update system\n" "${ERROR}"
 	exit 1
 }
-
-clear

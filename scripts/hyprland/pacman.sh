@@ -44,5 +44,3 @@ echo -e "${CAT} Pacman.conf spicing up completed ${RESET}"
 
 # updating pacman.conf
 sudo pacman -Sy
-
-# clear

@@ -76,5 +76,3 @@ for DIR1 in Thunar xfce4; do
 		cp -r assets/$DIR1 ~/.config/ && echo "Copy $DIR1 completed!" || echo "Error: Failed to copy $DIR1 config files."
 	fi
 done
-
-clear

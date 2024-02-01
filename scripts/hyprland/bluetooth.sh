@@ -48,5 +48,3 @@ done
 
 printf " Activating Bluetooth Services...\n"
 sudo systemctl enable --now bluetooth.service
-
-clear

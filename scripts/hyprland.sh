@@ -23,8 +23,6 @@ echo -e " -------------- Github: https://github.com/nhattruongNeoVim -----------
 echo -e ""
 
 # Welcome message
-echo "$(tput setaf 6)Welcome to nhattruongNeoVim hyprland!$(tput sgr0)"
-echo
 echo "$(tput setaf 166)ATTENTION: Run a full system update and Reboot first!! (Highly Recommended) $(tput sgr0)"
 echo
 echo "$(tput setaf 3)NOTE: You will be required to answer some questions during the installation! $(tput sgr0)"
@@ -123,11 +121,6 @@ printf "\n"
 ask_yes_no "-Do you want to download pre-configured Hyprland dotfiles?" dots
 printf "\n"
 
-# Ensuring base-devel is installed
-bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/base.sh)
-sleep 0.5
-bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/pacman.sh)
-
 # Check if dotfiles exist
 cd ~
 if [ -d dotfiles ]; then
@@ -138,6 +131,10 @@ fi
 if git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1; then
 	echo "Clone dotfile successfully"
 fi
+# Ensuring base-devel is installed
+bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/base.sh)
+sleep 0.5
+bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/pacman.sh)
 
 # Execute AUR helper script based on user choice
 if [ "$aur_helper" == "paru" ]; then
@@ -148,7 +145,7 @@ fi
 
 # Install hyprland packages
 bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/hypr_pkgs.sh)
-
+sleep 0.5
 # Install pipewire and pipewire-audio
 bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/pipewire.sh)
 

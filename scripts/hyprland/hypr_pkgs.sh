@@ -139,5 +139,3 @@ for PKG in "${uninstall[@]}"; do
 		exit 1
 	fi
 done
-
-clear

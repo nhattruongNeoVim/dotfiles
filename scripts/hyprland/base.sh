@@ -46,5 +46,3 @@ for PKG1 in "${base[@]}" "${extra[@]}"; do
 		exit 1
 	fi
 done
-
-clear
