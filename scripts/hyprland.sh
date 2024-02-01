@@ -157,23 +157,8 @@ if [ "$dual_boot" == "Y" ]; then
 	timedatectl set-local-rtc 1 --adjust-system-clock
 fi
 
-if [ "$dual_boot" == "Y" ]; then
-	echo -e "${NOTE} Enter a number of battery you want to set: "
-	read -p "" number
-
-	if [[ $number =~ ^[0-9]+$ ]]; then
-		if [ -d "/sys/class/power_supply/BAT1" ]; then
-			echo -e "${ACTION} Configuring for BAT1"
-			sudo tlp setcharge BAT1 $number
-		elif [ -d "/sys/class/power_supply/BAT0" ]; then
-			echo -e "${ACTION} Configuring for BAT0"
-			sudo tlp setcharge BAT0 $number
-		else
-			write_start "BAT not found."
-		fi
-	else
-		write_start "Invalid input. Please enter a valid number."
-	fi
+if [ "$battery" == "Y" ]; then
+	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/battery.sh)
 fi
 
 if [ "$nvidia" == "Y" ]; then

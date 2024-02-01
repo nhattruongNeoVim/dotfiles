@@ -2,8 +2,8 @@
 
 clear
 
-wallpaper=$HOME/Pictures/wallpapers/Fantasy-Landscape.png
-Waybar_Style="$HOME/.config/waybar/style/[Pywal] Chroma Tally.css"
+wallpaper=$HOME/Pictures/wallpapers/anime-lanscape.png
+waybar_style="$HOME/.config/waybar/style/[Pywal] Chroma Tally.css"
 
 # Check if running as root. If root, script will exit
 if [[ $EUID -eq 0 ]]; then
@@ -258,7 +258,7 @@ while true; do
 done
 
 # symlinks for waybar style
-ln -sf "$Waybar_Style" "$HOME/.config/waybar/style.css" &&
+ln -sf "$waybar_style" "$HOME/.config/waybar/style.css" &&
 
 	# initialize pywal to avoid config error on hyprland
 	wal -i $wallpaper -s -t

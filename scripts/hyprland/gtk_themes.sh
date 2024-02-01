@@ -24,7 +24,7 @@ install_package() {
 		if $ISAUR -Q "$1" &>>/dev/null; then
 			echo -e "\e[1A\e[K${OK} $1 was installed."
 		else
-			echo -e "\e[1A\e[K${ERROR} $1 failed to install :( . You may need to install manually! Sorry I have tried :("
+			echo -e "\e[1A\e[K${ERROR} $1 failed to install. You may need to install manually! Sorry I have tried :("
 			exit 1
 		fi
 	fi
@@ -39,7 +39,7 @@ engine=(
 for PKG1 in "${engine[@]}"; do
 	install_package "$PKG1"
 	if [ $? -ne 0 ]; then
-		echo -e "\033[1A\033[K${ERROR} - $PKG1 install had failed, please check the install.log"
+		echo -e "\033[1A\033[K${ERROR} - $PKG1 install had failed"
 		exit 1
 	fi
 done
