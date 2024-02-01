@@ -162,6 +162,10 @@ if [ "$nvidia" == "Y" ]; then
 	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/nvidia.sh)
 fi
 
+if [ "$nvidia" == "N" ]; then
+	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/hypr.sh)
+fi
+
 if [ "$gtk_themes" == "Y" ]; then
 	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/gtk_themes.sh)
 fi
