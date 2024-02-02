@@ -38,7 +38,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export VISUAL="$HOME/.local/bin/nvim"
+export VISUAL="/usr/bin/nvim"
 
 # NeoVim Switcher
 alias nvim-chad="NVIM_APPNAME=NvChad nvim"
@@ -58,19 +58,17 @@ function nvims() {
   NVIM_APPNAME=$config nvim $@
 }
 
-# Nala
-alias snuu='sudo nala update && sudo nala upgrade -y'
-alias snu='sudo nala update'
-alias sai='sudo apt install -y'
-alias snr='sudo nala remove'
-alias snl='sudo nala list --installed | grep'
+# Pacman
+alias snuu='sudo pacman -Syu'
+alias spu='sudo pacman -Syy'
+alias sps='sudo pacman -S --noconfirm'
+alias spr='sudo pacman -R'
 
 # Apt
-alias sauu='sudo apt update && sudo apt upgrade -y'
-alias sau='sudo apt update'
-alias sni='sudo nala install -y'
-alias sar='sudo apt remove'
-alias saa='sudo add-apt-repository'
+alias syuu='yay -Syu'
+alias syu='yay -Syy'
+alias sys='yay -S --noconfirm'
+alias syr='yay -Rns'
 
 # Git
 alias ga='git add .'
