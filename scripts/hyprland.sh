@@ -152,7 +152,7 @@ sleep 0.5
 bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/pipewire.sh)
 
 if [ "$dual_boot" == "Y" ]; then
-	echo -e "${NOTE} I will set the local time on Ubuntu to display the correct time on Windows."
+ 	printf "\n${NOTE} I will set the local time on Arch to display the correct time on Windows.\n"
 	timedatectl set-local-rtc 1 --adjust-system-clock
 fi
 
