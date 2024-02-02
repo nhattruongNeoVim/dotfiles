@@ -4,7 +4,7 @@
 
 ![](images/rice1.png)
 
-## Window setup
+## Window
 
 - Necessary fonts:
   - [MesloLGS NF Regular.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf)
@@ -17,7 +17,7 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 irm https://is.gd/nhattruongNeoVim_window | iex
 ```
 
-## Ubuntu setup _(gnome)_
+## Ubuntu _(gnome)_
 
 ![](images/rice2.png)
 
@@ -68,7 +68,7 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
   > - Go to Appearance -> Shell -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
   > - Go to Appearance -> Icons -> Candy-icons
 
-## Arch setup _(hyprland)_
+## Arch _(hyprland)_
 
 ![](images/rice3.png)
 
