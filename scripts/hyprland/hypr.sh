@@ -52,5 +52,3 @@ for HYPR in "${hypr[@]}"; do
 		exit 1
 	}
 done
-
-clear
