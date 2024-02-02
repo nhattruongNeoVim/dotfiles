@@ -121,7 +121,7 @@ install_package() {
 		if sudo dpkg -l | grep -q -w "$1"; then
 			echo -e "\e[1A\e[K${OK} $1 was installed."
 		else
-			echo -e "\e[1A\e[K${ERROR} $1 failed to install :( You may need to install manually! Sorry, I have tried :("
+			echo -e "\e[1A\e[K${ERROR} $1 failed to install. You may need to install manually! Sorry, I have tried :("
 			exit 1
 		fi
 	fi
@@ -254,9 +254,14 @@ rm ~/.zshrc ~/.ideavimrc
 rm -rf ~/.fonts ~/.icons ~/.themes
 rm -rf ~/.config/alacritty ~/.config/kitty ~/.config/neofetch ~/.config/ranger ~/.config/rofi ~/.config/tmux
 cd ~/dotfiles
-stow home
+cp -r config/* ~/.config/ && { echo "${OK}Copy completed!"; } || {
+	echo "${ERROR} Failed to copy config files."
+}
+cp -r assets/* ~/ && { echo "${OK}Copy completed!"; } || {
+	echo "${ERROR} Failed to copy config files."
+}
 fc-cache -fv
-cd ~/.themes/nhattruongNeoVimTheme
+cd ~/.themes/Catppuccin-Mocha-Standard-Mauve-Dark
 mkdir -p ~/.config/gtk-4.0
 cp -rf gtk-4.0 ~/.config
 write_done
