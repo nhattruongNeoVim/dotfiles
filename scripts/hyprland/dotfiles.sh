@@ -235,6 +235,7 @@ echo "$(tput setaf 6) By default only a few wallpapers are copied...$(tput sgr0)
 printf "\n%.0s" {1..2}
 
 while true; do
+	cd ~
 	read -rp "${CAT} Would you like to download additional wallpapers? (y/n)" WALL
 	case $WALL in
 	[Yy])
