@@ -30,7 +30,7 @@ printf "${YELLOW} Checking for other hyprland packages and remove if any..${RESE
 if pacman -Qs hyprland >/dev/null; then
 	printf "${YELLOW} Hyprland detected. uninstalling to install Hyprland-git...${RESET}\n"
 	for hyprnvi in hyprland-git hyprland-nvidia hyprland-nvidia-git hyprland-nvidia-hidpi-git; do
-		sudo pacman -R --noconfirm "$hyprnvi" || true
+		sudo pacman -R --noconfirm "$hyprnvi" 2>/dev/null || true
 	done
 fi
 
