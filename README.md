@@ -17,16 +17,19 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 irm https://is.gd/nhattruongNeoVim_window | iex
 ```
 
-## Ubuntu setup
+## Ubuntu setup _(gnome)_
+
+![](images/rice2.png)
+
+#### Dependencies
 
 ```bash
+# script to install dependencies and copy config files
 sudo apt install curl -y
 bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
 ```
 
-## Gnome configs
-
-![](images/rice2.png)
+#### Gnome config
 
 - GTK Icons: [Candy icons ](https://github.com/EliverLara/candy-icons)
 
@@ -52,21 +55,6 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
   - [User Themes](https://extensions.gnome.org/extension/19/user-themes/): Load shell themes from user directories
   - [Vitals](https://extensions.gnome.org/extension/1460/vitals/): A simple system monitor on the top bar
 
-- Copy config file:
-
-  > By default, this script will be auto copy config file to ~/.config, it also add fonts, themes and icons which you can change by gnome-tweaks.
-
-  ```zsh
-  bash <(curl -sSL https://is.gd/nhattruongNeoVim_gnome)
-  ```
-
-  > However, you can you GNU stow if you want.
-
-  ```
-  git clone -b gnome https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1
-  cd dotfiles && stow home
-  ```
-
 - Gnome tweaks (for apply themes and icons ) installation:
 
   ```zsh
@@ -80,34 +68,26 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
   > - Go to Appearance -> Shell -> (Modded) Catppuccin-Mocha-Standard-Mauve-Dark
   > - Go to Appearance -> Icons -> Candy-icons
 
-## Hyprland config
+## Arch setup _(hyprland)_
 
-> [!Important]
-> Fixing
+![](images/rice3.png)
 
-<!-- ![](images/rice3.png) -->
-<!---->
-<!-- - Hyprland on ubuntu: [JaKooLit/Debian-Hyprland](https://github.com/JaKooLit/Debian-Hyprland) -->
-<!---->
-<!-- - Hyprland on arch: [JaKooLit/Arch-Hyprland](https://github.com/JaKooLit/Arch-Hyprland) -->
-<!---->
-<!-- ```bash -->
-<!-- # Then run this command -->
-<!-- sudo apt install curl -y -->
-<!-- bash <(curl -sSL https://is.gd/nhattruongNeoVim_hyprland) -->
-<!-- ``` -->
-<!---->
-<!-- > [!Note] -->
-<!-- > The auto copy script will create backups of intended folders to be copied. However, still a good idea to manually backup just incase script failed to backup! -->
-<!---->
-<!-- - ~/.config (btop cava dunst hypr kitty rofi swappy swaylock waybar wlogout) - These are folders to be copied. -->
-<!-- - ~/Pictures/wallpapers - Will be backed up -->
-<!-- - clone this repo by using git. Change directory, make executable and run the script -->
-<!---->
-<!-- ```bash -->
-<!-- git clone https://github.com/nhattruongNeoVim/dotfiles ~/dotfiles --depth 1 -->
-<!-- cd ~/dotfiles && chmod +x hyprland.sh && ./hyprland.sh -->
-<!-- ``` -->
+```bash
+# Then run this command
+bash <(curl -sSL https://is.gd/nhattruongNeoVim_arch)
+```
+
+> [!Note]
+> The auto copy script will create backups of intended folders to be copied. However, still a good idea to manually backup just incase script failed to backup!
+
+- ~/.config (btop cava dunst hypr kitty rofi swappy swaylock waybar wlogout) - These are folders to be copied.
+- ~/Pictures/wallpapers - Will be backed up
+- clone this repo by using git. Change directory, make executable and run the script
+
+```bash
+git clone https://github.com/nhattruongNeoVim/dotfiles ~/dotfiles --depth 1
+cd ~/dotfiles && chmod +x hyprland.sh && ./hyprland.sh
+```
 
 **Congratulations!** at this point have successfully configured your linux distribution.
 

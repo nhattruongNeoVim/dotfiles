@@ -246,6 +246,21 @@ done
 #rm -rf shell
 #write_done
 
+# Copy dotfiles
+write_start "Start config"
+write_start "Clone dotfiles..."
+git clone -b gnome https://github.com/nhattruongNeoVim/dotfiles --depth 1
+rm ~/.zshrc ~/.ideavimrc
+rm -rf ~/.fonts ~/.icons ~/.themes
+rm -rf ~/.config/alacritty ~/.config/kitty ~/.config/neofetch ~/.config/ranger ~/.config/rofi ~/.config/tmux
+cd ~/dotfiles
+stow home
+fc-cache -fv
+cd ~/.themes/nhattruongNeoVimTheme
+mkdir -p ~/.config/gtk-4.0
+cp -rf gtk-4.0 ~/.config
+write_done
+
 # Set battery change limit
 write_ask "Do you want to set battery change limit? (y/n): "
 read -p "" answer2
