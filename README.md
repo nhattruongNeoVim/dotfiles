@@ -77,9 +77,9 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
 bash <(curl -sSL https://is.gd/nhattruongNeoVim_arch)
 ```
 
-**Congratulations!** at this point have successfully configured your linux distribution.
-
-# (￣ y▽ ￣)╭ Ohohoho.....
+> **Congratulations!** at this point have successfully configured your linux distribution.
+> 
+> # (￣ y▽ ￣)╭ Ohohoho.....
 
 <!-- https://is.gd/nhattruongNeoVim_nvim -->
 <!-- https://is.gd/nhattruongNeoVim_hyprland -->
