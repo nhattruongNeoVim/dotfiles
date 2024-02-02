@@ -48,10 +48,10 @@ for THUNAR in "${thunar[@]}"; do
 	}
 done
 
-# Move to thunar config file
+# Check dotfiles
 cd ~
 if [ -d dotfiles]; then
-	cd dotfiles/config || {
+	cd dotfiles || {
 		printf "%s - Failed to enter thunar config directory\n" "${ERROR}"
 		exit 1
 	}
