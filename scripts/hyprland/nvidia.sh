@@ -13,6 +13,22 @@ RESET=$(tput sgr0)
 # AUR
 ISAUR=$(command -v yay || command -v paru)
 
+# Function for installing packages
+install_package() {
+	if $ISAUR -Q "$1" &>>/dev/null; then
+		echo -e "${OK} $1 is already installed. Skipping..."
+	else
+		echo -e "${NOTE} Installing $1 ..."
+		$ISAUR -S --noconfirm "$1"
+		if $ISAUR -Q "$1" &>>/dev/null; then
+			echo -e "\e[1A\e[K${OK} $1 was installed."
+		else
+			echo -e "\e[1A\e[K${ERROR} $1 failed to install. You may need to install manually! Sorry I have tried :("
+			exit 1
+		fi
+	fi
+}
+
 nvidia_pkg=(
 	nvidia-dkms
 	nvidia-settings
