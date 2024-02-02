@@ -73,20 +73,8 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
 ![](images/rice3.png)
 
 ```bash
-# Then run this command
+# script to install and setup hyprland
 bash <(curl -sSL https://is.gd/nhattruongNeoVim_arch)
-```
-
-> [!Note]
-> The auto copy script will create backups of intended folders to be copied. However, still a good idea to manually backup just incase script failed to backup!
-
-- ~/.config (btop cava dunst hypr kitty rofi swappy swaylock waybar wlogout) - These are folders to be copied.
-- ~/Pictures/wallpapers - Will be backed up
-- clone this repo by using git. Change directory, make executable and run the script
-
-```bash
-git clone https://github.com/nhattruongNeoVim/dotfiles ~/dotfiles --depth 1
-cd ~/dotfiles && chmod +x hyprland.sh && ./hyprland.sh
 ```
 
 **Congratulations!** at this point have successfully configured your linux distribution.
