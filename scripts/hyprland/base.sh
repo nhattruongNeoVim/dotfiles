@@ -31,9 +31,9 @@ base=(
 )
 
 extra=(
-    starship
-    tlp
-    zsh
+    	starship
+    	kitty
+    	zsh
 )
 
 # Installation of main components
