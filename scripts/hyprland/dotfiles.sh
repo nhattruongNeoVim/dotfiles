@@ -205,6 +205,12 @@ cp -r wallpapers ~/Pictures/ && { echo "${OK}Copy completed!"; } || {
 	exit 1
 }
 
+# copying zsh
+cp assets/.zshrc ~ && { echo "${OK}Copy completed!"; } || {
+	echo "${ERROR} Failed to copy wallpapers."
+	exit 1
+}
+
 # Set some files as executable
 chmod +x ~/.config/hypr/scripts/*
 # Set executable for initial-boot.sh
