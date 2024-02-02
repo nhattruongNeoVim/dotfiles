@@ -127,10 +127,12 @@ if [ -d dotfiles ]; then
 	rm -rf dotfiles
 fi
 
-# Clone dotfile
+# Clone dotfiles
+printf "\n${NOTE} Clone dotfiles."
 if git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1; then
-	echo "Clone dotfile successfully"
+	printf "\n${OK} Clone dotfiles succesfully.\n"
 fi
+
 # Ensuring base-devel is installed
 bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/base.sh)
 sleep 0.5
