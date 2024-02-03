@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Check if running as root. If root, script will exit
 if [[ $EUID -eq 0 ]]; then
 	echo "This script should not be executed as root! Exiting......."
 	exit 1
@@ -8,7 +7,6 @@ fi
 
 clear
 
-# author
 echo -e "\e[34m   ____   __ __   ____  ______      ______  ____   __ __   ___   ____    ____ "
 echo -e "  |    \ |  |  | /    ||      |    |      ||    \ |  |  | /   \ |    \  /    |"
 echo -e "  |  _  ||  |  ||  o  ||      |    |      ||  D  )|  |  ||     ||  _  ||   __|"
@@ -22,7 +20,6 @@ echo -e "-------------------- Script developed by nhattruongNeoVim -------------
 echo -e " -------------- Github: https://github.com/nhattruongNeoVim -----------------"
 echo -e ""
 
-# Welcome message
 echo "$(tput setaf 166)ATTENTION: Run a full system update and Reboot first!! (Highly Recommended) $(tput sgr0)"
 echo
 echo "$(tput setaf 3)NOTE: You will be required to answer some questions during the installation! $(tput sgr0)"
@@ -30,7 +27,6 @@ echo
 echo "$(tput setaf 3)NOTE: If you are installing on a VM, ensure to enable 3D acceleration else Hyprland wont start! $(tput sgr0)"
 echo
 
-# Set some colors for output messages
 OK="$(tput setaf 2)[OK]$(tput sgr0)"
 ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
 NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
@@ -40,14 +36,12 @@ ORANGE=$(tput setaf 166)
 YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
 
-# Function to colorize prompts
 colorize_prompt() {
 	local color="$1"
 	local message="$2"
 	echo -n "${color}${message}$(tput sgr0)"
 }
 
-# Function to ask a yes/no question and set the response in a variable
 ask_yes_no() {
 	if [[ ! -z "${!2}" ]]; then
 		echo "$(colorize_prompt "$CAT" "$1 (Preset): ${!2}")"
@@ -75,7 +69,6 @@ ask_yes_no() {
 	done
 }
 
-# Function to ask a custom question with specific options and set the response in a variable
 ask_custom_option() {
 	local prompt="$1"
 	local valid_options="$2"
@@ -98,7 +91,6 @@ ask_custom_option() {
 	done
 }
 
-# Collect user responses to all questions
 printf "\n"
 ask_custom_option "-Type AUR helper" "paru or yay" aur_helper
 printf "\n"
@@ -133,22 +125,18 @@ if git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git ~/dotf
 	printf "\n${OK} Clone dotfiles succesfully.\n"
 fi
 
-# Ensuring base-devel is installed
 bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/base.sh)
 sleep 0.5
 bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/pacman.sh)
 
-# Execute AUR helper script based on user choice
 if [ "$aur_helper" == "paru" ]; then
 	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/paru.sh)
 elif [ "$aur_helper" == "yay" ]; then
 	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/yay.sh)
 fi
 
-# Install hyprland packages
 bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/hypr_pkgs.sh)
 sleep 0.5
-# Install pipewire and pipewire-audio
 bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/pipewire.sh)
 
 if [ "$dual_boot" == "Y" ]; then
