@@ -24,7 +24,7 @@ for _prs in "${_ps[@]}"; do
 done
 
 # Pywal refresh
-${SCRIPTSDIR}/PywalSwww.sh &
+${SCRIPTSDIR}/pywal_swww.sh &
 
 # Relaunching rainbow borders if the script exists
 sleep 1
