@@ -43,7 +43,7 @@ uninstall_package() {
 
 # add packages wanted here
 extra=(
-
+	microsoft-edge-stable
 )
 
 hypr_package=(
