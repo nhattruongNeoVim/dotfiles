@@ -25,7 +25,6 @@ install_package() {
 			echo -e "\e[1A\e[K${OK} $1 was installed."
 		else
 			echo -e "\e[1A\e[K${ERROR} $1 failed to install :(. You may need to install manually! Sorry I have tried :("
-			exit 1
 		fi
 	fi
 }
@@ -40,7 +39,6 @@ for xdgs in "${xdg[@]}"; do
 	install_package "$xdgs"
 	if [ $? -ne 0 ]; then
 		echo -e "\e[1A\e[K${ERROR} - $xdph install had failed"
-		exit 1
 	fi
 done
 

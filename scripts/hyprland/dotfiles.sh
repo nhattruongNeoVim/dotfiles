@@ -119,7 +119,7 @@ while true; do
 		# Update the 'kb_layout=' line with the correct layout in the file
 		awk -v new_layout="$new_layout" '/kb_layout/ {$0 = "  kb_layout=" new_layout} 1' config/hypr/configs/settings.conf >temp.conf
 		mv temp.conf config/hypr/configs/settings.conf
-		echo "${NOTE} kb_layout $new_layout configured in settings." 2>&1 | tee -a "$LOG"
+		echo "${NOTE} kb_layout $new_layout configured in settings."
 		break
 		;;
 	*)
@@ -169,9 +169,9 @@ printf "${NOTE} - copying dotfiles\n"
 
 # Function to create a unique backup directory name with month, day, hours, and minutes
 get_backup_dirname() {
-  	local timestamp
-  	timestamp=$(date +"%m%d_%H%M")
-  	echo "back-up_${timestamp}"
+	local timestamp
+	timestamp=$(date +"%m%d_%H%M")
+	echo "back-up_${timestamp}"
 }
 
 for DIR in btop cava hypr kitty Kvantum qt5ct qt6ct rofi swappy swaync swaylock wal waybar wlogout neofetch Thunar xfce4; do
@@ -200,20 +200,17 @@ printf "\n%.0s" {1..2}
 mkdir -p ~/.config
 cp -r config/* ~/.config/ && { echo "${OK}Copy completed!"; } || {
 	echo "${ERROR} Failed to copy config files."
-	exit 1
 }
 
 # copying Wallpapers
 mkdir -p ~/Pictures/wallpapers
 cp -r wallpapers ~/Pictures/ && { echo "${OK}Copy completed!"; } || {
 	echo "${ERROR} Failed to copy wallpapers."
-	exit 1
 }
 
 # copying zsh
-cp assets/.zshrc ~ && { echo "${OK}Copy completed!"; } || {
+cp assets/.zshrc ~ && chsh -s $(which zsh) && { echo "${OK}Copy completed!"; } || {
 	echo "${ERROR} Failed to copy wallpapers."
-	exit 1
 }
 
 # Set some files as executable
@@ -248,7 +245,7 @@ while true; do
 		if git clone "https://github.com/nhattruongNeoVim/wallpapers"; then
 			echo "${NOTE} Wallpapers downloaded successfully."
 
-			if cp -R wallpapers/wallpapers/* ~/Pictures/wallpapers/ ; then
+			if cp -R wallpapers/wallpapers/* ~/Pictures/wallpapers/; then
 				echo "${NOTE} Wallpapers copied successfully."
 				rm -rf wallpapers
 				break

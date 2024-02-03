@@ -24,7 +24,6 @@ install_package() {
 			echo -e "\e[1A\e[K${OK} $1 was installed."
 		else
 			echo -e "\e[1A\e[K${ERROR} $1 failed to install. You may need to install manually! Sorry I have tried :("
-			exit 1
 		fi
 	fi
 }
@@ -56,7 +55,6 @@ for HYPR in "${hypr[@]}"; do
 	install_package "$HYPR"
 	[ $? -ne 0 ] && {
 		echo -e "\e[1A\e[K${ERROR} - $HYPR install had failed"
-		exit 1
 	}
 done
 

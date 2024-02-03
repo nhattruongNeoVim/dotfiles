@@ -21,7 +21,6 @@ install_package_pacman() {
 			echo -e "${OK} $1 was installed."
 		else
 			echo -e "${ERROR} $1 failed to install. You may need to install manually."
-			exit 1
 		fi
 	fi
 }
@@ -43,6 +42,5 @@ for PKG1 in "${base[@]}" "${extra[@]}"; do
 	install_package_pacman "$PKG1"
 	if [ $? -ne 0 ]; then
 		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"
-		exit 1
 	fi
 done

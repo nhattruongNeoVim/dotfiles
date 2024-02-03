@@ -25,7 +25,6 @@ install_package() {
 			echo -e "\e[1A\e[K${OK} $1 was installed."
 		else
 			echo -e "\e[1A\e[K${ERROR} $1 failed to install. You may need to install manually! Sorry I have tried :("
-			exit 1
 		fi
 	fi
 }
@@ -38,7 +37,6 @@ uninstall_package() {
 			echo -e "\e[1A\e[K${OK} $1 was uninstalled."
 		else
 			echo -e "\e[1A\e[K${ERROR} $1 failed to uninstall"
-			exit 1
 		fi
 	fi
 }
@@ -126,7 +124,6 @@ for PKG1 in "${hypr_package[@]}" "${hypr_package_optional[@]}" "${fonts[@]}" "${
 	install_package "$PKG1"
 	if [ $? -ne 0 ]; then
 		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"
-		exit 1
 	fi
 done
 
@@ -136,6 +133,5 @@ for PKG in "${uninstall[@]}"; do
 	uninstall_package "$PKG"
 	if [ $? -ne 0 ]; then
 		echo -e "\e[1A\e[K${ERROR} - $PKG uninstallation had failed"
-		exit 1
 	fi
 done
