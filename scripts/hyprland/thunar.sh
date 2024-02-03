@@ -47,32 +47,3 @@ for THUNAR in "${thunar[@]}"; do
 		exit 1
 	}
 done
-
-# Check dotfiles
-cd ~
-if [ -d dotfiles]; then
-	cd dotfiles || {
-		printf "%s - Failed to enter thunar config directory\n" "${ERROR}"
-		exit 1
-	}
-else
-	git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1 || {
-		printf "%s - Failed to clone dotfiles \n" "${ERROR}"
-		exit 1
-	}
-	cd dotfiles || {
-		printf "%s - Failed to enter dotfiles directory\n" "${ERROR}"
-		exit 1
-	}
-fi
-
-# Check for existing configs and copy if does not exist
-for DIR1 in Thunar xfce4; do
-	DIRPATH=~/.config/$DIR1
-	if [ -d "$DIRPATH" ]; then
-		echo -e "${NOTE} Config for $DIR1 found, no need to copy."
-	else
-		echo -e "${NOTE} Config for $DIR1 not found, copying from dotfiles."
-		cp -r assets/$DIR1 ~/.config/ && echo "Copy $DIR1 completed!" || echo "Error: Failed to copy $DIR1 config files."
-	fi
-done

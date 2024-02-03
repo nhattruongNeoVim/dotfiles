@@ -166,6 +166,7 @@ fi
 set -e # Exit immediately if a command exits with a non-zero status.
 
 printf "${NOTE} - copying dotfiles\n"
+
 # Function to create a unique backup directory name with month, day, hours, and minutes
 get_backup_dirname() {
   	local timestamp
@@ -173,8 +174,7 @@ get_backup_dirname() {
   	echo "back-up_${timestamp}"
 }
 
-
-for DIR in btop cava hypr kitty Kvantum qt5ct qt6ct rofi swappy swaync swaylock wal waybar wlogout neofetch; do
+for DIR in btop cava hypr kitty Kvantum qt5ct qt6ct rofi swappy swaync swaylock wal waybar wlogout neofetch Thunar xfce4; do
 	DIRPATH=~/.config/"$DIR"
 	if [ -d "$DIRPATH" ]; then
 		echo -e "${NOTE} - Config for $DIR found, attempting to back up."

@@ -69,6 +69,23 @@ if rm -rf GTK-themes-icon.git; then
 	echo "$OK Deleted GTK-themes-icons.git"
 fi
 
+# Check dotfiles
+cd ~
+if [ -d dotfiles]; then
+	cd dotfiles || {
+		printf "%s - Failed to enter thunar config directory\n" "${ERROR}"
+		exit 1
+	}
+else
+	git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1 || {
+		printf "%s - Failed to clone dotfiles \n" "${ERROR}"
+		exit 1
+	}
+	cd dotfiles || {
+		printf "%s - Failed to enter dotfiles directory\n" "${ERROR}"
+		exit 1
+	}
+fi
 
 tar -xf "assets/Bibata-Modern-Ice.tar.xz" -C ~/.icons 
 echo "$OK Extracted Bibata-Modern-Ice.tar.xz to ~/.icons folder." 
