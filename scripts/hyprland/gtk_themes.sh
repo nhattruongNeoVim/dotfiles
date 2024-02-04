@@ -69,7 +69,7 @@ fi
 
 # Check dotfiles
 cd ~
-if [ -d dotfiles]; then
+if [ -d dotfiles ]; then
 	cd dotfiles || {
 		printf "%s - Failed to cd dotfiles directory\n" "${ERROR}"
 		exit 1
