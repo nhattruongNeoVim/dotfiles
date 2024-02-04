@@ -114,7 +114,7 @@ ask_yes_no "-Do you want to download pre-configured Hyprland dotfiles?" dots
 printf "\n"
 
 # Update system
-sudo pacman -Syyuu
+sudo pacman -Syyuu --noconfirm
 
 # Check if dotfiles exist
 cd ~
