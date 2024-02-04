@@ -209,9 +209,12 @@ cp -r wallpapers ~/Pictures/ && { echo "${OK}Copy completed!"; } || {
 }
 
 # copying zsh
-cp assets/.zshrc ~ && chsh -s $(which zsh) && { echo "${OK}Copy completed!"; } || {
+cp assets/.zshrc ~ && { echo "${OK}Copy completed!"; } || {
 	echo "${ERROR} Failed to copy wallpapers."
 }
+
+# chang shell to zsh
+chsh -s $(which zsh)
 
 # Set some files as executable
 chmod +x ~/.config/hypr/scripts/*
