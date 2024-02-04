@@ -72,7 +72,7 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
 
 ![](images/rice3.png)
 
-> The majority of this script comes from [JakooLit](https://github.com/JaKooLit), that's the beauty of open-source :wink:
+> The majority of this script comes from [JaKooLit](https://github.com/JaKooLit), that's the beauty of open-source :wink:
 
 ```bash
 # script to install and setup hyprland
