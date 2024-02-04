@@ -209,7 +209,7 @@ cp -r wallpapers ~/Pictures/ && { echo "${OK}Copy completed!"; } || {
 }
 
 # copying zsh
-cp assets/.zshrc ~ && { echo "${OK}Copy completed!"; } || {
+cp assets/.zshrc ~ && cp assets/.ideavimrc ~ && { echo "${OK}Copy completed!"; } || {
 	echo "${ERROR} Failed to copy wallpapers."
 }
 
