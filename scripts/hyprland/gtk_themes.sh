@@ -63,7 +63,7 @@ else
 fi
 
 cd ~
-if rm -rf GTK-themes-icon.git; then
+if rm -rf GTK-themes-icon; then
 	echo "$OK Deleted GTK-themes-icons.git"
 fi
 
