@@ -62,23 +62,22 @@ fi
 
 # Copy gtk_themes file
 printf "\n%.0s" {1..2}
-
 printf "${NOTE} - Copying gtk themes file\n"
 
 # copying icon
 mkdir -p ~/.icons
-cp -r assets/.icons/* ~/.icons && { echo "${OK}Copy completed!"; } || {
+cp -r assets/.icons/* ~/.icons && { echo "${OK}Copy icons completed!"; } || {
 	echo "${ERROR} Failed to copy icons files."
 }
 
 # copying font
 mkdir -p ~/.fonts
-cp -r assets/.icons/* ~/.icons && { echo "${OK}Copy completed!"; } || {
+cp -r assets/.icons/* ~/.icons && { echo "${OK}Copy fonts completed!"; } || {
 	echo "${ERROR} Failed to copy fonts files."
 }
 
 # copying theme
 mkdir -p ~/.themes
-cp -r assets/.icons/* ~/.icons && { echo "${OK}Copy completed!"; } || {
+cp -r assets/.icons/* ~/.icons && { echo "${OK}Copy themes completed!"; } || {
 	echo "${ERROR} Failed to copy themes files."
 }
