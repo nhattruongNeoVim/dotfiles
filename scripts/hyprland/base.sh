@@ -40,6 +40,7 @@ extra=(
     ripgrep
     fzf
     neofetch
+    lsd
 )
 
 # Installation of main components
