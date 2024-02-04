@@ -21,7 +21,7 @@ if [ ! -f ~/.config/hypr/.initial_startup_done ]; then
 	if [ -f "$wallpaper" ]; then
 		wal -i $wallpaper -s -t >/dev/null
 		swww init && $swww $wallpaper $effect
-		"$scriptsDir/pywalSwww.sh" >/dev/null 2>&1 &
+		"$scriptsDir/pywal_swww.sh" >/dev/null 2>&1 &
 	fi
 
 	# Initial symlink for Pywal Dark and Light for Rofi Themes
