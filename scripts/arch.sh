@@ -90,7 +90,7 @@ ask_custom_option() {
 		fi
 	done
 }
-
+z
 printf "\n"
 ask_custom_option "-Type AUR helper" "paru or yay" aur_helper
 printf "\n"
@@ -112,6 +112,9 @@ ask_yes_no "-Install XDG-DESKTOP-PORTAL-HYPRLAND? (For proper Screen Share ie OB
 printf "\n"
 ask_yes_no "-Do you want to download pre-configured Hyprland dotfiles?" dots
 printf "\n"
+
+# Update system
+sudo pacman -Syyuu
 
 # Check if dotfiles exist
 cd ~
