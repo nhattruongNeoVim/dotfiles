@@ -42,31 +42,6 @@ for PKG1 in "${engine[@]}"; do
 	fi
 done
 
-# cd home
-cd ~
-
-# Check if the directory exists and delete it if present
-if [ -d "GTK-themes-icons" ]; then
-	echo "$NOTE Tokyo Theme GTK themes and Icons folder exist..deleting..."
-	rm -rf "GTK-themes-icons"
-fi
-
-echo "$NOTE Cloning Tokyo Theme GTK themes and Icons repository..."
-if git clone https://github.com/JaKooLit/GTK-themes-icons.git; then
-	cd GTK-themes-icons
-	chmod +x auto-extract.sh
-	./auto-extract.sh
-	cd ..
-	echo "$OK Extracted GTK Themes & Icons to ~/.icons & ~/.themes folders"
-else
-	echo "$ERROR Download failed for Tokyo Theme GTK themes and Icons.." 
-fi
-
-cd ~
-if rm -rf GTK-themes-icon; then
-	echo "$OK Deleted GTK-themes-icons.git"
-fi
-
 # Check dotfiles
 cd ~
 if [ -d dotfiles ]; then
@@ -85,5 +60,25 @@ else
 	}
 fi
 
-tar -xf "assets/Bibata-Modern-Ice.tar.xz" -C ~/.icons 
-echo "$OK Extracted Bibata-Modern-Ice.tar.xz to ~/.icons folder." 
+# Copy gtk_themes file
+printf "\n%.0s" {1..2}
+
+printf "${NOTE} - Copying gtk themes file\n"
+
+# copying icon
+mkdir -p ~/.icons
+cp -r assets/.icons/* ~/.icons && { echo "${OK}Copy completed!"; } || {
+	echo "${ERROR} Failed to copy icons files."
+}
+
+# copying font
+mkdir -p ~/.fonts
+cp -r assets/.icons/* ~/.icons && { echo "${OK}Copy completed!"; } || {
+	echo "${ERROR} Failed to copy fonts files."
+}
+
+# copying theme
+mkdir -p ~/.themes
+cp -r assets/.icons/* ~/.icons && { echo "${OK}Copy completed!"; } || {
+	echo "${ERROR} Failed to copy themes files."
+}
