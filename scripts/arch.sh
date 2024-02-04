@@ -90,7 +90,7 @@ ask_custom_option() {
 		fi
 	done
 }
-z
+
 printf "\n"
 ask_custom_option "-Type AUR helper" "paru or yay" aur_helper
 printf "\n"
