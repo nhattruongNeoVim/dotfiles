@@ -30,9 +30,15 @@ base=(
 )
 
 extra=(
-    	starship
-    	kitty
-    	zsh
+	starship
+	kitty
+	zsh
+    make
+    python-pip
+    npm
+    node
+    ripgrep
+    fzf
 )
 
 # Installation of main components

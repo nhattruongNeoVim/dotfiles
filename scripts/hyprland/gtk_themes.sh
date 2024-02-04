@@ -81,3 +81,6 @@ mkdir -p ~/.themes
 cp -r assets/.icons/* ~/.icons && { echo "${OK}Copy themes completed!"; } || {
 	echo "${ERROR} Failed to copy themes files."
 }
+
+# reload fonts
+fc-cache -fv
