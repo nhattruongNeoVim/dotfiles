@@ -39,6 +39,7 @@ extra=(
     node
     ripgrep
     fzf
+    neofetch
 )
 
 # Installation of main components
