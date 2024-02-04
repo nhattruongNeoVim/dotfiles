@@ -71,7 +71,7 @@ fi
 cd ~
 if [ -d dotfiles]; then
 	cd dotfiles || {
-		printf "%s - Failed to enter thunar config directory\n" "${ERROR}"
+		printf "%s - Failed to cd dotfiles directory\n" "${ERROR}"
 		exit 1
 	}
 else
