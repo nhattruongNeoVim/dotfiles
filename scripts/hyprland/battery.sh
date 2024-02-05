@@ -36,8 +36,8 @@ while true; do
 			echo "WantedBy=multi-user.target"
 		} | sudo tee "/etc/systemd/system/charge_limit_battery.service" >/dev/null
 
-        sudo systemctl enable charge_limit_battery.service
-        sudo systemctl start charge_limit_battery.service
+		sudo systemctl enable charge_limit_battery.service
+		sudo systemctl start charge_limit_battery.service
 
 		printf "${OK} Done\n"
 		break
@@ -45,4 +45,3 @@ while true; do
 		echo "${ERROR} Invalid input. Please enter a valid number between 0 and 100."
 	fi
 done
-
