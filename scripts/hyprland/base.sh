@@ -33,14 +33,15 @@ extra=(
 	starship
 	kitty
 	zsh
-    	make
-    	python-pip
-     	nodejs
-    	npm
-    	ripgrep
-    	fzf
-    	neofetch
-    	lsd
+	make
+	python-pip
+	nodejs
+	npm
+	ripgrep
+	fzf
+	neofetch
+	lsd
+    lazygit
 )
 
 # Installation of main components
