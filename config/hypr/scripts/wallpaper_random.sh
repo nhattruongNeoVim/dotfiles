@@ -1,38 +1,21 @@
 #!/bin/bash
+# Script for Random Wallpaper ( CTRL ALT W)
 
-# This script will randomly go through the files of a directory, setting it
-# up as the wallpaper at regular intervals
-#
-# NOTE: this script uses bash (not POSIX shell) for the RANDOM variable
+wallDIR="$HOME/Pictures/wallpapers"
+scriptsDir="$HOME/.config/hypr/scripts"
 
-pywal_script=$HOME/.config/hypr/scripts/pywal_swww.sh
-pywal_refresh=$HOME/.config/hypr/scripts/refresh.sh
+PICS=($(find ${wallDIR} -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" \)))
+RANDOMPICS=${PICS[$RANDOM % ${#PICS[@]}]}
 
-if [[ $# -lt 1 ]] || [[ ! -d $1 ]]; then
-	echo "Usage:
-	$0 <dir containing images>"
-	exit 1
-fi
+# Transition config
+FPS=60
+TYPE="random"
+DURATION=1
+BEZIER=".43,1.19,1,.4"
+SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION --transition-bezier $BEZIER"
 
-# Edit below to control the images transition
-export SWWW_TRANSITION_FPS=60
-export SWWW_TRANSITION_STEP=2
-export SWWW_TRANSITION_TYPE=random
+swww query || swww init && swww img ${RANDOMPICS} $SWWW_PARAMS
 
-# This controls (in seconds) when to switch to the next image
-INTERVAL=900
-
-while true; do
-	find "$1" |
-		while read -r img; do
-			echo "$((RANDOM % 1000)):$img"
-		done |
-		sort -n | cut -d':' -f2- |
-		while read -r img; do
-			swww img "$img"
-			$pywal_script
-			$pywal_refresh
-			sleep $INTERVAL
-
-		done
-done
+${scriptsDir}/pywal_swww.sh
+sleep 1
+${scriptsDir}/refresh.sh
