@@ -39,7 +39,7 @@ sddm=(
 # Check if SDDM is already installed
 if pacman -Qs sddm >/dev/null; then
 	if [[ -z $manual_install_sddm ]]; then
-		read -n1 -rep "SDDM is already installed. Would you like to manually install sddm-git to remove it? This requires manual intervention. (y/n)" manual_install_sddm
+		read -n1 -rep "SDDM is already installed. Would you like to manually install sddm-git to remove it? This requires manual intervention. (y/n) " manual_install_sddm
 	fi
 	echo
 	if [[ $manual_install_sddm =~ ^[Yy]$ ]]; then
