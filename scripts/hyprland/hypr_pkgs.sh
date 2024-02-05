@@ -44,9 +44,9 @@ uninstall_package() {
 # add packages wanted here
 extra=(
 	microsoft-edge-stable
-    arttime-git
-    shell-color-scripts
-    pipes.sh
+    	arttime-git
+    	shell-color-scripts
+    	pipes.sh
 )
 
 hypr_package=(
