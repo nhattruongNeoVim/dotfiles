@@ -17,7 +17,7 @@ main() {
 	choice=$(menu | rofi -dmenu -config ~/.config/rofi/config-compact.rasi | cut -d. -f1)
 	case $choice in
 	1)
-		kitty -e nvim "$configs/env_variables".conf"
+		kitty -e nvim "$configs/env_variables.conf"
 		;;
 	2)
 		kitty -e nvim "$configs/window_rules.conf"
