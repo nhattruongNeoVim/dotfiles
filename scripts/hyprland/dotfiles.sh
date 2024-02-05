@@ -213,6 +213,8 @@ cp assets/.zshrc ~ && cp assets/.ideavimrc ~ && { echo "${OK}Copy completed!"; }
 	echo "${ERROR} Failed to copy wallpapers."
 }
 
+printf "\n%.0s" {1..2}
+
 # chang shell to zsh
 chsh -s $(which zsh)
 
