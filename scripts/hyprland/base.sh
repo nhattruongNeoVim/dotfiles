@@ -41,7 +41,8 @@ extra=(
 	fzf
 	neofetch
 	lsd
-    lazygit
+	lazygit
+	net-tools
 )
 
 # Installation of main components
