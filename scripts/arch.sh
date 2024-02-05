@@ -115,6 +115,7 @@ printf "\n"
 
 # Update system
 sudo pacman -Syyuu --noconfirm
+sudo pacman -S git
 
 # Check if dotfiles exist
 cd ~
