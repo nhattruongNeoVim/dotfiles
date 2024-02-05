@@ -1,5 +1,4 @@
 #!/bin/bash
-## /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
 # Script for waybar layout or configs
 
 set -euo pipefail
@@ -8,7 +7,7 @@ IFS=$'\n\t'
 # Define directories
 waybar_layouts="$HOME/.config/waybar/configs"
 waybar_config="$HOME/.config/waybar/config"
-SCRIPTSDIR="$HOME/.config/hypr/scripts"
+scipts_dir="$HOME/.config/hypr/scripts"
 rofi_config="$HOME/.config/rofi/config-waybar-layout.rasi"
 
 # Function to display menu options
@@ -33,7 +32,7 @@ restart_waybar_if_needed() {
 		pkill waybar
 		sleep 0.1 # Delay for Waybar to completely terminate
 	fi
-	"${SCRIPTSDIR}/Refresh.sh" &
+	"${scipts_dir}/refresh.sh" &
 }
 
 # Main function
