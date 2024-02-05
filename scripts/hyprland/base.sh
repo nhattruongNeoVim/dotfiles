@@ -43,6 +43,7 @@ extra=(
 	lsd
 	lazygit
 	net-tools
+ 	neovim
 )
 
 # Installation of main components
