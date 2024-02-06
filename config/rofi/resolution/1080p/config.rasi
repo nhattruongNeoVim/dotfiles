@@ -24,7 +24,7 @@ configuration {
 
 /* ---- Window ---- */
 window {
-    width:						600px;
+    width:						800px;
 	/*height:						450px;*/
     x-offset:                   0px;
     y-offset:                   0px;
@@ -48,7 +48,7 @@ mainbox {
     orientation:                vertical;
 	padding:					8px;
     background-color:           transparent;
-    children:                   [ "inputbar", "imagebox" ];
+    children:                   [ "inputbar", "listbox" ];
     border-radius:              12px;
 }
 
@@ -64,7 +64,7 @@ listbox {
     spacing:                    4px;
     orientation:                vertical;
     children:                   ["listview" ];
-	padding:					6px;
+	padding:					10px;
     border-radius:              12px;
     border:                     1px;
     border-color:               @active-background;
@@ -84,23 +84,23 @@ inputbar {
     border-radius:              12px;
     border-color:               @foreground;
 	background-color:		    @background;
-    children:                   [ "textbox-prompt-colon","entry" ];
+    children:                   [ "mode-switcher", "textbox-prompt-colon", "entry" ];
     border:                     1px;
     border-color:               @active-background;
 }
 
 textbox-prompt-colon {
     enabled:                    true;
-	padding:					6px 0px 6px 10px;
+	padding:					10px 0px 10px 10px;
     expand:                     false;
-    str:                           "🐧";
+    str:                        "🐧";
     text-color:                 inherit;
 	background-color:			transparent;
 }
 
 entry {
     enabled:                    true;
-	padding:					6px 0px 0px 0px;
+	padding:					10px 0px 10px 0px;
     text-color:                 inherit;
     cursor:                     text;
     placeholder:                "Search (ctrl tab to choose mode)";
@@ -110,15 +110,14 @@ entry {
 
 /* ---- Mode Switcher ---- */
 mode-switcher{
-	orientation:				vertical;
     enabled:                    true;
-    spacing:                    12px;
+    spacing:                    10px;
     background-color:          	transparent;
     text-color:                 @foreground;
 }
 
 button {
-    padding:                   0px 12px 0px 8px;
+    padding:                   2px 24px 2px 24px;
     border-radius:             12px;
     background-color:          @background;
     text-color:                inherit;
@@ -139,8 +138,8 @@ button selected {
 listview {
 	enabled:					true;
 	columns:					2;
-	lines:						5;
-	spacing:                    2px;
+	lines:						6;
+	spacing:                    5px;
 	padding:					6px;
 	dynamic:                    true;
 	cycle:                      true;
