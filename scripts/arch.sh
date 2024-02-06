@@ -113,6 +113,17 @@ printf "\n"
 ask_yes_no "-Do you want to download pre-configured Hyprland dotfiles?" dots
 printf "\n"
 
+printf "\n%.0s" {1..2}
+if [ "$dual_boot" == "Y" ]; then
+	printf "\n${NOTE} I will set the local time on Arch to display the correct time on Windows.\n"
+	timedatectl set-local-rtc 1 --adjust-system-clock
+fi
+
+printf "\n%.0s" {1..2}
+if [ "$battery" == "Y" ]; then
+	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/battery.sh)
+fi
+
 # Update system
 sudo pacman -Syyuu --noconfirm
 sudo pacman -S git --noconfirm
@@ -143,20 +154,9 @@ bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/mas
 sleep 0.5
 bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/pipewire.sh)
 
-if [ "$dual_boot" == "Y" ]; then
-	printf "\n${NOTE} I will set the local time on Arch to display the correct time on Windows.\n"
-	timedatectl set-local-rtc 1 --adjust-system-clock
-fi
-
-if [ "$battery" == "Y" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/battery.sh)
-fi
-
 if [ "$nvidia" == "Y" ]; then
 	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/nvidia.sh)
-fi
-
-if [ "$nvidia" == "N" ]; then
+elif [ "$nvidia" == "N" ]; then
 	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/hypr.sh)
 fi
 

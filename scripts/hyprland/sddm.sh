@@ -106,8 +106,9 @@ cd ~
 valid_input=false
 while [ "$valid_input" != true ]; do
 	if [[ -z $install_sddm_theme ]]; then
-		read -n 1 -r -p "${CAT} OPTIONAL - Would you like to install SDDM themes? (y/n)" install_sddm_theme
+		read -n1 -rep "${CAT} OPTIONAL - Would you like to install SDDM themes? (y/n) " install_sddm_theme
 	fi
+    echo
 	if [[ $install_sddm_theme =~ ^[Yy]$ ]]; then
 		printf "\n%s - Installing Simple SDDM Theme\n" "${NOTE}"
 
@@ -120,7 +121,7 @@ while [ "$valid_input" != true ]; do
 		# Check if simple-sddm directory exists in the current directory and remove if it does
 		if [ -d "simple-sddm" ]; then
 			rm -rf "simple-sddm"
-			echo -e "\e[1A\e[K${OK} - Removed existing 'simple-sddm' directory from the current location." 2>&1 | tee -a "$LOG"
+			echo -e "\e[1A\e[K${OK} - Removed existing 'simple-sddm' directory from the current location."
 		fi
 
 		if git clone https://github.com/JaKooLit/simple-sddm.git; then
