@@ -31,7 +31,7 @@ if [ ! -f ~/.config/hypr/.initial_startup_done ]; then
 	gsettings set org.gnome.desktop.interface color-scheme prefer-dark >/dev/null 2>&1 &
 	gsettings set org.gnome.desktop.interface gtk-theme Tokyonight-Dark >/dev/null 2>&1 &
 	gsettings set org.gnome.desktop.interface icon-theme Tokyonight-SE >/dev/null 2>&1 &
-	# gsettings set org.gnome.desktop.interface cursor-theme Bibata-Modern-Ice >/dev/null 2>&1 &
+	gsettings set org.gnome.desktop.interface cursor-theme Bibata-Modern-Ice >/dev/null 2>&1 &
 	gsettings set org.gnome.desktop.interface cursor-size 24 >/dev/null 2>&1 &
 
 	# initiate kvantum theme
