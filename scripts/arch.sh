@@ -132,6 +132,7 @@ sudo pacman -S git --noconfirm
 cd ~
 if [ -d dotfiles ]; then
 	rm -rf dotfiles
+	echo -e "${NOTE} Remove dotfile successfully "
 fi
 
 # Clone dotfiles
@@ -186,7 +187,9 @@ fi
 
 bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/input_group.sh)
 
-if rm -rf ~/dotfiles; then
+cd ~
+if [ -d dotfiles ]; then
+	rm -rf dotfiles
 	echo -e "${NOTE} Remove dotfile successfully "
 fi
 
