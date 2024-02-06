@@ -32,7 +32,7 @@ while true; do
 		cliphist delete <<<"$result"
 		;;
 	11)
-		cliphist wipe
+        rm -rf ~/.cache/cliphist
 		;;
 	esac
 done
