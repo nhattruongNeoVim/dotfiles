@@ -243,7 +243,7 @@ printf "\n%.0s" {1..2}
 
 while true; do
 	cd ~
-	read -rp "${CAT} Would you like to download additional wallpapers? (y/n)" WALL
+	read -n1 -rep "${CAT} Would you like to download additional wallpapers? (y/n)" WALL
 	case $WALL in
 	[Yy])
 		echo "${NOTE} Downloading additional wallpapers..."
