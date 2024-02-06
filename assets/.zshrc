@@ -59,12 +59,12 @@ function nvims() {
 }
 
 # Pacman
-alias snuu='sudo pacman -Syu'
+alias spuu='sudo pacman -Syu'
 alias spu='sudo pacman -Syy'
 alias sps='sudo pacman -S --noconfirm'
 alias spr='sudo pacman -R'
 
-# Apt
+# Yay
 alias syuu='yay -Syu'
 alias syu='yay -Syy'
 alias sys='yay -S --noconfirm'
