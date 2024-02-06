@@ -31,7 +31,6 @@ base=(
 
 extra=(
 	starship
-	kitty
 	zsh
 	make
 	python-pip
