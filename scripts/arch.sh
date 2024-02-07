@@ -193,14 +193,29 @@ if [ -d dotfiles ]; then
 	echo -e "${NOTE} Remove dotfile successfully "
 fi
 
+printf "\n%.0s" {1..2}
+
+if [ -f ~/install.log ]; then
+	read -n1 -rep "${CAT} Do you want to check log? (y/n) " log
+
+	if pacman -Q bat &>/dev/null; then
+		cat_command="bat"
+	else
+		cat_command="cat"
+	fi
+
+	if [[ "$log" =~ ^[Yy]$ ]]; then
+		$cat_command ~/install.log
+	fi
+fi
+
+printf "\n%.0s" {1..8}
 printf "\n${OK} Yey! Installation Completed.\n"
-printf "\n"
-sleep 2
+printf "\n%.0s" {1..8}
 printf "\n${NOTE} You can start Hyprland by typing Hyprland (IF SDDM is not installed) (note the capital H!).\n"
-printf "\n"
 printf "\n${NOTE} It is highly recommended to reboot your system.\n\n"
 
-read -rp "${CAT} Would you like to reboot now? (y/n): " HYP
+read -n1 -rep "${CAT} Would you like to reboot now? (y/n) " HYP
 
 if [[ "$HYP" =~ ^[Yy]$ ]]; then
 	if [[ "$nvidia" == "Y" ]]; then

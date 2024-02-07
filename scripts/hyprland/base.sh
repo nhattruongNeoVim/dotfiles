@@ -44,6 +44,7 @@ extra=(
 	lazygit
 	net-tools
 	neovim
+    bat
 )
 
 # Installation of main components
