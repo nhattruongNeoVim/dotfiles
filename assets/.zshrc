@@ -59,14 +59,14 @@ function nvims() {
 }
 
 # Pacman
-alias spuu='sudo pacman -Syu'
-alias spu='sudo pacman -Syy'
+alias spuu='sudo pacman -Syu --noconfirm'
+alias spu='sudo pacman -Syy --noconfirm'
 alias sps='sudo pacman -S --noconfirm'
 alias spr='sudo pacman -R'
 
 # Yay
-alias syuu='yay -Syu'
-alias syu='yay -Syy'
+alias syuu='yay -Syu --noconfirm'
+alias syu='yay -Syy --noconfirm'
 alias sys='yay -S --noconfirm'
 alias syr='yay -Rns'
 
@@ -90,7 +90,6 @@ alias cd..='cd ..'
 alias cd-='cd -'
 alias lc='lolcat'
 alias vim='nvims'
-alias bat='batcat'
 alias nf='neofetch'
 alias cf='cpufetch'
 alias nf='neofetch'
