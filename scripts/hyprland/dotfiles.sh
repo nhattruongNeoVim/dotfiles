@@ -66,7 +66,7 @@ if hostnamectl | grep -q 'Chassis: vm'; then
 	echo "This script is running in a virtual machine."
 	sed -i '/env = WLR_NO_HARDWARE_CURSORS,1/s/^#//' config/hypr/configs/env_variables.conf
 	sed -i '/env = WLR_RENDERER_ALLOW_SOFTWARE,1/s/^#//' config/hypr/configs/env_variables.conf
-	sed -i '/monitor = Virtual-1, 1920x1080@60,auto,1/s/^#//' config/hypr/configs/env_variables.conf
+	sed -i '/monitor = Virtual-1, 1920x1080@60,auto,1/s/^#//' config/hypr/configs/monitors.conf
 fi
 
 # Function to detect keyboard layout using localectl or setxkbmap
