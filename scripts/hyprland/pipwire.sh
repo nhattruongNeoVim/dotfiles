@@ -22,6 +22,22 @@ pipewire=(
 # AUR
 ISAUR=$(command -v yay || command -v paru)
 
+# Function for installing packages
+install_package() {
+	if $ISAUR -Q "$1" &>>/dev/null; then
+		echo -e "${OK} $1 is already installed. Skipping..."
+	else
+		echo -e "${NOTE} Installing $1 ..."
+		$ISAUR -S --noconfirm "$1"
+		if $ISAUR -Q "$1" &>>/dev/null; then
+			echo -e "\e[1A\e[K${OK} $1 was installed."
+		else
+			echo -e "\e[1A\e[K${ERROR} $1 failed to install. You may need to install manually! Sorry I have tried :("
+			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>~/install.log
+		fi
+	fi
+}
+
 # Removal of pulseaudio
 printf "${YELLOW}Removing pulseaudio stuff...${RESET}\n"
 for pulseaudio in pulseaudio pulseaudio-alsa pulseaudio-bluetooth; do
