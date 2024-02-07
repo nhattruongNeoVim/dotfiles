@@ -181,11 +181,11 @@ if [ "$xdph" == "Y" ]; then
 	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/xdph.sh)
 fi
 
+bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/input_group.sh)
+
 if [ "$dots" == "Y" ]; then
 	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/dotfiles.sh)
 fi
-
-bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/input_group.sh)
 
 cd ~
 if [ -d dotfiles ]; then
