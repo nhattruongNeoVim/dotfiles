@@ -3,7 +3,7 @@
 clear
 
 wallpaper=$HOME/Pictures/wallpapers/anime-lanscape.png
-waybar_style="$HOME/.config/waybar/style/[Pywal] Chroma Tally.css"
+waybar_style="$HOME/.config/waybar/style/chroma edge [pywal].css"
 
 # Check if running as root. If root, script will exit
 if [[ $EUID -eq 0 ]]; then
