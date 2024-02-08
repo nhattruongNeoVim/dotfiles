@@ -405,10 +405,10 @@
     "format": "{format_source}",
     "format-source": " {volume}%",
     "format-source-muted": "",
-    "on-click": "~/.config/hypr/scripts/bolume.sh --toggle-mic",
+    "on-click": "~/.config/hypr/scripts/volume.sh --toggle-mic",
     "on-click-right": "pavucontrol -t 4",
-    "on-scroll-up": "~/.config/hypr/scripts/bolume.sh --mic-inc",
-    "on-scroll-down": "~/.config/hypr/scripts/bolume.sh --mic-dec",
+    "on-scroll-up": "~/.config/hypr/scripts/volume.sh --mic-inc",
+    "on-scroll-down": "~/.config/hypr/scripts/volume.sh --mic-dec",
 	"tooltip-format": "{source_desc} | {source_volume}%",
     "scroll-step": 5,
 },
@@ -481,9 +481,9 @@
 "custom/light_dark": {
     "format": "{}",
     "exec": "echo ; echo 󰔎 Dark-Light switcher",
-    "on-click": "~/.config/hypr/scripts/wallpaper_autochange.sh",
-    "on-click-right": "~/.config/hypr/scripts/waybar_styles.sh",
-    "on-click-middle": "~/.config/hypr/scripts/wallpaper.sh",
+    "on-click": "~/.config/hypr/scripts/wallpaper_random.sh",
+    "on-click-right": "~/.config/hypr/scripts/waybar_style.sh",
+    "on-click-middle": "~/.config/hypr/scripts/wallpaper_select.sh",
     "interval" : 86400, // once every day
     "tooltip": true
 },
