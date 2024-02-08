@@ -1,5 +1,3 @@
-//* ---- 💫 https://github.com/JaKooLit 💫 ---- *//
-
 {
 // HYPRLAND WORKSPACES. CHOOSE as desired and place on waybar configs
 // CIRCLES Style
@@ -169,12 +167,12 @@
     //"format-icons": ["","","","","","","","","","","","","","",""],
     "tooltip-format": "backlight {percent}%",
     "icon-size": 10,
-    "on-click": "",
     "on-click-middle": "",
-    "on-click-right": "",
     "on-update": "",
-    "on-scroll-up": "~/.config/hypr/scripts/Brightness.sh --inc",
-    "on-scroll-down": "~/.config/hypr/scripts/Brightness.sh --dec",
+    "on-click": "~/.config/hypr/scripts/brightness.sh --inc",
+    "on-click-right": "~/.config/hypr/scripts/brightness.sh --dec",
+    "on-scroll-up": "~/.config/hypr/scripts/brightness.sh --inc",
+    "on-scroll-down": "~/.config/hypr/scripts/brightness.sh --dec",
     "smooth-scrolling-threshold": 1,
 },
       
@@ -201,8 +199,8 @@
     "format-time": "{H}h {M}min",
     "tooltip": true,
     "tooltip-format": "{timeTo} {power}w",
-    "on-click-middle": "~/.config/hypr/scripts/ChangeBlur.sh",
-    "on-click-right": "~/.config/hypr/scripts/Wlogout.sh",
+    "on-click-middle": "~/.config/hypr/scripts/change_blur.sh",
+    "on-click-right": "~/.config/hypr/scripts/wlogout.sh",
 },
       
 "bluetooth": {
@@ -329,8 +327,8 @@
     "on-click": "playerctl previous",
     "on-click-right": "playerctl next",
     "scroll-step": 5.0,
-    "on-scroll-up": "~/.config/hypr/scripts/Volume.sh --inc",
-    "on-scroll-down": "~/.config/hypr/scripts/Volume.sh --dec",
+    "on-scroll-up": "~/.config/hypr/scripts/volume.sh --inc",
+    "on-scroll-down": "~/.config/hypr/scripts/volume.sh --dec",
     "smooth-scrolling-threshold": 1,
 	"player-icons": {
         "chromium": "",
@@ -395,10 +393,10 @@
     "ignored-sinks": ["Easy Effects Sink"],
     },
     "scroll-step": 5.0,
-    "on-click": "~/.config/hypr/scripts/Volume.sh --toggle",
+    "on-click": "~/.config/hypr/scripts/volume.sh --toggle",
     "on-click-right": "pavucontrol -t 3",
-    "on-scroll-up": "~/.config/hypr/scripts/Volume.sh --inc",
-    "on-scroll-down": "~/.config/hypr/scripts/Volume.sh --dec",
+    "on-scroll-up": "~/.config/hypr/scripts/volume.sh --inc",
+    "on-scroll-down": "~/.config/hypr/scripts/volume.sh --dec",
 	"tooltip-format": "{icon} {desc} | {volume}%",
     "smooth-scrolling-threshold": 1,
 },
@@ -407,10 +405,10 @@
     "format": "{format_source}",
     "format-source": " {volume}%",
     "format-source-muted": "",
-    "on-click": "~/.config/hypr/scripts/Volume.sh --toggle-mic",
+    "on-click": "~/.config/hypr/scripts/bolume.sh --toggle-mic",
     "on-click-right": "pavucontrol -t 4",
-    "on-scroll-up": "~/.config/hypr/scripts/Volume.sh --mic-inc",
-    "on-scroll-down": "~/.config/hypr/scripts/Volume.sh --mic-dec",
+    "on-scroll-up": "~/.config/hypr/scripts/bolume.sh --mic-inc",
+    "on-scroll-down": "~/.config/hypr/scripts/bolume.sh --mic-dec",
 	"tooltip-format": "{source_desc} | {source_volume}%",
     "scroll-step": 5,
 },
@@ -435,10 +433,10 @@
 "wireplumber": {
     "format": "{icon} {volume} %",
     "format-muted": " Mute",
-    "on-click": "~/.config/hypr/scripts/Volume.sh --toggle",
+    "on-click": "~/.config/hypr/scripts/volume.sh --toggle",
     "on-click-right": "pavucontrol -t 3",
-    "on-scroll-up": "~/.config/hypr/scripts/Volume.sh --inc",
-    "on-scroll-down": "~/.config/hypr/scripts/Volume.sh --dec",
+    "on-scroll-up": "~/.config/hypr/scripts/volume.sh --inc",
+    "on-scroll-down": "~/.config/hypr/scripts/volume.sh --dec",
     "format-icons": ["", "", "󰕾", ""], 
 },
       
@@ -458,9 +456,9 @@
 "custom/cycle_wall":{
     "format":" ",
     "exec": "echo ; echo 󰸉 wallpaper select",
-    "on-click": "~/.config/hypr/scripts/WallpaperSelect.sh",
-    "on-click-right": "~/.config/hypr/scripts/Wallpaper.sh",
-    "on-click-middle": "~/.config/hypr/scripts/WaybarStyles.sh",
+    "on-click": "~/.config/hypr/scripts/wallpaper_select.sh",
+    "on-click-right": "~/.config/hypr/scripts/wallpaper.sh",
+    "on-click-middle": "~/.config/hypr/scripts/waybar_styles.sh",
     "interval" : 86400, // once every day
     "tooltip": true,
 },
@@ -468,7 +466,7 @@
 "custom/keybinds": {
     "format":"󰺁 HINT!",
     "exec": "echo ; echo  Key Hints SUPER H",
-    "on-click": "~/.config/hypr/scripts/KeyHints.sh",
+    "on-click": "~/.config/hypr/scripts/key_hints.sh",
     "interval" : 86400, // once every day
     "tooltip": true,
 },
@@ -477,15 +475,15 @@
     "exec": "cat ~/.cache/kb_layout",
     "interval": 1,
     "format": " {}",
-    "on-click": "~/.config/hypr/scripts/SwitchKeyboardLayout.sh",
+    "on-click": "~/.config/hypr/scripts/switch_kb_layout.sh",
     },
     
 "custom/light_dark": {
     "format": "{}",
     "exec": "echo ; echo 󰔎 Dark-Light switcher",
-    "on-click": "~/.config/hypr/scripts/DarkLight.sh",
-    "on-click-right": "~/.config/hypr/scripts/WaybarStyles.sh",
-    "on-click-middle": "~/.config/hypr/scripts/Wallpaper.sh",
+    "on-click": "~/.config/hypr/scripts/wallpaper_autochange.sh",
+    "on-click-right": "~/.config/hypr/scripts/waybar_styles.sh",
+    "on-click-middle": "~/.config/hypr/scripts/wallpaper.sh",
     "interval" : 86400, // once every day
     "tooltip": true
 },
@@ -495,7 +493,7 @@
     "exec": "echo ; echo 󰷛  screen lock",
     "interval" : 86400, // once every day
     "tooltip": true,
-    "on-click": "~/.config/hypr/scripts/LockScreen.sh",
+    "on-click": "~/.config/hypr/scripts/lock_screen.sh",
 },
     
 "custom/menu": {
@@ -503,14 +501,14 @@
     "exec": "echo ; echo 󱓟 app launcher",
     "interval" : 86400, // once every day
     "tooltip": true,
-    "on-click": "pkill rofi || rofi -show drun -modi run,drun,filebrowser,window",
-    "on-click-middle": "~/.config/hypr/scripts/WallpaperSelect.sh",
-    "on-click-right": "~/.config/hypr/scripts/WaybarLayout.sh",
+    "on-click": "pkill rofi || rofi -show drun -modi drun",
+    "on-click-middle": "~/.config/hypr/scripts/wallpaper_select.sh",
+    "on-click-right": "~/.config/hypr/scripts/waybar_layout.sh",
 },
 
 // This is a custom cava visualizer
 "custom/cava_mviz": {
-    "exec": "~/.config/hypr/scripts/WaybarCava.sh",
+    "exec": "~/.config/hypr/scripts/waybar_cava.sh",
     "format": "{}"
 },
   
@@ -523,16 +521,16 @@
     "on-click": "playerctl previous",
     "on-click-right": "playerctl next",
     "scroll-step": 5.0,
-    "on-scroll-up": "~/.config/hypr/scripts/Volume.sh --inc",
-    "on-scroll-down": "~/.config/hypr/scripts/Volume.sh --dec",
+    "on-scroll-up": "~/.config/hypr/scripts/volume.sh --inc",
+    "on-scroll-down": "~/.config/hypr/scripts/volume.sh --dec",
     "smooth-scrolling-threshold": 1,
 },
 
 "custom/power": {
     "format": "⏻ ",
     "exec": "echo ; echo 󰟡 power // blur",
-	"on-click": "~/.config/hypr/scripts/Wlogout.sh",
-    "on-click-right": "~/.config/hypr/scripts/ChangeBlur.sh",
+	"on-click": "~/.config/hypr/scripts/wlogout.sh",
+    "on-click-right": "~/.config/hypr/scripts/change_blur.sh",
     "interval" : 86400, // once every day
     "tooltip": true,
 },
@@ -573,8 +571,8 @@
     "format-alt-click": "click",
     "interval": 3600,
     "return-type": "json",
-    "exec": "~/.config/hypr/UserScripts/Weather.sh",
-    //"exec": "~/.config/hypr/UserScripts/Weather.py",
+    "exec": "~/.config/hypr/scripts/weather.sh",
+    //"exec": "~/.config/hypr/scripts/weather.py",
     "exec-if": "ping wttr.in -c1",
     "tooltip" : true,
 },
@@ -630,8 +628,8 @@
     "on-click-middle": "",
     "on-click-right": "",
     "on-update": "",
-    "on-scroll-up": "~/.config/hypr/scripts/Brightness.sh --inc",
-    "on-scroll-down": "~/.config/hypr/scripts/Brightness.sh --dec",
+    "on-scroll-up": "~/.config/hypr/scripts/brightness.sh --inc",
+    "on-scroll-down": "~/.config/hypr/scripts/brightness.sh --dec",
     "smooth-scrolling-threshold": 1,
 	"tooltip-format": "{percent}%",
 },
@@ -683,10 +681,10 @@
     "ignored-sinks": ["Easy Effects Sink"],
 	},
     "scroll-step": 5.0,
-    "on-click": "~/.config/hypr/scripts/Volume.sh --toggle",
+    "on-click": "~/.config/hypr/scripts/volume.sh --toggle",
     "on-click-right": "pavucontrol -t 3",
-    "on-scroll-up": "~/.config/hypr/scripts/Volume.sh --inc",
-    "on-scroll-down": "~/.config/hypr/scripts/Volume.sh --dec",
+    "on-scroll-up": "~/.config/hypr/scripts/volume.sh --inc",
+    "on-scroll-down": "~/.config/hypr/scripts/volume.sh --dec",
 	"tooltip-format": "{icon} {desc} | {volume}%",
     "smooth-scrolling-threshold": 1,
 },
@@ -696,9 +694,9 @@
     "format-source": "󰍬",
     "format-source-muted": "󰍭",
     "on-click-right": "pavucontrol",
-    "on-click": "~/.config/hypr/scripts/Volume.sh --toggle-mic",
-    "on-scroll-up": "~/.config/hypr/scripts/Volume.sh --mic-inc",
-    "on-scroll-down": "~/.config/hypr/scripts/Volume.sh --mic-dec",
+    "on-click": "~/.config/hypr/scripts/volume.sh --toggle-mic",
+    "on-scroll-up": "~/.config/hypr/scripts/volume.sh --mic-inc",
+    "on-scroll-down": "~/.config/hypr/scripts/volume.sh --mic-dec",
     "max-volume": 100,
     "tooltip": true,
 	"tooltip-format": "{source_desc} | {source_volume}%",
@@ -719,8 +717,8 @@
 "custom/power_vertical": {
     "format": "⏻",
     "exec": "echo ; echo 󰟡 power // blur",
-	"on-click": "~/.config/hypr/scripts/Wlogout.sh",
-    "on-click-right": "~/.config/hypr/scripts/ChangeBlur.sh",
+	"on-click": "~/.config/hypr/scripts/wlogout.sh",
+    "on-click-right": "~/.config/hypr/scripts/change_blur.sh",
     "interval" : 86400, // once every day
     "tooltip": true,
 },
