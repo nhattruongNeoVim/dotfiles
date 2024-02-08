@@ -8,15 +8,15 @@ iDIR="$HOME/.config/swaync/icons"
 
 # Define menu options as an associative array
 declare -A menu_options=(
-	["Lofi Girl ☕️🎶"]="https://play.streamafrica.net/lofiradio"
-	["96.3 Easy Rock 📻🎶"]="https://radio-stations-philippines.com/easy-rock"
-	["Ghibli Music 🎻🎶"]="https://youtube.com/playlist?list=PLNi74S754EXbrzw-IzVhpeAaMISNrzfUy&si=rqnXCZU5xoFhxfOl"
-	["Top Youtube Music 2023 ☕️🎶"]="https://youtube.com/playlist?list=PLDIoUOhQQPlXr63I_vwF9GD8sAKh77dWU&si=y7qNeEVFNgA-XxKy"
-	["Chillhop ☕️🎶"]="http://stream.zeno.fm/fyn8eh3h5f8uv"
-	["SmoothChill ☕️🎶"]="https://media-ssl.musicradio.com/SmoothChill"
-	["Relaxing Music ☕️🎶"]="https://youtube.com/playlist?list=PLMIbmfP_9vb8BCxRoraJpoo4q1yMFg4CE"
-	["Youtube Remix 📻🎶"]="https://youtube.com/playlist?list=PLeqTkIUlrZXlSNn3tcXAa-zbo95j0iN-0"
-	["Korean Drama OST 📻🎶"]="https://youtube.com/playlist?list=PLUge_o9AIFp4HuA-A3e3ZqENh63LuRRlQ"
+	["Remix việt"]="https://youtu.be/wnuIlvOSFK0?si=8tqUEMrKzyu9S9bD"
+	["Playlist việt"]="https://youtube.com/playlist?list=PLJOwSCcWqDV1DMnF0xU0khtDjrB_2w9PL&si=4jtQMXrHTdmgN6PT"
+	["Playlist trung"]="https://youtube.com/playlist?list=PLJOwSCcWqDV1ZVbvGLyJvTjFByhncWHuP&si=qdSAy067FMAiANXf"
+	["Top Youtube Music 2023"]="https://youtube.com/playlist?list=PLDIoUOhQQPlXr63I_vwF9GD8sAKh77dWU&si=y7qNeEVFNgA-XxKy"
+	["Chillhop"]="http://stream.zeno.fm/fyn8eh3h5f8uv"
+	["SmoothChill"]="https://media-ssl.musicradio.com/SmoothChill"
+	["Relaxing Music"]="https://youtube.com/playlist?list=PLMIbmfP_9vb8BCxRoraJpoo4q1yMFg4CE"
+	["Youtube Remix"]="https://youtube.com/playlist?list=PLeqTkIUlrZXlSNn3tcXAa-zbo95j0iN-0"
+	["Korean Drama OST"]="https://youtube.com/playlist?list=PLUge_o9AIFp4HuA-A3e3ZqENh63LuRRlQ"
 )
 
 # Function for displaying notifications
@@ -40,7 +40,7 @@ main() {
 	if [[ $link == *playlist* ]]; then
 		mpv --shuffle --vid=no "$link"
 	else
-		mpv "$link"
+		mpv --vid=no "$link"
 	fi
 }
 
