@@ -209,9 +209,9 @@ if [ -f ~/install.log ]; then
 	fi
 fi
 
-printf "\n%.0s" {1..8}
+printf "\n%.0s" {1..4}
 printf "\n${OK} Yey! Installation Completed.\n"
-printf "\n%.0s" {1..8}
+printf "\n%.0s" {1..4}
 printf "\n${NOTE} You can start Hyprland by typing Hyprland (IF SDDM is not installed) (note the capital H!).\n"
 printf "\n${NOTE} It is highly recommended to reboot your system.\n\n"
 
