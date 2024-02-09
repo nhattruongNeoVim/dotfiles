@@ -465,7 +465,7 @@
       
 "custom/keybinds": {
     "format":"󰺁 HINT!",
-    "exec": "echo ; echo  Key Hints SUPER H",
+    "exec": "echo ; echo  Key Hints SUPER Y",
     "on-click": "~/.config/hypr/scripts/key_hints.sh",
     "interval" : 86400, // once every day
     "tooltip": true,
