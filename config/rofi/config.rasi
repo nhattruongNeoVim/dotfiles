@@ -103,7 +103,7 @@ entry {
 	padding:					6px 0px 0px 0px;
     text-color:                 inherit;
     cursor:                     text;
-    placeholder:                "Search (ctrl tab to choose mode)";
+    placeholder:                "Search";
     placeholder-color:          inherit;
 	background-color:			transparent;
 }
