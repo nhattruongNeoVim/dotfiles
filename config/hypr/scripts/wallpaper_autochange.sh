@@ -6,7 +6,7 @@
 #
 # NOTE: this script uses bash (not POSIX shell) for the RANDOM variable
 
-pywal_refresh=$HOME/.config/hypr/scripts/refresh_no_waybar.sh
+pywal_refresh=$HOME/.config/hypr/scripts/refresh.sh
 
 if [[ $# -lt 1 ]] || [[ ! -d $1 ]]; then
 	echo "Usage:
