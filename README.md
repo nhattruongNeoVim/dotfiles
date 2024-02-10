@@ -70,7 +70,7 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
 
 ## Arch _(hyprland)_
 
-![](images/rice3.png)
+![](images/rice5.png)
 
 > The majority of this script comes from [JaKooLit](https://github.com/JaKooLit), that's the beauty of open-source :wink:
 
@@ -78,6 +78,8 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
 # script to install and setup hyprland
 bash <(curl -sSL https://is.gd/nhattruongNeoVim_arch)
 ```
+
+![](images/rice4.png)
 
 > **Congratulations!** at this point have successfully configured your linux distribution.
 > 
