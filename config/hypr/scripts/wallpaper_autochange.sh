@@ -34,6 +34,5 @@ while true; do
 			$pywal_script
 			$pywal_refresh
 			sleep $INTERVAL
-
 		done
 done
