@@ -45,6 +45,7 @@ extra=(
 	net-tools
 	neovim
     bat
+    libreoffice-fresh
 )
 
 # Installation of main components
