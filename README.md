@@ -79,7 +79,7 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
 bash <(curl -sSL https://is.gd/nhattruongNeoVim_arch)
 ```
 
-![](images/rice4.png)
+![](images/rice7.png)
 
 > **Congratulations!** at this point have successfully configured your linux distribution.
 > 
