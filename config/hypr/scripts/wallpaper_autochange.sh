@@ -6,6 +6,7 @@
 #
 # NOTE: this script uses bash (not POSIX shell) for the RANDOM variable
 
+pywal_script=$HOME/.config/hypr/scripts/pywal_swww.sh
 pywal_refresh=$HOME/.config/hypr/scripts/refresh.sh
 
 if [[ $# -lt 1 ]] || [[ ! -d $1 ]]; then
@@ -16,10 +17,11 @@ fi
 
 # Edit below to control the images transition
 export SWWW_TRANSITION_FPS=60
-export SWWW_TRANSITION_TYPE=simple
+export SWWW_TRANSITION_STEP=2
+export SWWW_TRANSITION_TYPE=random
 
 # This controls (in seconds) when to switch to the next image
-INTERVAL=1800
+INTERVAL=900
 
 while true; do
 	find "$1" |
@@ -29,6 +31,7 @@ while true; do
 		sort -n | cut -d':' -f2- |
 		while read -r img; do
 			swww img "$img"
+			$pywal_script
 			$pywal_refresh
 			sleep $INTERVAL
 
