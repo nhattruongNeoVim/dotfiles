@@ -15,7 +15,7 @@ swww="swww img"
 effect="--transition-bezier .43,1.19,1,.4 --transition-fps 30 --transition-type grow --transition-pos 0.925,0.977 --transition-duration 2"
 
 # Check if a marker file exists.
-if [ ! -f ~/.config/hypr/.initial_startup_done ]; then
+if [ ! -f ~/.config/hypr/.boot_done]; then
 
 	# Initialize pywal and wallpaper
 	if [ -f "$wallpaper" ]; then
@@ -49,7 +49,7 @@ if [ ! -f ~/.config/hypr/.initial_startup_done ]; then
 	fi
 
 	# Create a marker file to indicate that the script has been executed.
-	touch ~/.config/hypr/.initial_startup_done
+	touch ~/.config/hypr/.boot_done
 
 	exit
 fi
