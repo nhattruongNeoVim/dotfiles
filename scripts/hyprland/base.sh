@@ -46,6 +46,7 @@ extra=(
 	neovim
     bat
     libreoffice-fresh
+    jdk-openjdk
 )
 
 # Installation of main components
