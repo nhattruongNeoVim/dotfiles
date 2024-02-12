@@ -502,8 +502,6 @@
     "interval" : 86400, // once every day
     "tooltip": true,
     "on-click": "pkill rofi || rofi -show drun -modi drun",
-    "on-click-middle": "~/.config/hypr/scripts/wallpaper_select.sh",
-    "on-click-right": "~/.config/hypr/scripts/waybar_layout.sh",
 },
 
 // This is a custom cava visualizer
