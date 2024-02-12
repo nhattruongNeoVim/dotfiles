@@ -18,9 +18,9 @@ echo -e ""
 echo -e ""
 echo -e "-------------------- Script developed by nhattruongNeoVim --------------------"
 echo -e " -------------- Github: https://github.com/nhattruongNeoVim -----------------"
-echo -e ""
+echo
 
-echo "$(tput setaf 166)ATTENTION: Run a full system update and Reboot first!! (Highly Recommended) $(tput sgr0)"
+echo "$(tput setaf 3)NOTE: Ensure that you have a stable internet connection (Highly Recommended) $(tput sgr0)"
 echo
 echo "$(tput setaf 3)NOTE: You will be required to answer some questions during the installation! $(tput sgr0)"
 echo
