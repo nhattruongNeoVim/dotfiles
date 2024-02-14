@@ -141,9 +141,9 @@ if git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git ~/dotf
 	printf "\n${OK} Clone dotfiles succesfully.\n"
 fi
 
-bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/base.sh)
-sleep 0.5
 bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/pacman.sh)
+sleep 0.5
+bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/pacman_pkgs.sh)
 
 if [ "$aur_helper" == "paru" ]; then
 	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/paru.sh)
