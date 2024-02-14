@@ -5,8 +5,8 @@
 * {
     font-family: "JetBrainsMono Nerd Font";
     font-weight: bold;
-	min-height: 0;	
-     /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
+    min-height: 0;
+    /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
     font-size: 96%;
     font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
     padding: 1px;
@@ -41,45 +41,45 @@ tooltip {
 
 /*-----module groups----*/
 .modules-right {
-	border: 3px solid @color14;
-	border-radius: 40px 0px 0px 0px;
-	background-color: @color1;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	padding-right: 4px;
-	padding-left: 4px;
+    border: 3px solid @color14;
+    border-radius: 40px 0px 0px 0px;
+    background-color: @color1;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 4px;
+    padding-left: 4px;
 }
 
 .modules-center {
-	border: 3px solid @color14;
-	border-radius: 60px 0px 60px 0px;
-	background-color: @background;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	padding-right: 4px;
-	padding-left: 4px;
+    border: 3px solid @color14;
+    border-radius: 60px 0px 60px 0px;
+    background-color: @background;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 4px;
+    padding-left: 4px;
 }
 
 .modules-left {
-	border: 3px solid @color14;
-	border-radius: 0px 0px 40px 0px;
-	background-color: @color1;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	padding-right: 4px;
-	padding-left: 4px;
+    border: 3px solid @color14;
+    border-radius: 0px 0px 40px 0px;
+    background-color: @color1;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 4px;
+    padding-left: 4px;
 }
 
 #workspaces button {
     color: @foreground;
     box-shadow: none;
-	text-shadow: none;
+    text-shadow: none;
     padding: 0px;
     border-radius: 9px;
     padding-left: 4px;
     padding-right: 4px;
     animation: gradient_f 20s ease-in infinite;
-    transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
+    transition: all 0.5s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
 #workspaces button.active {
@@ -88,7 +88,7 @@ tooltip {
     padding-left: 8px;
     padding-right: 8px;
     animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
 #workspaces button.focused {
@@ -105,7 +105,7 @@ tooltip {
     padding-left: 2px;
     padding-right: 2px;
     animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
 #clock#2 {
@@ -156,11 +156,11 @@ tooltip {
 #custom-weather.showyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
-	color: @foreground;
-	padding-top: 1px;
-	padding-bottom: 1px;
-	padding-right: 6px;
-	padding-left: 6px;
+    color: @foreground;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-right: 6px;
+    padding-left: 6px;
 }
 
 #temperature.critical {
@@ -175,17 +175,17 @@ tooltip {
 
 #taskbar button.active {
     background-color: rgb(47, 46, 46);
-	border-radius: 30px;
+    border-radius: 30px;
     animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
 #taskbar button:hover {
     padding-left: 3px;
     padding-right: 3px;
-	border-radius: 15px;
+    border-radius: 15px;
     animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
 #battery.critical:not(.charging) {
@@ -198,45 +198,45 @@ tooltip {
 }
 
 #pulseaudio-slider slider {
-	min-width: 0px;
-	min-height: 0px;
-	opacity: 0;
-	background-image: none;
-	border: none;
-	box-shadow: none;
+    min-width: 0px;
+    min-height: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
 }
 
 #pulseaudio-slider trough {
-	min-width: 80px;
-	min-height: 5px;
-	border-radius: 5px;
+    min-width: 80px;
+    min-height: 5px;
+    border-radius: 5px;
 }
 
 #pulseaudio-slider highlight {
-	min-height: 10px;
-	border-radius: 5px;
+    min-height: 10px;
+    border-radius: 5px;
 }
 
 #backlight-slider slider {
-	min-width: 0px;
-	min-height: 0px;
-	opacity: 0;
-	background-image: none;
-	border: none;
-	box-shadow: none;
+    min-width: 0px;
+    min-height: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
 }
 
 #backlight-slider trough {
-	min-width: 80px;
-	min-height: 10px;
-	border-radius: 5px;
+    min-width: 80px;
+    min-height: 10px;
+    border-radius: 5px;
 }
 
 #backlight-slider highlight {
-	min-width: 10px;
-	border-radius: 5px;
+    min-width: 10px;
+    border-radius: 5px;
 }
 
 #custom-cava_mviz {
-	padding-right: 10px;
+    padding-right: 10px;
 }

@@ -1,5 +1,6 @@
 {
 // HYPRLAND WORKSPACES. CHOOSE as desired and place on waybar configs
+
 // CIRCLES Style
 "hyprland/workspaces": {
 	"active-only": false,
@@ -10,15 +11,15 @@
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
     "persistent-workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "5": [],
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
     },
     "format-icons": {
-      "active": "",
-      "default": "",
+        "active": "",
+        "default": "",
 	},  
 },
 
@@ -39,22 +40,21 @@
         "5": [],
     },
     "format-icons": {
-      "1": "I",
-      "2": "II",
-      "3": "III",
-      "4": "IV",
-      "5": "V",
-      "6": "VI",
-      "7": "VII",
-      "8": "VIII",
-      "9": "IX",
-      "10": "X",
-      
+        "1": "I",
+        "2": "II",
+        "3": "III",
+        "4": "IV",
+        "5": "V",
+        "6": "VI",
+        "7": "VII",
+        "8": "VIII",
+        "9": "IX",
+        "10": "X",
     },
 },
 
 // PACMAN Style
-  "hyprland/workspaces#pacman": {
+"hyprland/workspaces#pacman": {
     "active-only":false,
     "all-outputs": true,
     "format": "{icon}",
@@ -71,9 +71,9 @@
     },
     "format": "{icon}",
     "format-icons": {
-      "active": " 󰮯 ",
-      "default": "󰊠",
-      "persistent":"󰊠",
+        "active": " 󰮯 ",
+        "default": "󰊠",
+        "persistent":"󰊠",
     },
 },
   
@@ -82,23 +82,23 @@
     "all-outputs": true,
     "format": "{icon}",
     "persistent-workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "5": [],
-      },
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+    },
     "format-icons": {
-      "1": "一",
-      "2": "二",
-      "3": "三",
-      "4": "四",
-      "5": "五",
-      "6": "六",
-      "7": "七",
-      "8": "八",
-      "9": "九",
-      "10": "十",
+        "1": "一",
+        "2": "二",
+        "3": "三",
+        "4": "四",
+        "5": "五",
+        "6": "六",
+        "7": "七",
+        "8": "八",
+        "9": "九",
+        "10": "十",
     }
 },
   
@@ -114,18 +114,18 @@
     "all-outputs": true,
     "sort-by-number": true,
     "format-icons": {
-      "1": " ",
-      "2": " ",
-      "3": " ",
-      "4": " ",
-      "5": " ",
-      "6": " ",
-      "7": "",
-      "8": " ",
-      "9": "",
-      "10": "10",
-      "focused": "",
-      "default": "",
+        "1": " ",
+        "2": " ",
+        "3": " ",
+        "4": " ",
+        "5": " ",
+        "6": " ",
+        "7": "",
+        "8": " ",
+        "9": "",
+        "10": "10",
+        "focused": "",
+        "default": "",
     },
 },
  
@@ -134,27 +134,27 @@
 "group/motherboard": {
     "orientation": "horizontal",
     "modules": [
-      "cpu",
-      "memory",
-      "temperature",
-      "disk",
-      ]	
+        "cpu",
+        "memory",
+        "temperature",
+        "disk",
+    ]	
 },
   
 "group/laptop": {
     "orientation": "horizontal",
     "modules": [
-      "backlight",
-      "battery",
-      ]	
+        "backlight",
+        "battery",
+    ]	
 },
   
 "group/audio": {
     "orientation": "horizontal",
     "modules": [
-      "pulseaudio",
-      "pulseaudio#microphone",
-      ]	
+        "pulseaudio",
+        "pulseaudio#microphone",
+    ]	
 },
  
 "backlight": {
@@ -185,10 +185,10 @@
     "full-at": 100,
     "design-capacity": false,
     "states": {
-      "good": 95,
-      "warning": 30,
-      "critical": 15
-             },
+        "good": 95,
+        "warning": 30,
+        "critical": 15
+    },
     "format": "{icon} {capacity}%",
     "format-charging": "{capacity}%",
     "format-plugged": "󰂄 {capacity}%",
@@ -221,25 +221,26 @@
     "format-alt": " {:%H:%M   %Y, %d %B, %A}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
-      "mode"          : "year",
-      "mode-mon-col"  : 3,
-      "weeks-pos"     : "right",
-      "on-scroll"     : 1,
-      "format": {
-      "months":     "<span color='#ffead3'><b>{}</b></span>",
-      "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-      "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-      "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-      "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
-                }
-                }
-    },              
-    "actions":  {
-      "on-click-right": "mode",
-      "on-click-forward": "tz_up",
-      "on-click-backward": "tz_down",
-      "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down"
+        "mode"          : "year",
+        "mode-mon-col"  : 3,
+        "weeks-pos"     : "right",
+        "on-scroll"     : 1,
+        "format": {
+        "months":     "<span color='#ffead3'><b>{}</b></span>",
+        "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+        "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+        }
+    }
+},              
+
+"actions":  {
+    "on-click-right": "mode",
+    "on-click-forward": "tz_up",
+    "on-click-backward": "tz_down",
+    "on-scroll-up": "shift_up",
+    "on-scroll-down": "shift_down"
 },
    
 "cpu": {
@@ -280,33 +281,33 @@
     "separate-outputs": true,
     "offscreen-css" : true,
     "offscreen-css-text": "(inactive)",
-     "rewrite": {
-          "(.*) — Mozilla Firefox": " $1",
-          "(.*) - fish": "> [$1]",
-      "(.*) - zsh": "> [$1]",
-      "(.*) - kitty": "> [$1]",
+    "rewrite": {
+        "(.*) — Mozilla Firefox": " $1",
+        "(.*) - fish": "> [$1]",
+        "(.*) - zsh": "> [$1]",
+        "(.*) - kitty": "> [$1]",
     },
 },
   
 "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
-      "activated": " ",
-      "deactivated": " ",
-                    }
+        "activated": " ",
+        "deactivated": " ",
+    }
 },
     
 "keyboard-state": {
     //"numlock": true,
     "capslock": true,
     "format": {
-      "numlock": "N {icon}",
-    "capslock":"󰪛 {icon}",
-        }, 
+        "numlock": "N {icon}",
+        "capslock":"󰪛 {icon}",
+    }, 
     "format-icons": {
-      "locked": "",
-      "unlocked": ""
-              },
+        "locked": "",
+        "unlocked": ""
+    },
 },
     
 "memory": {
@@ -389,8 +390,8 @@
         "phone": "",
         "portable": "",
         "car": "",
-    "default": ["", "", "󰕾", ""], 
-    "ignored-sinks": ["Easy Effects Sink"],
+        "default": ["", "", "󰕾", ""], 
+        "ignored-sinks": ["Easy Effects Sink"],
     },
     "scroll-step": 5.0,
     "on-click": "~/.config/hypr/scripts/volume.sh --toggle",
@@ -448,9 +449,9 @@
     "on-click": "activate",
     "on-click-middle": "close",
     "ignore-list": [
-          "wofi",
-          "rofi",  
-                   ]
+        "wofi",
+        "rofi",  
+    ]
 },
       
 "custom/cycle_wall":{
@@ -476,7 +477,7 @@
     "interval": 1,
     "format": " {}",
     "on-click": "~/.config/hypr/scripts/switch_kb_layout.sh",
-    },
+},
     
 "custom/light_dark": {
     "format": "{}",
@@ -537,14 +538,14 @@
     "tooltip":true,     
     "format": "{icon} {}",
     "format-icons": {
-      "notification": "<span foreground='red'><sup></sup></span>",
-      "none": "",
-      "dnd-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-none": "",
-      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-      "inhibited-none": "",
-      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-inhibited-none": ""
+        "notification": "<span foreground='red'><sup></sup></span>",
+        "none": "",
+        "dnd-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-none": "",
+        "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "inhibited-none": "",
+        "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-inhibited-none": ""
     },
     "return-type": "json",
     "exec-if": "which swaync-client",
@@ -635,16 +636,16 @@
 "clock#vertical": {
 	"format": "{:\n%H\n%M\n%S\n\n \n%d\n%m\n%y}",
 	"interval": 1,
-     //"format": "{:\n%I\n%M\n%p\n\n \n%d\n%m\n%y}",
-     "tooltip": true,
-     "tooltip-format": "{calendar}",
-     "calendar": {
-       "mode": "year",
-       "mode-mon-col": 3,
-       "format": {
-       "today": "<span color='#0dbc79'>{}</span>",
-       }
-     }
+    //"format": "{:\n%I\n%M\n%p\n\n \n%d\n%m\n%y}",
+    "tooltip": true,
+    "tooltip-format": "{calendar}",
+    "calendar": {
+        "mode": "year",
+        "mode-mon-col": 3,
+        "format": {
+            "today": "<span color='#0dbc79'>{}</span>",
+        } 
+    }
 },
 
 "cpu#vertical": {
@@ -674,9 +675,9 @@
         "phone": "",
         "portable": "",
         "car": "",
-    "default": ["", "", "󰕾", ""],
-	"tooltip-format": "{icon} {desc} | {volume}%", 
-    "ignored-sinks": ["Easy Effects Sink"],
+        "default": ["", "", "󰕾", ""],
+	    "tooltip-format": "{icon} {desc} | {volume}%", 
+        "ignored-sinks": ["Easy Effects Sink"],
 	},
     "scroll-step": 5.0,
     "on-click": "~/.config/hypr/scripts/volume.sh --toggle",
