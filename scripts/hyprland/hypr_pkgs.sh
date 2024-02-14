@@ -30,6 +30,21 @@ install_package() {
 	fi
 }
 
+install_package_pacman() {
+	if pacman -Q "$1" &>/dev/null; then
+		echo -e "${OK} $1 is already installed. Skipping..."
+	else
+		echo -e "${NOTE} Installing $1 ..."
+		sudo pacman -S --noconfirm "$1"
+		if pacman -Q "$1" &>/dev/null; then
+			echo -e "${OK} $1 was installed."
+		else
+			echo -e "${ERROR} $1 failed to install. You may need to install manually."
+			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>~/install.log
+		fi
+	fi
+}
+
 uninstall_package() {
 	if pacman -Qi "$1" &>>/dev/null; then
 		echo -e "${NOTE} Uninstalling $1 ..."
@@ -43,54 +58,50 @@ uninstall_package() {
 	fi
 }
 
-# add packages wanted here
-extra=(
-	microsoft-edge-stable
-	arttime-git
-	shell-color-scripts
-	pipes.sh
-)
-
-hypr_package=(
-	cliphist
-	curl
-	grim
+hypr_aur_package=(
 	gvfs
 	gvfs-mtp
 	imagemagick
-	jq
 	kitty
 	kvantum
 	nano
+	python-requests
+	qt6-svg
+	rofi-lbonn-wayland-git
+	swaylock-effects-git
+	swaync
+	swww
+	wlogout
+)
+
+hypr_pacman_package=(
+	curl
+	grim
+	waybar
+	jq
+	slurp
+    swappy
+	cliphist
 	network-manager-applet
 	pamixer
 	pavucontrol
 	pipewire-alsa
 	playerctl
 	polkit-gnome
-	python-requests
 	python-pywal
 	qt5ct
 	qt6ct
-	qt6-svg
-	rofi-lbonn-wayland-git
-	slurp
 	swappy
 	swayidle
-	swaylock-effects-git
-	swaync
-	swww
-	waybar
 	wget
 	wl-clipboard
-	wlogout
 	xdg-user-dirs
 	xdg-utils
 	yad
 )
 
 # the following packages can be deleted. however, dotfiles may not work properly
-hypr_package_optional=(
+extra=(
 	brightnessctl
 	btop
 	cava
@@ -104,6 +115,10 @@ hypr_package_optional=(
 	pacman-contrib
 	vim
 	yt-dlp
+	microsoft-edge-stable
+	arttime-git
+	shell-color-scripts
+	pipes.sh
 )
 
 fonts=(
@@ -125,7 +140,7 @@ uninstall=(
 # Installation of main components
 printf "\n%s - Installing hyprland packages.... \n" "${NOTE}"
 
-for PKG1 in "${hypr_package[@]}" "${hypr_package_optional[@]}" "${fonts[@]}" "${extra[@]}"; do
+for PKG1 in "${hypr_aur_package[@]}" "${hypr_pacman_package[@]}" "${fonts[@]}" "${extra[@]}"; do
 	install_package "$PKG1"
 	if [ $? -ne 0 ]; then
 		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"
