@@ -220,7 +220,6 @@ chsh -s $(which zsh)
 
 # Set some files as executable
 chmod +x ~/.config/hypr/scripts/*
-# Set executable for initial-boot.sh
 chmod +x ~/.config/hypr/boot.sh
 printf "\n%.0s" {1..3}
 
