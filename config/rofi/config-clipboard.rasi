@@ -96,7 +96,7 @@ entry {
     enabled:                    true;
     text-color:                 inherit;
     cursor:                     text;
-    placeholder:                "CTRL Del - Cliphist del || Alt Del - cliphist wipe";
+    placeholder:                "Ctrl Del - Delete one || Alt Del - Delete all";
     placeholder-color:          inherit;
     background-color:           transparent;
 }
