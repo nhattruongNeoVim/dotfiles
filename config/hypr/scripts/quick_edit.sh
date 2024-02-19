@@ -32,7 +32,7 @@ main() {
 		kitty -e nvim "$configs/keybinds.conf"
 		;;
 	6)
-		kitty -e nvim "$configs/laptops.conf"
+		kitty -e nvim "$configs/laptop.conf"
 		;;
 	7)
 		kitty -e nvim "$configs/settings.conf"
