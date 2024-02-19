@@ -47,6 +47,7 @@ extra=(
     bat
     libreoffice-fresh
     jdk-openjdk
+    file-roller
 )
 
 # Installation of main components
