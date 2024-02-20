@@ -2,7 +2,7 @@
 
 clear
 
-wallpaper=$HOME/Pictures/wallpapers/sunset.jpg
+wallpaper=$HOME/Pictures/wallpapers/anime-kanji.jpg
 waybar_style="$HOME/.config/waybar/style/simple [pywal].css"
 
 # Check if running as root. If root, script will exit
