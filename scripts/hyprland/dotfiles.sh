@@ -202,13 +202,13 @@ cp -r config/* ~/.config/ && { echo "${OK}Copy completed!"; } || {
 	echo "${ERROR} Failed to copy config files."
 }
 
-# copying Wallpapers
+# Copying wallpapers
 mkdir -p ~/Pictures/wallpapers
 cp -r wallpapers ~/Pictures/ && { echo "${OK}Copy completed!"; } || {
 	echo "${ERROR} Failed to copy wallpapers."
 }
 
-# copying zsh
+# Copying other
 cp assets/.zshrc ~ && cp assets/.ideavimrc ~ && { echo "${OK}Copy completed!"; } || {
 	echo "${ERROR} Failed to copy wallpapers."
 }
