@@ -96,7 +96,7 @@ entry {
     enabled:                    true;
     text-color:                 inherit;
     cursor:                     text;
-    placeholder:                "Ctrl Del - Delete one || Alt Del - Delete all";
+    placeholder:                "Ctrl Del - Del one || Alt Del - Del all";
     placeholder-color:          inherit;
     background-color:           transparent;
 }
