@@ -97,7 +97,7 @@ printf "${NOTE} Detecting keyboard layout to prepare necessary changes in hyprla
 
 # Prompt the user to confirm whether the detected layout is correct
 while true; do
-	read -p "$ORANGE Detected current keyboard layout is: $layout. Is this correct? [y/n] " confirm
+	read -n1 -rep "$ORANGE Detected current keyboard layout is: $layout. Is this correct? [y/n] " confirm
 
 	case $confirm in
 	[yY])
@@ -135,7 +135,7 @@ while true; do
 	echo "$ORANGE Select monitor resolution for better Rofi appearance:"
 	echo "$YELLOW 1. Equal to or less than 1080p (≤ 1080p)"
 	echo "$YELLOW 2. Equal to or higher than 1440p (≥ 1440p)"
-	read -p "$CAT Enter the number of your choice: " choice
+	read -n1 -rep "$CAT Enter the number of your choice: " choice
 
 	case $choice in
 	1)
@@ -242,7 +242,7 @@ printf "\n%.0s" {1..2}
 
 while true; do
 	cd ~
-	read -n1 -rep "${CAT} Would you like to download additional wallpapers? (y/n)" WALL
+	read -n1 -rep "${CAT} Would you like to download additional wallpapers? (y/n) " WALL
 	case $WALL in
 	[Yy])
 		echo "${NOTE} Downloading additional wallpapers..."

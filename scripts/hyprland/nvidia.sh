@@ -109,7 +109,7 @@ fi
 
 # Blacklist nouveau
 if [[ -z $blacklist_nouveau ]]; then
-	read -n1 -rep "${CAT} Would you like to blacklist nouveau? (y/n)" blacklist_nouveau
+	read -n1 -rep "${CAT} Would you like to blacklist nouveau? (y/n) " blacklist_nouveau
 fi
 echo
 if [[ $blacklist_nouveau =~ ^[Yy]$ ]]; then
