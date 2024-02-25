@@ -13,17 +13,17 @@ RESET=$(tput sgr0)
 
 # Check dotfiles
 cd ~
-if [ -d dotfiles ]; then
-	cd dotfiles || {
-		printf "%s - Failed to cd dotfiles directory\n" "${ERROR}"
+if [ -d grub-theme ]; then
+	cd grub-theme/themes || {
+		printf "%s - Failed to cd grub-theme directory\n" "${ERROR}"
 		exit 1
 	}
 else
-	git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1 || {
-		printf "%s - Failed to clone dotfiles \n" "${ERROR}"
+	git clone https://github.com/voidlhf/StarRailGrubThemes ~/grub-theme --depth 1 || {
+		printf "%s - Failed to clone StarRailGrubThemes\n" "${ERROR}"
 		exit 1
 	}
-	cd dotfiles || {
+	cd grub-theme/themes || {
 		printf "%s - Failed to enter dotfiles directory\n" "${ERROR}"
 		exit 1
 	}
@@ -32,7 +32,6 @@ fi
 theme="BlackSwan"
 grub="/etc/default/grub"
 grub_theme="/boot/grub/themes/$theme/theme.txt"
-echo $grub_theme
 
 while true; do
 	read -n1 -rep "${NOTE}Do you want to install grub custom theme? (y/n) " answer
@@ -57,7 +56,7 @@ while true; do
         rm -fr "$theme".tar.gz
 
         sudo mkdir -p /boot/grub/themes
-        sudo cp -r assets/$theme /boot/grub/themes
+        sudo cp -r $theme /boot/grub/themes
 
         sudo grub-mkconfig -o /boot/grub/grub.cfg
 
