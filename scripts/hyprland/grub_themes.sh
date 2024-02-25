@@ -22,8 +22,14 @@ while true; do
 
 	if [[ $answer == "y" || $answer == "Y" ]]; then
 
+		# Check file
+		if [ ! -f "$grub" ]; then
+			echo "${WARN} $grub does not exist"
+			break
+		fi
+
 		# Check grub themes file
-        cd ~
+		cd ~
 		if [ -d grub_themes ]; then
 			rm -rf grub_themes || {
 				printf "%s - Failed to remove old grub themes folder\n" "${ERROR}"
@@ -40,26 +46,39 @@ while true; do
 			}
 		fi
 
-		if [ -f "$grub" ]; then
-			if grep -q "^GRUB_THEME=" "$grub"; then
-				sudo sed -i "s|^GRUB_THEME=.*|GRUB_THEME=\"$grub_theme\"|" "$grub"
-				echo "${OK} Updated GRUB_THEME in $grub"
-			else
-				# If GRUB_THEME doesn't exist, add it to grub file
-				echo "GRUB_THEME=\"$grub_theme\"" | sudo tee -a "$grub" >/dev/null
-				echo "${OK} Added GRUB_THEME to $grub"
-			fi
+		printf "\n%.0s" {1..2}
+
+		# Update GRUB_TIMEOUT
+		sudo sed -i "s/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=\"-1\"/" "$grub"
+		echo "${OK} Updated GRUB_TIMEOUT in $grub to nerver"
+
+		# Check and update GRUB_THEME
+		if grep -q "^GRUB_THEME=" "$grub"; then
+			sudo sed -i "s|^GRUB_THEME=.*|GRUB_THEME=\"$grub_theme\"|" "$grub"
+			echo "${OK} Updated GRUB_THEME in $grub"
 		else
-			echo "${WARN} $grub does not exist"
-			break
+			echo "GRUB_THEME=\"$grub_theme\"" | sudo tee -a "$grub" >/dev/null
+			echo "${OK} Added GRUB_THEME to $grub"
 		fi
 
-		tar xzvf grub_themes/themes/"$theme".tar.gz
-		rm -fr grub_themes/themes/"$theme".tar.gz
+		# Check and update GRUB_DISABLE_OS_PROBER
+		if grep -q "^#GRUB_DISABLE_OS_PROBER=" "$grub"; then
+			sudo sed -i "s|^#GRUB_DISABLE_OS_PROBER=.*|GRUB_DISABLE_OS_PROBER=false|" "$grub"
+			echo "${OK} Updated GRUB_DISABLE_OS_PROBER in $grub"
+		else
+			echo "GRUB_DISABLE_OS_PROBER=false" | sudo tee -a "$grub" >/dev/null
+			echo "${OK} Added to GRUB_DISABLE_OS_PROBER in  $grub"
+		fi
 
+		printf "\n%.0s" {1..2}
+
+		# Extract and copy theme
+		tar xzvf grub_themes/themes/"$theme".tar.gz >/dev/null
+		rm -fr grub_themes/themes/"$theme".tar.gz
 		sudo mkdir -p /boot/grub/themes
 		sudo cp -r $theme /boot/grub/themes
 
+		# Regenerate grub config
 		sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 		break
