@@ -8,15 +8,15 @@ iDIR="$HOME/.config/swaync/icons"
 
 # Define menu options as an associative array
 declare -A menu_options=(
-	["Remix việt"]="https://youtu.be/wnuIlvOSFK0?si=8tqUEMrKzyu9S9bD"
-	["Playlist việt"]="https://youtube.com/playlist?list=PLJOwSCcWqDV1DMnF0xU0khtDjrB_2w9PL&si=4jtQMXrHTdmgN6PT"
-	["Playlist trung"]="https://youtube.com/playlist?list=PLJOwSCcWqDV1ZVbvGLyJvTjFByhncWHuP&si=qdSAy067FMAiANXf"
-	["Top Youtube Music 2023"]="https://youtube.com/playlist?list=PLDIoUOhQQPlXr63I_vwF9GD8sAKh77dWU&si=y7qNeEVFNgA-XxKy"
-	["Chillhop"]="http://stream.zeno.fm/fyn8eh3h5f8uv"
-	["SmoothChill"]="https://media-ssl.musicradio.com/SmoothChill"
-	["Relaxing Music"]="https://youtube.com/playlist?list=PLMIbmfP_9vb8BCxRoraJpoo4q1yMFg4CE"
-	["Youtube Remix"]="https://youtube.com/playlist?list=PLeqTkIUlrZXlSNn3tcXAa-zbo95j0iN-0"
-	["Korean Drama OST"]="https://youtube.com/playlist?list=PLUge_o9AIFp4HuA-A3e3ZqENh63LuRRlQ"
+	["1.Lofi Girl"]="https://play.streamafrica.net/lofiradio"
+	["2.Easy Rock"]="https://radio-stations-philippines.com/easy-rock"
+	["3.Ghibli Music"]="https://youtube.com/playlist?list=PLNi74S754EXbrzw-IzVhpeAaMISNrzfUy&si=rqnXCZU5xoFhxfOl"
+	["4.Top Youtube Music 2023"]="https://youtube.com/playlist?list=PLDIoUOhQQPlXr63I_vwF9GD8sAKh77dWU&si=y7qNeEVFNgA-XxKy"
+	["5.Chillhop"]="http://stream.zeno.fm/fyn8eh3h5f8uv"
+	["6.SmoothChill"]="https://media-ssl.musicradio.com/SmoothChill"
+	["7.Relaxing Music"]="https://youtube.com/playlist?list=PLMIbmfP_9vb8BCxRoraJpoo4q1yMFg4CE"
+	["8.Youtube Remix"]="https://youtube.com/playlist?list=PLeqTkIUlrZXlSNn3tcXAa-zbo95j0iN-0"
+	["9.Korean Drama OST"]="https://youtube.com/playlist?list=PLUge_o9AIFp4HuA-A3e3ZqENh63LuRRlQ"
 )
 
 # Function for displaying notifications
@@ -26,7 +26,7 @@ notification() {
 
 # Main function
 main() {
-	choice=$(printf "%s\n" "${!menu_options[@]}" | rofi -dmenu -config ~/.config/rofi/config-rofi-Beats.rasi -i -p "")
+	choice=$(printf "%s\n" "${!menu_options[@]}" | sort -n | rofi -dmenu -config ~/.config/rofi/config-rofi-Beats.rasi -i -p "")
 
 	if [ -z "$choice" ]; then
 		exit 1
