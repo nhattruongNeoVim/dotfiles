@@ -7,7 +7,7 @@ IFS=$'\n\t'
 # Define directories
 waybar_layouts="$HOME/.config/waybar/configs"
 waybar_config="$HOME/.config/waybar/config"
-scipts_dir="$HOME/.config/hypr/scripts"
+scripts_dir="$HOME/.config/hypr/scripts"
 rofi_config="$HOME/.config/rofi/config-waybar-layout.rasi"
 
 # Function to display menu options
@@ -23,7 +23,7 @@ menu() {
 # Apply selected configuration
 apply_config() {
 	ln -sf "$waybar_layouts/$1" "$waybar_config"
-	"${scipts_dir}/refresh.sh" &
+	"${scripts_dir}/refresh.sh" &
 }
 
 # Main function
