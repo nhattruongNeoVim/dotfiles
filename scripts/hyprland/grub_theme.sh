@@ -29,8 +29,9 @@ else
 	}
 fi
 
+theme="BlackSwan"
 grub="/etc/default/grub"
-grub_theme="/boot/grub/themes/Huohuo/theme.txt"
+grub_theme="/boot/grub/themes/'$theme'/theme.txt"
 
 while true; do
 	read -n1 -rep "${NOTE}Do you want to install grub custom theme? (y/n) " answer
@@ -51,8 +52,11 @@ while true; do
 			break
 		fi
 
+        tar xzvf "$theme".tar.gz
+        rm -fr "$theme".tar.gz
+
         sudo mkdir -p /boot/grub/themes
-        sudo cp -r assets/Huohuo /boot/grub/themes
+        sudo cp -r assets/$theme /boot/grub/themes
 
         sudo grub-mkconfig -o /boot/grub/grub.cfg
 
