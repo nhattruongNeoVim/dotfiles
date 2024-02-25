@@ -12,7 +12,7 @@ YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
 
 # Variables
-theme="BlackSwan"
+theme="Hanya"
 grub="/etc/default/grub"
 grub_theme="/boot/grub/themes/$theme/theme.txt"
 
@@ -62,8 +62,8 @@ while true; do
 		fi
 
 		# Check and update GRUB_DISABLE_OS_PROBER
-		if grep -q "^#GRUB_DISABLE_OS_PROBER=" "$grub"; then
-			sudo sed -i "s|^#GRUB_DISABLE_OS_PROBER=.*|GRUB_DISABLE_OS_PROBER=false|" "$grub"
+		if grep -q "^.*GRUB_DISABLE_OS_PROBER=" "$grub"; then
+			sudo sed -i "s|^.*GRUB_DISABLE_OS_PROBER=.*|GRUB_DISABLE_OS_PROBER=false|" "$grub"
 			echo "${OK} Updated GRUB_DISABLE_OS_PROBER in $grub"
 		else
 			echo "GRUB_DISABLE_OS_PROBER=false" | sudo tee -a "$grub" >/dev/null
