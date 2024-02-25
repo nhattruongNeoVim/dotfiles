@@ -50,12 +50,22 @@ while true; do
 
 		# Update GRUB_TIMEOUT
 		sudo sed -i "s/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=\"-1\"/" "$grub"
-		echo "${OK} Updated GRUB_TIMEOUT in $grub to nerver"
+		sudo sed -i "s/^GRUB_TIMEOUT_STYLE=.*/GRUB_TIMEOUT_STYLE=\"hidden\"/" "$grub"
+		echo "${OK} Disable grub timeouts in $grub"
+
+		# # Check and diable SUBMENU
+		# if grep -q "^.*GRUB_DISABLE_SUBMENU=" "$grub"; then
+		# 	sudo sed -i "s|^.*GRUB_DISABLE_SUBMENU=.*|GRUB_DISABLE_SUBMENU=y|" "$grub"
+		# 	echo "${OK} Disable submenu in $grub"
+		# else
+		# 	echo "GRUB_DISABLE_SUBMENU=y" | sudo tee -a "$grub" >/dev/null
+		# 	echo "${OK} Added GRUB_DISABLE_SUBMENU to $grub"
+		# fi
 
 		# Check and update GRUB_THEME
-		if grep -q "^GRUB_THEME=" "$grub"; then
-			sudo sed -i "s|^GRUB_THEME=.*|GRUB_THEME=\"$grub_theme\"|" "$grub"
-			echo "${OK} Updated GRUB_THEME in $grub"
+		if grep -q "^.*GRUB_THEME=" "$grub"; then
+			sudo sed -i "s|^.*GRUB_THEME=.*|GRUB_THEME=\"$grub_theme\"|" "$grub"
+			echo "${OK} Updated grub themes in $grub"
 		else
 			echo "GRUB_THEME=\"$grub_theme\"" | sudo tee -a "$grub" >/dev/null
 			echo "${OK} Added GRUB_THEME to $grub"
@@ -64,7 +74,7 @@ while true; do
 		# Check and update GRUB_DISABLE_OS_PROBER
 		if grep -q "^.*GRUB_DISABLE_OS_PROBER=" "$grub"; then
 			sudo sed -i "s|^.*GRUB_DISABLE_OS_PROBER=.*|GRUB_DISABLE_OS_PROBER=false|" "$grub"
-			echo "${OK} Updated GRUB_DISABLE_OS_PROBER in $grub"
+			echo "${OK} Updated os-prober in $grub"
 		else
 			echo "GRUB_DISABLE_OS_PROBER=false" | sudo tee -a "$grub" >/dev/null
 			echo "${OK} Added to GRUB_DISABLE_OS_PROBER in  $grub"
