@@ -12,7 +12,7 @@ YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
 
 # Variables
-theme="Hanya"
+theme="Houhou"
 grub="/etc/default/grub"
 grub_theme="/boot/grub/themes/$theme/theme.txt"
 
