@@ -136,7 +136,7 @@ if [ -d dotfiles ]; then
 fi
 
 # Clone dotfiles
-printf "\n${NOTE} Clone dotfiles."
+printf "\n${NOTE} Clone dotfiles. "
 if git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1; then
 	printf "\n${OK} Clone dotfiles succesfully.\n"
 fi
@@ -182,6 +182,10 @@ if [ "$xdph" == "Y" ]; then
 fi
 
 bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/input_group.sh)
+
+if [ "$dual_boot" == "Y" ]; then
+	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/grub_themes.sh)
+fi
 
 if [ "$dots" == "Y" ]; then
 	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/dotfiles.sh)
