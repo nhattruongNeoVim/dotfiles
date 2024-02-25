@@ -31,7 +31,8 @@ fi
 
 theme="BlackSwan"
 grub="/etc/default/grub"
-grub_theme="/boot/grub/themes/'$theme'/theme.txt"
+grub_theme="/boot/grub/themes/$theme/theme.txt"
+echo $grub_theme
 
 while true; do
 	read -n1 -rep "${NOTE}Do you want to install grub custom theme? (y/n) " answer
