@@ -11,32 +11,34 @@ ORANGE=$(tput setaf 166)
 YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
 
-# Check dotfiles
-cd ~
-if [ -d grub-theme ]; then
-	cd grub-theme/themes || {
-		printf "%s - Failed to cd grub-theme directory\n" "${ERROR}"
-		exit 1
-	}
-else
-	git clone https://github.com/voidlhf/StarRailGrubThemes ~/grub-theme --depth 1 || {
-		printf "%s - Failed to clone StarRailGrubThemes\n" "${ERROR}"
-		exit 1
-	}
-	cd grub-theme/themes || {
-		printf "%s - Failed to enter dotfiles directory\n" "${ERROR}"
-		exit 1
-	}
-fi
-
+# Variables
 theme="BlackSwan"
 grub="/etc/default/grub"
 grub_theme="/boot/grub/themes/$theme/theme.txt"
 
+# Ask user
 while true; do
 	read -n1 -rep "${NOTE}Do you want to install grub custom theme? (y/n) " answer
 
 	if [[ $answer == "y" || $answer == "Y" ]]; then
+
+		# Check grub themes file
+        cd ~
+		if [ -d grub_themes ]; then
+			rm -rf grub_themes || {
+				printf "%s - Failed to remove old grub themes folder\n" "${ERROR}"
+				exit 1
+			}
+			printf "\n${NOTE} Clone grub_themes. " && git clone https://github.com/nhattruongNeoVim/grub_themes.git --depth 1 || {
+				printf "%s - Failed to cd grub_themes directory\n" "${ERROR}"
+				exit 1
+			}
+		else
+			printf "\n${NOTE} Clone grub_themes. " && git clone https://github.com/nhattruongNeoVim/grub_themes.git --depth 1 || {
+				printf "%s - Failed to clone grub_themes\n" "${ERROR}"
+				exit 1
+			}
+		fi
 
 		if [ -f "$grub" ]; then
 			if grep -q "^GRUB_THEME=" "$grub"; then
@@ -52,13 +54,13 @@ while true; do
 			break
 		fi
 
-        tar xzvf "$theme".tar.gz
-        rm -fr "$theme".tar.gz
+		tar xzvf grub_themes/themes/"$theme".tar.gz
+		rm -fr grub_themes/themes/"$theme".tar.gz
 
-        sudo mkdir -p /boot/grub/themes
-        sudo cp -r $theme /boot/grub/themes
+		sudo mkdir -p /boot/grub/themes
+		sudo cp -r $theme /boot/grub/themes
 
-        sudo grub-mkconfig -o /boot/grub/grub.cfg
+		sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 		break
 	elif [[ $answer == "n" || $answer == "N" ]]; then
