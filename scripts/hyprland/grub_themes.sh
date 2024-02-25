@@ -12,7 +12,7 @@ YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
 
 # Variables
-theme="Houhou"
+theme="Huohuo"
 grub="/etc/default/grub"
 grub_theme="/boot/grub/themes/$theme/theme.txt"
 
@@ -87,6 +87,8 @@ while true; do
 		rm -fr grub_themes/themes/"$theme".tar.gz
 		sudo mkdir -p /boot/grub/themes
 		sudo cp -r $theme /boot/grub/themes
+		rm -rf $theme
+        rm -rf grub_themes
 
 		# Regenerate grub config
 		sudo grub-mkconfig -o /boot/grub/grub.cfg
