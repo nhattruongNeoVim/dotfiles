@@ -26,10 +26,10 @@ install_package_pacman() {
 	fi
 }
 
+install_package_pacman firefox
+
 firefox_prefs=$(find "$HOME/.mozilla/firefox" -maxdepth 1 -type d -name "*.default-*" -exec echo {}/prefs.js \;)
 firefox_profile=$(find "$HOME/.mozilla/firefox" -maxdepth 1 -type d -name "*.default-*" -exec echo {}/ \;)
-
-install_package_pacman firefox
 
 if grep -q "^.*toolkit.legacyUserProfileCustomizations.stylesheets.*" "$firefox_prefs"; then
 	sudo sed -i "s|^.*toolkit.legacyUserProfileCustomizations.stylesheets.*|user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);|" "$firefox_prefs"
