@@ -96,11 +96,11 @@ ask_custom_option "-Type AUR helper" "paru or yay" aur_helper
 printf "\n"
 ask_yes_no "-Do you dual boot with window?" dual_boot
 printf "\n"
-ask_yes_no "-Do you want to set battery charging limit?" battery
+ask_yes_no "-Do you want to set battery charging limit (for laptop)?" battery
 printf "\n"
 ask_yes_no "-Do you have any nvidia gpu in your system?" nvidia
 printf "\n"
-ask_yes_no "-Install GTK themes (required for Dark/Light function)?" gtk_themes
+ask_yes_no "-Install GTK themes?" gtk_themes
 printf "\n"
 ask_yes_no "-Do you want to configure Bluetooth?" bluetooth
 printf "\n"
