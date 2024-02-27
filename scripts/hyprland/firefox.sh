@@ -13,38 +13,64 @@ RESET=$(tput sgr0)
 
 # Function for installing packages
 install_package_pacman() {
-    local package="$1"
-    if pacman -Q "$package" &>/dev/null; then
-        echo -e "${OK} $package is already installed. Skipping..."
-    else
-        echo -e "${NOTE} Installing $package ..."
-        sudo pacman -S --noconfirm "$package"
-        if [ $? -eq 0 ]; then
-            echo -e "${OK} $package was installed."
-        else
-            echo -e "${ERROR} $package failed to install. Please install it manually."
-            echo "-> $package failed to install. You may need to install it manually! Sorry I have tried :(" >>~/install.log
-        fi
-    fi
+	local package="$1"
+	if pacman -Q "$package" &>/dev/null; then
+		echo -e "${OK} $package is already installed. Skipping..."
+	else
+		echo -e "${NOTE} Installing $package ..."
+		sudo pacman -S --noconfirm "$package"
+		if [ $? -eq 0 ]; then
+			echo -e "${OK} $package was installed."
+		else
+			echo -e "${ERROR} $package failed to install. Please install it manually."
+			echo "-> $package failed to install. You may need to install it manually! Sorry I have tried :(" >>~/install.log
+		fi
+	fi
 }
 
 # Variables
 firefox_prefs=$(find "$HOME/.mozilla/firefox" -maxdepth 1 -type d -name "*.default-*" -exec echo {}/prefs.js \;)
+firefox_profile=$(find "$HOME/.mozilla/firefox" -maxdepth 1 -type d -name "*.default-*" -exec echo {}/ \;)
 
 # Install firefox
 install_package_pacman firefox
 
 # Custom firefox
 if grep -q "^.*toolkit.legacyUserProfileCustomizations.stylesheets.*" "$firefox_prefs"; then
-    echo "${OK} Firefox customization already applied."
+	sudo sed -i "s|^.*toolkit.legacyUserProfileCustomizations.stylesheets.*|user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);|" "$firefox_prefs"
+	echo "${OK} Firefox customization already applied."
 else
-    echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" | sudo tee -a "$firefox_prefs" >/dev/null
-    echo "${OK} Added Firefox customization."
+	echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" | sudo tee -a "$firefox_prefs" >/dev/null
+	echo "${OK} Added Firefox customization."
 fi
 
 if grep -q "^.*widget.gtk.ignore-bogus-leave-notify.*" "$firefox_prefs"; then
-    echo "${OK} Firefox customization already applied."
+	sudo sed -i "s|^.*widget.gtk.ignore-bogus-leave-notify.*|user_pref(\"widget.gtk.ignore-bogus-leave-notify\", 1);|" "$firefox_prefs"
+	echo "${OK} Firefox customization already applied."
 else
-    echo "user_pref(\"widget.gtk.ignore-bogus-leave-notify\", 1);" | sudo tee -a "$firefox_prefs" >/dev/null
-    echo "${OK} Added Firefox customization."
+	echo "user_pref(\"widget.gtk.ignore-bogus-leave-notify\", 1);" | sudo tee -a "$firefox_prefs" >/dev/null
+	echo "${OK} Added Firefox customization."
+fi
+
+# Check dotfiles
+cd ~
+if [ -d dotfiles ]; then
+	cd dotfiles || {
+		printf "%s - Failed to enter dotfiles config directory\n" "${ERROR}"
+		exit 1
+	}
+else
+	printf "\n${NOTE} Clone dotfiles. " && git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1 || {
+		printf "%s - Failed to clone dotfiles \n" "${ERROR}"
+		exit 1
+	}
+	cd dotfiles || {
+		printf "%s - Failed to enter dotfiles directory\n" "${ERROR}"
+		exit 1
+	}
+fi
+
+# Copy chrome
+if cp -r assets/chrome $firefox_profile; then
+	echo "${OK} Copy chrome files successfully."
 fi
