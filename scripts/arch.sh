@@ -92,19 +92,21 @@ ask_custom_option() {
 }
 
 printf "\n"
-ask_custom_option "-Type AUR helper" "paru or yay" aur_helper
+ask_custom_option "-Choose your AUR helper" "paru or yay" aur_helper
 printf "\n"
 ask_yes_no "-Do you dual boot with window?" dual_boot
 printf "\n"
-ask_yes_no "-Do you want to set battery charging limit (for laptop)?" battery
-printf "\n"
-ask_yes_no "-Do you have any nvidia gpu in your system?" nvidia
-printf "\n"
-ask_yes_no "-Install GTK themes?" gtk_themes
+ask_yes_no "-Do you want to install GTK themes?" gtk_themes
 printf "\n"
 ask_yes_no "-Do you want to configure Bluetooth?" bluetooth
 printf "\n"
+ask_yes_no "-Do you have any nvidia gpu in your system?" nvidia
+printf "\n"
 ask_yes_no "-Do you want to install Thunar file manager?" thunar
+printf "\n"
+ask_yes_no "-Do you want to install & configure Firefox browser?" firefox
+printf "\n"
+ask_yes_no "-Do you want to set battery charging limit (for laptop)?" battery
 printf "\n"
 ask_yes_no "-Install & configure SDDM log-in Manager plus (OPTIONAL) SDDM Theme?" sddm
 printf "\n"
@@ -171,6 +173,10 @@ fi
 
 if [ "$thunar" == "Y" ]; then
 	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/thunar.sh)
+fi
+
+if [ "$firefox" == "Y" ]; then
+	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/firefox.sh)
 fi
 
 if [ "$sddm" == "Y" ]; then

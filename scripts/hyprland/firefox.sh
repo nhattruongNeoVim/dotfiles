@@ -1,7 +1,6 @@
 #!/bin/bash
 # Custom firefox
 
-# Set some colors for output messages
 OK="$(tput setaf 2)[OK]$(tput sgr0)"
 ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
 NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
@@ -11,7 +10,6 @@ ORANGE=$(tput setaf 166)
 YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
 
-# Function for installing packages
 install_package_pacman() {
 	local package="$1"
 	if pacman -Q "$package" &>/dev/null; then
@@ -28,14 +26,11 @@ install_package_pacman() {
 	fi
 }
 
-# Variables
 firefox_prefs=$(find "$HOME/.mozilla/firefox" -maxdepth 1 -type d -name "*.default-*" -exec echo {}/prefs.js \;)
 firefox_profile=$(find "$HOME/.mozilla/firefox" -maxdepth 1 -type d -name "*.default-*" -exec echo {}/ \;)
 
-# Install firefox
 install_package_pacman firefox
 
-# Custom firefox
 if grep -q "^.*toolkit.legacyUserProfileCustomizations.stylesheets.*" "$firefox_prefs"; then
 	sudo sed -i "s|^.*toolkit.legacyUserProfileCustomizations.stylesheets.*|user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);|" "$firefox_prefs"
 	echo "${OK} Firefox customization already applied."
@@ -52,7 +47,6 @@ else
 	echo "${OK} Added Firefox customization."
 fi
 
-# Check dotfiles
 cd ~
 if [ -d dotfiles ]; then
 	cd dotfiles || {
@@ -70,7 +64,6 @@ else
 	}
 fi
 
-# Copy chrome
 if cp -r assets/chrome $firefox_profile; then
 	echo "${OK} Copy chrome files successfully."
 fi
