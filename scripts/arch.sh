@@ -109,8 +109,8 @@ ask_yes_no "-Do you have any nvidia gpu in your system?" nvidia
 printf "\n"
 ask_yes_no "-Do you want to install Thunar file manager?" thunar
 printf "\n"
-ask_yes_no "-Do you want to install & configure Firefox browser?" firefox
-printf "\n"
+#ask_yes_no "-Do you want to install & configure Firefox browser?" firefox
+#printf "\n"
 ask_yes_no "-Do you want to set battery charging limit (for laptop)?" battery
 printf "\n"
 ask_yes_no "-Install & configure SDDM log-in Manager plus (OPTIONAL) SDDM Theme?" sddm
@@ -180,9 +180,9 @@ if [ "$thunar" == "Y" ]; then
 	execute_script "thunar.sh"
 fi
 
-if [ "$firefox" == "Y" ]; then
-	execute_script "firefox.sh"
-fi
+#if [ "$firefox" == "Y" ]; then
+#	execute_script "firefox.sh"
+#fi
 
 if [ "$sddm" == "Y" ]; then
 	execute_script "sddm.sh"
