@@ -18,7 +18,7 @@ grub_theme="/boot/grub/themes/$theme/theme.txt"
 
 # Ask user
 while true; do
-	read -n1 -rep "${NOTE}Do you want to install grub custom theme? (y/n) " answer
+	read -n1 -rep "\n${NOTE}Do you want to install grub custom theme? (y/n) " answer
 
 	if [[ $answer == "y" || $answer == "Y" ]]; then
 
