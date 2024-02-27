@@ -91,6 +91,11 @@ ask_custom_option() {
 	done
 }
 
+execute_script() {
+	local script_url="https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/$1"
+    bash <(curl -sSL "$script_url")
+}
+
 printf "\n"
 ask_custom_option "-Choose your AUR helper" "paru or yay" aur_helper
 printf "\n"
@@ -123,7 +128,7 @@ fi
 
 printf "\n%.0s" {1..2}
 if [ "$battery" == "Y" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/battery.sh)
+	execute_script "battery.sh"
 fi
 
 # Update system
@@ -143,58 +148,58 @@ if git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git ~/dotf
 	printf "\n${OK} Clone dotfiles succesfully.\n"
 fi
 
-bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/pacman.sh)
+execute_script "pacman.sh"
 sleep 0.5
-bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/pacman_pkgs.sh)
+execute_script "pacman_pkgs.sh"
 
 if [ "$aur_helper" == "paru" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/paru.sh)
+	execute_script "paru.sh"
 elif [ "$aur_helper" == "yay" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/yay.sh)
+	execute_script "yay.sh"
 fi
 
-bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/hypr_pkgs.sh)
+execute_script "hypr_pkgs.sh"
 sleep 0.5
-bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/pipewire.sh)
+execute_script "pipewire.sh"
 
 if [ "$nvidia" == "Y" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/nvidia.sh)
+	execute_script "nvidia.sh"
 elif [ "$nvidia" == "N" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/hypr.sh)
+	execute_script "hypr.sh"
 fi
 
 if [ "$gtk_themes" == "Y" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/gtk_themes.sh)
+	execute_script "gtk_themes.sh"
 fi
 
 if [ "$bluetooth" == "Y" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/bluetooth.sh)
+	execute_script "bluetooth.sh"
 fi
 
 if [ "$thunar" == "Y" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/thunar.sh)
+	execute_script "thunar.sh"
 fi
 
 if [ "$firefox" == "Y" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/firefox.sh)
+	execute_script "firefox.sh"
 fi
 
 if [ "$sddm" == "Y" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/sddm.sh)
+	execute_script "sddm.sh"
 fi
 
 if [ "$xdph" == "Y" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/xdph.sh)
+	execute_script "xdph.sh"
 fi
-
-bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/input_group.sh)
 
 if [ "$dual_boot" == "Y" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/grub_themes.sh)
+	execute_script "grub_themes.sh"
 fi
 
+execute_script "input_group.sh"
+
 if [ "$dots" == "Y" ]; then
-	bash <(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/dotfiles.sh)
+	execute_script "dotfiles.sh"
 fi
 
 cd ~

@@ -10,7 +10,7 @@ RESET="$(tput sgr0)"
 echo -e "${NOTE} Setting up battery charge limit."
 
 while true; do
-	read -rep "Enter the battery charge limit (as a percentage): " number
+	read -rep "${NOTE} Enter the battery charge limit (as a percentage): " number
 
 	if [[ "$number" =~ ^[0-9]+$ && "$number" -ge 0 && "$number" -le 100 ]]; then
 		if [[ -d "/sys/class/power_supply/BAT0" ]]; then
@@ -22,7 +22,7 @@ while true; do
 			exit 1
 		fi
 
-		printf "${CAT} Configuring systemd unit for $battery ... \n"
+		printf "\n${CAT} Configuring systemd unit for $battery ... \n"
 		{
 			echo "[Unit]"
 			echo "Description=Set battery charge limit for $battery"
@@ -39,7 +39,7 @@ while true; do
 		sudo systemctl enable charge_limit_battery.service
 		sudo systemctl start charge_limit_battery.service
 
-		printf "${OK} Done\n"
+		printf "\n${OK} Done\n"
 		break
 	else
 		echo "${ERROR} Invalid input. Please enter a valid number between 0 and 100."
