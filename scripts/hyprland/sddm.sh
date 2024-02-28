@@ -30,11 +30,25 @@ install_package() {
 	fi
 }
 
+install_package_pacman() {
+	if pacman -Q "$1" &>/dev/null; then
+		echo -e "${OK} $1 is already installed. Skipping..."
+	else
+		echo -e "${NOTE} Installing $1 ..."
+		sudo pacman -S --noconfirm "$1"
+		if pacman -Q "$1" &>/dev/null; then
+			echo -e "${OK} $1 was installed."
+		else
+			echo -e "${ERROR} $1 failed to install. You may need to install manually."
+			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>~/install.log
+		fi
+	fi
+}
+
 sddm=(
 	qt5-graphicaleffects
 	qt5-quickcontrols2
 	qt5-svg
-	sddm-git
 )
 
 # Check if SDDM is already installed
@@ -56,6 +70,7 @@ for package in "${sddm[@]}"; do
 		echo -e "\e[1A\e[K${ERROR} - $package install has failed"
 	}
 done
+install_package_pacman sddm
 
 # Check if other login managers installed and disabling its service before enabling sddm
 for login_manager in lightdm gdm lxdm lxdm-gtk3; do
