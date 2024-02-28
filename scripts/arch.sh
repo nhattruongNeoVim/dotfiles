@@ -111,7 +111,7 @@ ask_yes_no "-Do you want to install Thunar file manager?" thunar
 printf "\n"
 #ask_yes_no "-Do you want to install & configure Firefox browser?" firefox
 #printf "\n"
-ask_yes_no "-Do you want to set battery charging limit (for laptop)?" battery
+ask_yes_no "-Do you want to set battery charging limit (only for laptop)?" battery
 printf "\n"
 ask_yes_no "-Install & configure SDDM log-in Manager plus (OPTIONAL) SDDM Theme?" sddm
 printf "\n"
