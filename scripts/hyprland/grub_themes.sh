@@ -1,5 +1,5 @@
 #!/bin/bash
-# Custom grub #
+# Custom grub theme #
 
 # Set some colors for output messages
 OK="$(tput setaf 2)[OK]$(tput sgr0)"
@@ -16,17 +16,19 @@ theme="Huohuo"
 grub="/etc/default/grub"
 grub_theme="/boot/grub/themes/$theme/theme.txt"
 
+echo -e "${NOTE} Setting up grub theme."
+
+# Check file
+if [ ! -f "$grub" ]; then
+	echo "${WARN} $grub does not exist. Skipping"
+    exit 1
+fi
+
 # Ask user
 while true; do
-	read -n1 -rep "\n${NOTE}Do you want to install grub custom theme? (y/n) " answer
+	read -n1 -rep "${NOTE} Do you want to install grub custom theme? (y/n) " answer
 
 	if [[ $answer == "y" || $answer == "Y" ]]; then
-
-		# Check file
-		if [ ! -f "$grub" ]; then
-			echo "${WARN} $grub does not exist"
-			break
-		fi
 
 		# Check grub themes file
 		cd ~
@@ -88,7 +90,7 @@ while true; do
 		sudo mkdir -p /boot/grub/themes
 		sudo cp -r $theme /boot/grub/themes
 		rm -rf $theme
-        rm -rf grub_themes
+		rm -rf grub_themes
 
 		# Regenerate grub config
 		sudo grub-mkconfig -o /boot/grub/grub.cfg
