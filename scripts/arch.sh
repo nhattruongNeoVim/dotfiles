@@ -93,7 +93,7 @@ ask_custom_option() {
 
 execute_script() {
 	local script_url="https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/$1"
-    	bash <(curl -sSL "$script_url")
+    bash <(curl -sSL "$script_url")
 }
 
 printf "\n"
