@@ -9,7 +9,7 @@ RESET="$(tput sgr0)"
 
 echo -e "${NOTE} Setting up battery charge limit."
 
-if hostnamectl | grep -q 'Chassis: laptop'; then
+if hostnamectl | grep -q 'Chassis: desktop'; then
 	echo -e "${WARN} Setting up battery charge limit is not applicable on desktop. Skipping..."
     exit 1
 fi
