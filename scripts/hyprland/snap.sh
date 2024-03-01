@@ -11,7 +11,7 @@ ORANGE=$(tput setaf 166)
 YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
 
-# Check Existing yay-bin
+# Check Existing snapd
 cd ~
 if [ -d snapd ]; then
 	rm -rf snapd
