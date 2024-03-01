@@ -1,7 +1,6 @@
 #!/bin/bash
-# Yay AUR Helper #
-# NOTE: If paru is already installed, yay will not be installed #
-#
+# Snapd
+
 # Set some colors for output messages
 OK="$(tput setaf 2)[OK]$(tput sgr0)"
 ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
