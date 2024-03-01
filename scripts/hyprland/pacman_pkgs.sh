@@ -48,6 +48,7 @@ extra=(
     libreoffice-fresh
     jdk-openjdk
     file-roller
+    gnome-disk-utility
 )
 
 # Installation of main components
