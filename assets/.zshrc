@@ -79,6 +79,7 @@ alias go='git checkout'
 alias gc='git commit -m'
 alias gp='git push origin'
 alias gg="git add . && git commit -m 'update' && git push origin"
+alias gcl='git clone'
 
 # Lsd
 alias ls='lsd'
