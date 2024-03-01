@@ -109,6 +109,8 @@ ask_yes_no "-Do you have any nvidia gpu in your system?" nvidia
 printf "\n"
 ask_yes_no "-Do you want to install Thunar file manager?" thunar
 printf "\n"
+ask_yes_no "-Do you want to install & snap (app packages)?" snap
+printf "\n"
 #ask_yes_no "-Do you want to install & configure Firefox browser?" firefox
 #printf "\n"
 ask_yes_no "-Do you want to set battery charging limit (only for laptop)?" battery
@@ -178,6 +180,10 @@ fi
 
 if [ "$thunar" == "Y" ]; then
 	execute_script "thunar.sh"
+fi
+
+if [ "$thunar" == "Y" ]; then
+	execute_script "snap.sh"
 fi
 
 #if [ "$firefox" == "Y" ]; then
