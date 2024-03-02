@@ -27,6 +27,7 @@ if [ -n "$ISAUR" ]; then
 	printf "\n%s - AUR helper already installed, moving on..\n" "${OK}"
 else
 	printf "\n%s - AUR helper was NOT located\n" "${WARN}"
+	sleep 1
 	printf "\n%s - Installing paru from AUR\n" "${NOTE}"
 	git clone https://aur.archlinux.org/paru-bin.git || {
 		printf "%s - Failed to clone paru from AUR\n" "${ERROR}"

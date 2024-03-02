@@ -17,10 +17,11 @@ if [ -d snapd ]; then
 	rm -rf snapd
 fi
 
-if [ -n snap ]; then
+if command -v snap &>/dev/null; then
 	printf "\n%s - Snap already installed, moving on.\n" "${OK}"
 else
 	printf "\n%s - Snap was NOT located\n" "${WARN}"
+	sleep 1
 	printf "\n%s - Installing snap\n" "${NOTE}"
 	git clone https://aur.archlinux.org/snapd.git || {
 		printf "%s - Failed to clone snap from\n" "${ERROR}"
