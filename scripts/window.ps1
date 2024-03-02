@@ -28,8 +28,8 @@ if (Get-Command scoop -errorAction SilentlyContinue)
     Write-Warning "Scoop already installed"
 }
 else {
-    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-    irm get.scoop.sh | iex
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+    Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 }
 Write-Done
 
