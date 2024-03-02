@@ -5,7 +5,7 @@
 # not necessary to do since this script is only designed to run only once as long as the marker exists
 # However, I do highly suggest not to touch it since again, as long as the marker exist, script wont run
 
-# Variables
+# variables
 scriptsDir=$HOME/.config/hypr/scripts
 wallpaper=$HOME/Pictures/wallpapers/anime-kanji.jpg
 waybar_style="$HOME/.config/waybar/style/simple [pywal].css"
@@ -14,17 +14,17 @@ kvantum_theme="Tokyo-Night"
 swww="swww img"
 effect="--transition-bezier .43,1.19,1,.4 --transition-fps 30 --transition-type grow --transition-pos 0.925,0.977 --transition-duration 2"
 
-# Check if a marker file exists.
+# check if a marker file exists.
 if [ ! -f ~/.config/hypr/.boot_done ]; then
 
-	# Initialize pywal and wallpaper
+	# initialize pywal and wallpaper
 	if [ -f "$wallpaper" ]; then
 		wal -i $wallpaper -s -t >/dev/null
 		swww init && $swww $wallpaper $effect
 		"$scriptsDir/pywal_swww.sh" >/dev/null 2>&1 &
 	fi
 
-	# Initial symlink for Pywal Dark and Light for Rofi Themes
+	# initial symlink for Pywal Dark and Light for Rofi Themes
 	ln -sf "$HOME/.cache/wal/colors-rofi-dark.rasi" "$HOME/.config/rofi/pywal-color/pywal-theme.rasi" >/dev/null 2>&1 &
 
 	# initiate GTK dark mode and apply icon and cursor theme
@@ -40,12 +40,19 @@ if [ ! -f ~/.config/hypr/.boot_done ]; then
 	# initiate the kb_layout (for some reason) waybar cant launch it
 	"$scriptsDir/switch_kb_layout.sh" >/dev/null 2>&1 &
 
-	# Initial waybar style
+	# initial waybar style
 	if [ -f "$waybar_style" ]; then
 		ln -sf "$waybar_style" "$HOME/.config/waybar/style.css"
 
-		# Refreshing waybar, swaync, rofi etc.
+		# refreshing waybar, swaync, rofi etc.
 		"$scriptsDir/refresh.sh" >/dev/null 2>&1 &
+	fi
+
+    # install snap store
+	if command -v snap &>/dev/null; then
+		snap install snap-store || {
+			exit 1
+		}
 	fi
 
 	# Create a marker file to indicate that the script has been executed.
