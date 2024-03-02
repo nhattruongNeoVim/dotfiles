@@ -48,11 +48,13 @@ if [ ! -f ~/.config/hypr/.boot_done ]; then
 		"$scriptsDir/refresh.sh" >/dev/null 2>&1 &
 	fi
 
-    # install snap store
+	# install snap store
 	if command -v snap &>/dev/null; then
-		snap install snap-store || {
-			exit 1
-		}
+		if ! snap list | grep -q 'snap-store'; then
+			snap install snap-store || {
+				exit 1
+			}
+		fi
 	fi
 
 	# Create a marker file to indicate that the script has been executed.
