@@ -47,10 +47,3 @@ sudo systemctl enable --now snapd.socket && sudo ln -s /var/lib/snapd/snap /snap
 	printf "%s - Failed to setup snap\n" "${ERROR}"
 	exit 1
 }
-
-printf "\n%s - Install snap store.... \n" "${NOTE}"
-snap install snap-store || {
-	echo -e "\e[1A\e[K${ERROR} snap-store failed to install. You may need to install manually! Sorry I have tried :("
-	echo "-> snap-store failed to install. You may need to install manually! Sorry I have tried :(" >>~/install.log
-	exit 1
-}
