@@ -9,9 +9,9 @@ RESET="$(tput sgr0)"
 
 echo -e "${NOTE} Setting up battery charge limit."
 
-if [[ $(hostnamectl | grep -q 'Chassis: desktop') -eq 0 || $(hostnamectl | grep -q 'Chassis: vm') -eq 0 ]]; then
-    echo -e "${WARN} Setting up battery charge limit is not applicable on desktop or virtual machine. Skipping..."
-    exit 1
+if hostnamectl | grep -q 'Chassis: vm' || hostnamectl | grep -q 'Chassis: desktop'; then
+	echo -e "${WARN} Setting up battery charge limit is not applicable on desktop or virtual machine. Skipping..."
+	exit 1
 fi
 
 while true; do
@@ -41,8 +41,7 @@ while true; do
 			echo "WantedBy=multi-user.target"
 		} | sudo tee "/etc/systemd/system/charge_limit_battery.service" >/dev/null
 
-		sudo systemctl enable charge_limit_battery.service
-		sudo systemctl start charge_limit_battery.service
+		sudo systemctl enable --now charge_limit_battery.service
 
 		printf "\n${OK} Done\n"
 		break
