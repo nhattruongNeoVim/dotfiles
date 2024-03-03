@@ -47,9 +47,7 @@ if [ ! -f ~/.config/hypr/.boot_done ]; then
 		# refreshing waybar, swaync, rofi etc.
 		"$scriptsDir/refresh.sh" >/dev/null 2>&1 &
 	fi
- 
-	"$scriptsDir/refresh.sh" >/dev/null 2>&1 &
- 
+  
 	# install snap store
 	if command -v snap &>/dev/null; then
 		if ! snap list | grep -q 'snap-store'; then
@@ -61,6 +59,8 @@ if [ ! -f ~/.config/hypr/.boot_done ]; then
 			notify-send "Install successfully"
 		fi
 	fi
+ 
+	"$scriptsDir/refresh.sh" >/dev/null 2>&1 &
 
 	# Create a marker file to indicate that the script has been executed.
 	touch ~/.config/hypr/.boot_done
