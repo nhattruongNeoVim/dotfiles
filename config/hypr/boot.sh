@@ -51,9 +51,12 @@ if [ ! -f ~/.config/hypr/.boot_done ]; then
 	# install snap store
 	if command -v snap &>/dev/null; then
 		if ! snap list | grep -q 'snap-store'; then
+			notify-send "  Installing snap-store"
 			snap install snap-store || {
+				notify-send "Failed to install snap-store"
 				exit 1
 			}
+			notify-send "Install successfully"
 		fi
 	fi
 
