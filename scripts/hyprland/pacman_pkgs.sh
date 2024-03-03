@@ -49,6 +49,7 @@ extra=(
     jdk-openjdk
     file-roller
     gnome-disk-utility
+    discord
 )
 
 # Installation of main components
