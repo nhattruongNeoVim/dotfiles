@@ -14,7 +14,6 @@ RESET=$(tput sgr0)
 # AUR
 ISAUR=$(command -v yay || command -v paru)
 
-# Function for installing packages
 install_package() {
 	if $ISAUR -Q "$1" &>>/dev/null; then
 		echo -e "${OK} $1 is already installed. Skipping..."
@@ -51,26 +50,15 @@ sddm=(
 	qt5-svg
 )
 
-# Check if SDDM is already installed
-if pacman -Qs sddm >/dev/null; then
-	if [[ -z $manual_install_sddm ]]; then
-		read -n1 -rep "SDDM is already installed. Would you like to manually install sddm-git to remove it? This requires manual intervention. (y/n) " manual_install_sddm
-	fi
-	echo
-	if [[ $manual_install_sddm =~ ^[Yy]$ ]]; then
-		$ISAUR -S sddm-git --noconfirm
-	fi
-fi
-
 # Install SDDM and SDDM theme
-printf "${NOTE} Installing SDDM-git and dependencies........\n"
+printf "${NOTE} Installing SDDM and dependencies........\n"
+install_package_pacman sddm
 for package in "${sddm[@]}"; do
 	install_package "$package"
 	[ $? -ne 0 ] && {
 		echo -e "\e[1A\e[K${ERROR} - $package install has failed"
 	}
 done
-install_package_pacman sddm
 
 # Check if other login managers installed and disabling its service before enabling sddm
 for login_manager in lightdm gdm lxdm lxdm-gtk3; do
