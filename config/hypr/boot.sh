@@ -63,5 +63,7 @@ if [ ! -f ~/.config/hypr/.boot_done ]; then
 	# Create a marker file to indicate that the script has been executed.
 	touch ~/.config/hypr/.boot_done
 
+	"$scriptsDir/refresh.sh" >/dev/null 2>&1 &
+
 	exit
 fi
