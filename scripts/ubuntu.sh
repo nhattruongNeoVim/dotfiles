@@ -94,7 +94,6 @@ dependencies=(
 	pip
 	tmux
 	libsecret-tools
-	yarn
 	cava
 	net-tools
 	unzip
