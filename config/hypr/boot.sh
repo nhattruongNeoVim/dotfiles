@@ -44,7 +44,7 @@ if [ ! -f ~/.config/hypr/.boot_done ]; then
 	if [ -f "$waybar_style" ]; then
 		ln -sf "$waybar_style" "$HOME/.config/waybar/style.css"
 
-        sleep 2
+        sleep 1
 		# refreshing waybar, swaync, rofi etc.
 		"$scriptsDir/refresh.sh" >/dev/null 2>&1 &
 	fi
