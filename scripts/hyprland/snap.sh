@@ -35,7 +35,7 @@ else
 		printf "%s - Failed to install snap\n" "${ERROR}"
 		exit 1
 	}
-	cd ~ && rm -rf snap || {
+	cd ~ && rm -rf snapd || {
 		printf "%s - Failed to remove snapd directory\n" "${ERROR}"
 		exit 1
 	}
