@@ -24,8 +24,7 @@ ISAUR=$(command -v yay || command -v paru)
 if [ -n "$ISAUR" ]; then
 	printf "\n%s - AUR helper already installed, moving on.\n" "${OK}"
 else
-	printf "\n%s - AUR helper was NOT located\n" "${ERROR}"
-	sleep 1
+	printf "\n%s - AUR helper was NOT located\n" "$WARN"
 	printf "\n%s - Installing yay from AUR\n" "${NOTE}"
 	git clone https://aur.archlinux.org/yay-bin.git || {
 		printf "%s - Failed to clone yay from AUR\n" "${ERROR}"
