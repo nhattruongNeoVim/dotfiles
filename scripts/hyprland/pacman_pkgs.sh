@@ -31,6 +31,7 @@ base=(
 )
 
 extra=(
+    alacritty
     tmux
 	starship
 	zsh
