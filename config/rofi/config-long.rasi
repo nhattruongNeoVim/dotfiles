@@ -5,7 +5,7 @@ configuration {
     modi:                       "drun,run";
     font:                       "Fira Code SemiBold 12";
     show-icons:                 true;
-    display-drun:               "";
+    display-drun:               "";
 	display-run:                "";
     display-filebrowser:        "";
     display-window:             "";
