@@ -113,7 +113,7 @@ while true; do
 		echo "$(tput bold)$(tput setaf 7)Setting a wrong value here will result in Hyprland not starting $(tput sgr0)"
 		echo "$(tput bold)$(tput setaf 7)If you are not sure, keep it in us layout. You can change later on! $(tput sgr0)"
 		echo "$(tput bold)$(tput setaf 7)You can also set more than 2 layouts!$(tput sgr0)"
-		echo "$(tput bold)$(tput setaf 7)ie: us,kr,es $(tput sgr0)"
+		echo "$(tput bold)$(tput setaf 7)ie: us,vn,kr,es $(tput sgr0)"
 		printf "\n%.0s" {1..2}
 		read -p "${CAT} - Please enter the correct keyboard layout: " new_layout
 		# Update the 'kb_layout=' line with the correct layout in the file
