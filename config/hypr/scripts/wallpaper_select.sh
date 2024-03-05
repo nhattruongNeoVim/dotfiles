@@ -83,5 +83,5 @@ main
 
 sleep 0.5
 ${SCRIPTSDIR}/pywal_swww.sh
-sleep 0.2
+sleep 0.5
 ${SCRIPTSDIR}/refresh.sh
