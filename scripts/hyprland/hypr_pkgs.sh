@@ -72,15 +72,31 @@ hypr_aur_package=(
 	swaync
 	swww
 	wlogout
+	cava
+	eog
+	mousepad
+	mpv
+	mpv-mpris
+	nwg-look-bin
+	pacman-contrib
+	vim
+	microsoft-edge-stable
+	arttime-git
+	shell-color-scripts
+	pipes.sh
 )
 
 hypr_pacman_package=(
+	btop
 	curl
+	yt-dlp
+	brightnessctl
 	grim
 	waybar
+	gnome-system-monitor
 	jq
 	slurp
-    swappy
+	swappy
 	cliphist
 	network-manager-applet
 	pamixer
@@ -98,27 +114,7 @@ hypr_pacman_package=(
 	xdg-user-dirs
 	xdg-utils
 	yad
-)
-
-# the following packages can be deleted. however, dotfiles may not work properly
-extra=(
-	brightnessctl
-	btop
-	cava
-	eog
-	gnome-system-monitor
-	mousepad
-	mpv
-	mpv-mpris
 	nvtop
-	nwg-look-bin
-	pacman-contrib
-	vim
-	yt-dlp
-	microsoft-edge-stable
-	arttime-git
-	shell-color-scripts
-	pipes.sh
 )
 
 fonts=(
@@ -140,7 +136,7 @@ uninstall=(
 # Installation of main components
 printf "\n%s - Installing hyprland packages.... \n" "${NOTE}"
 
-for PKG1 in "${hypr_aur_package[@]}" "${fonts[@]}" "${extra[@]}"; do
+for PKG1 in "${hypr_aur_package[@]}" "${fonts[@]}"; do
 	install_package "$PKG1"
 	if [ $? -ne 0 ]; then
 		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"
