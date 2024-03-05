@@ -31,6 +31,7 @@ base=(
 )
 
 extra=(
+    tmux
 	starship
 	zsh
 	make
