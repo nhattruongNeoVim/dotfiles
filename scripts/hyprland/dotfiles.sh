@@ -234,7 +234,7 @@ else
 	rm -r "$HOME/.config/waybar/configs/default [TOP]" "$HOME/.config/waybar/configs/default [BOT]"
 fi
 
-printf "\n%.0s" {1..3}
+printf "\n%.0s" {1..2}
 
 # additional wallpapers
 echo "$(tput setaf 6) By default only a few wallpapers are copied...$(tput sgr0)"
