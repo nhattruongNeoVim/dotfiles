@@ -113,6 +113,8 @@ ask_yes_no "-Do you want to install & snap (app packages)?" snap
 printf "\n"
 #ask_yes_no "-Do you want to install & configure Firefox browser?" firefox
 #printf "\n"
+ask_yes_no "-Do you want to install Homebrew (perfect package manager)?" homebrew 
+printf "\n"
 ask_yes_no "-Do you want to set battery charging limit (only for laptop)?" battery
 printf "\n"
 ask_yes_no "-Install & configure SDDM log-in Manager plus (OPTIONAL) SDDM Theme?" sddm
@@ -184,6 +186,10 @@ fi
 
 if [ "$thunar" == "Y" ]; then
 	execute_script "snap.sh"
+fi
+
+if [ "$homebrew" == "Y" ]; then
+	execute_script "homebrew.sh"
 fi
 
 #if [ "$firefox" == "Y" ]; then
