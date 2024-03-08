@@ -20,7 +20,7 @@ fi
 if command -v snap &>/dev/null; then
 	printf "\n%s - Snap already installed, moving on.\n" "${OK}"
 else
-	printf "\n%s - Snap was NOT located\n" "${WARN}"
+	printf "\n%s - Snap was NOT located\n" "${NOTE}"
 	sleep 1
 	printf "\n%s - Installing snap\n" "${NOTE}"
 	git clone https://aur.archlinux.org/snapd.git || {

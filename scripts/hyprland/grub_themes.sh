@@ -20,7 +20,7 @@ echo -e "${NOTE} Setting up grub theme."
 
 # Check file
 if [ ! -f "$grub" ]; then
-	echo "${WARN} $grub does not exist. Skipping"
+	echo "${NOTE} $grub does not exist. Skipping"
     exit 1
 fi
 

@@ -11,7 +11,7 @@ YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
 
 while true; do
-    echo "${WARN} This script will add your user to the 'input' group."
+    echo "${NOTE} This script will add your user to the 'input' group."
     echo "${NOTE} Please note that adding yourself to the 'input' group might be necessary for waybar keyboard-state functionality."
 
     if [[ -z $input_group_choid ]]; then
