@@ -72,6 +72,14 @@ alias syc='yay -Sc --noconfirm'
 alias sys='yay -S --noconfirm'
 alias syr='yay -Rns'
 
+# Homebrew
+alias buu='brew update && brew upgrade'
+alias br='brew uninstall'
+alias bi='brew install'
+alias bu='brew update' 
+alias bl='brew list' 
+alias bf='brew info' 
+
 # Git
 alias ga='git add .'
 alias gs='git status'
