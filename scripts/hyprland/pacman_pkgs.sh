@@ -52,6 +52,7 @@ extra=(
     file-roller
     gnome-disk-utility
     discord
+    neovide
 )
 
 # Installation of main components
