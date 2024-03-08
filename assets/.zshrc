@@ -81,12 +81,12 @@ alias bl='brew list'
 alias bf='brew info' 
 
 # Git
-alias ga='git add .'
-alias gs='git status'
-alias go='git checkout'
-alias gc='git commit -m'
-alias gp='git push origin'
 alias gg="git add . && git commit -m 'update' && git push origin"
+alias gp='git push origin'
+alias gc='git commit -m'
+alias go='git checkout'
+alias gs='git status'
+alias ga='git add .'
 alias gcl='git clone'
 
 # Lsd
