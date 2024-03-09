@@ -246,7 +246,7 @@ while true; do
 	case $WALL in
 	[Yy])
 		echo "${NOTE} Downloading additional wallpapers..."
-		if git clone "https://github.com/nhattruongNeoVim/wallpapers --depth 1"; then
+		if git clone "https://github.com/nhattruongNeoVim/wallpapers" --depth 1; then
 			echo "${NOTE} Wallpapers downloaded successfully."
 
 			if cp -R wallpapers/wallpapers/* ~/Pictures/wallpapers/; then
