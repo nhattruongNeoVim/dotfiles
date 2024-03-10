@@ -109,11 +109,11 @@ ask_yes_no "-Do you have any nvidia gpu in your system?" nvidia
 printf "\n"
 ask_yes_no "-Do you want to install Thunar file manager?" thunar
 printf "\n"
-ask_yes_no "-Do you want to install & snap (app packages)?" snap
+ask_yes_no "-Do you want to install Snap (GUI packages manager)?" snap
 printf "\n"
 #ask_yes_no "-Do you want to install & configure Firefox browser?" firefox
 #printf "\n"
-ask_yes_no "-Do you want to install Homebrew (amazing package manager)?" homebrew 
+ask_yes_no "-Do you want to install Homebrew (CLI package manager)?" homebrew 
 printf "\n"
 ask_yes_no "-Do you want to set battery charging limit (only for laptop)?" battery
 printf "\n"
