@@ -51,7 +51,7 @@ if [ -d dotfiles ]; then
 		exit 1
 	}
 else
-	git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1 || {
+	printf "\n${NOTE} Clone dotfiles. " && git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1 || {
 		printf "%s - Failed to clone dotfiles \n" "${ERROR}"
 		exit 1
 	}
