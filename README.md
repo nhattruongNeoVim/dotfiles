@@ -1,5 +1,10 @@
 <div align="center">
     <h1>Overview 💫</h1>
+
+&ensp;[<kbd> <br> Window <br> </kbd>](##-Window)&ensp;
+&ensp;[<kbd> <br> Ubuntu <br> </kbd>](##-Ubuntu)&ensp;
+&ensp;[<kbd> <br> Arch <br> </kbd>](##-Arch)&ensp;
+
 </div>
 
 ![](images/rice1.png)
@@ -82,7 +87,7 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_arch)
 ![](images/rice4.png)
 
 > **Congratulations!** at this point have successfully configured your linux distribution.
-> 
+>
 > # (￣ y▽ ￣)╭ Ohohoho.....
 
 <!-- https://is.gd/nhattruongNeoVim_nvim -->
