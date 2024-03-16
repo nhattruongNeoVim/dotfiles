@@ -53,6 +53,7 @@ extra=(
     gnome-disk-utility
     discord
     neovide
+    ranger
 )
 
 # Installation of main components
