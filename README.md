@@ -1,9 +1,9 @@
 <div align="center">
     <h1>Overview 💫</h1>
 
-&ensp;[<kbd> <br> Window <br> </kbd>](##-Window)&ensp;
-&ensp;[<kbd> <br> Ubuntu <br> </kbd>](##-Ubuntu)&ensp;
-&ensp;[<kbd> <br> Arch <br> </kbd>](##-Arch)&ensp;
+&ensp;[<kbd> <br> Window <br> </kbd>](#window)&ensp;
+&ensp;[<kbd> <br> Ubuntu <br> </kbd>](#ubuntu-gnome)&ensp;
+&ensp;[<kbd> <br> Arch <br> </kbd>](#arch-hyprland)&ensp;
 
 </div>
 
