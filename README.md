@@ -4,7 +4,6 @@
 <!-- &ensp;[<kbd> <br>Window<br> </kbd>](#window)&ensp; -->
 <!-- &ensp;[<kbd> <br>Ubuntu<br> </kbd>](#ubuntu-gnome)&ensp; -->
 <!-- &ensp;[<kbd> <br>Arch<br> </kbd>](#arch-hyprland)&ensp; -->
-    <br>
 
 </div>
 
