@@ -5,6 +5,7 @@
 <!-- &ensp;[<kbd> <br>Ubuntu<br> </kbd>](#ubuntu-gnome)&ensp; -->
 <!-- &ensp;[<kbd> <br>Arch<br> </kbd>](#arch-hyprland)&ensp; -->
     <br>
+
 </div>
 
 ![](images/rice1.png)
