@@ -198,7 +198,7 @@ printf "\n${NOTE} Change shell to zsh!\n"
 chsh -s $(which zsh)
 
 # Install homebrew
-bash <(curl -sSL "https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/homebrew")
+bash <(curl -sSL "https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/homebrew.sh")
 
 # Install neovim
 printf "\n${NOTE} Install neovim!\n"
@@ -276,9 +276,3 @@ fc-cache -fv
 printf "\n%.0s" {1..2}
 printf "\n${OK} Yey! Setup Completed.\n"
 printf "\n%.0s" {1..2}
-
-read -n1 -rep "${CAT} Would you like to reboot now? (y/n) " HYP
-
-if [[ "$HYP" =~ ^[Yy]$ ]]; then
-	systemctl reboot
-fi
