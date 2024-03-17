@@ -28,6 +28,7 @@ install_package_pacman() {
 
 base=(
 	base-devel
+    git
 )
 
 extra=(

@@ -126,7 +126,7 @@ printf "\n"
 
 printf "\n%.0s" {1..2}
 if [ "$dual_boot" == "Y" ]; then
-	printf "\n${NOTE} I will set the local time on Arch to display the correct time on Windows.\n"
+	echo -e "${CAT} I will set the local time on Arch to display the correct time on Windows.${RESET}"
 	timedatectl set-local-rtc 1 --adjust-system-clock
 fi
 
@@ -135,26 +135,24 @@ if [ "$battery" == "Y" ]; then
 	execute_script "battery.sh"
 fi
 
-# Update system
-sudo pacman -Syyuu --noconfirm
-sudo pacman -S git --noconfirm
+execute_script "swapfile.sh"
+sleep 0.5
+execute_script "pacman.sh"
+sleep 0.5
+execute_script "pacman_pkgs.sh"
 
 # Check if dotfiles exist
 cd ~
 if [ -d dotfiles ]; then
 	rm -rf dotfiles
-	echo -e "${NOTE} Remove dotfile successfully "
+	echo -e "${OK} Remove dotfile successfully "
 fi
 
 # Clone dotfiles
 printf "\n${NOTE} Clone dotfiles. "
-if git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1; then
+if git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git --depth 1; then
 	printf "\n${OK} Clone dotfiles succesfully.\n"
 fi
-
-execute_script "pacman.sh"
-sleep 0.5
-execute_script "pacman_pkgs.sh"
 
 if [ "$aur_helper" == "paru" ]; then
 	execute_script "paru.sh"
