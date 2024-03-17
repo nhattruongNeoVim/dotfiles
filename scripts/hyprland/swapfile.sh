@@ -5,6 +5,7 @@ ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
 NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
 CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
 
+printf "\n%.0s" {1..2}
 while true; do
 	read -n1 -rep "${NOTE} Do you want to set up swapfile? (y/n) " swapfile
 	if [[ "$swapfile" == "y" || "$swapfile" == "Y" ]]; then
