@@ -62,14 +62,14 @@ function nvims() {
 alias spuu='sudo pacman -Syu --noconfirm'
 alias spu='sudo pacman -Syy --noconfirm'
 alias spc='sudo pacman -Sc --noconfirm'
-alias sps='sudo pacman -S --noconfirm'
+alias sps='sudo pacman -Sy --noconfirm'
 alias spr='sudo pacman -R'
 
 # Yay
 alias syuu='yay -Syu --noconfirm'
 alias syu='yay -Syy --noconfirm'
 alias syc='yay -Sc --noconfirm'
-alias sys='yay -S --noconfirm'
+alias sys='yay -Sy --noconfirm'
 alias syr='yay -Rns'
 
 # Homebrew
