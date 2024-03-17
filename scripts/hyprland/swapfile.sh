@@ -50,7 +50,7 @@ done
 
 while true; do
 	printf "\n%.0s" {1..2}
-	read -rep "${NOTE} Enter the size of swapfile(GB), recommend $recommended_size (GB): " number
+	read -rep "${NOTE} Enter the size of swapfile(GB), recommend ${recommended_size}(GB): " number
 	if [[ "$number" =~ ^[1-9][0-9]*$ && "$number" -le 100 ]]; then
 		echo -e "${CAT} Creating swapfile..."
 		if sudo dd if=/dev/zero of=/swapfile bs=1G count="$number" status=progress >/dev/null && sudo chmod 600 /swapfile >/dev/null; then
