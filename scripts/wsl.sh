@@ -97,7 +97,7 @@ if sudo nala fetch; then
 	printf "\n${OK} Initializing nala successfully!\n\n\n"
 fi
 
-printf "\n${NOTE}Installing packages..."
+printf "\n${NOTE}Installing packages...\n"
 for PKG1 in "${dependencies[@]}"; do
 	install_package "$PKG1"
 	if [ $? -ne 0 ]; then
