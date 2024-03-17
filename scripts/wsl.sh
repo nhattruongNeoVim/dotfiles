@@ -216,7 +216,7 @@ if brew install neovim; then
 fi
 
 printf "\n${NOTE} Setup neovim!\n"
-if git clone https://github.com/nhattruongNeoVim/MYnvim.git --depth 1; then
+if git clone https://github.com/nhattruongNeoVim/MYnvim.git ~/.config/nvim --depth 1; then
 	printf "\n${OK} Setup neovim successfully!\n\n\n"
 fi
 
