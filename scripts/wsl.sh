@@ -146,15 +146,6 @@ else
 fi
 
 # Install pipes.sh
-write_start "Install pipes.sh..."
-cd ~
-git clone https://github.com/pipeseroni/pipes.sh
-cd pipes.sh
-make PREFIX=$HOME/.local install
-cd ..
-rm -rf pipes.sh
-write_done
-
 cd ~
 if [ -d pipes.sh ]; then
 	rm -rf pipes.sh
