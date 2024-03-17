@@ -122,7 +122,7 @@ if [ -d shell-color-scripts ]; then
 	rm -rf shell-color-scripts
 fi
 
-if ! command -v colorscript &>/dev/null; then
+if command -v colorscript &>/dev/null; then
 	printf "\n%s - Colorscript already installed, moving on.\n" "${OK}"
 else
 	printf "\n%s - Colorscript was NOT located\n" "${NOTE}"
@@ -151,7 +151,7 @@ if [ -d pipes.sh ]; then
 	rm -rf pipes.sh
 fi
 
-if ! command -v pipes.sh &>/dev/null; then
+if command -v pipes.sh &>/dev/null; then
 	printf "\n%s - Pipes already installed, moving on.\n" "${OK}"
 else
 	printf "\n%s - Pipes was NOT located\n" "${NOTE}"
