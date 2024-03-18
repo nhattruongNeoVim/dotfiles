@@ -24,10 +24,6 @@ irm https://is.gd/nhattruongNeoVim_window | iex
 
 ## Wsl
 
-<!-- [![Watch the video](https://i.stack.imgur.com/Vp2cE.png)](https://youtu.be/vt5fpE0bzSY) -->
-<!-- <iframe width="auto" height="auto" src="https://www.youtube.com/embed/0hSh_0mrioM" title="Setup WSL (Ubuntu) on Window" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
-<!-- [![](https://img.youtube.com/vi/0hSh_0mrioM/0.jpg)](https://www.youtube.com/watch?v=0hSh_0mrioM) -->
-
 ```
 bash <(curl -sSL https://is.gd/nhattruongNeoVim_wsl)
 ```
