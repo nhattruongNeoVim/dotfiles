@@ -53,7 +53,7 @@ if [ ! -f ~/.config/hypr/.boot_done ]; then
 	if command -v snap &>/dev/null; then
 		if ! snap list | grep -q 'snap-store'; then
 			notify-send "  Installing snap-store"
-			snap install snap-store || {
+			snap install snap-store && snap install snapd-desktop-integration || {
 				notify-send "Failed to install snap-store"
 				exit 1
 			}
