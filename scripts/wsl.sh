@@ -119,16 +119,6 @@ for PKG1 in "${nala_packages[@]}"; do
 	fi
 done
 
-printf "\n${NOTE} Install starship...\n"
-if curl -sS https://starship.rs/install.sh | sh; then
-	printf "\n${OK} Starship is installed successfully!\n\n\n"
-fi
-
-printf "\n${NOTE} Install arttime...\n"
-if zsh -c '{url="https://gist.githubusercontent.com/poetaman/bdc598ee607e9767fe33da50e993c650/raw/8487de3cf4cf4a7feff5d3a0d97defad95164eb3/arttime_online_installer.sh"; zsh -c "$(curl -fsSL $url || wget -qO- $url)"}'; then
-	printf "\n${OK} Arttime is installed successfully!\n\n\n"
-fi
-
 # Install colorscript
 cd ~
 if [ -d shell-color-scripts ]; then
@@ -158,35 +148,6 @@ else
 	}
 fi
 
-# Install pipes.sh
-cd ~
-if [ -d pipes.sh ]; then
-	rm -rf pipes.sh
-fi
-
-if command -v pipes.sh &>/dev/null; then
-	printf "\n%s - Pipes already installed, moving on.\n" "${OK}"
-else
-	printf "\n%s - Pipes was NOT located\n" "${NOTE}"
-	printf "\n%s - Installing pipes\n" "${NOTE}"
-	git clone https://github.com/pipeseroni/pipes.sh --depth 1 || {
-		printf "%s - Failed to clone pipes\n" "${ERROR}"
-		exit 1
-	}
-	cd pipes.sh || {
-		printf "%s - Failed to enter pipes directory\n" "${ERROR}"
-		exit 1
-	}
-	make PREFIX=$HOME/.local install || {
-		printf "%s - Failed to install pipes.sh\n" "${ERROR}"
-		exit 1
-	}
-	cd ~ && rm -rf pipes.sh || {
-		printf "%s - Failed to remove pipes.sh directory\n" "${ERROR}"
-		exit 1
-	}
-fi
-
 # Install homebrew
 bash <(curl -sSL "https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/homebrew.sh")
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -196,6 +157,10 @@ brew_package=(
 	rustup
 	neovim
 	node
+ 	lazygit
+  	pipes-sh
+   	arttime
+    	starship
 )
 
 printf "\n${NOTE} Installing brew packages...\n"
