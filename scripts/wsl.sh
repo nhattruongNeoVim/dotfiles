@@ -184,6 +184,24 @@ if rustup-init && source $HOME/.cargo/env && cargo --version && cargo install ls
 	printf "\n${OK} Initial rust successfully!\n\n\n"
 fi
 
+# Install and initial neovim
+printf "\n${NOTE} Install neovim!\n"
+if sudo dpkg -l | grep -q -w "nvim"; then
+	sudo nala remove neovim -y
+fi
+if curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz; then
+	printf "\n${OK} Download lastest version neovim successfully!\n\n\n"
+else
+	printf "\n${ERROR} Failed to download neovim!\n\n\n"
+fi
+mkdir -p ~/.local/bin && cp nvim-linux64.tar.gz ~/.local/bin && cd ~/.local/bin && tar xzvf nvim-linux64.tar.gz && rm -fr nvim-linux64.tar.gz && ln -s ./nvim-linux64/bin/nvim ./nvim && printf "\n${OK} Initial rust successfully!\n\n\n" || {
+	printf "\n${OK} Failed to install neovim!\n\n\n"
+}
+printf "\n${NOTE} Setup neovim!\n"
+if rm -rf ~/.config/nvim && rm -rf ~/.local/share/nvim && git clone https://github.com/nhattruongNeoVim/MYnvim.git ~/.config/nvim --depth 1; then
+	printf "\n${OK} Setup neovim successfully!\n\n\n"
+fi
+
 # Clone dotfiles
 cd ~
 if [ -d dotfiles ]; then
@@ -202,20 +220,6 @@ else
 	}
 fi
 
-# Install and initial neovim
-printf "\n${NOTE} Install neovim!\n"
-if sudo dpkg -l | grep -q -w "nvim"; then
-	sudo nala remove neovim -y
-fi
-cd assets && mkdir -p ~/.local/bin && cp nvim-linux64.tar.gz ~/.local/bin && cd ~/.local/bin && tar xzvf nvim-linux64.tar.gz && rm -fr nvim-linux64.tar.gz && ln -s ./nvim-linux64/bin/nvim ./nvim && printf "\n${OK} Initial rust successfully!\n\n\n" || {
-	printf "\n${OK} Failed to install neovim!\n\n\n"
-}
-printf "\n${NOTE} Setup neovim!\n"
-if rm -rf ~/.config/nvim && rm -rf ~/.local/share/nvim && git clone https://github.com/nhattruongNeoVim/MYnvim.git ~/.config/nvim --depth 1; then
-	printf "\n${OK} Setup neovim successfully!\n\n\n"
-fi
-
-# Config
 printf "\n%.0s" {1..2}
 printf "\n${NOTE} Start config!\n"
 
@@ -238,7 +242,6 @@ for DIR in "${folder[@]}"; do
 done
 
 # Copying configuration file
-cd ~/dotfiles
 for ITEM in "${folder[@]}"; do
 	if [[ -d "config/$ITEM" ]]; then
 		cp -r "config/$ITEM" ~/.config/ && echo "${OK} Copy completed" || echo "${ERROR} Failed to copy config files."
