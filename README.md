@@ -24,6 +24,8 @@ irm https://is.gd/nhattruongNeoVim_window | iex
 
 ## Wsl
 
+<iframe width="auto" height="auto" src="https://www.youtube.com/embed/0hSh_0mrioM" title="Setup WSL (Ubuntu) on Window" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ```
 bash <(curl -sSL https://is.gd/nhattruongNeoVim_wsl)
 ```
