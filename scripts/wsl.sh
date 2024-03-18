@@ -107,6 +107,7 @@ nala_packages=(
 	ca-certificates
 	curl
 	gnupg
+ 	ranger
 )
 
 printf "\n${NOTE} Installing nala packages...\n"
