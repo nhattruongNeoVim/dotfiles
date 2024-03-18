@@ -22,6 +22,7 @@ CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
 RESET=$(tput sgr0)
 
 install_nala_package() {
+	printf "\n%.0s" {1..2}
 	if sudo dpkg -l | grep -q -w "$1"; then
 		echo -e "${OK} $1 is already installed. Skipping..."
 	else
@@ -37,6 +38,7 @@ install_nala_package() {
 }
 
 install_brew_package() {
+	printf "\n%.0s" {1..2}
 	if brew list "$1" &>/dev/null; then
 		echo -e "${OK} $1 is already installed. Skipping..."
 	else
