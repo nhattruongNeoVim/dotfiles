@@ -265,25 +265,13 @@ cp assets/.zshrc ~ && cp assets/.ideavimrc ~ && cp config/starship.toml && { ech
 	echo "${ERROR} Failed to copy .zshrc && .ideavimrc"
 }
 
-# copying icon
-mkdir -p ~/.icons
-cp -r assets/.icons/* ~/.icons/ && { echo "${OK}Copy icons completed!"; } || {
-	echo "${ERROR} Failed to copy icons files."
-}
-
-# copying font
+# Copying font
 mkdir -p ~/.fonts
 cp -r assets/.fonts/* ~/.fonts/ && { echo "${OK}Copy fonts completed!"; } || {
 	echo "${ERROR} Failed to copy fonts files."
 }
 
-# copying theme
-mkdir -p ~/.themes
-cp -r assets/.themes/* ~/.themes && { echo "${OK}Copy themes completed!"; } || {
-	echo "${ERROR} Failed to copy themes files."
-}
-
-# reload fonts
+# Reload fonts
 printf "\n%.0s" {1..2}
 fc-cache -fv
 
