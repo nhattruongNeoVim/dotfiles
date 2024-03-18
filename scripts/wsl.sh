@@ -37,12 +37,12 @@ install_nala_package() {
 }
 
 install_brew_package() {
-	if sudo dpkg -l | grep -q -w "$1"; then
+	if brew list "$1" &>/dev/null; then
 		echo -e "${OK} $1 is already installed. Skipping..."
 	else
 		echo -e "${NOTE} Installing $1 ..."
-		sudo nala install -y "$1"
-		if sudo dpkg -l | grep -q -w "$1"; then
+		brew install "$1"
+		if brew list "$1" &>/dev/null; then
 			echo -e "\e[1A\e[K${OK} $1 was installed."
 		else
 			echo -e "\e[1A\e[K${ERROR} $1 failed to install. You may need to install manually! Sorry, I have tried :("
@@ -190,7 +190,6 @@ bash <(curl -sSL "https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/ma
 # Install homebrew package
 brew_package=(
 	rustup
-	node
 	neovim
 	node
 )
@@ -206,7 +205,7 @@ done
 
 # Initial rust
 if rustup-init && source $HOME/.cargo/env && cargo --version && cargo install lsd --locked; then
-	printf "\n${OK} Initial rust is successfully!\n\n\n"
+	printf "\n${OK} Initial rust successfully!\n\n\n"
 fi
 
 # Initial neovim
