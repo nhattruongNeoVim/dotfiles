@@ -62,6 +62,8 @@ get_backup_dirname() {
 printf "\n${NOTE} Check for update...\n"
 if sudo apt update && sudo apt upgrade -y; then
 	printf "\n${OK} Apt update successfully!\n\n\n"
+else
+	printf "\n${ERROR} Failed to update apt!\n\n\n"
 fi
 
 printf "\n${NOTE} Check nala...\n"
@@ -69,18 +71,22 @@ if ! command -v nala &>/dev/null; then
 	echo -e "${CAT} Installing nala...${RESET}"
 	sudo apt install nala -y
 else
-	printf "\n${OK} Nala is already installed!\n\n\n"
+	printf "\n${OK} Nala is already installed! Moving on.\n\n\n"
 fi
 
 printf "\n${CAT} Update nala...${RESET}\n"
 if sudo nala update && sudo nala upgrade -y; then
 	printf "\n${OK} Nala update successfully!\n\n\n"
+else
+	printf "\n${ERROR} Failed to update nala!\n\n\n"
 fi
 
 printf "\n${NOTE} Initializing Nala...\n"
 printf "\n${NOTE} Press 1 2 3 and press Enter \n"
 if sudo nala fetch; then
 	printf "\n${OK} Initializing nala successfully!\n\n\n"
+else
+	printf "\n${ERROR} Failed to initial nala!\n\n\n"
 fi
 
 nala_packages=(
@@ -121,6 +127,7 @@ done
 
 # Install colorscript
 cd ~
+printf "\n%.0s" {1..2}
 if [ -d shell-color-scripts ]; then
 	rm -rf shell-color-scripts
 fi
@@ -149,6 +156,7 @@ else
 fi
 
 # Install homebrew
+printf "\n%.0s" {1..2}
 bash <(curl -sSL "https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/homebrew.sh")
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
@@ -180,13 +188,17 @@ else
 fi
 
 # Initial rust
+printf "\n%.0s" {1..2}
 if rustup-init && source $HOME/.cargo/env && cargo --version && cargo install lsd --locked; then
 	printf "\n${OK} Initial rust successfully!\n\n\n"
+else
+	printf "\n${ERROR} Failed to initial rust!\n\n\n"
 fi
 
 # Install and initial neovim
+printf "\n%.0s" {1..2}
 printf "\n${NOTE} Install neovim!\n"
-if sudo dpkg -l | grep -q -w "nvim"; then
+if sudo dpkg -l | grep -q -w nvim; then
 	sudo nala remove neovim -y
 fi
 if curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz; then
@@ -200,6 +212,8 @@ mkdir -p ~/.local/bin && cp nvim-linux64.tar.gz ~/.local/bin && cd ~/.local/bin 
 printf "\n${NOTE} Setup neovim!\n"
 if rm -rf ~/.config/nvim && rm -rf ~/.local/share/nvim && git clone https://github.com/nhattruongNeoVim/MYnvim.git ~/.config/nvim --depth 1; then
 	printf "\n${OK} Setup neovim successfully!\n\n\n"
+else
+	printf "\n${ERROR} Failed to setup neovim!\n\n\n"
 fi
 
 # Clone dotfiles
