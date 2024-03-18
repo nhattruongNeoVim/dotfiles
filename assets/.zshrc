@@ -38,7 +38,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export VISUAL="$HOME/.local/bin/nvim"
+export VISUAL="nvim"
 
 # NeoVim Switcher
 alias nvim-chad="NVIM_APPNAME=NvChad nvim"
@@ -72,6 +72,15 @@ alias sni='sudo nala install -y'
 alias sar='sudo apt remove'
 alias saa='sudo add-apt-repository'
 
+# Homebrew
+alias buu='brew update && brew upgrade'
+alias br='brew uninstall'
+alias bi='brew install'
+alias bs='brew search'
+alias bu='brew update' 
+alias bl='brew list' 
+alias bf='brew info' 
+
 # Git
 alias ga='git add .'
 alias gs='git status'
@@ -79,6 +88,7 @@ alias go='git checkout'
 alias gc='git commit -m'
 alias gp='git push origin'
 alias gg="git add . && git commit -m 'update' && git push origin"
+alias gcl='git clone'
 
 # Lsd
 alias ls='lsd'
@@ -107,5 +117,4 @@ alias dl='aria2c --optimize-concurrent-downloads -j 16 -s 16 -x 16 -k 4M'
 alias time="arttime --nolearn -a kissingcats -b kissingcats2 -t 'nhattruongNeoVim' --ac 6"
 
 eval "$(starship init zsh)"
-# figlet -f ANSIShadow "nhat truong" | lolcat -F 0.2
 colorscript -e tiefighter2
