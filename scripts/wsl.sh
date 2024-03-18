@@ -186,6 +186,7 @@ fi
 
 # Install homebrew
 bash <(curl -sSL "https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/homebrew.sh")
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Install homebrew package
 brew_package=(
