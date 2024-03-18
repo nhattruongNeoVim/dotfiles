@@ -238,6 +238,7 @@ for DIR in "${folder[@]}"; do
 done
 
 # Copying configuration file
+cd ~/dotfiles
 for ITEM in "${folder[@]}"; do
 	if [[ -d "config/$ITEM" ]]; then
 		cp -r "config/$ITEM" ~/.config/ && echo "${OK} Copy completed" || echo "${ERROR} Failed to copy config files."
