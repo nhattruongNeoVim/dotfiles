@@ -107,7 +107,7 @@ nala_packages=(
 	ca-certificates
 	curl
 	gnupg
- 	ranger
+	ranger
 )
 
 printf "\n${NOTE} Installing nala packages...\n"
@@ -152,17 +152,15 @@ fi
 bash <(curl -sSL "https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/homebrew.sh")
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# Install homebrew package
 brew_package=(
 	rustup
-	neovim
 	node
- 	lazygit
-  	pipes-sh
-   	arttime
-    	starship
+	lazygit
+	pipes-sh
+	starship
 )
 
+# Install brew packages
 printf "\n${NOTE} Installing brew packages...\n"
 for PKG2 in "${brew_package[@]}"; do
 	install_brew_package "$PKG2"
@@ -172,20 +170,22 @@ for PKG2 in "${brew_package[@]}"; do
 	fi
 done
 
+# Install arttime 
+printf "\n%.0s" {1..2}
+printf "\n${NOTE} Install arttime...!\n"
+if zsh -c '{url="https://gist.githubusercontent.com/poetaman/bdc598ee607e9767fe33da50e993c650/raw/d0146d258a30daacb9aee51deca9410d106e4237/arttime_online_installer.sh"; zsh -c "$(curl -fsSL $url || wget -qO- $url)"}'; then
+	printf "\n${OK} Arttime install successfully!\n\n\n"
+else
+	printf "\n${ERROR} Failed to install arttime!\n\n\n"
+fi
+
 # Initial rust
 if rustup-init && source $HOME/.cargo/env && cargo --version && cargo install lsd --locked; then
 	printf "\n${OK} Initial rust successfully!\n\n\n"
 fi
 
-# Initial neovim
-printf "\n${NOTE} Setup neovim!\n"
-if git clone https://github.com/nhattruongNeoVim/MYnvim.git ~/.config/nvim --depth 1; then
-	printf "\n${OK} Setup neovim successfully!\n\n\n"
-fi
-
-# Config
+# Clone dotfiles
 cd ~
-printf "\n${NOTE} Start config!\n"
 if [ -d dotfiles ]; then
 	cd dotfiles || {
 		printf "%s - Failed to enter dotfiles config directory\n" "${ERROR}"
@@ -201,6 +201,23 @@ else
 		exit 1
 	}
 fi
+
+# Install and initial neovim
+printf "\n${NOTE} Install neovim!\n"
+if sudo dpkg -l | grep -q -w "nvim"; then
+	sudo nala remove neovim -y
+fi
+cd assets && mkdir -p ~/.local/bin && cp nvim-linux64.tar.gz ~/.local/bin && cd ~/.local/bin && tar xzvf nvim-linux64.tar.gz && rm -fr nvim-linux64.tar.gz && ln -s ./nvim-linux64/bin/nvim ./nvim && printf "\n${OK} Initial rust successfully!\n\n\n" || {
+	printf "\n${OK} Failed to install neovim!\n\n\n"
+}
+printf "\n${NOTE} Setup neovim!\n"
+if rm -rf ~/.config/nvim && rm -rf ~/.local/share/nvim && git clone https://github.com/nhattruongNeoVim/MYnvim.git ~/.config/nvim --depth 1; then
+	printf "\n${OK} Setup neovim successfully!\n\n\n"
+fi
+
+# Config
+printf "\n%.0s" {1..2}
+printf "\n${NOTE} Start config!\n"
 
 folder=(
 	neofetch
