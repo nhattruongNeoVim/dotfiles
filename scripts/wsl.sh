@@ -289,6 +289,12 @@ printf "\n%s - Set up Homebrew.... \n" "${NOTE}"
 	exit 1
 }
 
+cd ~
+if [ -d dotfiles ]; then
+	rm -rf dotfiles
+	echo -e "${NOTE} Remove dotfile successfully "
+fi
+
 # Chang shell to zsh
 printf "\n${NOTE} Change shell to zsh!\n"
 chsh -s $(which zsh)
@@ -298,11 +304,5 @@ printf "\n${OK} Yey! Setup Completed.\n"
 printf "\n%.0s" {1..2}
 
 nvim
-
-cd ~
-if [ -d dotfiles ]; then
-	rm -rf dotfiles
-	echo -e "${NOTE} Remove dotfile successfully "
-fi
 
 zsh
