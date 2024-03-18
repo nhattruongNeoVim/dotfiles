@@ -22,6 +22,12 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 irm https://is.gd/nhattruongNeoVim_window | iex
 ```
 
+## Wsl
+
+```
+bash <(curl -sSL https://is.gd/nhattruongNeoVim_wsl)
+```
+
 ## Ubuntu _(gnome)_
 
 ![](images/rice2.png)
