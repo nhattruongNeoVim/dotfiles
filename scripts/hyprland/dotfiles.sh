@@ -233,7 +233,7 @@ cp -r wallpapers ~/Pictures/ && { echo "${OK}Copy completed!"; } || {
 
 # Copying other
 cp assets/.zshrc ~ && cp assets/.ideavimrc ~ && { echo "${OK}Copy completed!"; } || {
-	echo "${ERROR} Failed to copy wallpapers."
+	echo "${ERROR} Failed to copy .zshrc && .ideavimrc"
 }
 
 printf "\n%.0s" {1..2}

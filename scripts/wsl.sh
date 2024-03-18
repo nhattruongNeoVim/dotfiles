@@ -23,7 +23,7 @@ ORANGE=$(tput setaf 166)
 YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
 
-install_package() {
+install_nala_package() {
 	if sudo dpkg -l | grep -q -w "$1"; then
 		echo -e "${OK} $1 is already installed. Skipping..."
 	else
@@ -38,40 +38,20 @@ install_package() {
 	fi
 }
 
-dependencies=(
-	build-essential
-	python3
-	python3-pip
-	git
-	neofetch
-	xclip
-	zsh
-	bat
-	default-jdk
-	htop
-	fzf
-	make
-	ripgrep
-	cmake
-	tmux
-	cava
-	net-tools
-	unzip
-	lolcat
-	sl
-	ca-certificates
-	curl
-	gnupg
-)
-
-folder=(
-	alacritty
-	kitty
-	neofetch
-	ranger
-	rofi
-	tmux
-)
+install_brew_package() {
+	if sudo dpkg -l | grep -q -w "$1"; then
+		echo -e "${OK} $1 is already installed. Skipping..."
+	else
+		echo -e "${NOTE} Installing $1 ..."
+		sudo nala install -y "$1"
+		if sudo dpkg -l | grep -q -w "$1"; then
+			echo -e "\e[1A\e[K${OK} $1 was installed."
+		else
+			echo -e "\e[1A\e[K${ERROR} $1 failed to install. You may need to install manually! Sorry, I have tried :("
+			exit 1
+		fi
+	fi
+}
 
 printf "\n${NOTE} Check for update...\n"
 if sudo apt update && sudo apt upgrade -y; then
@@ -97,9 +77,35 @@ if sudo nala fetch; then
 	printf "\n${OK} Initializing nala successfully!\n\n\n"
 fi
 
-printf "\n${NOTE}Installing packages...\n"
-for PKG1 in "${dependencies[@]}"; do
-	install_package "$PKG1"
+nala_packages=(
+	build-essential
+	python3
+	python3-pip
+	git
+	neofetch
+	xclip
+	zsh
+	bat
+	default-jdk
+	htop
+	fzf
+	make
+	ripgrep
+	cmake
+	tmux
+	cava
+	net-tools
+	unzip
+	lolcat
+	sl
+	ca-certificates
+	curl
+	gnupg
+)
+
+printf "\n${NOTE} Installing nala packages...\n"
+for PKG1 in "${nala_packages[@]}"; do
+	install_nala_package "$PKG1"
 	if [ $? -ne 0 ]; then
 		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed, please check the script."
 		exit 1
@@ -174,43 +180,38 @@ else
 	}
 fi
 
-# Install Rust
-printf "\n${NOTE} Install rust...\n"
-if curl --proto '=https' --tlsv1.2 -sSf "https://sh.rustup.rs" | sh; then
-	printf "\n${OK} Rust is installed successfully!\n\n\n"
-fi
-printf "\n${NOTE} Initial rust...\n"
-if source $HOME/.cargo/env && cargo --version && cargo install lsd --locked; then
-	printf "\n${OK} Initial rust is successfully!\n\n\n"
-fi
-
-# Install Nodejs
-if sudo mkdir -p /etc/apt/keyrings && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && NODE_MAJOR=21 && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list; then
-	printf "\n${OK} Set up enviroment successfully!\n\n\n"
-	printf "\n${NOTE} Install nodejs...\n"
-	if sudo nala update && sudo nala install nodejs -y; then
-		printf "\n${OK} Install nodejs successfully!\n\n\n"
-	fi
-fi
-
-# Chang shell to zsh
-printf "\n${NOTE} Change shell to zsh!\n"
-chsh -s $(which zsh)
-
 # Install homebrew
 bash <(curl -sSL "https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/homebrew.sh")
 
-# Install neovim
-printf "\n${NOTE} Install neovim!\n"
-if brew install neovim; then
-	printf "\n${OK} Install neovim successfully!\n\n\n"
+# Install homebrew package
+brew_package=(
+	rustup
+	node
+	neovim
+	node
+)
+
+printf "\n${NOTE} Installing brew packages...\n"
+for PKG2 in "${brew_package[@]}"; do
+	install_brew_package "$PKG2"
+	if [ $? -ne 0 ]; then
+		echo -e "\e[1A\e[K${ERROR} - $PKG2 install had failed, please check the script."
+		exit 1
+	fi
+done
+
+# Initial rust
+if rustup-init && source $HOME/.cargo/env && cargo --version && cargo install lsd --locked; then
+	printf "\n${OK} Initial rust is successfully!\n\n\n"
 fi
 
+# Initial neovim
 printf "\n${NOTE} Setup neovim!\n"
 if git clone https://github.com/nhattruongNeoVim/MYnvim.git ~/.config/nvim --depth 1; then
 	printf "\n${OK} Setup neovim successfully!\n\n\n"
 fi
 
+# Config
 cd ~
 printf "\n${NOTE} Start config!\n"
 printf "\n${NOTE} Clone dotfiles. "
@@ -230,6 +231,19 @@ else
 	}
 fi
 
+folder=(
+	neofetch
+	ranger
+	tmux
+)
+
+get_backup_dirname() {
+	local timestamp
+	timestamp=$(date +"%m%d_%H%M")
+	echo "back-up_${timestamp}"
+}
+
+# Back up configuration file
 for DIR in "${folder[@]}"; do
 	DIRPATH=~/.config/"$DIR"
 	if [ -d "$DIRPATH" ]; then
@@ -240,15 +254,16 @@ for DIR in "${folder[@]}"; do
 	fi
 done
 
-# Copying config files
-mkdir -p ~/.config
-cp -r config/* ~/.config/ && { echo "${OK}Copy completed!"; } || {
-	echo "${ERROR} Failed to copy config files."
-}
+# Copying configuration file
+for DIR2 in "${folder[@]}"; do
+	cp -r "config/$DIR2" ~/.config/ && { echo "${OK}Copy completed"; } || {
+		echo "${ERROR} Failed to copy config files."
+	}
+done
 
 # Copying other
 cp assets/.zshrc ~ && cp assets/.ideavimrc ~ && { echo "${OK}Copy completed!"; } || {
-	echo "${ERROR} Failed to copy wallpapers."
+	echo "${ERROR} Failed to copy .zshrc && .ideavimrc"
 }
 
 # copying icon
@@ -273,6 +288,13 @@ cp -r assets/.themes/* ~/.themes && { echo "${OK}Copy themes completed!"; } || {
 printf "\n%.0s" {1..2}
 fc-cache -fv
 
+# Chang shell to zsh
+printf "\n${NOTE} Change shell to zsh!\n"
+chsh -s $(which zsh)
+
 printf "\n%.0s" {1..2}
 printf "\n${OK} Yey! Setup Completed.\n"
 printf "\n%.0s" {1..2}
+
+nvim
+zsh
