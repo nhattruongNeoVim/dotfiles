@@ -261,7 +261,7 @@ for DIR2 in "${folder[@]}"; do
 done
 
 # Copying other
-cp assets/.zshrc ~ && cp assets/.ideavimrc ~ && { echo "${OK}Copy completed!"; } || {
+cp assets/.zshrc ~ && cp assets/.ideavimrc ~ && cp config/starship.toml { echo "${OK}Copy completed!"; } || {
 	echo "${ERROR} Failed to copy .zshrc && .ideavimrc"
 }
 
