@@ -284,4 +284,11 @@ printf "\n${OK} Yey! Setup Completed.\n"
 printf "\n%.0s" {1..2}
 
 nvim
+
+cd ~
+if [ -d dotfiles ]; then
+	rm -rf dotfiles
+	echo -e "${NOTE} Remove dotfile successfully "
+fi
+
 zsh
