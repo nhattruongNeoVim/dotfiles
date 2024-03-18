@@ -186,37 +186,6 @@ else
 	}
 fi
 
-# Install homebrew
-bash <(curl -sSL "https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/homebrew.sh")
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-# Install homebrew package
-brew_package=(
-	rustup
-	neovim
-	node
-)
-
-printf "\n${NOTE} Installing brew packages...\n"
-for PKG2 in "${brew_package[@]}"; do
-	install_brew_package "$PKG2"
-	if [ $? -ne 0 ]; then
-		echo -e "\e[1A\e[K${ERROR} - $PKG2 install had failed, please check the script."
-		exit 1
-	fi
-done
-
-# Initial rust
-if rustup-init && source $HOME/.cargo/env && cargo --version && cargo install lsd --locked; then
-	printf "\n${OK} Initial rust successfully!\n\n\n"
-fi
-
-# Initial neovim
-printf "\n${NOTE} Setup neovim!\n"
-if git clone https://github.com/nhattruongNeoVim/MYnvim.git ~/.config/nvim --depth 1; then
-	printf "\n${OK} Setup neovim successfully!\n\n\n"
-fi
-
 # Config
 cd ~
 printf "\n${NOTE} Start config!\n"
@@ -286,6 +255,37 @@ cp -r assets/.themes/* ~/.themes && { echo "${OK}Copy themes completed!"; } || {
 # reload fonts
 printf "\n%.0s" {1..2}
 fc-cache -fv
+
+# Install homebrew
+bash <(curl -sSL "https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/homebrew.sh")
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Install homebrew package
+brew_package=(
+	rustup
+	neovim
+	node
+)
+
+printf "\n${NOTE} Installing brew packages...\n"
+for PKG2 in "${brew_package[@]}"; do
+	install_brew_package "$PKG2"
+	if [ $? -ne 0 ]; then
+		echo -e "\e[1A\e[K${ERROR} - $PKG2 install had failed, please check the script."
+		exit 1
+	fi
+done
+
+# Initial rust
+if rustup-init && source $HOME/.cargo/env && cargo --version && cargo install lsd --locked; then
+	printf "\n${OK} Initial rust successfully!\n\n\n"
+fi
+
+# Initial neovim
+printf "\n${NOTE} Setup neovim!\n"
+if git clone https://github.com/nhattruongNeoVim/MYnvim.git ~/.config/nvim --depth 1; then
+	printf "\n${OK} Setup neovim successfully!\n\n\n"
+fi
 
 # Chang shell to zsh
 printf "\n${NOTE} Change shell to zsh!\n"
