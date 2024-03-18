@@ -51,6 +51,12 @@ install_brew_package() {
 	fi
 }
 
+get_backup_dirname() {
+	local timestamp
+	timestamp=$(date +"%m%d_%H%M")
+	echo "back-up_${timestamp}"
+}
+
 printf "\n${NOTE} Check for update...\n"
 if sudo apt update && sudo apt upgrade -y; then
 	printf "\n${OK} Apt update successfully!\n\n\n"
@@ -212,7 +218,6 @@ fi
 # Config
 cd ~
 printf "\n${NOTE} Start config!\n"
-printf "\n${NOTE} Clone dotfiles. "
 if [ -d dotfiles ]; then
 	cd dotfiles || {
 		printf "%s - Failed to enter dotfiles config directory\n" "${ERROR}"
@@ -234,12 +239,6 @@ folder=(
 	ranger
 	tmux
 )
-
-get_backup_dirname() {
-	local timestamp
-	timestamp=$(date +"%m%d_%H%M")
-	echo "back-up_${timestamp}"
-}
 
 # Back up configuration file
 for DIR in "${folder[@]}"; do
