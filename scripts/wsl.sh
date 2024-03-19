@@ -318,7 +318,6 @@ cp -r assets/.fonts/* ~/.fonts/ && { echo "${OK}Copy fonts completed!"; } || {
 printf "\n%.0s" {1..2}
 fc-cache -fv
 
-
 printf "\n%s - Set up Starship.... \n" "${NOTE}"
 (
 	echo
