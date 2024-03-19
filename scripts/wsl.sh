@@ -170,7 +170,7 @@ else
 		printf "%s - Failed to install pipes.sh\n" "${ERROR}"
 		exit 1
 	}
-	cd .. && rm pipes.sh || {
+	cd .. && rm -rf pipes.sh || {
 		printf "%s - Failed to remove pipes.sh directory\n" "${ERROR}"
 		exit 1
 	}
