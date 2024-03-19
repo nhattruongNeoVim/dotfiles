@@ -107,7 +107,6 @@ nala_packages=(
 	tmux
 	cava
 	net-tools
-	unzip
 	lolcat
 	sl
 	ca-certificates
@@ -126,7 +125,6 @@ for PKG1 in "${nala_packages[@]}"; do
 done
 
 # Install colorscript
-cd ~
 printf "\n%.0s" {1..2}
 if [ -d shell-color-scripts ]; then
 	rm -rf shell-color-scripts
@@ -149,50 +147,93 @@ else
 		printf "%s - Failed to install colorscript\n" "${ERROR}"
 		exit 1
 	}
-	cd ~ && rm -rf shell-color-scripts || {
+	cd .. && rm -rf shell-color-scripts || {
 		printf "%s - Failed to remove colorscript directory\n" "${ERROR}"
 		exit 1
 	}
 fi
 
-# Install homebrew
+# Install pipes.sh 
 printf "\n%.0s" {1..2}
-bash <(curl -sSL "https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/homebrew.sh")
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if [ -d pipes.sh ]; then
+	rm -rf pipes.sh
+fi
 
-brew_package=(
-	rustup
-	node
-	lazygit
-	pipes-sh
-	starship
-)
-
-# Install brew packages
-printf "\n${NOTE} Installing brew packages...\n"
-for PKG2 in "${brew_package[@]}"; do
-	install_brew_package "$PKG2"
-	if [ $? -ne 0 ]; then
-		echo -e "\e[1A\e[K${ERROR} - $PKG2 install had failed, please check the script."
+if command -v pipes.sh &>/dev/null; then
+	printf "\n%s - Pipes.sh already installed, moving on.\n" "${OK}"
+else
+	printf "\n%s - Pipes.sh was NOT located\n" "${NOTE}"
+	printf "\n%s - Installing pipes.sh\n" "${NOTE}"
+	git clone https://gitlab.com/dwt1/shell-color-scripts.git --depth 1 || {
+		printf "%s - Failed to clone pipes.sh\n" "${ERROR}"
 		exit 1
-	fi
-done
+	}
+	cd pipes.sh || {
+		printf "%s - Failed to enter pipes.sh directory\n" "${ERROR}"
+		exit 1
+	}
+	make PREFIX=$HOME/.local install || {
+		printf "%s - Failed to install pipes.sh\n" "${ERROR}"
+		exit 1
+	}
+	cd .. && rm pipes.sh || {
+		printf "%s - Failed to remove pipes.sh directory\n" "${ERROR}"
+		exit 1
+	}
+fi
 
-# Install arttime 
+# Install and initial rust
+printf "\n%.0s" {1..2}
+printf "\n${NOTE} Installing rust...\n"
+if curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh; then
+	printf "\n${OK} Install rust successfully!\n\n\n"
+else
+	printf "\n${ERROR} Failed to install rust!\n\n\n"
+fi
+printf "\n%.0s" {1..2}
+if rustup-init && source $HOME/.cargo/env && cargo --version; then
+	printf "\n${OK} Initial rust successfully!\n\n\n"
+else
+	printf "\n${ERROR} Failed to initial rust!\n\n\n"
+fi
+
+# Install cargo packages
+printf "\n%.0s" {1..2}
+printf "\n${NOTE} Installing lsd, starship ...\n"
+if cargo install lsd --locked && cargo install starship --locked; then
+	printf "\n${OK} Install lsd, starship successfully!\n\n\n"
+else
+	printf "\n${ERROR} Failed to install lsd, starship!\n\n\n"
+fi
+
+# Install nodejs
+printf "\n%.0s" {1..2}
+printf "\n${NOTE} Installing nodejs...\n"
+if curl -fsSL https://deb.nodesource.com/setup_21.x | sudo -E bash - && sudo nala install -y nodejs; then
+	printf "\n${OK} Install nodejs successfully!\n\n\n"
+else
+	printf "\n${ERROR} Failed to install nodejs!\n\n\n"
+fi
+
+# Install lazygit
+printf "\n%.0s" {1..2}
+printf "\n${NOTE} Installing lazygit...\n"
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+if sudo install lazygit /usr/local/bin && rm -rf lazygit; then
+	printf "\n${OK} Install nodejs successfully!\n\n\n"
+else
+	printf "\n${ERROR} Failed to install lazygit.!\n\n\n"
+fi
+
+# Install arttime
 printf "\n%.0s" {1..2}
 printf "\n${NOTE} Install arttime...!\n"
 if zsh -c '{url="https://gist.githubusercontent.com/poetaman/bdc598ee607e9767fe33da50e993c650/raw/d0146d258a30daacb9aee51deca9410d106e4237/arttime_online_installer.sh"; zsh -c "$(curl -fsSL $url || wget -qO- $url)"}'; then
 	printf "\n${OK} Arttime install successfully!\n\n\n"
 else
 	printf "\n${ERROR} Failed to install arttime!\n\n\n"
-fi
-
-# Initial rust
-printf "\n%.0s" {1..2}
-if rustup-init && source $HOME/.cargo/env && cargo --version && cargo install lsd --locked; then
-	printf "\n${OK} Initial rust successfully!\n\n\n"
-else
-	printf "\n${ERROR} Failed to initial rust!\n\n\n"
 fi
 
 # Install and initial neovim
@@ -217,7 +258,6 @@ else
 fi
 
 # Clone dotfiles
-cd ~
 if [ -d dotfiles ]; then
 	cd dotfiles || {
 		printf "%s - Failed to enter dotfiles config directory\n" "${ERROR}"
@@ -290,7 +330,7 @@ printf "\n${NOTE} Set up Homebrew!\n"
 	exit 1
 }
 
-cd ~
+cd ..
 if [ -d dotfiles ]; then
 	rm -rf dotfiles
 	echo -e "${NOTE} Remove dotfile successfully "
