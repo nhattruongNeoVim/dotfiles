@@ -37,28 +37,13 @@ install_nala_package() {
 	fi
 }
 
-install_brew_package() {
-	printf "\n%.0s" {1..2}
-	if brew list "$1" &>/dev/null; then
-		echo -e "${OK} $1 is already installed. Skipping..."
-	else
-		echo -e "${NOTE} Installing $1 ..."
-		brew install "$1"
-		if brew list "$1" &>/dev/null; then
-			echo -e "\e[1A\e[K${OK} $1 was installed."
-		else
-			echo -e "\e[1A\e[K${ERROR} $1 failed to install. You may need to install manually! Sorry, I have tried :("
-			exit 1
-		fi
-	fi
-}
-
 get_backup_dirname() {
 	local timestamp
 	timestamp=$(date +"%m%d_%H%M")
 	echo "back-up_${timestamp}"
 }
 
+# Update apt
 printf "\n${NOTE} Check for update...\n"
 if sudo apt update && sudo apt upgrade -y; then
 	printf "\n${OK} Apt update successfully!\n\n\n"
@@ -66,6 +51,8 @@ else
 	printf "\n${ERROR} Failed to update apt!\n\n\n"
 fi
 
+# Install nala
+printf "\n%.0s" {1..2}
 printf "\n${NOTE} Check nala...\n"
 if ! command -v nala &>/dev/null; then
 	echo -e "${CAT} Installing nala...${RESET}"
@@ -74,6 +61,8 @@ else
 	printf "\n${OK} Nala is already installed! Moving on.\n\n\n"
 fi
 
+# Update nala 
+printf "\n%.0s" {1..2}
 printf "\n${CAT} Update nala...${RESET}\n"
 if sudo nala update && sudo nala upgrade -y; then
 	printf "\n${OK} Nala update successfully!\n\n\n"
@@ -81,6 +70,8 @@ else
 	printf "\n${ERROR} Failed to update nala!\n\n\n"
 fi
 
+# Initial nala 
+printf "\n%.0s" {1..2}
 printf "\n${NOTE} Initializing Nala...\n"
 printf "\n${NOTE} Press 1 2 3 and press Enter \n"
 if sudo nala fetch; then
@@ -115,6 +106,7 @@ nala_packages=(
 	ranger
 )
 
+printf "\n%.0s" {1..2}
 printf "\n${NOTE} Installing nala packages...\n"
 for PKG1 in "${nala_packages[@]}"; do
 	install_nala_package "$PKG1"
@@ -237,6 +229,7 @@ else
 fi
 
 # Install and initial neovim
+cd $HOME
 printf "\n%.0s" {1..2}
 printf "\n${NOTE} Install neovim!\n"
 if sudo dpkg -l | grep -q -w nvim; then
@@ -258,6 +251,7 @@ else
 fi
 
 # Clone dotfiles
+cd $HOME
 if [ -d dotfiles ]; then
 	cd dotfiles || {
 		printf "%s - Failed to enter dotfiles config directory\n" "${ERROR}"
