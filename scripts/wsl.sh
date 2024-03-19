@@ -185,7 +185,7 @@ else
 	printf "\n${ERROR} Failed to install rust!\n"
 fi
 printf "\n%.0s" {1..2}
-if rustup-init && source $HOME/.cargo/env && cargo --version; then
+if source $HOME/.cargo/env && cargo --version; then
 	printf "\n${OK} Initial rust successfully!\n"
 else
 	printf "\n${ERROR} Failed to initial rust!\n"
