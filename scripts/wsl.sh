@@ -117,6 +117,7 @@ for PKG1 in "${nala_packages[@]}"; do
 done
 
 # Install colorscript
+cd $HOME
 printf "\n%.0s" {1..2}
 if [ -d shell-color-scripts ]; then
 	rm -rf shell-color-scripts
@@ -146,6 +147,7 @@ else
 fi
 
 # Install pipes.sh 
+cd $HOME
 printf "\n%.0s" {1..2}
 if [ -d pipes.sh ]; then
 	rm -rf pipes.sh
@@ -324,7 +326,7 @@ printf "\n${NOTE} Set up Homebrew!\n"
 	exit 1
 }
 
-cd ..
+cd $HOME
 if [ -d dotfiles ]; then
 	rm -rf dotfiles
 	echo -e "${NOTE} Remove dotfile successfully "
