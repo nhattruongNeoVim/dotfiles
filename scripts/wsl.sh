@@ -214,7 +214,7 @@ printf "\n%.0s" {1..2}
 printf "\n${NOTE} Installing lazygit...\n"
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-tar xf lazygit.tar.gz lazygit
+tar xf lazygit.tar.gz lazygit && rm lazygit.tar.gz
 if sudo install lazygit /usr/local/bin && rm -rf lazygit; then
 	printf "\n${OK} Install nodejs successfully!\n"
 else
@@ -244,7 +244,7 @@ else
 	printf "\n${ERROR} Failed to download neovim!\n"
 fi
 printf "\n%.0s" {1..2}
-mkdir -p ~/.local/bin && cp nvim-linux64.tar.gz ~/.local/bin && cd ~/.local/bin && tar xzvf nvim-linux64.tar.gz && rm -fr nvim-linux64.tar.gz && ln -s ./nvim-linux64/bin/nvim ./nvim && printf "\n${OK} Install neovim successfully!\n\n\n" || {
+mkdir -p ~/.local/bin && mv nvim-linux64.tar.gz ~/.local/bin && cd ~/.local/bin && tar xzvf nvim-linux64.tar.gz && rm -fr nvim-linux64.tar.gz && ln -s ./nvim-linux64/bin/nvim ./nvim && printf "\n${OK} Install neovim successfully!\n\n\n" || {
 	printf "\n${OK} Failed to install neovim!\n"
 }
 printf "\n%.0s" {1..2}
