@@ -158,7 +158,7 @@ if command -v pipes.sh &>/dev/null; then
 else
 	printf "\n%s - Pipes.sh was NOT located\n" "${NOTE}"
 	printf "\n%s - Installing pipes.sh\n" "${NOTE}"
-	git clone https://gitlab.com/dwt1/shell-color-scripts.git --depth 1 || {
+	git clone https://github.com/pipeseroni/pipes.sh --depth 1 || {
 		printf "%s - Failed to clone pipes.sh\n" "${ERROR}"
 		exit 1
 	}
