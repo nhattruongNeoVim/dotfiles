@@ -342,6 +342,4 @@ printf "\n%.0s" {1..2}
 printf "\n${OK} Yey! Setup Completed.\n"
 printf "\n%.0s" {1..2}
 
-nvim
-
 zsh
