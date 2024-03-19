@@ -244,7 +244,7 @@ else
 	printf "\n${ERROR} Failed to download neovim!\n"
 fi
 printf "\n%.0s" {1..2}
-mkdir -p ~/.local/bin && cp nvim-linux64.tar.gz ~/.local/bin && cd ~/.local/bin && tar xzvf nvim-linux64.tar.gz && rm -fr nvim-linux64.tar.gz && ln -s ./nvim-linux64/bin/nvim ./nvim && printf "\n${OK} Initial rust successfully!\n\n\n" || {
+mkdir -p ~/.local/bin && cp nvim-linux64.tar.gz ~/.local/bin && cd ~/.local/bin && tar xzvf nvim-linux64.tar.gz && rm -fr nvim-linux64.tar.gz && ln -s ./nvim-linux64/bin/nvim ./nvim && printf "\n${OK} Install neovim successfully!\n\n\n" || {
 	printf "\n${OK} Failed to install neovim!\n"
 }
 printf "\n%.0s" {1..2}
