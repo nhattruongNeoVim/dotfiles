@@ -214,7 +214,7 @@ printf "\n%.0s" {1..2}
 printf "\n${NOTE} Installing lazygit...\n"
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-tar xf lazygit.tar.gz lazygit && rm lazygit.tar.gz
+tar xf lazygit.tar.gz lazygit && rm -fr lazygit.tar.gz
 if sudo install lazygit /usr/local/bin && rm -rf lazygit; then
 	printf "\n${OK} Install nodejs successfully!\n"
 else
