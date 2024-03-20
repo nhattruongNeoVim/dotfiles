@@ -40,4 +40,4 @@ hyprctl keyword input:kb_layout "$new_layout"
 echo "$new_layout" >"$layout_f"
 
 # Notification for the new keyboard layout
-notify-send -u low -i "$notif" "new KB_Layout: $new_layout"
+notify-send -e -u low -i "$notif" "new KB_Layout: $new_layout"
