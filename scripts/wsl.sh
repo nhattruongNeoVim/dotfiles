@@ -339,6 +339,10 @@ fi
 printf "\n${NOTE} Change shell to zsh!\n"
 chsh -s $(which zsh)
 
+source ~/.bashrc 
+
+nvim
+
 printf "\n%.0s" {1..2}
 printf "\n${OK} Yey! Setup Completed.\n"
 printf "\n%.0s" {1..2}
