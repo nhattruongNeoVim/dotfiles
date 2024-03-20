@@ -91,6 +91,7 @@ nala_packages=(
 	bat
 	default-jdk
 	htop
+ 	dotnet-sdk-8.0
 	fzf
 	make
 	ripgrep
