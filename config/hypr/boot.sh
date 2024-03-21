@@ -7,8 +7,9 @@
 
 # variables
 scriptsDir=$HOME/.config/hypr/scripts
-wallpaper=$HOME/Pictures/wallpapers/anime-kanji.jpg
 waybar_style="$HOME/.config/waybar/style/simple [pywal].css"
+wallpaper=$HOME/Pictures/wallpapers/anime-kanji.jpg
+notif="$HOME/.config/swaync/images/bell.png"
 kvantum_theme="Tokyo-Night"
 
 swww="swww img"
@@ -44,25 +45,25 @@ if [ ! -f ~/.config/hypr/.boot_done ]; then
 	if [ -f "$waybar_style" ]; then
 		ln -sf "$waybar_style" "$HOME/.config/waybar/style.css"
 
-        sleep 1
+		sleep 1
 		# refreshing waybar, swaync, rofi etc.
 		"$scriptsDir/refresh.sh" >/dev/null 2>&1 &
 	fi
-   
+
 	# install snap store
 	if command -v snap &>/dev/null; then
 		if ! snap list | grep -q 'snap-store'; then
-			notify-send "  Installing snap-store"
+			notify-send -e -u low -i "$notif" "  Installing snap-store"
 			snap install snap-store && snap install snapd-desktop-integration || {
-				notify-send "Failed to install snap-store"
+				notify-send -e -u low -i "$notif" "Failed to install snap-store"
 				exit 1
 			}
-			notify-send "Install successfully"
+			notify-send -e -u low -i "$notif" "Install successfully"
 		fi
 	fi
- 
+
 	# Create a marker file to indicate that the script has been executed.
 	touch ~/.config/hypr/.boot_done
- 
+
 	exit
 fi
