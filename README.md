@@ -28,7 +28,6 @@ irm https://is.gd/nhattruongNeoVim_window | iex
 - Set up Wsl (ubuntu):
 
 ```bash
-# Wsl (ubuntu)
 bash <(curl -sSL https://is.gd/nhattruongNeoVim_wsl)
 ```
 
