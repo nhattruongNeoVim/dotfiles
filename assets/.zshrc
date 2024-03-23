@@ -111,6 +111,7 @@ alias pipes='pipes.sh'
 alias matrix='cmatrix'
 alias hack='hollywood'
 alias cl='colorscript'
+alias lamp='sudo /opt/lampp/lampp'
 alias win='sudo efibootmgr --bootnext 0006 && reboot'
 alias ip="echo $(ifconfig | grep broadcast | awk '{print $2}')"
 alias dl='aria2c --optimize-concurrent-downloads -j 16 -s 16 -x 16 -k 4M'
