@@ -42,31 +42,39 @@ colorize_prompt() {
 	echo -n "${color}${message}$(tput sgr0)"
 }
 
+# ask_yes_no() {
+# 	if [[ ! -z "${!2}" ]]; then
+# 		echo "$(colorize_prompt "$CAT" "$1 (Preset): ${!2}")"
+# 		if [[ "${!2}" = [Yy] ]]; then
+# 			return 0
+# 		else
+# 			return 1
+# 		fi
+# 	else
+# 		eval "$2=''"
+# 	fi
+# 	while true; do
+# 		read -p "$(colorize_prompt "$CAT" "$1 (y/n): ")" choice
+# 		case "$choice" in
+# 		[Yy]*)
+# 			eval "$2='Y'"
+# 			return 0
+# 			;;
+# 		[Nn]*)
+# 			eval "$2='N'"
+# 			return 1
+# 			;;
+# 		*) echo "Please answer with y or n." ;;
+# 		esac
+# 	done
+# }
+
 ask_yes_no() {
-	if [[ ! -z "${!2}" ]]; then
-		echo "$(colorize_prompt "$CAT" "$1 (Preset): ${!2}")"
-		if [[ "${!2}" = [Yy] ]]; then
-			return 0
-		else
-			return 1
-		fi
+	if gum confirm "$1"; then
+		eval "$2='Y'"
 	else
-		eval "$2=''"
+		eval "$2='N'"
 	fi
-	while true; do
-		read -p "$(colorize_prompt "$CAT" "$1 (y/n): ")" choice
-		case "$choice" in
-		[Yy]*)
-			eval "$2='Y'"
-			return 0
-			;;
-		[Nn]*)
-			eval "$2='N'"
-			return 1
-			;;
-		*) echo "Please answer with y or n." ;;
-		esac
-	done
 }
 
 ask_custom_option() {
@@ -97,31 +105,31 @@ execute_script() {
 }
 
 printf "\n"
-ask_custom_option "-Choose your AUR helper" "paru or yay" aur_helper
+ask_custom_option "Choose your AUR helper" "paru or yay" aur_helper
 printf "\n"
-ask_yes_no "-Do you dual boot with window?" dual_boot
+ask_yes_no "Do you dual boot with window?" dual_boot
 printf "\n"
-ask_yes_no "-Do you want to install GTK themes?" gtk_themes
+ask_yes_no "Do you want to install GTK themes?" gtk_themes
 printf "\n"
-ask_yes_no "-Do you want to configure Bluetooth?" bluetooth
+ask_yes_no "Do you want to configure Bluetooth?" bluetooth
 printf "\n"
-ask_yes_no "-Do you have any nvidia gpu in your system?" nvidia
+ask_yes_no "Do you have any nvidia gpu in your system?" nvidia
 printf "\n"
-ask_yes_no "-Do you want to install Thunar file manager?" thunar
+ask_yes_no "Do you want to install Thunar file manager?" thunar
 printf "\n"
-ask_yes_no "-Do you want to install Snap (GUI packages manager)?" snap
+ask_yes_no "Do you want to install Snap (GUI packages manager)?" snap
 printf "\n"
-#ask_yes_no "-Do you want to install & configure Firefox browser?" firefox
+#ask_yes_no "Do you want to install & configure Firefox browser?" firefox
 #printf "\n"
-ask_yes_no "-Do you want to install Homebrew (CLI package manager)?" homebrew 
+ask_yes_no "Do you want to install Homebrew (CLI package manager)?" homebrew 
 printf "\n"
-ask_yes_no "-Do you want to set battery charging limit (only for laptop)?" battery
+ask_yes_no "Do you want to set battery charging limit (only for laptop)?" battery
 printf "\n"
-ask_yes_no "-Install & configure SDDM log-in Manager plus (OPTIONAL) SDDM Theme?" sddm
+ask_yes_no "Install & configure SDDM log-in Manager plus (OPTIONAL) SDDM Theme?" sddm
 printf "\n"
-ask_yes_no "-Install XDG-DESKTOP-PORTAL-HYPRLAND? (For proper Screen Share ie OBS)" xdph
+ask_yes_no "Install XDG-DESKTOP-PORTAL-HYPRLAND? (For proper Screen Share ie OBS)" xdph
 printf "\n"
-ask_yes_no "-Do you want to download pre-configured Hyprland dotfiles?" dots
+ask_yes_no "Do you want to download pre-configured Hyprland dotfiles?" dots
 printf "\n"
 
 printf "\n%.0s" {1..2}
