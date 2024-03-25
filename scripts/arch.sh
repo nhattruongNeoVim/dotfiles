@@ -85,7 +85,6 @@ execute_script() {
 clear
 execute_script "pacman.sh"
 sleep 0.5
-
 clear
 
 echo -e "\e[34m   ____   __ __   ____  ______      ______  ____   __ __   ___   ____    ____ "

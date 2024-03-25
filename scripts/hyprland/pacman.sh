@@ -1,14 +1,11 @@
 #!/bin/bash
-# pacman adding up extra-spices #
+# pacman adding up extra-spices
 
 # Set some colors for output messages
 OK="$(tput setaf 2)[OK]$(tput sgr0)"
 ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
 NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
-WARN="$(tput setaf 166)[WARN]$(tput sgr0)"
 CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
-ORANGE=$(tput setaf 166)
-YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
 
 clear
@@ -68,6 +65,7 @@ echo -e "${CAT} Pacman.conf spicing up completed ${RESET}"
 sudo pacman -Syyuu --noconfirm
 
 # install requirement
+printf "\n${NOTE} Install requirement..."
 if pacman -Q gum &>/dev/null; then
 	echo -e "${OK} gum is already installed. Skipping..."
 else

@@ -96,37 +96,25 @@ layout=$(detect_layout)
 printf "${NOTE} Detecting keyboard layout to prepare necessary changes in hyprland.conf before copying\n\n"
 
 # Prompt the user to confirm whether the detected layout is correct
-while true; do
-	read -n1 -rep "$ORANGE Detected current keyboard layout is: $layout. Is this correct? [y/n] " confirm
-
-	case $confirm in
-	[yY])
-		# If the detected layout is correct, update the 'kb_layout=' line in the file
-		awk -v layout="$layout" '/kb_layout/ {$0 = "  kb_layout=" layout} 1' config/hypr/configs/settings.conf >temp.conf
-		mv temp.conf config/hypr/configs/settings.conf
-		echo "${NOTE} kb_layout $layout configured in settings.  "
-		break
-		;;
-	[nN])
-		printf "\n%.0s" {1..2}
-		echo "$(tput bold)$(tput setaf 3)ATTENTION!!!! VERY IMPORTANT!!!! $(tput sgr0)"
-		echo "$(tput bold)$(tput setaf 7)Setting a wrong value here will result in Hyprland not starting $(tput sgr0)"
-		echo "$(tput bold)$(tput setaf 7)If you are not sure, keep it in us layout. You can change later on! $(tput sgr0)"
-		echo "$(tput bold)$(tput setaf 7)You can also set more than 2 layouts!$(tput sgr0)"
-		echo "$(tput bold)$(tput setaf 7)ie: us,vn,kr,es $(tput sgr0)"
-		printf "\n%.0s" {1..2}
-		read -p "${CAT} - Please enter the correct keyboard layout: " new_layout
-		# Update the 'kb_layout=' line with the correct layout in the file
-		awk -v new_layout="$new_layout" '/kb_layout/ {$0 = "  kb_layout=" new_layout} 1' config/hypr/configs/settings.conf >temp.conf
-		mv temp.conf config/hypr/configs/settings.conf
-		echo "${NOTE} kb_layout $new_layout configured in settings."
-		break
-		;;
-	*)
-		echo "Please enter either 'y' or 'n'."
-		;;
-	esac
-done
+if gum confirm "$ORANGE Detected current keyboard layout is: $layout. Is this correct? [y/n]"; then
+	# If the detected layout is correct, update the 'kb_layout=' line in the file
+	awk -v layout="$layout" '/kb_layout/ {$0 = "  kb_layout=" layout} 1' config/hypr/configs/settings.conf >temp.conf
+	mv temp.conf config/hypr/configs/settings.conf
+	echo "${NOTE} kb_layout $layout configured in settings.  "
+else
+	printf "\n%.0s" {1..2}
+	echo "$(tput bold)$(tput setaf 3)ATTENTION!!!! VERY IMPORTANT!!!! $(tput sgr0)"
+	echo "$(tput bold)$(tput setaf 7)Setting a wrong value here will result in Hyprland not starting $(tput sgr0)"
+	echo "$(tput bold)$(tput setaf 7)If you are not sure, keep it in us layout. You can change later on! $(tput sgr0)"
+	echo "$(tput bold)$(tput setaf 7)You can also set more than 2 layouts!$(tput sgr0)"
+	echo "$(tput bold)$(tput setaf 7)ie: us,vn,kr,es $(tput sgr0)"
+	printf "\n%.0s" {1..2}
+	read -p "${CAT} - Please enter the correct keyboard layout: " new_layout
+	# Update the 'kb_layout=' line with the correct layout in the file
+	awk -v new_layout="$new_layout" '/kb_layout/ {$0 = "  kb_layout=" new_layout} 1' config/hypr/configs/settings.conf >temp.conf
+	mv temp.conf config/hypr/configs/settings.conf
+	echo "${NOTE} kb_layout $new_layout configured in settings."
+fi
 
 printf "\n"
 
