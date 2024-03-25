@@ -6,16 +6,9 @@ NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
 CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
 
 printf "\n%.0s" {1..2}
-while true; do
-	read -n1 -rep "${NOTE} Do you want to set up swapfile? (y/n) " swapfile
-	if [[ "$swapfile" == "y" || "$swapfile" == "Y" ]]; then
-		break
-	elif [[ "$swapfile" == "n" || "$swapfile" == "N" ]]; then
-		exit 1
-	else
-		echo "Please answer with y or n."
-	fi
-done
+if ! gum confirm "${NOTE} Do you want to set up swapfile? (y/n) "; then
+	exit 1
+fi
 
 printf "\n%.0s" {1..2}
 echo -e "${NOTE} Setting up swapfile."
@@ -23,30 +16,21 @@ echo -e "${NOTE} Setting up swapfile."
 total_ram=$(awk '/MemTotal/ {print $2}' /proc/meminfo)
 recommended_size=$((((total_ram / 1024 / 1024) + 1) / 2))
 
-while true; do
-	if [[ -f "/swapfile" ]]; then
-		read -n1 -rep "${NOTE} Swap file already exists. Do you want to delete old swapfile? (y/n) " answer
-		if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
-			sudo swapoff /swapfile
-			sudo rm -f /swapfile
-			printf "\n%.0s" {1..2}
-			echo "${OK} Old swapfile deleted."
+if [[ -f "/swapfile" ]]; then
+	if gum confirm "${NOTE} Swap file already exists. Do you want to delete old swapfile?"; then
+		sudo swapoff /swapfile
+		sudo rm -f /swapfile
+		printf "\n%.0s" {1..2}
+		echo "${OK} Old swapfile deleted."
 
-			if grep -q "/swapfile" /etc/fstab; then
-				sudo sed -i '/swapfile/d' /etc/fstab
-				echo "${OK} Old swapfile deleted and removed from /etc/fstab."
-			fi
-
-			break
-		elif [[ "$answer" == "n" || "$answer" == "N" ]]; then
-			exit 1
-		else
-			echo "Please answer with y or n."
+		if grep -q "/swapfile" /etc/fstab; then
+			sudo sed -i '/swapfile/d' /etc/fstab
+			echo "${OK} Old swapfile deleted and removed from /etc/fstab."
 		fi
 	else
-		break
+		exit 1
 	fi
-done
+fi
 
 while true; do
 	printf "\n%.0s" {1..2}
