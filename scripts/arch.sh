@@ -151,7 +151,7 @@ sleep 0.5
 execute_script "pacman_pkgs.sh"
 
 # Check if dotfiles exist
-cd ~
+cd $HOME
 if [ -d dotfiles ]; then
 	rm -rf dotfiles
 	echo -e "${OK} Remove dotfile successfully "
