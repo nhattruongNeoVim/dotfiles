@@ -79,7 +79,7 @@ ask_custom_option() {
 
 execute_script() {
 	local script_url="https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/$1"
-    bash <(curl -sSL "$script_url")
+	bash <(curl -sSL "$script_url")
 }
 
 clear
@@ -124,7 +124,7 @@ ask_yes_no "Do you want to install Snap (GUI packages manager)?" snap
 printf "\n"
 #ask_yes_no "Do you want to install & configure Firefox browser?" firefox
 #printf "\n"
-ask_yes_no "Do you want to install Homebrew (CLI package manager)?" homebrew 
+ask_yes_no "Do you want to install Homebrew (CLI package manager)?" homebrew
 printf "\n"
 ask_yes_no "Do you want to set battery charging limit (only for laptop)?" battery
 printf "\n"
@@ -229,17 +229,14 @@ fi
 
 printf "\n%.0s" {1..2}
 
-if [ -f ~/install.log ]; then
-	read -n1 -rep "${CAT} Do you want to check log? (y/n) " log
-
-	if pacman -Q bat &>/dev/null; then
-		cat_command="bat"
-	else
-		cat_command="cat"
-	fi
-
-	if [[ "$log" =~ ^[Yy]$ ]]; then
-		$cat_command ~/install.log
+if [ -f $HOME/install.log ]; then
+	if gum confirm "${CAT} Do you want to check log?"; then
+		if pacman -Q bat &>/dev/null; then
+			cat_command="bat"
+		else
+			cat_command="cat"
+		fi
+		$cat_command $HOME/install.log
 	fi
 fi
 
@@ -249,13 +246,9 @@ printf "\n%.0s" {1..2}
 printf "\n${NOTE} You can start Hyprland by typing Hyprland (IF SDDM is not installed) (note the capital H!).\n"
 printf "\n${NOTE} It is highly recommended to reboot your system.\n\n"
 
-read -n1 -rep "${CAT} Would you like to reboot now? (y/n) " HYP
-
-if [[ "$HYP" =~ ^[Yy]$ ]]; then
-	if [[ "$nvidia" == "Y" ]]; then
-		echo "${NOTE} NVIDIA GPU detected. Rebooting the system..."
-		systemctl reboot
-	else
-		systemctl reboot
-	fi
+if gum confirm "${CAT} Would you like to reboot now?"; then
+	echo "${NOTE} NVIDIA GPU detected. Rebooting the system..."
+	systemctl reboot
+else
+	systemctl reboot
 fi
