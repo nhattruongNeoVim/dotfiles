@@ -5,28 +5,6 @@ if [[ $EUID -eq 0 ]]; then
 	exit 1
 fi
 
-clear
-
-echo -e "\e[34m   ____   __ __   ____  ______      ______  ____   __ __   ___   ____    ____ "
-echo -e "  |    \ |  |  | /    ||      |    |      ||    \ |  |  | /   \ |    \  /    |"
-echo -e "  |  _  ||  |  ||  o  ||      |    |      ||  D  )|  |  ||     ||  _  ||   __|"
-echo -e "  |  |  ||  _  ||     ||_|  |_|    |_|  |_||    / |  |  ||  O  ||  |  ||  |  |"
-echo -e "  |  |  ||  |  ||  _  |  |  |        |  |  |    \ |  :  ||     ||  |  ||  |_ |"
-echo -e "  |  |  ||  |  ||  |  |  |  |        |  |  |  .  \|     ||     ||  |  ||     |"
-echo -e "  |__|__||__|__||__|__|  |__|        |__|  |__|\_| \__,_| \___/ |__|__||___,_|"
-echo -e ""
-echo -e ""
-echo -e "-------------------- Script developed by nhattruongNeoVim --------------------"
-echo -e " -------------- Github: https://github.com/nhattruongNeoVim -----------------"
-echo
-
-echo "$(tput setaf 3)NOTE: Ensure that you have a stable internet connection (Highly Recommended) $(tput sgr0)"
-echo
-echo "$(tput setaf 3)NOTE: You will be required to answer some questions during the installation! $(tput sgr0)"
-echo
-echo "$(tput setaf 3)NOTE: If you are installing on a VM, ensure to enable 3D acceleration else Hyprland wont start! $(tput sgr0)"
-echo
-
 OK="$(tput setaf 2)[OK]$(tput sgr0)"
 ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
 NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
@@ -104,6 +82,32 @@ execute_script() {
     bash <(curl -sSL "$script_url")
 }
 
+clear
+execute_script "pacman.sh"
+sleep 0.5
+
+clear
+
+echo -e "\e[34m   ____   __ __   ____  ______      ______  ____   __ __   ___   ____    ____ "
+echo -e "  |    \ |  |  | /    ||      |    |      ||    \ |  |  | /   \ |    \  /    |"
+echo -e "  |  _  ||  |  ||  o  ||      |    |      ||  D  )|  |  ||     ||  _  ||   __|"
+echo -e "  |  |  ||  _  ||     ||_|  |_|    |_|  |_||    / |  |  ||  O  ||  |  ||  |  |"
+echo -e "  |  |  ||  |  ||  _  |  |  |        |  |  |    \ |  :  ||     ||  |  ||  |_ |"
+echo -e "  |  |  ||  |  ||  |  |  |  |        |  |  |  .  \|     ||     ||  |  ||     |"
+echo -e "  |__|__||__|__||__|__|  |__|        |__|  |__|\_| \__,_| \___/ |__|__||___,_|"
+echo -e ""
+echo -e ""
+echo -e "-------------------- Script developed by nhattruongNeoVim --------------------"
+echo -e " -------------- Github: https://github.com/nhattruongNeoVim -----------------"
+echo
+
+echo "$(tput setaf 3)NOTE: Ensure that you have a stable internet connection (Highly Recommended) $(tput sgr0)"
+echo
+echo "$(tput setaf 3)NOTE: You will be required to answer some questions during the installation! $(tput sgr0)"
+echo
+echo "$(tput setaf 3)NOTE: If you are installing on a VM, ensure to enable 3D acceleration else Hyprland wont start! $(tput sgr0)"
+echo
+
 printf "\n"
 ask_custom_option "Choose your AUR helper" "paru or yay" aur_helper
 printf "\n"
@@ -144,8 +148,6 @@ if [ "$battery" == "Y" ]; then
 fi
 
 execute_script "swapfile.sh"
-sleep 0.5
-execute_script "pacman.sh"
 sleep 0.5
 execute_script "pacman_pkgs.sh"
 
