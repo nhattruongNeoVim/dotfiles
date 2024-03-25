@@ -84,6 +84,7 @@ hypr_aur_package=(
 	arttime-git
 	shell-color-scripts
 	pipes.sh
+    vmware-workstation
 )
 
 hypr_pacman_package=(

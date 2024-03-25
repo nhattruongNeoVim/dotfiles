@@ -56,6 +56,7 @@ extra=(
     discord
     neovide
     ranger
+    aria2
 )
 
 # Installation of main components
