@@ -20,33 +20,6 @@ colorize_prompt() {
 	echo -n "${color}${message}$(tput sgr0)"
 }
 
-# ask_yes_no() {
-# 	if [[ ! -z "${!2}" ]]; then
-# 		echo "$(colorize_prompt "$CAT" "$1 (Preset): ${!2}")"
-# 		if [[ "${!2}" = [Yy] ]]; then
-# 			return 0
-# 		else
-# 			return 1
-# 		fi
-# 	else
-# 		eval "$2=''"
-# 	fi
-# 	while true; do
-# 		read -p "$(colorize_prompt "$CAT" "$1 (y/n): ")" choice
-# 		case "$choice" in
-# 		[Yy]*)
-# 			eval "$2='Y'"
-# 			return 0
-# 			;;
-# 		[Nn]*)
-# 			eval "$2='N'"
-# 			return 1
-# 			;;
-# 		*) echo "Please answer with y or n." ;;
-# 		esac
-# 	done
-# }
-
 ask_yes_no() {
 	if gum confirm "$1"; then
 		eval "$2='Y'"

@@ -25,7 +25,7 @@ install_package() {
 			echo -e "\e[1A\e[K${OK} $1 was installed."
 		else
 			echo -e "\e[1A\e[K${ERROR} $1 failed to install. You may need to install manually! Sorry I have tried :("
-			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>~/install.log
+			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>$HOME/install.log
 		fi
 	fi
 }

@@ -24,7 +24,7 @@ install_package() {
 			echo -e "\e[1A\e[K${OK} $1 was installed."
 		else
 			echo -e "\e[1A\e[K${ERROR} $1 failed to install. You may need to install manually! Sorry I have tried :("
-			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>~/install.log
+			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>$HOME/install.log
 		fi
 	fi
 }
@@ -39,7 +39,7 @@ install_package_pacman() {
 			echo -e "${OK} $1 was installed."
 		else
 			echo -e "${ERROR} $1 failed to install. You may need to install manually."
-			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>~/install.log
+			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>$HOME/install.log
 		fi
 	fi
 }
@@ -72,7 +72,7 @@ printf " Activating sddm service........\n"
 sudo systemctl enable sddm
 
 # Check dotfiles
-cd ~
+cd $HOME
 if [ -d dotfiles ]; then
 	cd dotfiles || {
 		printf "%s - Failed to enter dotfiles config directory\n" "${ERROR}"
@@ -107,7 +107,7 @@ sudo cp assets/hyprland.desktop "$wayland_sessions_dir/"
 
 # SDDM-themes
 cd $HOME
-if "${CAT} OPTIONAL - Would you like to install SDDM themes? (y/n) "; then
+if "${CAT} OPTIONAL - Would you like to install SDDM themes?"; then
 	printf "\n%s - Installing Simple SDDM Theme\n" "${NOTE}"
 
 	# Check if /usr/share/sddm/themes/simple-sddm exists and remove if it does
@@ -122,7 +122,7 @@ if "${CAT} OPTIONAL - Would you like to install SDDM themes? (y/n) "; then
 		echo -e "\e[1A\e[K${OK} - Removed existing 'simple-sddm' directory from the current location."
 	fi
 
-	if git clone https://github.com/JaKooLit/simple-sddm.git; then
+	if git clone https://github.com/JaKooLit/simple-sddm.git --depth 1; then
 		while [ ! -d "simple-sddm" ]; do
 			sleep 1
 		done

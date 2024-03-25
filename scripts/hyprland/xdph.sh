@@ -25,7 +25,7 @@ install_package() {
 			echo -e "\e[1A\e[K${OK} $1 was installed."
 		else
 			echo -e "\e[1A\e[K${ERROR} $1 failed to install :(. You may need to install manually! Sorry I have tried :("
-			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>~/install.log
+			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>$HOME/install.log
 		fi
 	fi
 }
@@ -49,7 +49,7 @@ printf "${NOTE} Checking for other XDG-Desktop-Portal-Implementations....\n"
 sleep 1
 printf "\n"
 printf "${NOTE} XDG-desktop-portal-KDE & GNOME (if installed) should be manually disabled or removed! I can't remove it... sorry...\n"
-if "${CAT} Would you like to try to remove other XDG-Desktop-Portal-Implementations? (y/n) "; then
+if "${CAT} Would you like to try to remove other XDG-Desktop-Portal-Implementations?"; then
 	echo
 	sleep 1
 	# Clean out other portals

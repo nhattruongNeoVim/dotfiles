@@ -12,7 +12,7 @@ YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
 
 # Check Existing snapd
-cd ~
+cd $HOME
 if [ -d snapd ]; then
 	rm -rf snapd
 fi

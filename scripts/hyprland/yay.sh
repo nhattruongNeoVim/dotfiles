@@ -13,7 +13,7 @@ YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
 
 # Check Existing yay-bin
-cd ~
+cd $HOME
 if [ -d yay-bin ]; then
 	rm -rf yay-bin
 fi

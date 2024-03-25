@@ -13,7 +13,7 @@ RESET=$(tput sgr0)
 echo "${NOTE} This script will add your user to the 'input' group."
 echo "${NOTE} Please note that adding yourself to the 'input' group might be necessary for waybar keyboard-state functionality."
 
-if gum confirm "${YELLOW}Do you want to proceed? (y/n): ${RESET}"; then
+if gum confirm "${YELLOW}Do you want to proceed?${RESET}"; then
 	# Check if the 'input' group exists
 	if grep -q '^input:' /etc/group; then
 		echo "${OK} 'input' group exists."

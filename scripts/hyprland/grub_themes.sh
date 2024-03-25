@@ -25,7 +25,7 @@ if [ ! -f "$grub" ]; then
 fi
 
 # Ask user
-if gum confirm "${NOTE} Do you want to install grub custom theme? (y/n) "; then
+if gum confirm "${NOTE} Do you want to install grub custom theme?"; then
 	cd $HOME
 	if [ -d grub_themes ]; then
 		rm -rf grub_themes || {

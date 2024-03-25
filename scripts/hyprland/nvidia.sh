@@ -24,7 +24,7 @@ install_package() {
 			echo -e "\e[1A\e[K${OK} $1 was installed."
 		else
 			echo -e "\e[1A\e[K${ERROR} $1 failed to install. You may need to install manually! Sorry I have tried :("
-			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>~/install.log
+			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>$HOME/install.log
 		fi
 	fi
 }
@@ -109,26 +109,24 @@ fi
 
 # Blacklist nouveau
 if [[ -z $blacklist_nouveau ]]; then
-	read -n1 -rep "${CAT} Would you like to blacklist nouveau? (y/n) " blacklist_nouveau
-fi
-echo
-if [[ $blacklist_nouveau =~ ^[Yy]$ ]]; then
-	NOUVEAU="/etc/modprobe.d/nouveau.conf"
-	if [ -f "$NOUVEAU" ]; then
-		printf "${OK} Seems like nouveau is already blacklisted..moving on.\n"
-	else
-		printf "\n"
-		echo "blacklist nouveau" | sudo tee -a "$NOUVEAU"
-		printf "${NOTE} has been added to $NOUVEAU.\n"
-		printf "\n"
-
-		# To completely blacklist nouveau (See wiki.archlinux.org/title/Kernel_module#Blacklisting 6.1)
-		if [ -f "/etc/modprobe.d/blacklist.conf" ]; then
-			echo "install nouveau /bin/true" | sudo tee -a "/etc/modprobe.d/blacklist.conf"
+	if gum confirm "${CAT} Would you like to blacklist nouveau?"; then
+		NOUVEAU="/etc/modprobe.d/nouveau.conf"
+		if [ -f "$NOUVEAU" ]; then
+			printf "${OK} Seems like nouveau is already blacklisted..moving on.\n"
 		else
-			echo "install nouveau /bin/true" | sudo tee "/etc/modprobe.d/blacklist.conf"
+			printf "\n"
+			echo "blacklist nouveau" | sudo tee -a "$NOUVEAU"
+			printf "${NOTE} has been added to $NOUVEAU.\n"
+			printf "\n"
+
+			# To completely blacklist nouveau (See wiki.archlinux.org/title/Kernel_module#Blacklisting 6.1)
+			if [ -f "/etc/modprobe.d/blacklist.conf" ]; then
+				echo "install nouveau /bin/true" | sudo tee -a "/etc/modprobe.d/blacklist.conf"
+			else
+				echo "install nouveau /bin/true" | sudo tee "/etc/modprobe.d/blacklist.conf"
+			fi
 		fi
+	else
+		printf "${NOTE} Skipping nouveau blacklisting.\n"
 	fi
-else
-	printf "${NOTE} Skipping nouveau blacklisting.\n"
 fi

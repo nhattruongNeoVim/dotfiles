@@ -21,7 +21,7 @@ install_package_pacman() {
 			echo -e "${OK} $package was installed."
 		else
 			echo -e "${ERROR} $package failed to install. Please install it manually."
-			echo "-> $package failed to install. You may need to install it manually! Sorry I have tried :(" >>~/install.log
+			echo "-> $package failed to install. You may need to install it manually! Sorry I have tried :(" >>$HOME/install.log
 		fi
 	fi
 }

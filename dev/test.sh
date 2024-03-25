@@ -12,7 +12,10 @@
 # echo ":: Download complete."
 
 # choose=$(gum confirm "How do you want to proceed?" --affirmative "≤ 1080p" --negative "≥ 1440p")
-choose=$(gum choose "≤ 1080p" "≥ 1440p")
+# choose=$(gum choose "≤ 1080p" "≥ 1440p")
+
+echo "SPACE = select/unselect a profile. RETURN = confirm. No selection = CANCEL"
+choose=$(gum choose --no-limit --cursor-prefix "( ) " --selected-prefix "(x) " --unselected-prefix "( ) " "≤ 1080p" "≥ 1440p")
 
 if [ "$choose" == "≤ 1080p" ]; then
     echo "Please"

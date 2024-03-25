@@ -96,7 +96,7 @@ layout=$(detect_layout)
 printf "${NOTE} Detecting keyboard layout to prepare necessary changes in hyprland.conf before copying\n\n"
 
 # Prompt the user to confirm whether the detected layout is correct
-if gum confirm "$ORANGE Detected current keyboard layout is: $layout. Is this correct? [y/n]"; then
+if gum confirm "$ORANGE Detected current keyboard layout is: $layout. Is this correct?"; then
 	# If the detected layout is correct, update the 'kb_layout=' line in the file
 	awk -v layout="$layout" '/kb_layout/ {$0 = "  kb_layout=" layout} 1' config/hypr/configs/settings.conf >temp.conf
 	mv temp.conf config/hypr/configs/settings.conf
@@ -252,7 +252,7 @@ echo "$(tput setaf 6) By default only a few wallpapers are copied...$(tput sgr0)
 printf "\n%.0s" {1..2}
 
 cd $HOME
-if gum confirm "${CAT} Would you like to download additional wallpapers? (y/n) "; then
+if gum confirm "${CAT} Would you like to download additional wallpapers?"; then
 	echo "${NOTE} Downloading additional wallpapers..."
 	if git clone https://github.com/nhattruongNeoVim/wallpapers --depth 1; then
 		echo "${NOTE} Wallpapers downloaded successfully."

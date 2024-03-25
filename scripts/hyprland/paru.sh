@@ -13,7 +13,7 @@ YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
 
 # cd home
-cd ~
+cd $HOME
 
 # checking if paru-bin exist and removing if it is
 if [ -d paru-bin ]; then
