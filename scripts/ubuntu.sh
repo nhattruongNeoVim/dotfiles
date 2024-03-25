@@ -194,22 +194,30 @@ write_start "Change shell to zsh..."
 chsh -s /bin/zsh
 write_done
 
-# Install neovim
-write_start "Install and config neovim version 0.9.2..."
-git clone https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1
-cd ~/dotfiles/assets
-sudo nala remove neovim -y
-mkdir -p ~/.local/bin
-cp nvim-linux64.tar.gz ~/.local/bin
-cd ~/.local/bin
-tar xzvf nvim-linux64.tar.gz
-rm -fr nvim-linux64.tar.gz
-ln -s ./nvim-linux64/bin/nvim ./nvim
-rm -rf ~/.config/nvim
-rm -rf ~/.local/share/nvim
-rm -rf ~/dotfiles
-git clone https://github.com/nhattruongNeoVim/MYnvim ~/.config/nvim --depth 1
-write_done
+# Install and initial neovim
+cd $HOME
+printf "\n%.0s" {1..2}
+printf "\n${NOTE} Install neovim!\n"
+if sudo dpkg -l | grep -q -w nvim; then
+	sudo nala remove neovim -y
+fi
+printf "\n%.0s" {1..2}
+if curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz; then
+	printf "\n${OK} Download lastest version neovim successfully!\n"
+else
+	printf "\n${ERROR} Failed to download neovim!\n"
+fi
+printf "\n%.0s" {1..2}
+mkdir -p ~/.local/bin && mv nvim-linux64.tar.gz ~/.local/bin && cd ~/.local/bin && tar xzvf nvim-linux64.tar.gz && rm -fr nvim-linux64.tar.gz && ln -s ./nvim-linux64/bin/nvim ./nvim && printf "\n${OK} Install neovim successfully!\n\n\n" || {
+	printf "\n${OK} Failed to install neovim!\n"
+}
+printf "\n%.0s" {1..2}
+printf "\n${NOTE} Setup neovim!\n"
+if rm -rf ~/.config/nvim && rm -rf ~/.local/share/nvim && git clone https://github.com/nhattruongNeoVim/MYnvim.git ~/.config/nvim --depth 1; then
+	printf "\n${OK} Setup neovim successfully!\n"
+else
+	printf "\n${ERROR} Failed to setup neovim!\n"
+fi
 
 # Config neovim switcher
 while [[ true ]]; do
