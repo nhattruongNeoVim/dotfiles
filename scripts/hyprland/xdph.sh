@@ -49,34 +49,20 @@ printf "${NOTE} Checking for other XDG-Desktop-Portal-Implementations....\n"
 sleep 1
 printf "\n"
 printf "${NOTE} XDG-desktop-portal-KDE & GNOME (if installed) should be manually disabled or removed! I can't remove it... sorry...\n"
-while true; do
-	if [[ -z $XDPH1 ]]; then
-		read -rp "${CAT} Would you like to try to remove other XDG-Desktop-Portal-Implementations? (y/n) " XDPH1
-	fi
+if "${CAT} Would you like to try to remove other XDG-Desktop-Portal-Implementations? (y/n) "; then
 	echo
 	sleep 1
-
-	case $XDPH1 in
-	[Yy])
-		# Clean out other portals
-		printf "${NOTE} Clearing any other xdg-desktop-portal implementations...\n"
-		# Check if packages are installed and uninstall if present
-		if pacman -Qs xdg-desktop-portal-wlr >/dev/null; then
-			echo "Removing xdg-desktop-portal-wlr..."
-			sudo pacman -R --noconfirm xdg-desktop-portal-wlr
-		fi
-		if pacman -Qs xdg-desktop-portal-lxqt >/dev/null; then
-			echo "Removing xdg-desktop-portal-lxqt..."
-			sudo pacman -R --noconfirm xdg-desktop-portal-lxqt
-		fi
-		break
-		;;
-	[Nn])
-		echo "no other XDG-implementations will be removed."
-		break
-		;;
-	*)
-		echo "Invalid input. Please enter 'y' for yes or 'n' for no."
-		;;
-	esac
-done
+	# Clean out other portals
+	printf "${NOTE} Clearing any other xdg-desktop-portal implementations...\n"
+	# Check if packages are installed and uninstall if present
+	if pacman -Qs xdg-desktop-portal-wlr >/dev/null; then
+		echo "Removing xdg-desktop-portal-wlr..."
+		sudo pacman -R --noconfirm xdg-desktop-portal-wlr
+	fi
+	if pacman -Qs xdg-desktop-portal-lxqt >/dev/null; then
+		echo "Removing xdg-desktop-portal-lxqt..."
+		sudo pacman -R --noconfirm xdg-desktop-portal-lxqt
+	fi
+else
+	echo "No other XDG-implementations will be removed."
+fi
