@@ -44,3 +44,18 @@ echo -e "${CAT} Pacman.conf spicing up completed ${RESET}"
 
 # updating pacman.conf
 sudo pacman -Syyuu --noconfirm
+
+# install requirement
+if pacman -Q gum &>/dev/null; then
+	echo -e "${OK} gum is already installed. Skipping..."
+else
+	echo -e "${NOTE} Installing fum ..."
+	sudo pacman -S --noconfirm gum
+	if pacman -Q gum &>/dev/null; then
+		echo -e "${OK} gum was installed."
+	else
+		echo -e "${ERROR} gum failed to install. You may need to install manually."
+		echo "-> gum failed to install. You may need to install manually! Sorry I have tried :(" >>~/install.log
+        exit 1
+	fi
+fi
