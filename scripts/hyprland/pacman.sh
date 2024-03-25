@@ -71,7 +71,7 @@ sudo pacman -Syyuu --noconfirm
 if pacman -Q gum &>/dev/null; then
 	echo -e "${OK} gum is already installed. Skipping..."
 else
-	echo -e "${NOTE} Installing fum ..."
+	echo -e "${NOTE} Installing gum ..."
 	sudo pacman -S --noconfirm gum
 	if pacman -Q gum &>/dev/null; then
 		echo -e "${OK} gum was installed."
