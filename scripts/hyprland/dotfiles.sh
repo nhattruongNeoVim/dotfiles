@@ -251,35 +251,25 @@ printf "\n%.0s" {1..2}
 echo "$(tput setaf 6) By default only a few wallpapers are copied...$(tput sgr0)"
 printf "\n%.0s" {1..2}
 
-while true; do
-	cd ~
-	read -n1 -rep "${CAT} Would you like to download additional wallpapers? (y/n) " WALL
-	case $WALL in
-	[Yy])
-		echo "${NOTE} Downloading additional wallpapers..."
-		if git clone https://github.com/nhattruongNeoVim/wallpapers --depth 1; then
-			echo "${NOTE} Wallpapers downloaded successfully."
+cd $HOME
+if gum confirm "${CAT} Would you like to download additional wallpapers? (y/n) "; then
+	echo "${NOTE} Downloading additional wallpapers..."
+	if git clone https://github.com/nhattruongNeoVim/wallpapers --depth 1; then
+		echo "${NOTE} Wallpapers downloaded successfully."
 
-			if cp -R wallpapers/wallpapers/* ~/Pictures/wallpapers/; then
-				echo "${NOTE} Wallpapers copied successfully."
-				rm -rf wallpapers
-				break
-			else
-				echo "${ERROR} Copying wallpapers failed"
-			fi
+		if cp -R wallpapers/wallpapers/* ~/Pictures/wallpapers/; then
+			echo "${NOTE} Wallpapers copied successfully."
+			rm -rf wallpapers
+			break
 		else
-			echo "${ERROR} Downloading additional wallpapers failed"
+			echo "${ERROR} Copying wallpapers failed"
 		fi
-		;;
-	[Nn])
-		echo "You chose not to download additional wallpapers."
-		break
-		;;
-	*)
-		echo "Please enter 'y' or 'n' to proceed."
-		;;
-	esac
-done
+	else
+		echo "${ERROR} Downloading additional wallpapers failed"
+	fi
+else
+	echo "You chose not to download additional wallpapers."
+fi
 
 # symlinks for waybar style
 ln -sf "$waybar_style" "$HOME/.config/waybar/style.css" &&
