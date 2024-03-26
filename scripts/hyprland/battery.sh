@@ -15,7 +15,9 @@ if hostnamectl | grep -q 'Chassis: vm' || hostnamectl | grep -q 'Chassis: deskto
 fi
 
 while true; do
-	read -rep "${NOTE} Enter the battery charge limit (as a percentage): " number
+    echo 
+
+	number=$(gum input --prompt="--> " --placeholder "Enter the battery charge limit (as a percentage):")
 
 	if [[ "$number" =~ ^[0-9]+$ && "$number" -ge 0 && "$number" -le 100 ]]; then
 		if [[ -d "/sys/class/power_supply/BAT0" ]]; then
