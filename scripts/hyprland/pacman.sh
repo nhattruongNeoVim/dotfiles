@@ -10,17 +10,17 @@ RESET=$(tput sgr0)
 
 clear
 
-echo -e "\e[34m   ____   __ __   ____  ______      ______  ____   __ __   ___   ____    ____ "
-echo -e "  |    \ |  |  | /    ||      |    |      ||    \ |  |  | /   \ |    \  /    |"
-echo -e "  |  _  ||  |  ||  o  ||      |    |      ||  D  )|  |  ||     ||  _  ||   __|"
-echo -e "  |  |  ||  _  ||     ||_|  |_|    |_|  |_||    / |  |  ||  O  ||  |  ||  |  |"
-echo -e "  |  |  ||  |  ||  _  |  |  |        |  |  |    \ |  :  ||     ||  |  ||  |_ |"
-echo -e "  |  |  ||  |  ||  |  |  |  |        |  |  |  .  \|     ||     ||  |  ||     |"
-echo -e "  |__|__||__|__||__|__|  |__|        |__|  |__|\_| \__,_| \___/ |__|__||___,_|"
-echo -e ""
-echo -e ""
-echo -e "-------------------- Script developed by nhattruongNeoVim --------------------"
-echo -e " -------------- Github: https://github.com/nhattruongNeoVim -----------------"
+echo -e "\e[34m   ____   __ __   ____  ______      ______  ____   __ __   ___   ____    ____"
+echo -e "  |    \ |  |  | /    ||      |    |      ||    \ |  |  | /   \ |    \  /    |     "
+echo -e "  |  _  ||  |  ||  o  ||      |    |      ||  D  )|  |  ||     ||  _  ||   __|     "
+echo -e "  |  |  ||  _  ||     ||_|  |_|    |_|  |_||    / |  |  ||  O  ||  |  ||  |  |     "
+echo -e "  |  |  ||  |  ||  _  |  |  |        |  |  |    \ |  :  ||     ||  |  ||  |_ |     "
+echo -e "  |  |  ||  |  ||  |  |  |  |        |  |  |  .  \|     ||     ||  |  ||     |     "
+echo -e "  |__|__||__|__||__|__|  |__|        |__|  |__|\_| \__,_| \___/ |__|__||___,_|     "
+echo -e "                                                                                   "
+echo -e "                                                                                   "
+echo -e "-------------------- Script developed by nhattruongNeoVim --------------------     "
+echo -e " -------------- Github: https://github.com/nhattruongNeoVim -----------------      "
 echo
 
 echo -e "${NOTE} Adding Extra Spice in pacman.conf ... ${RESET}"
@@ -69,6 +69,6 @@ else
 	else
 		echo -e "${ERROR} gum failed to install. You may need to install manually."
 		echo "-> gum failed to install. You may need to install manually! Sorry I have tried :(" >>~/install.log
-        exit 1
+		exit 1
 	fi
 fi
