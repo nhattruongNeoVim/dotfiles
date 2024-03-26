@@ -58,7 +58,7 @@ echo -e "${CAT} Pacman.conf spicing up completed ${RESET}"
 sudo pacman -Syyuu --noconfirm
 
 # install requirement
-printf "\n${NOTE} Install requirement..."
+printf "\n${NOTE} Install requirement...\n"
 if pacman -Q gum &>/dev/null; then
 	echo -e "${OK} gum is already installed. Skipping..."
 else
