@@ -21,7 +21,7 @@ colorize_prompt() {
 }
 
 ask_yes_no() {
-	if gum confirm "$1"; then
+	if gum confirm "$CAT $1"; then
 		eval "$2='Y'"
 	else
 		eval "$2='N'"
@@ -40,7 +40,7 @@ ask_custom_option() {
 	fi
 
 	while true; do
-		read -p "$(colorize_prompt "$CAT" "$prompt ($valid_options): ")" choice
+		read -p "$(colorize_prompt "$CAT " "$prompt ($valid_options): ")" choice
 		if [[ " $valid_options " == *" $choice "* ]]; then
 			eval "$response_var='$choice'"
 			return 0
