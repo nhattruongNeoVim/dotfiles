@@ -42,7 +42,7 @@
 # gum spin --spinner dot --title "Buying Bubble Gum..." -- sleep 2
 
 gum style \
-	--foreground 213 --border-foreground 213 --border rounded\
+	--foreground 213 --border-foreground 213 --border rounded \
 	--align center --width 90 --margin "1 2" --padding "2 4" \
 	"  ____   __ __   ____  ______      ______  ____   __ __   ___   ____    ____  " \
 	" |    \ |  |  | /    ||      |    |      ||    \ |  |  | /   \ |    \  /    | " \
@@ -58,10 +58,10 @@ gum style \
 	"                                                                              "
 
 gum style \
-	--foreground 6 --border-foreground 6 --border rounded\
+	--foreground 6 --border-foreground 6 --border rounded \
 	--align left --width 105 --margin "1 2" --padding "2 4" \
-    "NOTE: Ensure that you have a stable internet connection $(tput setaf 3)(Highly Recommended!!!!)" \
+	"NOTE: Ensure that you have a stable internet connection $(tput setaf 3)(Highly Recommended!!!!)" \
 	"                                                                                               " \
-    "NOTE: You will be required to answer some questions during the installation!!                  " \
+	"NOTE: You will be required to answer some questions during the installation!!                  " \
 	"                                                                                               " \
-    "NOTE: If you are installing on a VM, ensure to enable 3D acceleration else Hyprland wont start!" \
+	"NOTE: If you are installing on a VM, ensure to enable 3D acceleration else Hyprland wont start!"
