@@ -6,7 +6,7 @@ NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
 CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
 
 printf "\n%.0s" {1..2}
-if ! gum confirm "${NOTE} Do you want to set up swapfile? (y/n) "; then
+if ! gum confirm "${NOTE} Do you want to set up swapfile?"; then
 	exit 1
 fi
 
