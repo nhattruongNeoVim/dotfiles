@@ -23,10 +23,10 @@ colorize_prompt() {
 ask_yes_no() {
 	if gum confirm "$CAT $1"; then
 		eval "$2='Y'"
-		echo "$CAT $1 $ORANGE Yes"
+		echo "$CAT $1 $YELLOW Yes"
 	else
 		eval "$2='N'"
-		echo "$CAT $1 $ORANGE No"
+		echo "$CAT $1 $YELLOW No"
 	fi
 }
 
@@ -226,8 +226,10 @@ printf "\n${NOTE} You can start Hyprland by typing Hyprland (IF SDDM is not inst
 printf "\n${NOTE} It is highly recommended to reboot your system.\n\n"
 
 if gum confirm "${CAT} Would you like to reboot now?"; then
-	echo "${NOTE} NVIDIA GPU detected. Rebooting the system..."
-	systemctl reboot
-else
-	systemctl reboot
+	if [[ "$nvidia" == "Y" ]]; then
+		echo "${NOTE} NVIDIA GPU detected. Rebooting the system..."
+		systemctl reboot
+	else
+		systemctl reboot
+	fi
 fi
