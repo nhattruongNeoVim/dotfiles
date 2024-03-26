@@ -60,25 +60,30 @@ execute_script "pacman.sh"
 sleep 0.5
 clear
 
-echo -e "\e[34m   ____   __ __   ____  ______      ______  ____   __ __   ___   ____    ____ "
-echo -e "  |    \ |  |  | /    ||      |    |      ||    \ |  |  | /   \ |    \  /    |"
-echo -e "  |  _  ||  |  ||  o  ||      |    |      ||  D  )|  |  ||     ||  _  ||   __|"
-echo -e "  |  |  ||  _  ||     ||_|  |_|    |_|  |_||    / |  |  ||  O  ||  |  ||  |  |"
-echo -e "  |  |  ||  |  ||  _  |  |  |        |  |  |    \ |  :  ||     ||  |  ||  |_ |"
-echo -e "  |  |  ||  |  ||  |  |  |  |        |  |  |  .  \|     ||     ||  |  ||     |"
-echo -e "  |__|__||__|__||__|__|  |__|        |__|  |__|\_| \__,_| \___/ |__|__||___,_|"
-echo -e ""
-echo -e ""
-echo -e "-------------------- Script developed by nhattruongNeoVim --------------------"
-echo -e " -------------- Github: https://github.com/nhattruongNeoVim -----------------"
-echo
+gum style \
+	--foreground 213 --border-foreground 213 --border double \
+	--align left --width 90 --margin "1 2" --padding "2 4" \
+	"  ____   __ __   ____  ______      ______  ____   __ __   ___   ____    ____  " \
+	" |    \ |  |  | /    ||      |    |      ||    \ |  |  | /   \ |    \  /    | " \
+	" |  _  ||  |  ||  o  ||      |    |      ||  D  )|  |  ||     ||  _  ||   __| " \
+	" |  |  ||  _  ||     ||_|  |_|    |_|  |_||    / |  |  ||  O  ||  |  ||  |  | " \
+	" |  |  ||  |  ||  _  |  |  |        |  |  |    \ |  :  ||     ||  |  ||  |_ | " \
+	" |  |  ||  |  ||  |  |  |  |        |  |  |  .  \|     ||     ||  |  ||     | " \
+	" |__|__||__|__||__|__|  |__|        |__|  |__|\_| \__,_| \___/ |__|__||___,_| " \
+	"                                                                              " \
+	" ------------------- Script developed by nhattruongNeoVim ------------------- " \
+	"                                                                              " \
+	"  -------------- Github: https://github.com/nhattruongNeoVim ---------------  " \
+	"                                                                              "
 
-echo "$(tput setaf 3)NOTE: Ensure that you have a stable internet connection (Highly Recommended) $(tput sgr0)"
-echo
-echo "$(tput setaf 3)NOTE: You will be required to answer some questions during the installation! $(tput sgr0)"
-echo
-echo "$(tput setaf 3)NOTE: If you are installing on a VM, ensure to enable 3D acceleration else Hyprland wont start! $(tput sgr0)"
-echo
+gum style \
+	--foreground 6 --border-foreground 6 --border double \
+	--align left --width 105 --margin "1 2" --padding "2 4" \
+    "NOTE: Ensure that you have a stable internet connection $(tput setaf 3)(Highly Recommended!!!!)" \
+	"                                                                                               " \
+    "NOTE: You will be required to answer some questions during the installation!!                  " \
+	"                                                                                               " \
+    "NOTE: If you are installing on a VM, ensure to enable 3D acceleration else Hyprland wont start!" \
 
 printf "\n"
 ask_custom_option "Choose your AUR helper" "paru or yay" aur_helper

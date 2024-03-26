@@ -18,7 +18,11 @@ echo "SPACE = select/unselect a profile. RETURN = confirm. No selection = CANCEL
 choose=$(gum choose --no-limit --cursor-prefix "( ) " --selected-prefix "(x) " --unselected-prefix "( ) " "≤ 1080p" "≥ 1440p")
 
 if [ "$choose" == "≤ 1080p" ]; then
-    echo "Please"
+	echo "Please"
 elif [ "$choose" == "≥ 1440p" ]; then
-    echo "ok"
+	echo "ok"
+elif [ "$choose" == "≤ 1080p ≥ 1440p" ]; then
+	echo "nhattruongNeoVim"
+else
+    echo $choose
 fi
