@@ -23,13 +23,6 @@ echo -e "-------------------- Script developed by nhattruongNeoVim -------------
 echo -e " -------------- Github: https://github.com/nhattruongNeoVim -----------------"
 echo
 
-echo "$(tput setaf 3)NOTE: Ensure that you have a stable internet connection (Highly Recommended) $(tput sgr0)"
-echo
-echo "$(tput setaf 3)NOTE: You will be required to answer some questions during the installation! $(tput sgr0)"
-echo
-echo "$(tput setaf 3)NOTE: If you are installing on a VM, ensure to enable 3D acceleration else Hyprland wont start! $(tput sgr0)"
-echo
-
 echo -e "${NOTE} Adding Extra Spice in pacman.conf ... ${RESET}"
 pacman_conf="/etc/pacman.conf"
 
