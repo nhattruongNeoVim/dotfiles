@@ -61,8 +61,8 @@ sleep 0.5
 clear
 
 gum style \
-	--foreground 213 --border-foreground 213 --border double \
-	--align left --width 90 --margin "1 2" --padding "2 4" \
+	--foreground 213 --border-foreground 213 --border rounded\
+	--align center --width 90 --margin "1 2" --padding "2 4" \
 	"  ____   __ __   ____  ______      ______  ____   __ __   ___   ____    ____  " \
 	" |    \ |  |  | /    ||      |    |      ||    \ |  |  | /   \ |    \  /    | " \
 	" |  _  ||  |  ||  o  ||      |    |      ||  D  )|  |  ||     ||  _  ||   __| " \
@@ -77,7 +77,7 @@ gum style \
 	"                                                                              "
 
 gum style \
-	--foreground 6 --border-foreground 6 --border double \
+	--foreground 6 --border-foreground 6 --border rounded\
 	--align left --width 105 --margin "1 2" --padding "2 4" \
     "NOTE: Ensure that you have a stable internet connection $(tput setaf 3)(Highly Recommended!!!!)" \
 	"                                                                                               " \
