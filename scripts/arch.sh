@@ -23,10 +23,10 @@ colorize_prompt() {
 ask_yes_no() {
 	if gum confirm "$CAT $1"; then
 		eval "$2='Y'"
-		echo "$CAT $1 $YELLOW Yes"
+		echo "$CAT $1 $YELLOW ${!2}"
 	else
 		eval "$2='N'"
-		echo "$CAT $1 $YELLOW No"
+		echo "$CAT $1 $YELLOW ${!2}"
 	fi
 }
 
