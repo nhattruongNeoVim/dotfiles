@@ -17,10 +17,10 @@ RESET=$(tput sgr0)
 ask_yes_no() {
 	if gum confirm "$CAT $1"; then
 		eval "$2='Y'"
-		echo "$CAT $1 $YELLOW ${!2}"
+		echo "$CAT $1 $YELLOW Yes"
 	else
 		eval "$2='N'"
-		echo "$CAT $1 $YELLOW ${!2}"
+		echo "$CAT $1 $YELLOW No"
 	fi
 }
 
