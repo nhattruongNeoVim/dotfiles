@@ -14,12 +14,6 @@ ORANGE=$(tput setaf 166)
 YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
 
-colorize_prompt() {
-	local color="$1"
-	local message="$2"
-	echo -n "${color}${message}$(tput sgr0)"
-}
-
 ask_yes_no() {
 	if gum confirm "$CAT $1"; then
 		eval "$2='Y'"
