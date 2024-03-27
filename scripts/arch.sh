@@ -31,25 +31,13 @@ ask_yes_no() {
 }
 
 ask_custom_option() {
-	local prompt="$1"
-	local valid_options="$2"
-	local response_var="$3"
-
-	if [[ ! -z "${!3}" ]]; then
-		return 0
+    if gum confirm "$CAT $1" --affirmative "$2" --negative "$3" ;then
+		eval "$4=$2"
+		echo "$CAT $1 $YELLOW ${!4}"
 	else
-		eval "$3=''"
+		eval "$4=$3"
+		echo "$CAT $1 $YELLOW ${!4}"
 	fi
-
-	while true; do
-		read -p "$(colorize_prompt "$CAT " "$prompt ($valid_options): ")" choice
-		if [[ " $valid_options " == *" $choice "* ]]; then
-			eval "$response_var='$choice'"
-			return 0
-		else
-			echo "Please choose one of the provided options: $valid_options"
-		fi
-	done
 }
 
 execute_script() {
@@ -87,7 +75,7 @@ gum style \
 	"NOTE: If you are installing on a VM, ensure to enable 3D acceleration else Hyprland wont start!"
 
 printf "\n"
-ask_custom_option "Choose your AUR helper" "paru or yay" aur_helper
+ask_custom_option "Choose your AUR helper" "yay" "paru" aur_helper
 printf "\n"
 ask_yes_no "Do you dual boot with window?" dual_boot
 printf "\n"
