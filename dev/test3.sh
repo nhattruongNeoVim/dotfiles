@@ -21,7 +21,7 @@ mess() {
 		"$1"
 }
 mess "$(tput setaf 2)[OK]$(tput sgr0)"
-# OK=$(mess "$(tput setaf 2)[OK]$(tput sgr0)")
-OK="$(tput setaf 2)[OK]$(tput sgr0)"
-echo $OK
-mess $OK
+OK=$(mess "$(tput setaf 2)[OK]$(tput sgr0)")
+# OK="$(tput setaf 2)[OK]$(tput sgr0)"
+echo "${OK} aa"
+# mess $OK
