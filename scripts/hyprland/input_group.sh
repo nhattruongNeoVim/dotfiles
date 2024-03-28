@@ -27,7 +27,6 @@ if gum confirm "${YELLOW}Do you want to proceed?${RESET}"; then
 	sudo usermod -aG input "$(whoami)"
 	echo "${OK} User added to the 'input' group. Changes will take effect after you log out and log back in."
 	echo "User added to 'input' group"
-	break
 else
 	echo "${NOTE} No changes made. Exiting the script."
 fi

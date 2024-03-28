@@ -49,8 +49,7 @@ printf "${NOTE} Checking for other XDG-Desktop-Portal-Implementations....\n"
 sleep 1
 printf "\n"
 printf "${NOTE} XDG-desktop-portal-KDE & GNOME (if installed) should be manually disabled or removed! I can't remove it... sorry...\n"
-if "${CAT} Would you like to try to remove other XDG-Desktop-Portal-Implementations?"; then
-	echo
+if gum confirm "${CAT} Would you like to try to remove other XDG-Desktop-Portal-Implementations?"; then
 	sleep 1
 	# Clean out other portals
 	printf "${NOTE} Clearing any other xdg-desktop-portal implementations...\n"

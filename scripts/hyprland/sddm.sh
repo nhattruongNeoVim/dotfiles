@@ -29,22 +29,8 @@ install_package() {
 	fi
 }
 
-install_package_pacman() {
-	if pacman -Q "$1" &>/dev/null; then
-		echo -e "${OK} $1 is already installed. Skipping..."
-	else
-		echo -e "${NOTE} Installing $1 ..."
-		sudo pacman -S --noconfirm "$1"
-		if pacman -Q "$1" &>/dev/null; then
-			echo -e "${OK} $1 was installed."
-		else
-			echo -e "${ERROR} $1 failed to install. You may need to install manually."
-			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>$HOME/install.log
-		fi
-	fi
-}
-
 sddm=(
+	sddm
 	qt5-graphicaleffects
 	qt5-quickcontrols2
 	qt5-svg
@@ -52,7 +38,6 @@ sddm=(
 
 # Install SDDM and SDDM theme
 printf "${NOTE} Installing SDDM and dependencies........\n"
-install_package_pacman sddm
 for package in "${sddm[@]}"; do
 	install_package "$package"
 	[ $? -ne 0 ] && {

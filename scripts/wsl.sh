@@ -61,7 +61,7 @@ else
 	printf "\n${OK} Nala is already installed! Moving on.\n"
 fi
 
-# Update nala 
+# Update nala
 printf "\n%.0s" {1..2}
 printf "\n${CAT} Update nala...${RESET}\n"
 if sudo nala update && sudo nala upgrade -y; then
@@ -70,7 +70,7 @@ else
 	printf "\n${ERROR} Failed to update nala!\n"
 fi
 
-# Initial nala 
+# Initial nala
 printf "\n%.0s" {1..2}
 printf "\n${NOTE} Initializing Nala...\n"
 printf "\n${NOTE} Press 1 2 3 and press Enter \n"
@@ -91,7 +91,7 @@ nala_packages=(
 	bat
 	default-jdk
 	htop
- 	dotnet-sdk-8.0
+	dotnet-sdk-8.0
 	fzf
 	make
 	ripgrep
@@ -147,7 +147,7 @@ else
 	}
 fi
 
-# Install pipes.sh 
+# Install pipes.sh
 cd $HOME
 printf "\n%.0s" {1..2}
 if [ -d pipes.sh ]; then
