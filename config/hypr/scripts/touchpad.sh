@@ -1,23 +1,22 @@
 #!/bin/bash
 # For disabling touchpad.
 
-Touchpad_Device="asue1209:00-04f3:319f-touchpad"
+touchpad=$(hyprctl devices | grep touchpad | sed -e 's/\s*//')
+settings_file="$HOME/.config/hypr/configs/settings.conf"
 notif="$HOME/.config/swaync/images/bell.png"
 
-XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-/run/user/$(id -u)}
-STATUS_FILE="$XDG_RUNTIME_DIR/touchpad.status"
-
 toggle_touchpad() {
-	if [ ! -f "$STATUS_FILE" ] || [ "$(cat "$STATUS_FILE")" = "false" ]; then
-		echo "true" >"$STATUS_FILE"
-		action="enabled"
-	else
-		echo "false" >"$STATUS_FILE"
-		action="disabled"
-	fi
+    enabled=$(awk '/device/,/^}/{if ($1 == "enabled") print $3}' "$settings_file" | tr -d '[:space:]')
 
-	notify-send -u low -i "$notif" "Touchpad $action"
-	hyprctl keyword "device:$Touchpad_Device:enabled" "$(cat "$STATUS_FILE")"
+    if [[ "$enabled" == "true" ]]; then
+        action="false"
+    else
+        action="true"
+    fi
+    
+    sed -i "/device/,/^}/{s/name = .*/name = $touchpad/; s/enabled = $enabled/enabled = $action/}" "$settings_file"
+    
+    notify-send -u low -i "$notif" "Touchpad enabled $action"
 }
 
 toggle_touchpad
