@@ -9,7 +9,7 @@ ORANGE=$(tput setaf 166)
 YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
 
-TEST() {
+output_mess() {
 	ak=$(gum style \
 		--foreground 213 --border-foreground 213 --border rounded \
 		--align center --margin "0 0" --padding "0 0" \
@@ -24,15 +24,14 @@ TEST() {
 install_nala_package() {
 	printf "\n%.0s" {1..2}
 	if sudo dpkg -l | grep -q -w "$1"; then
-        TEST "${OK}" "$1 is already installed. Skipping..."
+        output_mess "${OK}" "$1 is already installed. Skipping..."
 	else
-        TEST "${NOTE}" "Installing $1 ..."
+        output_mess "${NOTE}" "Installing $1 ..."
 		sudo nala install -y "$1"
 		if sudo dpkg -l | grep -q -w "$1"; then
-			echo -e "\e[1A\e[K${OK} ."
-            TEST "${OK}" "$1 was installed."
+            output_mess "${OK}" "$1 was installed."
 		else
-            TEST "${ERROR}" "$1 failed to install. You may need to install manually! Sorry, I have tried."
+            output_mess "${ERROR}" "$1 failed to install. You may need to install manually! Sorry, I have tried."
 		fi
 	fi
 }
