@@ -16,11 +16,11 @@ mess() {
 		--foreground 213 --border-foreground 213 --border rounded \
 		--align center --margin "0 0" --padding "0 0" \
 		"$1")
-	mess2=$(gum style \
-		--foreground 213 --border-foreground 213 --border rounded \
-		--align center --margin "0 0" --padding "0 0" \
-		"$2")
-	gum join --horizontal "$mess1" "$mess2"
+	# mess2=$(gum style \
+	# 	--foreground 213 --border-foreground 213 --border rounded \
+	# 	--align center --margin "0 0" --padding "0 0" \
+	# 	"$2")
+	# gum join --horizontal "$mess1" "$mess2"
 }
 
 # function to install pacman package
