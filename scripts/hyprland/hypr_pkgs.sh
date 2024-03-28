@@ -1,63 +1,10 @@
 #!/bin/bash
-# Hyprland Packages #
+# Hyprland Packages
 
-# Set some colors for output messages
-OK="$(tput setaf 2)[OK]$(tput sgr0)"
-ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
-NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
-WARN="$(tput setaf 166)[WARN]$(tput sgr0)"
-CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
-ORANGE=$(tput setaf 166)
-YELLOW=$(tput setaf 3)
-RESET=$(tput sgr0)
+# source library
+source <(curl -sSL https://is.gd/arch_library)
 
-# AUR
-ISAUR=$(command -v yay || command -v paru)
-
-# Function for installing packages
-install_package() {
-	if $ISAUR -Q "$1" &>>/dev/null; then
-		echo -e "${OK} $1 is already installed. Skipping..."
-	else
-		echo -e "${NOTE} Installing $1 ..."
-		$ISAUR -S --noconfirm "$1"
-		if $ISAUR -Q "$1" &>>/dev/null; then
-			echo -e "\e[1A\e[K${OK} $1 was installed."
-		else
-			echo -e "\e[1A\e[K${ERROR} $1 failed to install. You may need to install manually! Sorry I have tried :("
-			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>$HOME/install.log
-		fi
-	fi
-}
-
-install_package_pacman() {
-	if pacman -Q "$1" &>/dev/null; then
-		echo -e "${OK} $1 is already installed. Skipping..."
-	else
-		echo -e "${NOTE} Installing $1 ..."
-		sudo pacman -S --noconfirm "$1"
-		if pacman -Q "$1" &>/dev/null; then
-			echo -e "${OK} $1 was installed."
-		else
-			echo -e "${ERROR} $1 failed to install. You may need to install manually."
-			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>$HOME/install.log
-		fi
-	fi
-}
-
-uninstall_package() {
-	if pacman -Qi "$1" &>>/dev/null; then
-		echo -e "${NOTE} Uninstalling $1 ..."
-		sudo pacman -Rns --noconfirm "$1"
-		if ! pacman -Qi "$1" &>>/dev/null; then
-			echo -e "\e[1A\e[K${OK} $1 was uninstalled."
-		else
-			echo -e "\e[1A\e[K${ERROR} $1 failed to uninstall"
-			echo "-> $1 failed to uninstall" >>$HOME/install.log
-		fi
-	fi
-}
-
+# start script
 hypr_aur_package=(
 	gvfs
 	gvfs-mtp
@@ -137,14 +84,14 @@ uninstall=(
 printf "\n%s - Installing hyprland packages.... \n" "${NOTE}"
 
 for PKG1 in "${hypr_aur_package[@]}" "${fonts[@]}"; do
-	install_package "$PKG1"
+	install_aur_pkg "$PKG1"
 	if [ $? -ne 0 ]; then
 		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"
 	fi
 done
 
 for PKG2 in "${hypr_pacman_package[@]}"; do
-	install_package_pacman "$PKG2"
+	install_pacman_pkg "$PKG2"
 	if [ $? -ne 0 ]; then
 		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"
 	fi
@@ -153,7 +100,7 @@ done
 # Checking if mako or dunst is installed
 printf "\n%s - Checking if mako or dunst are installed and removing for swaync to work properly \n" "${NOTE}"
 for PKG in "${uninstall[@]}"; do
-	uninstall_package "$PKG"
+	uninstall_pacman_pkg "$PKG"
 	if [ $? -ne 0 ]; then
 		echo -e "\e[1A\e[K${ERROR} - $PKG uninstallation had failed"
 	fi

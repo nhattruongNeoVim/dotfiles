@@ -1,34 +1,10 @@
 #!/bin/bash
 # SDDM
 
-# Set some colors for output messages
-OK="$(tput setaf 2)[OK]$(tput sgr0)"
-ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
-NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
-WARN="$(tput setaf 166)[WARN]$(tput sgr0)"
-CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
-ORANGE=$(tput setaf 166)
-YELLOW=$(tput setaf 3)
-RESET=$(tput sgr0)
+# source library
+source <(curl -sSL https://is.gd/arch_library)
 
-# AUR
-ISAUR=$(command -v yay || command -v paru)
-
-install_package() {
-	if $ISAUR -Q "$1" &>>/dev/null; then
-		echo -e "${OK} $1 is already installed. Skipping..."
-	else
-		echo -e "${NOTE} Installing $1 ..."
-		$ISAUR -S --noconfirm "$1"
-		if $ISAUR -Q "$1" &>>/dev/null; then
-			echo -e "\e[1A\e[K${OK} $1 was installed."
-		else
-			echo -e "\e[1A\e[K${ERROR} $1 failed to install. You may need to install manually! Sorry I have tried :("
-			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>$HOME/install.log
-		fi
-	fi
-}
-
+# start
 sddm=(
 	sddm
 	qt5-graphicaleffects
@@ -39,7 +15,7 @@ sddm=(
 # Install SDDM and SDDM theme
 printf "${NOTE} Installing SDDM and dependencies........\n"
 for package in "${sddm[@]}"; do
-	install_package "$package"
+	install_aur_pkg "$package"
 	[ $? -ne 0 ] && {
 		echo -e "\e[1A\e[K${ERROR} - $package install has failed"
 	}

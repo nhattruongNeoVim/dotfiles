@@ -1,35 +1,10 @@
 #!/bin/bash
 # GTK Themes & ICONS and  Sourcing from a different Repo #
 
-# Set some colors for output messages
-OK="$(tput setaf 2)[OK]$(tput sgr0)"
-ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
-NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
-WARN="$(tput setaf 166)[WARN]$(tput sgr0)"
-CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
-ORANGE=$(tput setaf 166)
-YELLOW=$(tput setaf 3)
-RESET=$(tput sgr0)
+# source library
+source <(curl -sSL https://is.gd/arch_library)
 
-# AUR
-ISAUR=$(command -v yay || command -v paru)
-
-# Function for installing packages
-install_package() {
-	if $ISAUR -Q "$1" &>>/dev/null; then
-		echo -e "${OK} $1 is already installed. Skipping..."
-	else
-		echo -e "${NOTE} Installing $1 ..."
-		$ISAUR -S --noconfirm "$1"
-		if $ISAUR -Q "$1" &>>/dev/null; then
-			echo -e "\e[1A\e[K${OK} $1 was installed."
-		else
-			echo -e "\e[1A\e[K${ERROR} $1 failed to install. You may need to install manually! Sorry I have tried :("
-			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>$HOME/install.log
-		fi
-	fi
-}
-
+# start script
 engine=(
 	unzip
 	gtk-engine-murrine
@@ -37,14 +12,14 @@ engine=(
 
 # installing engine needed for gtk themes
 for PKG1 in "${engine[@]}"; do
-	install_package "$PKG1"
+	install_aur_pkg "$PKG1"
 	if [ $? -ne 0 ]; then
 		echo -e "\033[1A\033[K${ERROR} - $PKG1 install had failed"
 	fi
 done
 
 # Check dotfiles
-cd ~
+cd $HOME
 if [ -d dotfiles ]; then
 	cd dotfiles || {
 		printf "%s - Failed to cd dotfiles directory\n" "${ERROR}"

@@ -1,10 +1,9 @@
 #!/bin/bash
 
-OK="$(tput setaf 2)[OK]$(tput sgr0)"
-ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
-NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
-CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
+# source library
+source <(curl -sSL https://is.gd/arch_library)
 
+# start script
 printf "\n%.0s" {1..2}
 if ! gum confirm "${NOTE} Do you want to set up swapfile?"; then
 	exit 1

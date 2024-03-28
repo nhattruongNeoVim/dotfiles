@@ -1,17 +1,20 @@
 #!/bin/bash
 
-clear
+# source library
+source <(curl -ssl https://is.gd/arch_library)
 
+# variables
 wallpaper=$HOME/Pictures/wallpapers/anime-kanji.jpg
 waybar_style="$HOME/.config/waybar/style/simple [pywal].css"
 
-# Check if running as root. If root, script will exit
+# check if running as root. If root, script will exit
 if [[ $EUID -eq 0 ]]; then
 	echo "This script should not be executed as root! Exiting......."
 	exit 1
 fi
 
 # author
+clear
 gum style \
 	--foreground 213 --border-foreground 213 --border rounded \
 	--align center --width 90 --margin "1 2" --padding "2 4" \
@@ -28,17 +31,7 @@ gum style \
 	"  -------------- Github: https://github.com/nhattruongNeoVim ---------------  " \
 	"                                                                              "
 
-# Set some colors for output messages
-OK="$(tput setaf 2)[OK]$(tput sgr0)"
-ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
-NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
-WARN="$(tput setaf 166)[WARN]$(tput sgr0)"
-CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
-ORANGE=$(tput setaf 166)
-YELLOW=$(tput setaf 3)
-RESET=$(tput sgr0)
-
-# Check dotfiles
+# check dotfiles
 cd $HOME
 if [ -d dotfiles ]; then
 	cd dotfiles || {

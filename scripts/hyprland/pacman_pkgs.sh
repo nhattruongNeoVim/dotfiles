@@ -4,6 +4,7 @@
 # source library
 source <(curl -sSL https://is.gd/arch_library)
 
+# start script
 base=(
 	base-devel
 	git

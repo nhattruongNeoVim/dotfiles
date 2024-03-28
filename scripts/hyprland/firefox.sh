@@ -1,32 +1,11 @@
 #!/bin/bash
 # Custom firefox
 
-OK="$(tput setaf 2)[OK]$(tput sgr0)"
-ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
-NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
-WARN="$(tput setaf 166)[WARN]$(tput sgr0)"
-CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
-ORANGE=$(tput setaf 166)
-YELLOW=$(tput setaf 3)
-RESET=$(tput sgr0)
+# source library
+source <(curl -sSL https://is.gd/arch_library)
 
-install_package_pacman() {
-	local package="$1"
-	if pacman -Q "$package" &>/dev/null; then
-		echo -e "${OK} $package is already installed. Skipping..."
-	else
-		echo -e "${NOTE} Installing $package ..."
-		sudo pacman -S --noconfirm "$package"
-		if [ $? -eq 0 ]; then
-			echo -e "${OK} $package was installed."
-		else
-			echo -e "${ERROR} $package failed to install. Please install it manually."
-			echo "-> $package failed to install. You may need to install it manually! Sorry I have tried :(" >>$HOME/install.log
-		fi
-	fi
-}
-
-install_package_pacman firefox
+# start script
+install_pacman_pkg firefox
 
 firefox_prefs=$(find "$HOME/.mozilla/firefox" -maxdepth 1 -type d -name "*.default-*" -exec echo {}/prefs.js \;)
 firefox_profile=$(find "$HOME/.mozilla/firefox" -maxdepth 1 -type d -name "*.default-*" -exec echo {}/ \;)
@@ -47,7 +26,7 @@ else
 	echo "${OK} Added Firefox customization."
 fi
 
-cd ~
+cd $HOME
 if [ -d dotfiles ]; then
 	cd dotfiles || {
 		printf "%s - Failed to enter dotfiles config directory\n" "${ERROR}"

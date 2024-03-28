@@ -1,27 +1,15 @@
 #!/bin/bash
-# Paru AUR Helper #
-# NOTE: If yay is already installed, paru will not be installed #
+# Paru AUR Helper
+# NOTE: If yay is already installed, paru will not be installed
 
-# Set some colors for output messages
-OK="$(tput setaf 2)[OK]$(tput sgr0)"
-ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
-NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
-WARN="$(tput setaf 166)[WARN]$(tput sgr0)"
-CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
-ORANGE=$(tput setaf 166)
-YELLOW=$(tput setaf 3)
-RESET=$(tput sgr0)
+# source library
+source <(curl -sSL https://is.gd/arch_library)
 
-# cd home
+# start script
 cd $HOME
-
-# checking if paru-bin exist and removing if it is
 if [ -d paru-bin ]; then
 	rm -rf paru-bin
 fi
-
-# Check for AUR helper and install if not found
-ISAUR=$(command -v yay || command -v paru)
 
 if [ -n "$ISAUR" ]; then
 	printf "\n%s - AUR helper already installed, moving on..\n" "${OK}"

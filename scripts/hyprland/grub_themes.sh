@@ -1,21 +1,15 @@
 #!/bin/bash
-# Custom grub theme #
+# Custom grub theme
 
-# Set some colors for output messages
-OK="$(tput setaf 2)[OK]$(tput sgr0)"
-ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
-NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
-WARN="$(tput setaf 166)[WARN]$(tput sgr0)"
-CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
-ORANGE=$(tput setaf 166)
-YELLOW=$(tput setaf 3)
-RESET=$(tput sgr0)
+# source library
+source <(curl -sSL https://is.gd/arch_library)
 
 # Variables
 theme="Huohuo"
 grub="/etc/default/grub"
 grub_theme="/boot/grub/themes/$theme/theme.txt"
 
+# start script
 echo -e "${NOTE} Setting up grub theme."
 
 # Check file

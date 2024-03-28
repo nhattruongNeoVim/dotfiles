@@ -1,12 +1,10 @@
 #!/bin/bash
 # Homebrew
 
-OK="$(tput setaf 2)[OK]$(tput sgr0)"
-ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
-NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
-WARN="$(tput setaf 166)[WARN]$(tput sgr0)"
-CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
+# source library
+source <(curl -sSL https://is.gd/arch_library)
 
+# start script
 if command -v brew &>/dev/null; then
 	printf "\n%s - Homebrew already installed, moving on.\n" "${OK}"
 else
