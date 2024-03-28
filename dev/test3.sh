@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source <(curl -sSL https://is.gd/arch_library)
 
 ask_custom_option() {
     if gum confirm "$CAT $1" --affirmative "$2" --negative "$3" ;then
