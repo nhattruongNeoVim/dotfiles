@@ -63,14 +63,18 @@ ISAUR=$(command -v yay || command -v paru)
 # function to install aur package
 install_aur_pkg() {
 	if $ISAUR -Q "$1" &>>/dev/null; then
-		echo -e "${OK} $1 is already installed. Skipping..."
+		# echo -e "${OK} $1 is already installed. Skipping..."
+		mess "${OK}" "$1 is already installed. Skipping..."
 	else
-		echo -e "${NOTE} Installing $1 ..."
+		# echo -e "${NOTE} Installing $1 ..."
+		mess "${NOTE}" "Installing $1 ..."
 		$ISAUR -Sy --noconfirm "$1"
 		if $ISAUR -Q "$1" &>>/dev/null; then
-			echo -e "\e[1A\e[K${OK} $1 was installed."
+			# echo -e "\e[1A\e[K${OK} $1 was installed."
+			mess "${OK}" "$1 was installed."
 		else
-			echo -e "\e[1A\e[K${ERROR} $1 failed to install :(. You may need to install manually! Sorry I have tried :("
+			# echo -e "\e[1A\e[K${ERROR} $1 failed to install :(. You may need to install manually! Sorry I have tried :("
+			mess "${ERROR}" "$1$1 failed to install. You may need to install manually."
 			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>$HOME/install.log
 		fi
 	fi
