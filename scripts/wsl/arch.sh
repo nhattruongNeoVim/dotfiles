@@ -81,7 +81,7 @@ fi
 
 # Clone dotfiles
 printf "\n${NOTE} Clone dotfiles. "
-if git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git --depth 1; then
+if git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git --depth 1 && cd dotfiles; then
 	printf "\n${OK} Clone dotfiles succesfully.\n"
 fi
 
