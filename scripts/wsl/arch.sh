@@ -75,10 +75,10 @@ for PKG1 in "${pacman_packages[@]}"; do
 	fi
 done
 
-for PKG1 in "${aur_packages[@]}"; do
-	install_aur_pkg "$PKG1"
+for PKG2 in "${aur_packages[@]}"; do
+	install_aur_pkg "$PKG2"
 	if [ $? -ne 0 ]; then
-		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"
+		echo -e "\e[1A\e[K${ERROR} - $PKG2 install had failed"
 	fi
 done
 
