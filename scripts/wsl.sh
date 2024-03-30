@@ -1,8 +1,11 @@
 #!/bin/bash
 
+# source library
+source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
+
 clear
 if hostnamectl | grep -q 'Ubuntu'; then
-    bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/wsl/ubuntu.sh)
+    exScriptWsl "ubuntu.sh"
 elif hostnamectl | grep -q 'Arch'; then
-    bash <(curl -s https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/wsl/arch.sh)
+    exScriptWsl "arch.sh"
 fi
