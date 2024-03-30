@@ -33,16 +33,19 @@ install_pacman_pkg() {
 	fi
 }
 
-# function to uninstall pacman package
-uninstall_pacman_pkg() {
-	if pacman -Qi "$1" &>>/dev/null; then
-		echo -e "${NOTE} Uninstalling $1 ..."
-		sudo pacman -Rns --noconfirm "$1"
-		if ! pacman -Qi "$1" &>>/dev/null; then
-			echo -e "\e[1A\e[K${OK} $1 was uninstalled."
+# function to install nala packages
+install_nala_package() {
+	printf "\n%.0s" {1..2}
+	if sudo dpkg -l | grep -q -w "$1"; then
+		echo -e "${OK} $1 is already installed. Skipping..."
+	else
+		echo -e "${NOTE} Installing $1 ..."
+		sudo nala install -y "$1"
+		if sudo dpkg -l | grep -q -w "$1"; then
+			echo -e "\e[1A\e[K${OK} $1 was installed."
 		else
-			echo -e "\e[1A\e[K${ERROR} $1 failed to uninstall"
-			echo "-> $1 failed to uninstall" >>$HOME/install.log
+			echo -e "\e[1A\e[K${ERROR} $1 failed to install. You may need to install manually! Sorry, I have tried :("
+			exit 1
 		fi
 	fi
 }
@@ -62,6 +65,20 @@ install_aur_pkg() {
 		else
 			echo -e "\e[1A\e[K${ERROR} $1 failed to install :(. You may need to install manually! Sorry I have tried :("
 			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>$HOME/install.log
+		fi
+	fi
+}
+
+# function to uninstall pacman package
+uninstall_pacman_pkg() {
+	if pacman -Qi "$1" &>>/dev/null; then
+		echo -e "${NOTE} Uninstalling $1 ..."
+		sudo pacman -Rns --noconfirm "$1"
+		if ! pacman -Qi "$1" &>>/dev/null; then
+			echo -e "\e[1A\e[K${OK} $1 was uninstalled."
+		else
+			echo -e "\e[1A\e[K${ERROR} $1 failed to uninstall"
+			echo "-> $1 failed to uninstall" >>$HOME/install.log
 		fi
 	fi
 }
@@ -100,3 +117,9 @@ exScriptWsl() {
 	bash <(curl -sSL "$script_url")
 }
 
+# function to create a unique backup directory name with month, day, hours, and minutes
+get_backup_dirname() {
+	local timestamp
+	timestamp=$(date +"%m%d_%H%M")
+	echo "back-up_${timestamp}"
+}

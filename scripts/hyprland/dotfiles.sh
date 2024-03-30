@@ -150,14 +150,6 @@ fi
 set -e # Exit immediately if a command exits with a non-zero status.
 
 printf "${NOTE} - copying dotfiles\n"
-
-# Function to create a unique backup directory name with month, day, hours, and minutes
-get_backup_dirname() {
-	local timestamp
-	timestamp=$(date +"%m%d_%H%M")
-	echo "back-up_${timestamp}"
-}
-
 folder=(
 	ranger
 	mpv

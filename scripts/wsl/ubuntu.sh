@@ -4,11 +4,6 @@
 # source library
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
-if [[ $EUID -eq 0 ]]; then
-	echo "This script should not be executed as root! Exiting......."
-	exit 1
-fi
-
 echo -e "\e[34m   ____   __ __   ____  ______      ______  ____   __ __   ___   ____    ____ "
 echo -e "  |    \ |  |  | /    ||      |    |      ||    \ |  |  | /   \ |    \  /    |"
 echo -e "  |  _  ||  |  ||  o  ||      |    |      ||  D  )|  |  ||     ||  _  ||   __|"
@@ -21,28 +16,6 @@ echo -e ""
 echo -e "-------------------- Script developed by nhattruongNeoVim --------------------"
 echo -e " -------------- Github: https://github.com/nhattruongNeoVim -----------------"
 echo
-
-install_nala_package() {
-	printf "\n%.0s" {1..2}
-	if sudo dpkg -l | grep -q -w "$1"; then
-		echo -e "${OK} $1 is already installed. Skipping..."
-	else
-		echo -e "${NOTE} Installing $1 ..."
-		sudo nala install -y "$1"
-		if sudo dpkg -l | grep -q -w "$1"; then
-			echo -e "\e[1A\e[K${OK} $1 was installed."
-		else
-			echo -e "\e[1A\e[K${ERROR} $1 failed to install. You may need to install manually! Sorry, I have tried :("
-			exit 1
-		fi
-	fi
-}
-
-get_backup_dirname() {
-	local timestamp
-	timestamp=$(date +"%m%d_%H%M")
-	echo "back-up_${timestamp}"
-}
 
 # Update apt
 printf "\n${NOTE} Check for update...\n"
