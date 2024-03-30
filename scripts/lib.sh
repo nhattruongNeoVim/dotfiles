@@ -17,6 +17,9 @@ ORANGE=$(tput setaf 166)
 YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
 
+# AUR
+ISAUR=$(command -v yay || command -v paru)
+
 # function to install pacman package
 install_pacman_pkg() {
 	if pacman -Q "$1" &>/dev/null; then
@@ -49,9 +52,6 @@ install_nala_package() {
 		fi
 	fi
 }
-
-# AUR
-ISAUR=$(command -v yay || command -v paru)
 
 # function to install aur package
 install_aur_pkg() {

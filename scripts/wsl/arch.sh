@@ -65,6 +65,9 @@ aur_packages=(
 	cava
 )
 
+# reload AUR
+ISAUR=$(command -v yay || command -v paru)
+
 # Installation of main components
 printf "\n%s - Installing components\n" "${NOTE}"
 
