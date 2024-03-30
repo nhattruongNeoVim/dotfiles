@@ -34,7 +34,6 @@ packages=(
 	python-pip
 	nodejs
 	npm
-	# python-virtualenv
 	ripgrep
 	fzf
 	neofetch
