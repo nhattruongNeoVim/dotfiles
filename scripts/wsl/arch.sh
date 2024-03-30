@@ -59,6 +59,7 @@ pacman_packages=(
 	nvtop
     cargo
     openssh
+    lolcat
 )
 
 aur_packages=(
