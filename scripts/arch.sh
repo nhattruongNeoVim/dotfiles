@@ -94,7 +94,7 @@ elif [ "$aur_helper" == "yay" ]; then
 	exScriptHypr "yay.sh"
 fi
 
-exScriptHypr "hypr_pkgs.sh"
+exScriptHypr "aur_pkgs.sh"
 sleep 0.5
 exScriptHypr "pipewire.sh"
 
