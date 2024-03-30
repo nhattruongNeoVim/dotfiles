@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # source library
-source <(curl -ssl https://is.gd/arch_library)
+source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # variables
 wallpaper=$HOME/Pictures/wallpapers/anime-kanji.jpg

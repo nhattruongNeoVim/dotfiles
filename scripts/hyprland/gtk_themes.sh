@@ -2,7 +2,7 @@
 # GTK Themes & ICONS and  Sourcing from a different Repo #
 
 # source library
-source <(curl -sSL https://is.gd/arch_library)
+source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # start script
 engine=(

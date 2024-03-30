@@ -2,7 +2,7 @@
 # Bluetooth Stuff
 
 # source library
-source <(curl -ssl https://is.gd/arch_library)
+source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # start script
 bluetooth=(

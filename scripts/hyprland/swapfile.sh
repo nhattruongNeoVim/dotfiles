@@ -1,7 +1,8 @@
 #!/bin/bash
+# set swapfile
 
 # source library
-source <(curl -sSL https://is.gd/arch_library)
+source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # start script
 printf "\n%.0s" {1..2}

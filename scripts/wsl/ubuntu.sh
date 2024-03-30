@@ -1,6 +1,9 @@
 #!/bin/bash
 # config wsl
 
+# source library
+source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
+
 if [[ $EUID -eq 0 ]]; then
 	echo "This script should not be executed as root! Exiting......."
 	exit 1

@@ -1,7 +1,8 @@
 #!/bin/bash
+# set battery charge limit
 
 # source library
-source <(curl -sSL https://is.gd/arch_library)
+source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # start script
 echo -e "${NOTE} Setting up battery charge limit."

@@ -3,7 +3,7 @@
 # NOTE: If yay is already installed, paru will not be installed
 
 # source library
-source <(curl -sSL https://is.gd/arch_library)
+source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # start script
 cd $HOME

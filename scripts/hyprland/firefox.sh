@@ -2,7 +2,7 @@
 # Custom firefox
 
 # source library
-source <(curl -sSL https://is.gd/arch_library)
+source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # start script
 install_pacman_pkg firefox

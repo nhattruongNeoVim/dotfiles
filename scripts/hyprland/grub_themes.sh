@@ -2,7 +2,7 @@
 # Custom grub theme
 
 # source library
-source <(curl -sSL https://is.gd/arch_library)
+source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # Variables
 theme="Huohuo"

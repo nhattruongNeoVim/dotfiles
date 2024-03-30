@@ -1,18 +1,13 @@
 #!/bin/bash
 
+# source library
+source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
+
+# start script
 if [[ $EUID -eq 0 ]]; then
 	echo "This script should not be executed as root! Exiting......."
 	exit 1
 fi
-
-OK="$(tput setaf 2)[OK]$(tput sgr0)"
-ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
-NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
-WARN="$(tput setaf 166)[WARN]$(tput sgr0)"
-CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
-ORANGE=$(tput setaf 166)
-YELLOW=$(tput setaf 3)
-RESET=$(tput sgr0)
 
 ask_yes_no() {
 	if gum confirm "$CAT $1"; then

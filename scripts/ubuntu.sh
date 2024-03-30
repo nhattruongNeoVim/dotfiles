@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# source library
+source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
+
+# start script
 echo -e "\e[34m   ____   __ __   ____  ______      ______  ____   __ __   ___   ____    ____ "
 echo -e "  |    \ |  |  | /    ||      |    |      ||    \ |  |  | /   \ |    \  /    |"
 echo -e "  |  _  ||  |  ||  o  ||      |    |      ||  D  )|  |  ||     ||  _  ||   __|"
