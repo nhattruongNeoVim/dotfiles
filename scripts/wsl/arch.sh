@@ -39,7 +39,6 @@ pacman_packages=(
 	make
 	python-pip
 	nodejs
-    curl
 	npm
 	ripgrep
 	fzf
@@ -52,6 +51,11 @@ pacman_packages=(
 	neovide
 	ranger
 	aria2
+	btop
+	curl
+	wget
+	nvtop
+    cargo
 )
 
 aur_packages=(
