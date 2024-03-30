@@ -1,5 +1,5 @@
 #!/bin/bash
-# global function
+# library for arch 
 
 # set some colors for output messages
 OK="$(tput setaf 2)[OK]$(tput sgr0)"

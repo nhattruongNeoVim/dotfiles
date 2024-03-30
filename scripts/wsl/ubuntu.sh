@@ -1,6 +1,11 @@
 #!/bin/bash
 # config wsl
 
+if [[ $EUID -eq 0 ]]; then
+	echo "This script should not be executed as root! Exiting......."
+	exit 1
+fi
+
 echo -e "\e[34m   ____   __ __   ____  ______      ______  ____   __ __   ___   ____    ____ "
 echo -e "  |    \ |  |  | /    ||      |    |      ||    \ |  |  | /   \ |    \  /    |"
 echo -e "  |  _  ||  |  ||  o  ||      |    |      ||  D  )|  |  ||     ||  _  ||   __|"
@@ -13,13 +18,6 @@ echo -e ""
 echo -e "-------------------- Script developed by nhattruongNeoVim --------------------"
 echo -e " -------------- Github: https://github.com/nhattruongNeoVim -----------------"
 echo
-
-OK="$(tput setaf 2)[OK]$(tput sgr0)"
-ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
-NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
-WARN="$(tput setaf 166)[WARN]$(tput sgr0)"
-CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
-RESET=$(tput sgr0)
 
 install_nala_package() {
 	printf "\n%.0s" {1..2}
