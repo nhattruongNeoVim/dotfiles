@@ -33,37 +33,6 @@ aur_package=(
 	pipes.sh
 )
 
-pacman_package=(
-	btop
-	curl
-	yt-dlp
-	brightnessctl
-	grim
-	waybar
-	gnome-system-monitor
-	jq
-	slurp
-	swappy
-	cliphist
-	network-manager-applet
-	pamixer
-	pavucontrol
-	pipewire-alsa
-	playerctl
-	polkit-gnome
-	python-pywal
-	qt5ct
-	qt6ct
-	swappy
-	swayidle
-	wget
-	wl-clipboard
-	xdg-user-dirs
-	xdg-utils
-	yad
-	nvtop
-)
-
 fonts=(
 	adobe-source-code-pro-fonts
 	noto-fonts-emoji
@@ -80,28 +49,20 @@ uninstall=(
 	mako
 )
 
-# Installation of main components
-printf "\n%s - Installing hyprland packages.... \n" "${NOTE}"
-
-for PKG1 in "${aur_package[@]}" "${fonts[@]}"; do
-	install_aur_pkg "$PKG1"
-	if [ $? -ne 0 ]; then
-		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"
-	fi
-done
-
-for PKG2 in "${pacman_package[@]}"; do
-	install_pacman_pkg "$PKG2"
-	if [ $? -ne 0 ]; then
-		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"
-	fi
-done
-
 # Checking if mako or dunst is installed
 printf "\n%s - Checking if mako or dunst are installed and removing for swaync to work properly \n" "${NOTE}"
 for PKG in "${uninstall[@]}"; do
 	uninstall_pacman_pkg "$PKG"
 	if [ $? -ne 0 ]; then
 		echo -e "\e[1A\e[K${ERROR} - $PKG uninstallation had failed"
+	fi
+done
+
+# Installation of main components
+printf "\n%s - Installing hyprland packages.... \n" "${NOTE}"
+for PKG1 in "${aur_package[@]}" "${fonts[@]}"; do
+	install_aur_pkg "$PKG1"
+	if [ $? -ne 0 ]; then
+		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"
 	fi
 done

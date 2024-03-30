@@ -39,6 +39,7 @@ pacman_packages=(
 	make
 	python-pip
 	nodejs
+    curl
 	npm
 	ripgrep
 	fzf

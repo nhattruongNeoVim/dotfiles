@@ -11,7 +11,7 @@ base=(
 	libxcrypt-compat
 )
 
-extra=(
+pacman_packages=(
 	alacritty
 	tmux
 	starship
@@ -37,12 +37,39 @@ extra=(
 	neovide
 	ranger
 	aria2
+	btop
+	curl
+	yt-dlp
+	brightnessctl
+	grim
+	waybar
+	gnome-system-monitor
+	jq
+	slurp
+	swappy
+	cliphist
+	network-manager-applet
+	pamixer
+	pavucontrol
+	pipewire-alsa
+	playerctl
+	polkit-gnome
+	python-pywal
+	qt5ct
+	qt6ct
+	swappy
+	swayidle
+	wget
+	wl-clipboard
+	xdg-user-dirs
+	xdg-utils
+	yad
+	nvtop
 )
 
 # Installation of main components
 printf "\n%s - Installing components\n" "${NOTE}"
-
-for PKG1 in "${base[@]}" "${extra[@]}"; do
+for PKG1 in "${base[@]}" "${pacman_packages[@]}"; do
 	install_pacman_pkg "$PKG1"
 	if [ $? -ne 0 ]; then
 		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"
