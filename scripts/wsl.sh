@@ -14,7 +14,7 @@ echo -e " -------------- Github: https://github.com/nhattruongNeoVim -----------
 echo
 
 if hostnamectl | grep -q 'Ubuntu'; then
-	echo -e "${NOTE} Setting up battery charge limit is not applicable on desktop or virtual machine. Skipping..."
+    bash<(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/wsl/ubuntu.sh)
 elif hostnamectl | grep -q 'Arch'; then
-	echo -e "${NOTE} Setting up battery charge limit is not applicable on desktop or virtual machine. Skipping..."
+    bash<(curl -sSL https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/wsl/arch.sh)
 fi
