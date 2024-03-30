@@ -25,7 +25,7 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 irm https://is.gd/nhattruongNeoVim_window | iex
 ```
 
-- Set up Wsl (ubuntu):
+- Set up Wsl (ubuntu & arch):
 
 ```bash
 bash <(curl -sSL https://is.gd/nhattruongNeoVim_wsl)
