@@ -5,7 +5,7 @@
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # start script
-hypr_aur_package=(
+aur_package=(
 	gvfs
 	gvfs-mtp
 	imagemagick
@@ -33,7 +33,7 @@ hypr_aur_package=(
 	pipes.sh
 )
 
-hypr_pacman_package=(
+pacman_package=(
 	btop
 	curl
 	yt-dlp
@@ -83,14 +83,14 @@ uninstall=(
 # Installation of main components
 printf "\n%s - Installing hyprland packages.... \n" "${NOTE}"
 
-for PKG1 in "${hypr_aur_package[@]}" "${fonts[@]}"; do
+for PKG1 in "${aur_package[@]}" "${fonts[@]}"; do
 	install_aur_pkg "$PKG1"
 	if [ $? -ne 0 ]; then
 		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"
 	fi
 done
 
-for PKG2 in "${hypr_pacman_package[@]}"; do
+for PKG2 in "${pacman_package[@]}"; do
 	install_pacman_pkg "$PKG2"
 	if [ $? -ne 0 ]; then
 		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"

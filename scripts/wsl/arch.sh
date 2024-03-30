@@ -26,7 +26,13 @@ gum style \
 printf "\n"
 ask_custom_option "Choose your AUR helper" "yay" "paru" aur_helper
 
-packages=(
+if [ "$aur_helper" == "paru" ]; then
+	exScriptHypr "paru.sh"
+elif [ "$aur_helper" == "yay" ]; then
+	exScriptHypr "yay.sh"
+fi
+
+pacman_packages=(
 	tmux
 	starship
 	zsh
@@ -47,21 +53,29 @@ packages=(
 	aria2
 )
 
+aur_packages=(
+	arttime-git
+	shell-color-scripts
+	pipes.sh
+	cava
+)
+
 # Installation of main components
 printf "\n%s - Installing components\n" "${NOTE}"
 
-for PKG1 in "${packages[@]}"; do
+for PKG1 in "${pacman_packages[@]}"; do
 	install_pacman_pkg "$PKG1"
 	if [ $? -ne 0 ]; then
 		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"
 	fi
 done
 
-if [ "$aur_helper" == "paru" ]; then
-	exScriptHypr "paru.sh"
-elif [ "$aur_helper" == "yay" ]; then
-	exScriptHypr "yay.sh"
-fi
+for PKG1 in "${aur_packages[@]}"; do
+	install_aur_pkg "$PKG1"
+	if [ $? -ne 0 ]; then
+		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"
+	fi
+done
 
 # Set up neovim
 printf "\n%.0s" {1..2}
@@ -146,4 +160,3 @@ printf "\n${OK} Yey! Setup Completed.\n"
 printf "\n%.0s" {1..2}
 
 zsh
-
