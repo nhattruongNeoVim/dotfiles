@@ -79,6 +79,7 @@ nala_packages=(
 	curl
 	gnupg
 	ranger
+    unzip
 )
 
 printf "\n%.0s" {1..2}

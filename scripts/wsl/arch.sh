@@ -33,6 +33,8 @@ elif [ "$aur_helper" == "yay" ]; then
 fi
 
 pacman_packages=(
+    git
+    unzip
 	tmux
 	starship
 	zsh
@@ -56,6 +58,7 @@ pacman_packages=(
 	wget
 	nvtop
     cargo
+    openssh
 )
 
 aur_packages=(
@@ -161,7 +164,7 @@ fi
 
 # Chang shell to zsh
 printf "\n${NOTE} Change shell to zsh!\n"
-chsh -s $(which zsh)
+chsh -s /usr/bin/zsh
 
 printf "\n%.0s" {1..2}
 printf "\n${OK} Yey! Setup Completed.\n"
