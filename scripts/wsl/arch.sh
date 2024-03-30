@@ -72,22 +72,17 @@ else
 	printf "\n${ERROR} Failed to setup neovim!\n"
 fi
 
-# Clone dotfiles
+# Check if dotfiles exist
 cd $HOME
 if [ -d dotfiles ]; then
-	cd dotfiles || {
-		printf "%s - Failed to enter dotfiles config directory\n" "${ERROR}"
-		exit 1
-	}
-else
-	printf "\n${NOTE} Clone dotfiles. " && git clone -b gnome https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1 || {
-		printf "%s - Failed to clone dotfiles \n" "${ERROR}"
-		exit 1
-	}
-	cd dotfiles || {
-		printf "%s - Failed to enter dotfiles directory\n" "${ERROR}"
-		exit 1
-	}
+	rm -rf dotfiles
+	echo -e "${OK} Remove dotfile successfully "
+fi
+
+# Clone dotfiles
+printf "\n${NOTE} Clone dotfiles. "
+if git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git --depth 1; then
+	printf "\n${OK} Clone dotfiles succesfully.\n"
 fi
 
 printf "\n%.0s" {1..2}
