@@ -17,33 +17,17 @@ ORANGE=$(tput setaf 166)
 YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
 
-mess() {
-	mess1=$(gum style \
-		--foreground 213 --border-foreground 213 --border rounded \
-		--align center --margin "0 0" --padding "0 0" \
-		"$1")
-	mess2=$(gum style \
-		--foreground 213 --border-foreground 213 --border rounded \
-		--align center --margin "0 0" --padding "0 0" \
-		"$2")
-	gum join --horizontal "$mess1" "$mess2"
-}
-
 # function to install pacman package
 install_pacman_pkg() {
 	if pacman -Q "$1" &>/dev/null; then
 		echo -e "${OK} $1 is already installed. Skipping..."
-		# mess "${OK}" "$1 is already installed. Skipping..."
 	else
 		echo -e "${NOTE} Installing $1 ..."
-		# mess "${NOTE}" "Installing $1 ..."
 		sudo pacman -Sy --noconfirm "$1"
 		if pacman -Q "$1" &>/dev/null; then
 			echo -e "${OK} $1 was installed."
-			# mess "${OK}" "$1 was installed."
 		else
 			echo -e "${ERROR} $1 failed to install. You may need to install manually."
-			# mess "${ERROR}" "$1$1 failed to install. You may need to install manually."
 			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>$HOME/install.log
 		fi
 	fi
@@ -70,22 +54,19 @@ ISAUR=$(command -v yay || command -v paru)
 install_aur_pkg() {
 	if $ISAUR -Q "$1" &>>/dev/null; then
 		echo -e "${OK} $1 is already installed. Skipping..."
-		# mess "${OK}" "$1 is already installed. Skipping..."
 	else
 		echo -e "${NOTE} Installing $1 ..."
-		# mess "${NOTE}" "Installing $1 ..."
 		$ISAUR -Sy --noconfirm "$1"
 		if $ISAUR -Q "$1" &>>/dev/null; then
 			echo -e "\e[1A\e[K${OK} $1 was installed."
-			# mess "${OK}" "$1 was installed."
 		else
 			echo -e "\e[1A\e[K${ERROR} $1 failed to install :(. You may need to install manually! Sorry I have tried :("
-			# mess "${ERROR}" "$1$1 failed to install. You may need to install manually."
 			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>$HOME/install.log
 		fi
 	fi
 }
 
+# function to ask and return yes no
 ask_yes_no() {
 	if gum confirm "$CAT $1"; then
 		eval "$2='Y'"
@@ -96,6 +77,7 @@ ask_yes_no() {
 	fi
 }
 
+# function to ask and return custom answer
 ask_custom_option() {
     if gum confirm "$CAT $1" --affirmative "$2" --negative "$3" ;then
 		eval "$4=$2"
@@ -106,8 +88,9 @@ ask_custom_option() {
 	fi
 }
 
+# function to execute script
 execute_script() {
-	local script_url="https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/$1"
+	local script_url="https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/$1/$2"
 	bash <(curl -sSL "$script_url")
 }
 

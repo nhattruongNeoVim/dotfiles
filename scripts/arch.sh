@@ -4,7 +4,7 @@
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # start script
-execute_script "pacman.sh"
+execute_script "hyprland" "pacman.sh"
 sleep 0.5
 clear
 
@@ -69,12 +69,12 @@ fi
 
 printf "\n%.0s" {1..2}
 if [ "$battery" == "Y" ]; then
-	execute_script "battery.sh"
+	execute_script "hyprland" "battery.sh"
 fi
 
-execute_script "swapfile.sh"
+execute_script "hyprland" "swapfile.sh"
 sleep 0.5
-execute_script "pacman_pkgs.sh"
+execute_script "hyprland" "pacman_pkgs.sh"
 
 # Check if dotfiles exist
 cd $HOME
@@ -90,61 +90,61 @@ if git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git --dept
 fi
 
 if [ "$aur_helper" == "paru" ]; then
-	execute_script "paru.sh"
+	execute_script "hyprland" "paru.sh"
 elif [ "$aur_helper" == "yay" ]; then
-	execute_script "yay.sh"
+	execute_script "hyprland" "yay.sh"
 fi
 
-execute_script "hypr_pkgs.sh"
+execute_script "hyprland" "hypr_pkgs.sh"
 sleep 0.5
-execute_script "pipewire.sh"
+execute_script "hyprland" "pipewire.sh"
 
 if [ "$nvidia" == "Y" ]; then
-	execute_script "nvidia.sh"
+	execute_script "hyprland" "nvidia.sh"
 elif [ "$nvidia" == "N" ]; then
-	execute_script "hypr.sh"
+	execute_script "hyprland" "hypr.sh"
 fi
 
 if [ "$gtk_themes" == "Y" ]; then
-	execute_script "gtk_themes.sh"
+	execute_script "hyprland" "gtk_themes.sh"
 fi
 
 if [ "$bluetooth" == "Y" ]; then
-	execute_script "bluetooth.sh"
+	execute_script "hyprland" "bluetooth.sh"
 fi
 
 if [ "$thunar" == "Y" ]; then
-	execute_script "thunar.sh"
+	execute_script "hyprland" "thunar.sh"
 fi
 
 if [ "$thunar" == "Y" ]; then
-	execute_script "snap.sh"
+	execute_script "hyprland" "snap.sh"
 fi
 
 if [ "$homebrew" == "Y" ]; then
-	execute_script "homebrew.sh"
+	execute_script "hyprland" "homebrew.sh"
 fi
 
 #if [ "$firefox" == "Y" ]; then
-#	execute_script "firefox.sh"
+#	execute_script "hyprland" "firefox.sh"
 #fi
 
 if [ "$sddm" == "Y" ]; then
-	execute_script "sddm.sh"
+	execute_script "hyprland" "sddm.sh"
 fi
 
 if [ "$xdph" == "Y" ]; then
-	execute_script "xdph.sh"
+	execute_script "hyprland" "xdph.sh"
 fi
 
 if [ "$dual_boot" == "Y" ]; then
-	execute_script "grub_themes.sh"
+	execute_script "hyprland" "grub_themes.sh"
 fi
 
-execute_script "input_group.sh"
+execute_script "hyprland" "input_group.sh"
 
 if [ "$dots" == "Y" ]; then
-	execute_script "dotfiles.sh"
+	execute_script "hyprland" "dotfiles.sh"
 fi
 
 cd ~
