@@ -1,6 +1,12 @@
 #!/bin/bash
 # library for arch 
 
+# check root
+if [[ $EUID -eq 0 ]]; then
+	echo "This script should not be executed as root! Exiting......."
+	exit 1
+fi
+
 # set some colors for output messages
 OK="$(tput setaf 2)[OK]$(tput sgr0)"
 ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
@@ -78,5 +84,30 @@ install_aur_pkg() {
 			echo "-> $1 failed to install. You may need to install manually! Sorry I have tried :(" >>$HOME/install.log
 		fi
 	fi
+}
+
+ask_yes_no() {
+	if gum confirm "$CAT $1"; then
+		eval "$2='Y'"
+		echo "$CAT $1 $YELLOW Yes"
+	else
+		eval "$2='N'"
+		echo "$CAT $1 $YELLOW No"
+	fi
+}
+
+ask_custom_option() {
+    if gum confirm "$CAT $1" --affirmative "$2" --negative "$3" ;then
+		eval "$4=$2"
+		echo "$CAT $1 $YELLOW ${!4}"
+	else
+		eval "$4=$3"
+		echo "$CAT $1 $YELLOW ${!4}"
+	fi
+}
+
+execute_script() {
+	local script_url="https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/$1"
+	bash <(curl -sSL "$script_url")
 }
 
