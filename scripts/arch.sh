@@ -147,7 +147,7 @@ if [ "$dots" == "Y" ]; then
 	execute_script "hyprland" "dotfiles.sh"
 fi
 
-cd ~
+cd $HOME
 if [ -d dotfiles ]; then
 	rm -rf dotfiles
 	echo -e "${NOTE} Remove dotfile successfully "
