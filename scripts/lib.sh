@@ -88,9 +88,15 @@ ask_custom_option() {
 	fi
 }
 
-# function to execute script
-execute_script() {
-	local script_url="https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/$1/$2"
+# function to execute hyprland script
+exScriptHypr() {
+	local script_url="https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/$1"
+	bash <(curl -sSL "$script_url")
+}
+
+# function to execute wsl script
+exScriptWsl() {
+	local script_url="https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/wsl/$1"
 	bash <(curl -sSL "$script_url")
 }
 
