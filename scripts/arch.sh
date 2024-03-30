@@ -5,9 +5,8 @@ source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # start script
 exScriptHypr "pacman.sh"
-sleep 0.5
-clear
 
+clear
 gum style \
 	--foreground 213 --border-foreground 213 --border rounded \
 	--align center --width 90 --margin "1 2" --padding "2 4" \
@@ -147,6 +146,71 @@ if [ "$dots" == "Y" ]; then
 	exScriptHypr "dotfiles.sh"
 fi
 
+# Clone dotfiles
+cd $HOME
+if [ -d dotfiles ]; then
+	cd dotfiles || {
+		printf "%s - Failed to enter dotfiles config directory\n" "${ERROR}"
+		exit 1
+	}
+else
+	printf "\n${NOTE} Clone dotfiles. " && git clone -b gnome https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1 || {
+		printf "%s - Failed to clone dotfiles \n" "${ERROR}"
+		exit 1
+	}
+	cd dotfiles || {
+		printf "%s - Failed to enter dotfiles directory\n" "${ERROR}"
+		exit 1
+	}
+fi
+
+printf "\n%.0s" {1..2}
+printf "\n${NOTE} Start config!\n"
+
+folder=(
+	neofetch
+	ranger
+	tmux
+	starship.toml
+    btop
+)
+
+# Back up configuration file
+for DIR in "${folder[@]}"; do
+	DIRPATH=~/.config/"$DIR"
+	if [ -d "$DIRPATH" ]; then
+		echo -e "${NOTE} - Config for $DIR found, attempting to back up."
+		BACKUP_DIR=$(get_backup_dirname)
+		mv "$DIRPATH" "$DIRPATH-backup-$BACKUP_DIR"
+		echo -e "${NOTE} - Backed up $DIR to $DIRPATH-backup-$BACKUP_DIR."
+	fi
+done
+
+# Copying configuration file
+for ITEM in "${folder[@]}"; do
+	if [[ -d "config/$ITEM" ]]; then
+		cp -r "config/$ITEM" ~/.config/ && echo "${OK} Copy completed" || echo "${ERROR} Failed to copy config files."
+	elif [[ -f "config/$ITEM" ]]; then
+		cp "config/$ITEM" ~/.config/ && echo "${OK} Copy completed" || echo "${ERROR} Failed to copy config files."
+	fi
+done
+
+# Copying other
+cp assets/.zshrc ~ && cp assets/.ideavimrc ~ && { echo "${OK}Copy completed!"; } || {
+	echo "${ERROR} Failed to copy .zshrc && .ideavimrc"
+}
+
+# Copying font
+mkdir -p ~/.fonts
+cp -r assets/.fonts/* ~/.fonts/ && { echo "${OK}Copy fonts completed!"; } || {
+	echo "${ERROR} Failed to copy fonts files."
+}
+
+# Reload fonts
+printf "\n%.0s" {1..2}
+fc-cache -fv
+
+# remove dotfiles
 cd $HOME
 if [ -d dotfiles ]; then
 	rm -rf dotfiles
