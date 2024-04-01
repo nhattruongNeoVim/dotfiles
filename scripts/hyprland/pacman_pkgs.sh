@@ -19,7 +19,7 @@ pacman_pkgs=(
 	python-pip
 	nodejs
 	npm
-	# python-virtualenv
+	python-virtualenv
 	ripgrep
 	fzf
 	neofetch
