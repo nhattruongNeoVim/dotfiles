@@ -5,13 +5,19 @@
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # start script
-aur_package=(
+aur_pkgs=(
+	microsoft-edge-stable
+	arttime-git
+	shell-color-scripts
+	pipes.sh
+)
+
+hypr_pkgs=(
 	gvfs
 	gvfs-mtp
 	imagemagick
 	kitty
 	kvantum
-	nano
 	python-requests
 	qt6-svg
 	rofi-lbonn-wayland-git
@@ -22,15 +28,10 @@ aur_package=(
 	cava
 	eog
 	mousepad
-	mpv
-	mpv-mpris
 	nwg-look-bin
 	pacman-contrib
-	vim
-	microsoft-edge-stable
-	arttime-git
-	shell-color-scripts
-	pipes.sh
+	mpv
+	mpv-mpris
 )
 
 fonts=(
@@ -60,7 +61,7 @@ done
 
 # Installation of main components
 printf "\n%s - Installing hyprland packages.... \n" "${NOTE}"
-for PKG1 in "${aur_package[@]}" "${fonts[@]}"; do
+for PKG1 in "${hypr_pkgs[@]}" "${fonts[@]}" "${aur_pkgs[@]}"; do
 	install_aur_pkg "$PKG1"
 	if [ $? -ne 0 ]; then
 		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"

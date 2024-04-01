@@ -5,17 +5,16 @@
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # start script
-base=(
+pacman_pkgs=(
 	base-devel
 	git
 	libxcrypt-compat
-)
-
-pacman_packages=(
 	alacritty
 	tmux
 	starship
 	zsh
+    nano
+    vim
 	make
 	python-pip
 	nodejs
@@ -39,6 +38,9 @@ pacman_packages=(
 	aria2
 	btop
 	curl
+)
+
+hypr_pkgs=(
 	yt-dlp
 	brightnessctl
 	grim
@@ -69,7 +71,7 @@ pacman_packages=(
 
 # Installation of main components
 printf "\n%s - Installing components\n" "${NOTE}"
-for PKG1 in "${base[@]}" "${pacman_packages[@]}"; do
+for PKG1 in "${pacman_pkgs[@]}" "${hypr_pkgs[@]}"; do
 	install_pacman_pkg "$PKG1"
 	if [ $? -ne 0 ]; then
 		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"
