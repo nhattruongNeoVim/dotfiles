@@ -47,15 +47,19 @@ alias nvim-kick="NVIM_APPNAME=Kickstart nvim"
 alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
 
 function nvims() {
-  items=("Default" "Kickstart" "NvChad" "LazyVim" "AstroNvim")
-  config=$(printf "%s\n" "${items[@]}" | fzf --no-sort --preview-window=wrap --preview='echo "nhattruongNeoVim"' --prompt=" Neovim Config  " --height=10% --layout=reverse --border --exit-0)
-  if [[ -z $config ]]; then
-    echo "Nothing selected"
-    return 0
-  elif [[ $config == "Default" ]]; then
-    config=""
-  fi
-  NVIM_APPNAME=$config nvim $@
+    items=("Default" "Kickstart" "NvChad" "LazyVim" "AstroNvim")
+    config=$(printf "%s\n" "${items[@]}" | fzf --no-sort --preview-window=wrap --preview='echo "nhattruongNeoVim"' --prompt=" Neovim Config  " --height=10% --layout=reverse --border --exit-0)
+    if [[ -z $config ]]; then
+        echo "Nothing selected"
+        return 0
+    elif [[ $config == "Default" ]]; then
+        config=""
+    fi
+    NVIM_APPNAME=$config nvim $@
+}
+
+function aa() {
+    tgpt $1
 }
 
 # Pacman
