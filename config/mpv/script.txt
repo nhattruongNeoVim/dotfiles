@@ -1,0 +1,2 @@
+https://github.com/FirefoxUniverse/FirefoxTweaksVN/blob/main/userscript/m3u8.user.js
+https://github.com/FirefoxUniverse/FirefoxTweaksVN/blob/main/userscript/Handlers%20Helper.user.js
