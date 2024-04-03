@@ -38,10 +38,13 @@ pacman_pkgs=(
 	aria2
 	btop
 	curl
+	mpv
+	mpv-mpris
+	yt-dlp
+    ffmpeg
 )
 
 hypr_pkgs=(
-	yt-dlp
 	brightnessctl
 	grim
 	waybar

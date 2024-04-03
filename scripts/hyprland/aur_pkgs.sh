@@ -30,8 +30,6 @@ hypr_pkgs=(
 	mousepad
 	nwg-look-bin
 	pacman-contrib
-	mpv
-	mpv-mpris
 )
 
 fonts=(
