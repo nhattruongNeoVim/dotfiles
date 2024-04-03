@@ -10,6 +10,7 @@ aur_pkgs=(
 	arttime-git
 	shell-color-scripts
 	pipes.sh
+	tgpt-bin
 )
 
 hypr_pkgs=(
