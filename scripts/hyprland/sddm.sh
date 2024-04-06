@@ -68,7 +68,7 @@ sudo cp assets/hyprland.desktop "$wayland_sessions_dir/"
 
 # SDDM-themes
 cd $HOME
-if "${CAT} OPTIONAL - Would you like to install SDDM themes?"; then
+if gum confirm "${CAT} OPTIONAL - Would you like to install SDDM themes?"; then
 	printf "\n%s - Installing Simple SDDM Theme\n" "${NOTE}"
 
 	# Check if /usr/share/sddm/themes/simple-sddm exists and remove if it does
