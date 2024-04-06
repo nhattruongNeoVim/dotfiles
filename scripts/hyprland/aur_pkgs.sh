@@ -69,6 +69,7 @@ for PKG1 in "${hypr_pkgs[@]}" "${fonts[@]}" "${aur_pkgs[@]}"; do
 done
 
 printf "\n%s - Initializing vmware.... \n" "${NOTE}"
-if sudo modprobe -a vmw_vmci vmmon; then
+# if sudo modprobe -a vmw_vmci vmmon; then
+if sudo systemctl enable --now vmware-networks.service && sudo systemctl enable --now vmware-usbarbitrator.service; then
     printf "\n%s - Initial vmware successfully\n" "${NOTE}"
 fi
