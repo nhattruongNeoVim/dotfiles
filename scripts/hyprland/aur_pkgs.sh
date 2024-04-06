@@ -11,6 +11,7 @@ aur_pkgs=(
 	shell-color-scripts
 	pipes.sh
 	tgpt-bin
+    vmware-workstation
 )
 
 hypr_pkgs=(
@@ -66,3 +67,8 @@ for PKG1 in "${hypr_pkgs[@]}" "${fonts[@]}" "${aur_pkgs[@]}"; do
 		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"
 	fi
 done
+
+printf "\n%s - Initializing vmware.... \n" "${NOTE}"
+if sudo modprobe -a vmw_vmci vmmon; then
+    printf "\n%s - Initial vmware successfully\n" "${NOTE}"
+fi
