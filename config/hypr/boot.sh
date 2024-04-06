@@ -55,10 +55,10 @@ if [ ! -f ~/.config/hypr/.boot_done ]; then
 		if ! snap list | grep -q 'snap-store'; then
 			notify-send -e -u low -i "$notif" "  Installing snap-store"
 			snap install snap-store && snap install snapd-desktop-integration || {
-				notify-send -e -u low -i "$notif" "Failed to install snap-store"
+				notify-send -u low -i "$notif" "Failed to install snap-store"
 				exit 1
 			}
-			notify-send -e -u low -i "$notif" "Install successfully"
+			notify-send -u low -i "$notif" "Install successfully"
 		fi
 	fi
 
