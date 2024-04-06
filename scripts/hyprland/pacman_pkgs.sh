@@ -42,6 +42,7 @@ pacman_pkgs=(
 	mpv-mpris
 	yt-dlp
     ffmpeg
+    cmatrix
 )
 
 hypr_pkgs=(
