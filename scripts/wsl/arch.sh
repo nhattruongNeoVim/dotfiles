@@ -165,7 +165,7 @@ fi
 
 # clear packages
 printf "\n${NOTE} Clear packages.\n"
-if sudo pacman -Rns $(pacman -Qdtq) --noconfirm && yay -Yc --noconfirm; then
+if sudo pacman -Sc --noconfirm && yay -Sc --noconfirm && yay -Yc --noconfirm; then
     printf "\n${OK} Clear packages succesfully.\n"
 fi
 
