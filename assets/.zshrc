@@ -63,6 +63,7 @@ function aa() {
 }
 
 # Pacman
+alias spcc='sudo pacman -Rns $(pacman -Qdtq) --noconfirm'
 alias spuu='sudo pacman -Syu --noconfirm'
 alias spu='sudo pacman -Syy --noconfirm'
 alias spc='sudo pacman -Sc --noconfirm'
@@ -71,6 +72,7 @@ alias spr='sudo pacman -R'
 
 # Yay
 alias syuu='yay -Syu --noconfirm'
+alias sycc='yay -Yc --noconfirm'
 alias syu='yay -Syy --noconfirm'
 alias syc='yay -Sc --noconfirm'
 alias sys='yay -Sy --noconfirm'
