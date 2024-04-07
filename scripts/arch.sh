@@ -166,8 +166,6 @@ if [ -f $HOME/install.log ]; then
 	fi
 fi
 
-printf "\n%.0s" {1..2}
-
 # clear packages
 printf "\n${NOTE} Clear packages.\n"
 if sudo pacman -Rns $(pacman -Qdtq) --noconfirm && yay -Yc --noconfirm; then
