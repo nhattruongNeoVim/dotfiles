@@ -71,6 +71,7 @@ hypr_pkgs=(
 	xdg-utils
 	yad
 	nvtop
+    chromium
 )
 
 # Installation of main components
