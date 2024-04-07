@@ -167,6 +167,14 @@ if [ -f $HOME/install.log ]; then
 fi
 
 printf "\n%.0s" {1..2}
+
+# clear packages
+printf "\n${NOTE} Clear packages.\n"
+if sudo pacman -Rns $(pacman -Qdtq) --noconfirm && yay -Yc --noconfirm; then
+    printf "\n${OK} Clear packages succesfully.\n"
+fi
+
+printf "\n%.0s" {1..2}
 printf "\n${OK} Yey! Installation Completed.\n"
 printf "\n%.0s" {1..2}
 printf "\n${NOTE} You can start Hyprland by typing Hyprland (IF SDDM is not installed) (note the capital H!).\n"

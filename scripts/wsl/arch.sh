@@ -163,7 +163,13 @@ if [ -d dotfiles ]; then
 	echo -e "${NOTE} Remove dotfile successfully "
 fi
 
-# Chang shell to zsh
+# clear packages
+printf "\n${NOTE} Clear packages.\n"
+if sudo pacman -Rns $(pacman -Qdtq) --noconfirm && yay -Yc --noconfirm; then
+    printf "\n${OK} Clear packages succesfully.\n"
+fi
+
+# chang shell to zsh
 printf "\n${NOTE} Change shell to zsh!\n"
 chsh -s /usr/bin/zsh
 
