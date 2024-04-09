@@ -69,6 +69,12 @@ for PKG1 in "${hypr_pkgs[@]}" "${fonts[@]}" "${aur_pkgs[@]}"; do
 done
 
 printf "\n%s - Initializing vmware.... \n" "${NOTE}"
-if sudo modprobe -a vmw_vmci vmmon && sudo systemctl enable --now vmware-networks.service && sudo systemctl enable --now vmware-usbarbitrator.service; then
-    printf "\n%s - Initial vmware successfully\n" "${NOTE}"
-fi
+sudo modprobe -a vmw_vmci vmmon && { echo "${OK} Enable vmware module successfully!"; } || {
+	echo "${ERROR} Failed to enable vmware module"
+}
+sudo systemctl enable --now vmware-networks.service && { echo "${OK} Enable vmware network service successfully!"; } || {
+	echo "${ERROR} Failed to enable vmware network service"
+}
+sudo systemctl enable --now vmware-usbarbitrator.service && { echo "${OK} Enable vmware usb service successfully!"; } || {
+	echo "${ERROR} Failed to enable vmware usb service"
+}

@@ -115,26 +115,15 @@ fi
 printf "\n"
 
 # Action to do for better rofi appearance
-while true; do
-	echo "$ORANGE Select monitor resolution for better Rofi appearance:"
-	echo "$YELLOW 1. Equal to or less than 1080p (≤ 1080p)"
-	echo "$YELLOW 2. Equal to or higher than 1440p (≥ 1440p)"
-	read -n1 -rep "$CAT Enter the number of your choice: " choice
+echo "$ORANGE Select monitor resolution for better Rofi appearance:"
+echo -e "\t $YELLOW 1. Equal to or less than 1080p (≤ 1080p)"
+echo -e "\t $YELLOW 2. Equal to or higher than 1440p (≥ 1440p)"
 
-	case $choice in
-	1)
-		resolution="≤ 1080p"
-		break
-		;;
-	2)
-		resolution="≥ 1440p"
-		break
-		;;
-	*)
-		echo "Invalid choice. Please enter 1 for ≤ 1080p or 2 for ≥ 1440p."
-		;;
-	esac
-done
+if gum confirm "$CAT Enter the number of your choice: " --affirmative "≤ 1080p" --negative "≥ 1440p"; then
+	resolution="≤ 1080p"
+else
+	resolution="≥ 1440p"
+fi
 
 # Use the selected resolution in your existing script
 echo "You chose $resolution resolution for better Rofi appearance."
