@@ -80,6 +80,7 @@ nala_packages=(
 	gnupg
 	ranger
     unzip
+    python3.10-venv
 )
 
 printf "\n%.0s" {1..2}
