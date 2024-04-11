@@ -103,18 +103,18 @@ if (Get-Command choco -errorAction SilentlyContinue)
     Write-Warning "Choco already installed"
 }
 else {
-    StartMsg-Process -Wait powershell -verb runas -ArgumentList "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"
-    StartMsg-Process -Wait powershell -verb runas -ArgumentList "choco feature enable -n allowGlobalConfirmation"
+    Start-Process -Wait powershell -verb runas -ArgumentList "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"
+    Start-Process -Wait powershell -verb runas -ArgumentList "choco feature enable -n allowGlobalConfirmation"
 }
 MsgDone
 
 StartMsg -msg "Installing Choco's packages"
-    StartMsg-Process -Wait powershell -verb runas -ArgumentList "choco install zalopc internet-download-manager vmwareworkstation" 
-    # StartMsg-Process -Wait powershell -verb runas -ArgumentList "choco install steam bluestacks" 
+    Start-Process -Wait powershell -verb runas -ArgumentList "choco install zalopc internet-download-manager vmwareworkstation" 
+    # Start-Process -Wait powershell -verb runas -ArgumentList "choco install steam bluestacks" 
 MsgDone
 
 StartMsg -msg "Enable Virtualiztion"
-StartMsg-Process -Wait powershell -verb runas -ArgumentList @"
+Start-Process -Wait powershell -verb runas -ArgumentList @"
     Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All -Norestart
     Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All -Norestart
     Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -Norestart
