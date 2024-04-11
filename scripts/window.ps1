@@ -9,12 +9,12 @@ Write-Host ""
 Write-Host ""
 Write-Host "-------------------- Script developed by nhattruongNeoVim --------------------"
 Write-Host "--------------- Github: httpls://github.com/nhhattruongNeoVim ----------------"
-Write-Host ""
+Write-Host 
 
 # Util function
 function StartMsg {
     param ($msg)
-    Write-Host(">> "+$msg) -ForegroundColor Green
+    Write-Host "->  "+$msg -ForegroundColor Green
 }
 
 function MsgDone { 
