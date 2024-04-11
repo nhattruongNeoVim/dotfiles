@@ -117,7 +117,7 @@ if [ "$thunar" == "Y" ]; then
 fi
 
 if [ "$snapd" == "Y" ]; then
-	exScriptHypr "snap.sh"
+	exScriptHypr "snapd.sh"
 fi
 
 if [ "$homebrew" == "Y" ]; then
