@@ -43,7 +43,6 @@ pacman_pkgs=(
 	yt-dlp
     ffmpeg
     cmatrix
-    python3.10-venv
 )
 
 hypr_pkgs=(
