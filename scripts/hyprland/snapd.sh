@@ -33,10 +33,11 @@ fi
 # 	}
 # fi
 
-printf "\n%s - Installing snap\n" "${NOTE}"
+# install snapd
+printf "\n%s - Installing snapd\n" "${NOTE}"
 install_aur_pkg snapd
 
-# Setup snapd before proceeding
+# setup snapd before proceeding
 printf "\n%s - Set up snap.... \n" "${NOTE}"
 sudo systemctl enable --now snapd.socket && sudo ln -s /var/lib/snapd/snap /snap && systemctl enable --now snapd.apparmor || {
 	printf "%s - Failed to setup snap\n" "${ERROR}"

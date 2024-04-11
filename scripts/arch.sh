@@ -45,7 +45,7 @@ ask_yes_no "Do you have any nvidia gpu in your system?" nvidia
 printf "\n"
 ask_yes_no "Do you want to install Thunar file manager?" thunar
 printf "\n"
-ask_yes_no "Do you want to install Snap (GUI packages manager)?" snap
+ask_yes_no "Do you want to install Snap (GUI packages manager)?" snapd
 printf "\n"
 #ask_yes_no "Do you want to install & configure Firefox browser?" firefox
 #printf "\n"
@@ -116,7 +116,7 @@ if [ "$thunar" == "Y" ]; then
 	exScriptHypr "thunar.sh"
 fi
 
-if [ "$thunar" == "Y" ]; then
+if [ "$snapd" == "Y" ]; then
 	exScriptHypr "snap.sh"
 fi
 
