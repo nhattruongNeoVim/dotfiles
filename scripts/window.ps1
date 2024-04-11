@@ -14,7 +14,7 @@ Write-Host ""
 # Util function
 function StartMsg {
     param ($msg)
-    Write-Host("-> "+$msg) -ForegroundColor Green
+    Write-Host(">> "+$msg) -ForegroundColor Green
 }
 
 function MsgDone { 
