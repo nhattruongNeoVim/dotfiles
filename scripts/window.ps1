@@ -22,8 +22,8 @@ function MsgDone {
     Write-Host 
 }
 
-# StartMsg
-StartMsg-Process -Wait powershell -verb runas -ArgumentList "Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value 0"
+# Start
+Start-Process -Wait powershell -verb runas -ArgumentList "Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value 0"
 
 StartMsg -msg "Installing scoop..."
 if (Get-Command scoop -errorAction SilentlyContinue)
