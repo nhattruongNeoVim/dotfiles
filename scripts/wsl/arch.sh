@@ -60,7 +60,7 @@ pacman_packages=(
     cargo
     openssh
     lolcat
-    python3.10-venv
+	python-virtualenv
 )
 
 aur_packages=(
