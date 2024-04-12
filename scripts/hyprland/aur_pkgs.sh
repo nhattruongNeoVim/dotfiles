@@ -12,6 +12,7 @@ aur_pkgs=(
 	pipes.sh
 	tgpt-bin
     vmware-workstation
+    # xampp
 )
 
 hypr_pkgs=(
