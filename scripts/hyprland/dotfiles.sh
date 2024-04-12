@@ -32,14 +32,14 @@ gum style \
 	"                                                                              "
 
 # check dotfiles
-cd $HOME
+cd "$HOME" || exit 1
 if [ -d dotfiles ]; then
 	cd dotfiles || {
 		printf "%s - Failed to enter dotfiles config directory\n" "${ERROR}"
 		exit 1
 	}
 else
-	printf "\n${NOTE} Clone dotfiles. " && git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1 || {
+	printf "\n${NOTE} Clone dotfiles. " && git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git --depth 1 || {
 		printf "%s - Failed to clone dotfiles \n" "${ERROR}"
 		exit 1
 	}
