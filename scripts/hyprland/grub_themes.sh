@@ -7,7 +7,8 @@ source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 # Variables
 theme="Huohuo"
 grub="/etc/default/grub"
-grub_theme="/boot/grub/themes/$theme/theme.txt"
+grub_dir="/boot/grub/theme"
+grub_theme="$grub_dir/$theme/theme.txt"
 
 # start script
 echo -e "${NOTE} Setting up grub theme."
@@ -76,8 +77,8 @@ if gum confirm "${NOTE} Do you want to install grub custom theme?"; then
 	# Extract and copy theme
 	tar xzvf grub_themes/themes/"$theme".tar.gz >/dev/null
 	rm -fr grub_themes/themes/"$theme".tar.gz
-	sudo mkdir -p /boot/grub/themes
-	sudo cp -r $theme /boot/grub/themes
+	sudo mkdir -p $grub_dir
+	sudo cp -r $theme $grub_dir
 	rm -rf $theme
 	rm -rf grub_themes
 
