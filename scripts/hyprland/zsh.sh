@@ -66,9 +66,18 @@ if gum confirm "${CAT} - Do you want to add command prompt (OPTIONAL)?"; then
 			else
 				echo "Directory zsh-syntax-highlighting already exists. Skipping cloning."
 			fi
+
+			sed -i '/# ZSH_THEME="agnoster"/s/^# *//' assets/.zshrc
+			sed -i '/# plugins=(/s/^# *//' assets/.zshrc
+			sed -i '/#     git/s/^# *//' assets/.zshrc
+			sed -i '/#     archlinux/s/^# *//' assets/.zshrc
+			sed -i '/#     zsh-autosuggestions/s/^# *//' assets/.zshrc
+			sed -i '/#     zsh-syntax-highlighting/s/^# *//' assets/.zshrc
+			sed -i '/# )/s/^# *//' assets/.zshrc
+			sed -i '/# source $ZSH\/oh-my-zsh.sh/s/^# *//' assets/.zshrc
 		else
-            install_pacman_pkg "starship"
-		    sed -i '/# eval "$(starship init zsh)" -s -r/s/^# *//' assets/.zshrc
+			install_pacman_pkg "starship"
+			sed -i '/# eval "$(starship init zsh)" -s -r/s/^# *//' assets/.zshrc
 		fi
 	fi
 else
