@@ -44,7 +44,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # ---------------- Command promt ----------------
 # eval "$(starship init zsh)"
 # export ZSH="$HOME/.oh-my-zsh"
-# ZSH_THEME="random"
+# ZSH_THEME="pygmalion-virtualenv"
 # plugins=( 
 #     git
 #     archlinux
