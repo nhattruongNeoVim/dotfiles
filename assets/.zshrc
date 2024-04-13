@@ -129,6 +129,7 @@ alias ip="echo $(ifconfig | grep broadcast | awk '{print $2}')"
 alias dl='aria2c --optimize-concurrent-downloads -j 16 -s 16 -x 16 -k 4M'
 alias time="arttime --nolearn -a kissingcats -b kissingcats2 -t 'nhattruongNeoVim' --ac 6"
 
-eval "$(starship init zsh)"
-
-colorscript -e tiefighter2
+# Color script
+# eval "$(starship init zsh)"
+# pokemon-colorscripts --no-title -s -r
+# colorscript -e tiefighter2
