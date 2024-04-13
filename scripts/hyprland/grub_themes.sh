@@ -11,6 +11,7 @@ grub_dir="$HOME/.grub/theme"
 grub_theme="$grub_dir/$theme/theme.txt"
 
 # start script
+printf "\n%.0s" {1..2}
 echo -e "${NOTE} Setting up grub theme."
 
 # Check file
