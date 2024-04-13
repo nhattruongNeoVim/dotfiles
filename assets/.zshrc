@@ -36,13 +36,15 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-# Color script
+# ---------------- Color script -----------------
 # pokemon-colorscripts --no-title -s -r
 # colorscript -e tiefighter2
+# -----------------------------------------------
 
-# Command promt
+# ---------------- Command promt ----------------
 # eval "$(starship init zsh)"
-# ZSH_THEME="agnoster"
+# export ZSH="$HOME/.oh-my-zsh"
+# ZSH_THEME="random"
 # plugins=( 
 #     git
 #     archlinux
@@ -50,10 +52,10 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 #     zsh-syntax-highlighting
 # )
 # source $ZSH/oh-my-zsh.sh
+# -----------------------------------------------
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export ZSH="$HOME/.oh-my-zsh"
 export VISUAL="nvim"
 
 # NeoVim Switcher
