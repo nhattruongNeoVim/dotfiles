@@ -84,11 +84,11 @@ if gum confirm "${CAT} - Do you want to add command prompt (OPTIONAL)?"; then
 				echo "Directory zsh-autosuggestions already exists. Skipping cloning."
 			fi
 
-			if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
-				git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting --depth 1 || true
-			else
-				echo "Directory zsh-syntax-highlighting already exists. Skipping cloning."
-			fi
+			# if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
+			# 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting --depth 1 || true
+			# else
+			# 	echo "Directory zsh-syntax-highlighting already exists. Skipping cloning."
+			# fi
 
 			sed -i '/^# export ZSH="$HOME\/.oh-my-zsh"/ s/^# //' assets/.zshrc
 			sed -i '/^# ZSH_THEME="pygmalion-virtualenv"/ s/^# //' assets/.zshrc
