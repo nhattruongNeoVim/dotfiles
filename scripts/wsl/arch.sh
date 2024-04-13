@@ -25,6 +25,8 @@ gum style \
 	"                                                                              "
 printf "\n"
 ask_custom_option "Choose your AUR helper" "yay" "paru" aur_helper
+printf "\n"
+ask_yes_no "Install zsh, oh-my-zsh & (Optional) pokemon-colorscripts?" zsh
 
 if [ "$aur_helper" == "paru" ]; then
 	exScriptHypr "paru.sh"
@@ -157,6 +159,11 @@ cp -r assets/.fonts/* ~/.fonts/ && { echo "${OK} Copy fonts completed!"; } || {
 printf "\n%.0s" {1..2}
 fc-cache -fv
 
+# zsh
+if [ "$zsh" == "Y" ]; then
+	exScriptHypr "zsh.sh"
+fi
+
 # remove dotfiles
 cd $HOME
 if [ -d dotfiles ]; then
@@ -169,10 +176,6 @@ printf "\n${NOTE} Clear packages.\n"
 if sudo pacman -Sc --noconfirm && yay -Sc --noconfirm && yay -Yc --noconfirm; then
     printf "\n${OK} Clear packages succesfully.\n"
 fi
-
-# chang shell to zsh
-printf "\n${NOTE} Change shell to zsh!\n"
-chsh -s /usr/bin/zsh
 
 printf "\n%.0s" {1..2}
 printf "\n${OK} Yey! Setup Completed.\n"
