@@ -91,7 +91,7 @@ if gum confirm "${CAT} - Do you want to add command prompt (OPTIONAL)?"; then
 			fi
 
 			sed -i '/^# export ZSH="$HOME\/.oh-my-zsh"/ s/^# //' assets/.zshrc
-			sed -i '/^# ZSH_THEME="random"/ s/^# //' assets/.zshrc
+			sed -i '/^# ZSH_THEME="pygmalion-virtualenv"/ s/^# //' assets/.zshrc
 			sed -i '/^# plugins=(/,/^# )/ s/^# //' assets/.zshrc
 			sed -i '/^# source $ZSH\/oh-my-zsh.sh/ s/^# //' assets/.zshrc
 		fi
