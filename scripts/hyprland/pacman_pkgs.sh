@@ -11,7 +11,6 @@ pacman_pkgs=(
 	libxcrypt-compat
 	alacritty
 	tmux
-	starship
 	zsh
     nano
     vim
