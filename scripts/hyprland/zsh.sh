@@ -4,6 +4,24 @@
 # source library
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
+# check dotfiles
+cd "$HOME" || exit 1
+if [ -d dotfiles ]; then
+	cd dotfiles || {
+		printf "%s - Failed to enter dotfiles config directory\n" "${ERROR}"
+		exit 1
+	}
+else
+	printf "\n${NOTE} Clone dotfiles. " && git clone -b hyprland https://github.com/nhattruongNeoVim/dotfiles.git --depth 1 || {
+		printf "%s - Failed to clone dotfiles \n" "${ERROR}"
+		exit 1
+	}
+	cd dotfiles || {
+		printf "%s - Failed to enter dotfiles directory\n" "${ERROR}"
+		exit 1
+	}
+fi
+
 # start
 zsh=(
 	zsh
@@ -11,7 +29,7 @@ zsh=(
 )
 
 # optional Pokemon color scripts
-if gum confirm "${CAT} OPTIONAL - Do you want to add Pokemon color scripts?"; then
+if gum confirm "${CAT} - Do you want to add Pokemon color scripts (OPTIONAL)?"; then
 	zsh+=('pokemon-colorscripts-git')
 	sed -i '/#pokemon-colorscripts --no-title -s -r/s/^#//' assets/.zshrc
 else
