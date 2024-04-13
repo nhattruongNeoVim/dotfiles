@@ -30,7 +30,7 @@ zsh=(
 
 # optional color scripts
 if gum confirm "${CAT} - Do you want to add color scripts (OPTIONAL)?"; then
-	if gum confirm "$CAT Choose your color scripts" --affirmative "pokemon-colorscripts" --negative "shell-color-scripts"; then
+	if gum confirm "${CAT} - Choose your color scripts" --affirmative "pokemon-colorscripts" --negative "shell-color-scripts"; then
 		zsh+=('pokemon-colorscripts-git')
 		sed -i '/# pokemon-colorscripts --no-title -s -r/s/^# *//' assets/.zshrc
 	else
