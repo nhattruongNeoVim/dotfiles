@@ -4,6 +4,17 @@
 # source library
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
+# star scripts
+gum style \
+	--foreground 213 --border-foreground 213 --border rounded \
+	--align center --width 50 --margin "1 2" --padding "2 4" \
+	"███████╗███████╗██╗  ██╗" \
+	"╚══███╔╝██╔════╝██║  ██║" \
+	"  ███╔╝ ███████╗███████║" \
+	" ███╔╝  ╚════██║██╔══██║" \
+	"███████╗███████║██║  ██║" \
+	"╚══════╝╚══════╝╚═╝  ╚═╝"
+
 # check dotfiles
 cd "$HOME" || exit 1
 if [ -d dotfiles ]; then
@@ -75,7 +86,7 @@ if gum confirm "${CAT} - Do you want to add command prompt (OPTIONAL)?"; then
 			sed -i '/^# source $ZSH\/oh-my-zsh.sh/ s/^# //' assets/.zshrc
 		else
 			install_pacman_pkg "starship"
-		    sed -i '/^# eval "$(starship init zsh)"/ s/^# //' assets/.zshrc
+			sed -i '/^# eval "$(starship init zsh)"/ s/^# //' assets/.zshrc
 		fi
 	fi
 else
@@ -92,15 +103,6 @@ for ZSH in "${zsh[@]}"; do
 		echo -e "\e[1A\e[K${ERROR} - $ZSH install had failed"
 	fi
 done
-
-# check if ~/.zshrc and .zprofile exists, create a backup, and copy the new configuration
-if [ -f "$HOME/.zshrc" ]; then
-	cp -b "$HOME/.zshrc" "$HOME/.zshrc-backup" || true
-fi
-
-if [ -f "$HOME/.zprofile" ]; then
-	cp -b "$HOME/.zprofile" "$HOME/.zprofile-backup" || true
-fi
 
 # copying the preconfigured zsh themes and profile
 cp assets/.zshrc $HOME && cp assets/.zprofile $HOME && { echo "${OK} Copy completed!"; } || {
