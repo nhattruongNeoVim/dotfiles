@@ -186,25 +186,22 @@ printf "\n%.0s" {1..2}
 
 # Copying config files
 mkdir -p ~/.config
-cp -r config/* ~/.config/ && { echo "${OK}Copy completed!"; } || {
+cp -r config/* ~/.config/ && { echo "${OK} Copy completed!"; } || {
 	echo "${ERROR} Failed to copy config files."
 }
 
 # Copying wallpapers
 mkdir -p ~/Pictures/wallpapers
-cp -r wallpapers ~/Pictures/ && { echo "${OK}Copy completed!"; } || {
+cp -r wallpapers ~/Pictures/ && { echo "${OK} Copy completed!"; } || {
 	echo "${ERROR} Failed to copy wallpapers."
 }
 
-# Copying other
-cp assets/.zshrc ~ && cp assets/.ideavimrc ~ && { echo "${OK}Copy completed!"; } || {
-	echo "${ERROR} Failed to copy .zshrc && .ideavimrc"
+# Copying 
+cp assets/.ideavimrc ~ && { echo "${OK} Copy completed!"; } || {
+	echo "${ERROR} Failed to copy .ideavimrc"
 }
 
 printf "\n%.0s" {1..2}
-
-# chang shell to zsh
-chsh -s $(which zsh)
 
 # Set some files as executable
 chmod +x ~/.config/hypr/scripts/*

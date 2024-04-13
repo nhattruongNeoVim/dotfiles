@@ -138,6 +138,10 @@ if [ "$xdph" == "Y" ]; then
 	exScriptHypr "xdph.sh"
 fi
 
+if [ "$zsh" == "Y" ]; then
+	exScriptHypr "zsh.sh"
+fi
+
 if [ "$dual_boot" == "Y" ]; then
 	exScriptHypr "grub_themes.sh"
 fi

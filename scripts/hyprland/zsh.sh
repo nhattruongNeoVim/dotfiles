@@ -58,8 +58,9 @@ if command -v zsh >/dev/null; then
 	fi
 
 	# copying the preconfigured zsh themes and profile
-	cp -r 'assets/.zshrc' ~/
-	cp -r 'assets/.zprofile' ~/
+	cp assets/.zshrc $HOME && cp assets/.zprofile $HOME && { echo "${OK} Copy completed!"; } || {
+		echo "${ERROR} Failed to copy .zshrc"
+	}
 
 	printf "${NOTE} Changing default shell to zsh...\n"
 
