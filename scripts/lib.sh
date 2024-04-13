@@ -85,7 +85,7 @@ uninstall_pacman_pkg() {
 
 # function to ask and return yes no
 ask_yes_no() {
-	if gum confirm "$CAT $1"; then
+	if gum confirm "$CAT - $1"; then
 		eval "$2='Y'"
 		echo "$CAT $1 $YELLOW Yes"
 	else
@@ -96,7 +96,7 @@ ask_yes_no() {
 
 # function to ask and return custom answer
 ask_custom_option() {
-    if gum confirm "$CAT $1" --affirmative "$2" --negative "$3" ;then
+    if gum confirm "$CAT - $1" --affirmative "$2" --negative "$3" ;then
 		eval "$4=$2"
 		echo "$CAT $1 $YELLOW ${!4}"
 	else
