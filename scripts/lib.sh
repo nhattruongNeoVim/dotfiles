@@ -87,10 +87,10 @@ uninstall_pacman_pkg() {
 ask_yes_no() {
 	if gum confirm "$CAT - $1"; then
 		eval "$2='Y'"
-		echo "$CAT $1 $YELLOW Yes"
+		echo "$CAT - $1 $YELLOW Yes"
 	else
 		eval "$2='N'"
-		echo "$CAT $1 $YELLOW No"
+		echo "$CAT - $1 $YELLOW No"
 	fi
 }
 
@@ -98,10 +98,10 @@ ask_yes_no() {
 ask_custom_option() {
     if gum confirm "$CAT - $1" --affirmative "$2" --negative "$3" ;then
 		eval "$4=$2"
-		echo "$CAT $1 $YELLOW ${!4}"
+		echo "$CAT - $1 $YELLOW ${!4}"
 	else
 		eval "$4=$3"
-		echo "$CAT $1 $YELLOW ${!4}"
+		echo "$CAT - $1 $YELLOW ${!4}"
 	fi
 }
 
