@@ -36,14 +36,20 @@
 # zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 # zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-ZSH_THEME="agnoster"
-plugins=( 
-    git
-    archlinux
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-)
-source $ZSH/oh-my-zsh.sh
+# Color script
+# pokemon-colorscripts --no-title -s -r
+# colorscript -e tiefighter2
+
+# Command promt
+# eval "$(starship init zsh)"
+# ZSH_THEME="agnoster"
+# plugins=( 
+#     git
+#     archlinux
+#     zsh-autosuggestions
+#     zsh-syntax-highlighting
+# )
+# source $ZSH/oh-my-zsh.sh
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -128,8 +134,3 @@ alias win='sudo efibootmgr --bootnext 0006 && reboot'
 alias ip="echo $(ifconfig | grep broadcast | awk '{print $2}')"
 alias dl='aria2c --optimize-concurrent-downloads -j 16 -s 16 -x 16 -k 4M'
 alias time="arttime --nolearn -a kissingcats -b kissingcats2 -t 'nhattruongNeoVim' --ac 6"
-
-# Color script
-# eval "$(starship init zsh)"
-# pokemon-colorscripts --no-title -s -r
-# colorscript -e tiefighter2
