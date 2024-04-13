@@ -49,7 +49,6 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 #     git
 #     archlinux
 #     zsh-autosuggestions
-#     zsh-syntax-highlighting
 # )
 # source $ZSH/oh-my-zsh.sh
 # -----------------------------------------------
