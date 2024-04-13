@@ -51,7 +51,7 @@ printf "\n"
 #printf "\n"
 ask_yes_no "Do you want to install Homebrew (CLI package manager)?" homebrew
 printf "\n"
-ask_yes_no "Install zsh, oh-my-zsh & (Optional) pokemon-colorscripts?" zsh
+ask_yes_no "Install zsh, color scripts (Optional) & command prompt (Optional)?" zsh
 printf "\n"
 ask_yes_no "Do you want to set battery charging limit (only for laptop)?" battery
 printf "\n"
