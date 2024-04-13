@@ -34,8 +34,8 @@ if gum confirm "${CAT} - Do you want to add color scripts (OPTIONAL)?"; then
 		zsh+=('pokemon-colorscripts-git')
 		sed -i '/# pokemon-colorscripts --no-title -s -r/s/^# *//' assets/.zshrc
 	else
-		zsh+=('pokemon-colorscripts-git')
-		sed -i '/#pokemon-colorscripts --no-title -s -r/s/^# *//' assets/.zshrc
+		zsh+=('shell-color-scripts')
+		sed -i '/# colorscript -e tiefighter2 -s -r/s/^# *//' assets/.zshrc
 	fi
 else
 	echo "${NOTE} Skipping Pokemon color scripts installation.${RESET}"
@@ -46,7 +46,7 @@ printf "${NOTE} Installing core zsh packages...${RESET}\n"
 for ZSH in "${zsh[@]}"; do
 	install_aur_pkg "$ZSH"
 	if [ $? -ne 0 ]; then
-		echo -e "\e[1A\e[K${ERROR} - $ZSH install had failed, please check the install.log"
+		echo -e "\e[1A\e[K${ERROR} - $ZSH install had failed"
 	fi
 done
 
