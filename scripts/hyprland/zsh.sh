@@ -34,10 +34,10 @@ if gum confirm "${CAT} - Do you want to add color scripts (OPTIONAL)?"; then
 	echo "${CAT} - Do you want to add color scripts (OPTIONAL)?" $YELLOW Yes
 	if gum confirm "$YELLOW Choose your colors cripts" --affirmative "pokemon-colorscripts" --negative "shell-color-scripts"; then
 		zsh+=('pokemon-colorscripts-git')
-		sed -i '/# pokemon-colorscripts --no-title -s -r/s/^# *//' assets/.zshrc
+		sed -i '/^# pokemon-colorscripts --no-title -s -r/s/^# *//' assets/.zshrc
 	else
 		zsh+=('shell-color-scripts')
-		sed -i '/# colorscript -e tiefighter2 -s -r/s/^# *//' assets/.zshrc
+		sed -i '/^# colorscript -e tiefighter2/ s/^# //' assets/.zshrc
 	fi
 else
 	echo "${CAT} - Do you want to add command prompt (OPTIONAL)?" $YELLOW No
@@ -75,7 +75,7 @@ if gum confirm "${CAT} - Do you want to add command prompt (OPTIONAL)?"; then
 			sed -i '/^# source $ZSH\/oh-my-zsh.sh/ s/^# //' assets/.zshrc
 		else
 			install_pacman_pkg "starship"
-			sed -i '/# eval "$(starship init zsh)" -s -r/s/^# *//' assets/.zshrc
+		    sed -i '/^# eval "$(starship init zsh)"/ s/^# //' assets/.zshrc
 		fi
 	fi
 else
@@ -84,6 +84,7 @@ else
 fi
 
 # installing zsh packages
+printf "\n"
 printf "${NOTE} Installing core zsh packages...${RESET}\n"
 for ZSH in "${zsh[@]}"; do
 	install_aur_pkg "$ZSH"
