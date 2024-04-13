@@ -126,7 +126,7 @@ else
 fi
 
 # Use the selected resolution in your existing script
-echo "You chose $resolution resolution for better Rofi appearance."
+echo "\n\nYou chose $resolution resolution for better Rofi appearance.\n\n"
 
 # Add your commands based on the resolution choice
 if [ "$resolution" == "≤ 1080p" ]; then

@@ -7,7 +7,7 @@ source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 # Variables
 theme="Huohuo"
 grub="/etc/default/grub"
-grub_dir="/boot/grub/theme"
+grub_dir="$HOME/.grub/theme"
 grub_theme="$grub_dir/$theme/theme.txt"
 
 # start script
