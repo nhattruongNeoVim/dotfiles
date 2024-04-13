@@ -8,7 +8,6 @@ source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 aur_pkgs=(
 	microsoft-edge-stable
 	arttime-git
-	shell-color-scripts
 	pipes.sh
 	tgpt-bin
     vmware-workstation

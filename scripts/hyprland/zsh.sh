@@ -28,10 +28,15 @@ zsh=(
 	zsh-completions
 )
 
-# optional Pokemon color scripts
-if gum confirm "${CAT} - Do you want to add Pokemon color scripts (OPTIONAL)?"; then
-	zsh+=('pokemon-colorscripts-git')
-	sed -i '/#pokemon-colorscripts --no-title -s -r/s/^#//' assets/.zshrc
+# optional color scripts
+if gum confirm "${CAT} - Do you want to add color scripts (OPTIONAL)?"; then
+	if gum confirm "$CAT Choose your color scripts" --affirmative "pokemon-colorscripts" --negative "shell-color-scripts"; then
+		zsh+=('pokemon-colorscripts-git')
+		sed -i '/# pokemon-colorscripts --no-title -s -r/s/^# *//' assets/.zshrc
+	else
+		zsh+=('pokemon-colorscripts-git')
+		sed -i '/#pokemon-colorscripts --no-title -s -r/s/^# *//' assets/.zshrc
+	fi
 else
 	echo "${NOTE} Skipping Pokemon color scripts installation.${RESET}"
 fi
@@ -82,7 +87,7 @@ if command -v zsh >/dev/null; then
 
 	printf "${NOTE} Changing default shell to zsh...\n"
 
-	while ! chsh -s $(which zsh); do
+	while ! chsh -s /bin/zsh; do
 		echo "${ERROR} Authentication failed. Please enter the correct password."
 		sleep 1
 	done
