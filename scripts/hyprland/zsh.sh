@@ -55,11 +55,21 @@ else
 	echo "${NOTE} Skipping Pokemon color scripts installation.${RESET}"
 fi
 
+# installing zsh packages
+printf "\n"
+printf "${NOTE} Installing core zsh packages...${RESET}\n"
+for ZSH in "${zsh[@]}"; do
+	install_aur_pkg "$ZSH"
+	if [ $? -ne 0 ]; then
+		echo -e "\e[1A\e[K${ERROR} - $ZSH install had failed"
+	fi
+done
+
 # optional command prompt
 printf "\n"
 if gum confirm "${CAT} - Do you want to add command prompt (OPTIONAL)?"; then
 	echo "${CAT} - Do you want to add command prompt (OPTIONAL)?" $YELLOW Yes
-	if gum confirm "$YELLOW Choose your command prompt" --affirmative "oh-my-zsh" --negative "starship"; then
+	if gum confirm "$YELLOW Choose your command prompt" --affirmative "starship" --negative "oh-my-zsh"; then
 		if command -v zsh >/dev/null; then
 			printf "${NOTE} Installing Oh My Zsh and plugins...\n"
 			if [ ! -d "$HOME/.oh-my-zsh" ]; then
@@ -84,25 +94,15 @@ if gum confirm "${CAT} - Do you want to add command prompt (OPTIONAL)?"; then
 			sed -i '/^# ZSH_THEME="random"/ s/^# //' assets/.zshrc
 			sed -i '/^# plugins=(/,/^# )/ s/^# //' assets/.zshrc
 			sed -i '/^# source $ZSH\/oh-my-zsh.sh/ s/^# //' assets/.zshrc
-		else
-			install_pacman_pkg "starship"
-			sed -i '/^# eval "$(starship init zsh)"/ s/^# //' assets/.zshrc
 		fi
+	else
+		install_pacman_pkg "starship"
+		sed -i '/^# eval "$(starship init zsh)"/ s/^# //' assets/.zshrc
 	fi
 else
 	echo "${CAT} - Do you want to add command prompt (OPTIONAL)?" $YELLOW No
 	echo "${NOTE} Skipping Pokemon color scripts installation.${RESET}"
 fi
-
-# installing zsh packages
-printf "\n"
-printf "${NOTE} Installing core zsh packages...${RESET}\n"
-for ZSH in "${zsh[@]}"; do
-	install_aur_pkg "$ZSH"
-	if [ $? -ne 0 ]; then
-		echo -e "\e[1A\e[K${ERROR} - $ZSH install had failed"
-	fi
-done
 
 # copying the preconfigured zsh themes and profile
 cp assets/.zshrc $HOME && cp assets/.zprofile $HOME && { echo "${OK} Copy completed!"; } || {
