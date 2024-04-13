@@ -29,9 +29,10 @@ zsh=(
 )
 
 # optional color scripts
+printf "\n"
 if gum confirm "${CAT} - Do you want to add color scripts (OPTIONAL)?"; then
 	echo "${CAT} - Do you want to add color scripts (OPTIONAL)?" $YELLOW Yes
-	if gum confirm "${CAT} - Choose your color scripts" --affirmative "pokemon-colorscripts" --negative "shell-color-scripts"; then
+	if gum confirm "$YELLOW Choose your colors cripts" --affirmative "pokemon-colorscripts" --negative "shell-color-scripts"; then
 		zsh+=('pokemon-colorscripts-git')
 		sed -i '/# pokemon-colorscripts --no-title -s -r/s/^# *//' assets/.zshrc
 	else
@@ -44,9 +45,10 @@ else
 fi
 
 # optional command prompt
+printf "\n"
 if gum confirm "${CAT} - Do you want to add command prompt (OPTIONAL)?"; then
 	echo "${CAT} - Do you want to add command prompt (OPTIONAL)?" $YELLOW Yes
-	if gum confirm "${CAT} - Choose your command prompt" --affirmative "oh-my-zsh" --negative "starship"; then
+	if gum confirm "$YELLOW Choose your command prompt" --affirmative "oh-my-zsh" --negative "starship"; then
 		if command -v zsh >/dev/null; then
 			printf "${NOTE} Installing Oh My Zsh and plugins...\n"
 			if [ ! -d "$HOME/.oh-my-zsh" ]; then
