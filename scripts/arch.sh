@@ -51,9 +51,9 @@ printf "\n"
 #printf "\n"
 ask_yes_no "Do you want to install Homebrew (CLI package manager)?" homebrew
 printf "\n"
-ask_yes_no "Install zsh, color scripts (Optional) & command prompt (Optional)?" zsh
-printf "\n"
 ask_yes_no "Do you want to set battery charging limit (only for laptop)?" battery
+printf "\n"
+ask_yes_no "Install zsh, color scripts (Optional) & zsh plugin (Optional)?" zsh
 printf "\n"
 ask_yes_no "Install & configure SDDM log-in Manager plus (OPTIONAL) SDDM Theme?" sddm
 printf "\n"

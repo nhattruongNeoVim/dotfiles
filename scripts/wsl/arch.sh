@@ -26,7 +26,7 @@ gum style \
 printf "\n"
 ask_custom_option "Choose your AUR helper" "yay" "paru" aur_helper
 printf "\n"
-ask_yes_no "Install zsh, oh-my-zsh & (Optional) pokemon-colorscripts?" zsh
+ask_yes_no "Install zsh, color scripts (Optional) & zsh plugin (Optional)?" zsh
 
 if [ "$aur_helper" == "paru" ]; then
 	exScriptHypr "paru.sh"
