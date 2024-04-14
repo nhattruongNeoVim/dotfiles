@@ -54,7 +54,7 @@ if gum confirm "${CAT} - Do you want to add color scripts (OPTIONAL)?"; then
 	fi
 else
 	echo "${CAT} - Do you want to add command prompt (OPTIONAL)?" ${YELLOW} No
-	echo "${NOTE} Skipping Pokemon color scripts installation.${RESET}"
+	echo "${NOTE} - Skipping color scripts installation.${RESET}"
 fi
 
 # optional zsh plugin
