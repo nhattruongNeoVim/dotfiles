@@ -65,10 +65,10 @@ if gum confirm "${CAT} - Do you want to add zsh plugin (OPTIONAL)?"; then
 	plugin=$(gum choose --no-limit --cursor-prefix "( ) " --selected-prefix "(x) " --unselected-prefix "( ) " "zsh-autosuggestions" "zsh-syntax-highlighting")
 
 	if [ -z "${plugin}" ]; then
-		echo "No profile selected. Installation canceled."
+		echo -e "\n\t ${YELLOW} No plugin selected. Installation canceled."
 		exit
 	else
-		echo -e "\t ${YELLOW} Plugin selected: " $plugin
+		echo -e "\n\t ${YELLOW} Plugin selected: " $plugin
 	fi
 
 	if [[ $plugin == *"zsh-autosuggestions"* ]]; then
