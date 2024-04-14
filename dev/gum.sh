@@ -41,12 +41,34 @@
 
 # gum spin --spinner dot --title "Buying Bubble Gum..." -- sleep 2
 
+source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
+
 gum style \
 	--foreground 213 --border-foreground 213 --border rounded \
 	--align center --width 50 --margin "1 2" --padding "2 4" \
-    "███████╗███████╗██╗  ██╗" \
-    "╚══███╔╝██╔════╝██║  ██║" \
-    "  ███╔╝ ███████╗███████║" \
-    " ███╔╝  ╚════██║██╔══██║" \
-    "███████╗███████║██║  ██║" \
-    "╚══════╝╚══════╝╚═╝  ╚═╝" \
+	"███████╗███████╗██╗  ██╗" \
+	"╚══███╔╝██╔════╝██║  ██║" \
+	"  ███╔╝ ███████╗███████║" \
+	" ███╔╝  ╚════██║██╔══██║" \
+	"███████╗███████║██║  ██║" \
+	"╚══════╝╚══════╝╚═╝  ╚═╝"
+
+echo "$ORANGE SPACE = select/unselect | j/k = down/up | ENTER = confirm. No selection = CANCEL"
+profile=$(gum choose --no-limit --cursor-prefix "( ) " --selected-prefix "(x) " --unselected-prefix "( ) " "zsh-completions" "zsh-syntax-highlighting")
+
+if [ -z "${profile}" ]; then
+	echo "No profile selected. Installation canceled."
+	exit
+else
+	echo "\t $YELLOW Plugin selected: " $profile
+fi
+
+if [[ $profile == *"zsh-completions"* ]]; then
+	zsh+=('zsh-completions')
+	sed -i '/^# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh/s/^# *//' assets/.zshrc
+fi
+if [[ $profile == *"zsh-syntax-highlighting"* ]]; then
+	zsh+=('zsh-syntax-highlighting')
+	sed -i '/^# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh/s/^# *//' assets/.zshrc
+fi
+

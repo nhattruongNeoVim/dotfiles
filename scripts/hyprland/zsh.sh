@@ -37,7 +37,7 @@ fi
 # start
 zsh=(
 	zsh
-	zsh-completions
+	starship
 )
 
 # optional color scripts
@@ -56,64 +56,44 @@ else
 	echo "${NOTE} Skipping Pokemon color scripts installation.${RESET}"
 fi
 
+# optional zsh plugin
+printf "\n"
+if gum confirm "${CAT} - Do you want to add zsh plugin (OPTIONAL)?"; then
+    echo "${CAT} - Do you want to add zsh plugin (OPTIONAL)?" $YELLOW Yes
+	echo "$ORANGE SPACE = select/unselect | j/k = down/up | ENTER = confirm. No selection = CANCEL"
+	plugin=$(gum choose --no-limit --cursor-prefix "( ) " --selected-prefix "(x) " --unselected-prefix "( ) " "zsh-completions" "zsh-syntax-highlighting")
+
+	if [ -z "${plugin}" ]; then
+		echo "No profile selected. Installation canceled."
+		exit
+	else
+		echo "\t $YELLOW Plugin selected: " $plugin
+	fi
+
+	if [[ $plugin == *"zsh-completions"* ]]; then
+		zsh+=('zsh-completions')
+		sed -i '/^# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh/s/^# *//' assets/.zshrc
+	fi
+	if [[ $plugin == *"zsh-syntax-highlighting"* ]]; then
+		zsh+=('zsh-syntax-highlighting')
+		sed -i '/^# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh/s/^# *//' assets/.zshrc
+	fi
+fi
+
 # installing zsh packages
 printf "\n"
 printf "${NOTE} Installing core zsh packages...${RESET}\n"
 for ZSH in "${zsh[@]}"; do
-	install_aur_pkg "$ZSH"
+	install_pacman_pkg "$ZSH"
 	if [ $? -ne 0 ]; then
 		echo -e "\e[1A\e[K${ERROR} - $ZSH install had failed"
 	fi
 done
 
-# optional command prompt
-printf "\n"
-if gum confirm "${CAT} - Do you want to add command prompt (OPTIONAL)?"; then
-	echo "${CAT} - Do you want to add command prompt (OPTIONAL)?" $YELLOW Yes
-	if gum confirm "$YELLOW Choose your command prompt" --affirmative "oh-my-zsh" --negative "starship"; then
-		if command -v zsh >/dev/null; then
-			printf "${NOTE} Installing Oh My Zsh and plugins...\n"
-			if [ ! -d "$HOME/.oh-my-zsh" ]; then
-				sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended || true
-			else
-				echo "Directory .oh-my-zsh already exists. Skipping re-installation."
-			fi
-
-			if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
-				git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions --depth 1 || true
-			else
-				echo "Directory zsh-autosuggestions already exists. Skipping cloning."
-			fi
-
-			# if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
-			# 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting --depth 1 || true
-			# else
-			# 	echo "Directory zsh-syntax-highlighting already exists. Skipping cloning."
-			# fi
-
-			sed -i '/^# export ZSH="$HOME\/.oh-my-zsh"/ s/^# //' assets/.zshrc
-			sed -i '/^# ZSH_THEME="pygmalion-virtualenv"/ s/^# //' assets/.zshrc
-			sed -i '/^# plugins=(/,/^# )/ s/^# //' assets/.zshrc
-			sed -i '/^# source $ZSH\/oh-my-zsh.sh/ s/^# //' assets/.zshrc
-		fi
-	else
-		install_pacman_pkg "starship"
-		sed -i '/^# eval "$(starship init zsh)"/ s/^# //' assets/.zshrc
-	fi
-else
-	echo "${CAT} - Do you want to add command prompt (OPTIONAL)?" $YELLOW No
-	echo "${NOTE} Skipping Pokemon color scripts installation.${RESET}"
-fi
-
 # copying the preconfigured zsh themes and profile
 cp assets/.zshrc $HOME && cp assets/.zprofile $HOME && { echo "${OK} Copy completed!"; } || {
 	echo "${ERROR} Failed to copy .zshrc"
 }
-
-# delete file
-if [ -f "$HOME/.zshrc.pre-oh-my-zsh" ]; then
-    rm $HOME/.zshrc.pre-oh-my-zsh
-fi
 
 printf "${NOTE} Changing default shell to zsh...\n"
 
