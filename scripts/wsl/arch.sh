@@ -52,7 +52,6 @@ pacman_packages=(
 	net-tools
 	neovim
 	bat
-	neovide
 	ranger
 	aria2
 	btop
