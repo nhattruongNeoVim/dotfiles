@@ -5,6 +5,7 @@
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # star scripts
+clear
 gum style \
 	--foreground 213 --border-foreground 213 --border rounded \
 	--align center --width 50 --margin "1 2" --padding "2 4" \
