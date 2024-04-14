@@ -53,22 +53,26 @@ gum style \
 	"███████╗███████║██║  ██║" \
 	"╚══════╝╚══════╝╚═╝  ╚═╝"
 
-echo "$ORANGE SPACE = select/unselect | j/k = down/up | ENTER = confirm. No selection = CANCEL"
-profile=$(gum choose --no-limit --cursor-prefix "( ) " --selected-prefix "(x) " --unselected-prefix "( ) " "zsh-completions" "zsh-syntax-highlighting")
+# echo "$ORANGE SPACE = select/unselect | j/k = down/up | ENTER = confirm. No selection = CANCEL"
+# profile=$(gum choose --no-limit --cursor-prefix "( ) " --selected-prefix "(x) " --unselected-prefix "( ) " "zsh-completions" "zsh-syntax-highlighting")
+#
+# if [ -z "${profile}" ]; then
+# 	echo "No profile selected. Installation canceled."
+# 	exit
+# else
+# 	echo "\t $YELLOW Plugin selected: " $profile
+# fi
+#
+# if [[ $profile == *"zsh-completions"* ]]; then
+# 	zsh+=('zsh-completions')
+# 	sed -i '/^# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh/s/^# *//' assets/.zshrc
+# fi
+# if [[ $profile == *"zsh-syntax-highlighting"* ]]; then
+# 	zsh+=('zsh-syntax-highlighting')
+# 	sed -i '/^# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh/s/^# *//' assets/.zshrc
+# fi
+#
+#
+	echo -e "${CAT} - Do you want to add zsh plugin (OPTIONAL)? $YELLOW Yes\n"
 
-if [ -z "${profile}" ]; then
-	echo "No profile selected. Installation canceled."
-	exit
-else
-	echo "\t $YELLOW Plugin selected: " $profile
-fi
-
-if [[ $profile == *"zsh-completions"* ]]; then
-	zsh+=('zsh-completions')
-	sed -i '/^# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh/s/^# *//' assets/.zshrc
-fi
-if [[ $profile == *"zsh-syntax-highlighting"* ]]; then
-	zsh+=('zsh-syntax-highlighting')
-	sed -i '/^# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh/s/^# *//' assets/.zshrc
-fi
-
+	echo -e "$ORANGE SPACE = select/unselect | j/k = down/up | ENTER = confirm. No selection = CANCEL"

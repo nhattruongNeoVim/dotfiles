@@ -43,8 +43,8 @@ zsh=(
 # optional color scripts
 printf "\n"
 if gum confirm "${CAT} - Do you want to add color scripts (OPTIONAL)?"; then
-	echo "${CAT} - Do you want to add color scripts (OPTIONAL)?" $YELLOW Yes
-	if gum confirm "$YELLOW Choose your colors cripts" --affirmative "pokemon-colorscripts" --negative "shell-color-scripts"; then
+	echo "${CAT} - Do you want to add color scripts (OPTIONAL)?" ${YELLOW} Yes
+	if gum confirm "${YELLOW} Choose your colors cripts" --affirmative "pokemon-colorscripts" --negative "shell-color-scripts"; then
 		zsh+=('pokemon-colorscripts-git')
 		sed -i '/^# pokemon-colorscripts --no-title -s -r/s/^# *//' assets/.zshrc
 	else
@@ -52,14 +52,14 @@ if gum confirm "${CAT} - Do you want to add color scripts (OPTIONAL)?"; then
 		sed -i '/^# colorscript -e tiefighter2/ s/^# //' assets/.zshrc
 	fi
 else
-	echo "${CAT} - Do you want to add command prompt (OPTIONAL)?" $YELLOW No
+	echo "${CAT} - Do you want to add command prompt (OPTIONAL)?" ${YELLOW} No
 	echo "${NOTE} Skipping Pokemon color scripts installation.${RESET}"
 fi
 
 # optional zsh plugin
 printf "\n"
 if gum confirm "${CAT} - Do you want to add zsh plugin (OPTIONAL)?"; then
-    echo "${CAT} - Do you want to add zsh plugin (OPTIONAL)?" $YELLOW Yes
+	echo -e "${CAT} - Do you want to add zsh plugin (OPTIONAL)? ${YELLOW} Yes\n"
 	echo "$ORANGE SPACE = select/unselect | j/k = down/up | ENTER = confirm. No selection = CANCEL"
 	plugin=$(gum choose --no-limit --cursor-prefix "( ) " --selected-prefix "(x) " --unselected-prefix "( ) " "zsh-completions" "zsh-syntax-highlighting")
 
@@ -67,16 +67,17 @@ if gum confirm "${CAT} - Do you want to add zsh plugin (OPTIONAL)?"; then
 		echo "No profile selected. Installation canceled."
 		exit
 	else
-		echo "\t $YELLOW Plugin selected: " $plugin
+		echo "\t ${YELLOW} Plugin selected: " $plugin
 	fi
 
 	if [[ $plugin == *"zsh-completions"* ]]; then
 		zsh+=('zsh-completions')
-		sed -i '/^# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh/s/^# *//' assets/.zshrc
+		sed -i '/^# source \/usr\/share\/zsh\/plugins\/zsh-autosuggestions\/zsh-autosuggestions.zsh/s/^# *//' assets/.zshrc
 	fi
+
 	if [[ $plugin == *"zsh-syntax-highlighting"* ]]; then
 		zsh+=('zsh-syntax-highlighting')
-		sed -i '/^# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh/s/^# *//' assets/.zshrc
+		sed -i '/^# source \/usr\/share\/zsh\/plugins\/zsh-syntax-highlighting\/zsh-syntax-highlighting.zsh/s/^# *//' assets/.zshrc
 	fi
 fi
 
