@@ -40,18 +40,10 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # pokemon-colorscripts --no-title -s -r
 # colorscript -e tiefighter2
 # -----------------------------------------------
-
-# ---------------- Command promt ----------------
-# eval "$(starship init zsh)"
-# export ZSH="$HOME/.oh-my-zsh"
-# ZSH_THEME="pygmalion-virtualenv"
-# plugins=( 
-#     git
-#     archlinux
-#     zsh-autosuggestions
-# )
-# source $ZSH/oh-my-zsh.sh
-# -----------------------------------------------
+# --------------------------------- ZSH plugin ------------------------------------
+# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# ---------------------------------------------------------------------------------
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
