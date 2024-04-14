@@ -79,6 +79,14 @@ if gum confirm "${CAT} - Do you want to add zsh plugin (OPTIONAL)?"; then
 		zsh+=('zsh-syntax-highlighting')
 		sed -i '/^# source \/usr\/share\/zsh\/plugins\/zsh-syntax-highlighting\/zsh-syntax-highlighting.zsh/s/^# *//' assets/.zshrc
 	fi
+else
+	echo -e "${CAT} - Do you want to add zsh plugin (OPTIONAL)? ${YELLOW} No"
+	echo "${NOTE} - Skipping zsh plugin installation.${RESET}"
+fi
+
+# init starship
+if command -v starship >/dev/null; then
+	sed -i '/^# eval "$(starship init zsh)"/ s/^# //' assets/.zshrc
 fi
 
 # installing zsh packages
