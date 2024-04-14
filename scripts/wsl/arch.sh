@@ -67,7 +67,6 @@ pacman_packages=(
 
 aur_packages=(
 	arttime-git
-	shell-color-scripts
 	pipes.sh
 	cava
 )
@@ -102,7 +101,7 @@ else
 fi
 
 # Check if dotfiles exist
-cd $HOME
+cd $HOME || exit 1
 if [ -d dotfiles ]; then
 	rm -rf dotfiles
 	echo -e "${OK} Remove dotfile successfully "
@@ -145,8 +144,8 @@ for ITEM in "${folder[@]}"; do
 done
 
 # Copying other
-cp assets/.zshrc ~ && cp assets/.ideavimrc ~ && { echo "${OK} Copy completed!"; } || {
-	echo "${ERROR} Failed to copy .zshrc && .ideavimrc"
+cp assets/.zshrc ~ && { echo "${OK} Copy completed!"; } || {
+	echo "${ERROR} Failed to copy .zshrc"
 }
 
 # Copying font

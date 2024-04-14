@@ -110,6 +110,11 @@ cp assets/.zshrc $HOME && cp assets/.zprofile $HOME && { echo "${OK} Copy comple
 	echo "${ERROR} Failed to copy .zshrc"
 }
 
+# delete file
+if [ -f "$HOME/.zshrc.pre-oh-my-zsh" ]; then
+    rm $HOME/.zshrc.pre-oh-my-zsh
+fi
+
 printf "${NOTE} Changing default shell to zsh...\n"
 
 while ! chsh -s /bin/zsh; do
