@@ -128,6 +128,7 @@ alias nf='neofetch'
 alias pipes='pipes.sh'
 alias matrix='cmatrix'
 alias cl='colorscript'
+alias pk='pokemon-colorscripts'
 alias lamp='sudo /opt/lampp/lampp'
 alias win='sudo efibootmgr --bootnext 0006 && reboot'
 alias ip="echo $(ifconfig | grep broadcast | awk '{print $2}')"
