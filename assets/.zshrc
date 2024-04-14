@@ -40,11 +40,15 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # pokemon-colorscripts --no-title -s -r
 # colorscript -e tiefighter2
 # -----------------------------------------------
+# ------------------ Starship -------------------
+# eval "$(starship init zsh)"
+# -----------------------------------------------
 # --------------------------------- ZSH plugin ------------------------------------
 # source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # ---------------------------------------------------------------------------------
 
+# export path
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export VISUAL="nvim"
@@ -55,6 +59,7 @@ alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
 alias nvim-kick="NVIM_APPNAME=Kickstart nvim"
 alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
 
+# mutil nvim
 function nvims() {
     items=("Default" "Kickstart" "NvChad" "LazyVim" "AstroNvim")
     config=$(printf "%s\n" "${items[@]}" | fzf --no-sort --preview-window=wrap --preview='echo "nhattruongNeoVim"' --prompt=" Neovim Config  " --height=10% --layout=reverse --border --exit-0)
@@ -67,6 +72,7 @@ function nvims() {
     NVIM_APPNAME=$config nvim $@
 }
 
+# chatgpt
 function aa() {
     tgpt $1
 }
