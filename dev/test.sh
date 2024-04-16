@@ -22,7 +22,6 @@ detect_layout() {
 		echo "unknown"
 	fi
 }
-	# echo "${ORANGE} This script is running in a virtual machine."
 layout=$(detect_layout)
 text=$(echo -e "\t${BLUE} Detected current keyboard layout is: $layout. Is this correct? ${RESET}")
 if gum confirm "${CAT} Detected current keyboard layout is: $layout. Is this correct? ${RESET}"; then

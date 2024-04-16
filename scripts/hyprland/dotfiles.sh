@@ -256,5 +256,5 @@ ln -sf "$HOME/.cache/wal/colors-rofi-dark.rasi" "$HOME/.config/rofi/pywal-color/
 
 printf "\n%.0s" {1..2}
 printf "\n${OK} Copy Completed!\n\n\n"
-printf "${ORANGE} ATTENTION!!!! \n"
-printf "${ORANGE} YOU NEED to logout and re-login or reboot to avoid issues\n\n"
+printf "${BLUE} ATTENTION!!!! \n"
+printf "${BLUE} YOU NEED to logout and re-login or reboot to avoid issues\n\n"

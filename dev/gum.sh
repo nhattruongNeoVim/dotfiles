@@ -53,7 +53,6 @@ gum style \
 	"███████╗███████║██║  ██║" \
 	"╚══════╝╚══════╝╚═╝  ╚═╝"
 
-# echo "$ORANGE SPACE = select/unselect | j/k = down/up | ENTER = confirm. No selection = CANCEL"
 # profile=$(gum choose --no-limit --cursor-prefix "( ) " --selected-prefix "(x) " --unselected-prefix "( ) " "zsh-completions" "zsh-syntax-highlighting")
 #
 # if [ -z "${profile}" ]; then
@@ -74,5 +73,3 @@ gum style \
 #
 #
 	echo -e "${CAT} - Do you want to add zsh plugin (OPTIONAL)? $YELLOW Yes\n"
-
-	echo -e "$ORANGE SPACE = select/unselect | j/k = down/up | ENTER = confirm. No selection = CANCEL"
