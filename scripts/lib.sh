@@ -22,7 +22,6 @@ ISAUR=$(command -v yay || command -v paru)
 
 # function to install pacman package
 install_pacman_pkg() {
-	printf "\n%.0s" {1..2}
 	if pacman -Q "$1" &>/dev/null; then
 		echo -e "${OK} $1 is already installed. Skipping..."
 	else
@@ -55,7 +54,6 @@ install_nala_package() {
 
 # function to install aur package
 install_aur_pkg() {
-	printf "\n%.0s" {1..2}
 	if $ISAUR -Q "$1" &>>/dev/null; then
 		echo -e "${OK} $1 is already installed. Skipping..."
 	else
