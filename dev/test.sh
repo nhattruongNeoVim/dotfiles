@@ -3,15 +3,29 @@
 # source library
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
-echo "$ORANGE Select monitor resolution for better Rofi appearance:"
-echo -e "\t $YELLOW 1. Equal to or less than 1080p (≤ 1080p)"
-echo -e "\t $YELLOW 2. Equal to or higher than 1440p (≥ 1440p)"
-
-if gum confirm "$CAT Enter the number of your choice: " --affirmative "≤ 1080p" --negative "≥ 1440p"; then
-	resolution="≤ 1080p"
-else
-	resolution="≥ 1440p"
+detect_layout() {
+	if command -v localectl >/dev/null 2>&1; then
+		layout=$(localectl status --no-pager | awk '/X11 Layout/ {print $3}')
+		if [ -n "$layout" ]; then
+			echo "$layout"
+		else
+			echo "unknown"
+		fi
+	elif command -v setxkbmap >/dev/null 2>&1; then
+		layout=$(setxkbmap -query | grep layout | awk '{print $2}')
+		if [ -n "$layout" ]; then
+			echo "$layout"
+		else
+			echo "unknown"
+		fi
+	else
+		echo "unknown"
+	fi
+}
+	# echo "${ORANGE} This script is running in a virtual machine."
+layout=$(detect_layout)
+text=$(echo -e "\t$ORANGE Detected current keyboard layout is: $layout. Is this correct?")
+if gum confirm "$text"; then
+	echo "${NOTE} kb_layout $layout configured in settings.  "
 fi
-
-# Use the selected resolution in your existing script
-echo "You chose $resolution resolution for better Rofi appearance."
+echo -e "\n\nYou chose $resolution resolution for better Rofi appearance.\n\n"

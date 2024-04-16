@@ -92,7 +92,7 @@ layout=$(detect_layout)
 printf "${NOTE} Detecting keyboard layout to prepare necessary changes in hyprland.conf before copying\n\n"
 
 # Prompt the user to confirm whether the detected layout is correct
-if gum confirm "$ORANGE Detected current keyboard layout is: $layout. Is this correct?"; then
+if gum confirm "${BLUE} Detected current keyboard layout is: $layout. Is this correct?"; then
 	# If the detected layout is correct, update the 'kb_layout=' line in the file
 	awk -v layout="$layout" '/kb_layout/ {$0 = "  kb_layout=" layout} 1' config/hypr/configs/settings.conf >temp.conf
 	mv temp.conf config/hypr/configs/settings.conf
@@ -115,9 +115,9 @@ fi
 printf "\n"
 
 # Action to do for better rofi appearance
-echo "$ORANGE Select monitor resolution for better Rofi appearance:"
-echo -e "\t $YELLOW 1. Equal to or less than 1080p (≤ 1080p)"
-echo -e "\t $YELLOW 2. Equal to or higher than 1440p (≥ 1440p)"
+echo "${BLUE}Select monitor resolution for better Rofi appearance:"
+echo -e "\t ${YELLOW} 1. Equal to or less than 1080p (≤ 1080p)"
+echo -e "\t ${YELLOW} 2. Equal to or higher than 1440p (≥ 1440p)"
 
 if gum confirm "$CAT Enter the number of your choice: " --affirmative "≤ 1080p" --negative "≥ 1440p"; then
 	resolution="≤ 1080p"
@@ -126,7 +126,7 @@ else
 fi
 
 # Use the selected resolution in your existing script
-echo "\n\nYou chose $resolution resolution for better Rofi appearance.\n\n"
+echo -e "\n\n${BLUE}You chose $resolution resolution for better Rofi appearance.${RESET}\n\n"
 
 # Add your commands based on the resolution choice
 if [ "$resolution" == "≤ 1080p" ]; then
@@ -222,7 +222,7 @@ fi
 printf "\n%.0s" {1..2}
 
 # additional wallpapers
-echo "$(tput setaf 6) By default only a few wallpapers are copied...$(tput sgr0)"
+echo "${BLUE} By default only a few wallpapers are copied...${RESET}"
 printf "\n%.0s" {1..2}
 
 cd $HOME

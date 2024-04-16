@@ -16,6 +16,7 @@ CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
 ORANGE=$(tput setaf 166)
 YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
+BLUE=$(tput setaf 6)
 
 # AUR
 ISAUR=$(command -v yay || command -v paru)
