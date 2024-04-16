@@ -24,8 +24,8 @@ detect_layout() {
 }
 	# echo "${ORANGE} This script is running in a virtual machine."
 layout=$(detect_layout)
-text=$(echo -e "\t$ORANGE Detected current keyboard layout is: $layout. Is this correct?")
-if gum confirm "$text"; then
+text=$(echo -e "\t${BLUE} Detected current keyboard layout is: $layout. Is this correct? ${RESET}")
+if gum confirm "${CAT} Detected current keyboard layout is: $layout. Is this correct? ${RESET}"; then
 	echo "${NOTE} kb_layout $layout configured in settings.  "
 fi
 echo -e "\n\nYou chose $resolution resolution for better Rofi appearance.\n\n"

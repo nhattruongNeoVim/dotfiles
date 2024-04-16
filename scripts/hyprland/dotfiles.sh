@@ -92,7 +92,7 @@ layout=$(detect_layout)
 printf "${NOTE} Detecting keyboard layout to prepare necessary changes in hyprland.conf before copying\n\n"
 
 # Prompt the user to confirm whether the detected layout is correct
-if gum confirm "${BLUE} Detected current keyboard layout is: $layout. Is this correct?"; then
+if gum confirm "${CAT} Detected current keyboard layout is: $layout. Is this correct?"; then
 	# If the detected layout is correct, update the 'kb_layout=' line in the file
 	awk -v layout="$layout" '/kb_layout/ {$0 = "  kb_layout=" layout} 1' config/hypr/configs/settings.conf >temp.conf
 	mv temp.conf config/hypr/configs/settings.conf
