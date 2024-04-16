@@ -43,6 +43,7 @@ pacman_pkgs=(
     ffmpeg
     cmatrix
     telegram-desktop
+    foot
 )
 
 hypr_pkgs=(
