@@ -94,7 +94,7 @@ for PKG1 in "${nala_packages[@]}"; do
 done
 
 # Install colorscript
-cd $HOME
+cd $HOME || exit 1
 printf "\n%.0s" {1..2}
 if [ -d shell-color-scripts ]; then
 	rm -rf shell-color-scripts
@@ -118,6 +118,36 @@ else
 		exit 1
 	}
 	cd .. && rm -rf shell-color-scripts || {
+		printf "%s - Failed to remove colorscript directory\n" "${ERROR}"
+		exit 1
+	}
+fi
+
+# Install colorscript
+cd $HOME || exit 1
+printf "\n%.0s" {1..2}
+if [ -d pokemon-colorscripts ]; then
+	rm -rf pokemon-colorscripts
+fi
+
+if command -v pokemon-colorscripts &>/dev/null; then
+	printf "\n%s - Pokemon colorscript already installed, moving on.\n" "${OK}"
+else
+	printf "\n%s - Pokemon Colorscript was NOT located\n" "${NOTE}"
+	printf "\n%s - Installing Pokemon colorscript\n" "${NOTE}"
+	git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git --depth 1 || {
+		printf "%s - Failed to clone pokemon-colorscripts\n" "${ERROR}"
+		exit 1
+	}
+	cd pokemon-colorscripts || {
+		printf "%s - Failed to enter colorscript directory\n" "${ERROR}"
+		exit 1
+	}
+	sudo ./install.sh || {
+		printf "%s - Failed to install colorscript\n" "${ERROR}"
+		exit 1
+	}
+	cd .. && rm -rf pokemon-colorscripts || {
 		printf "%s - Failed to remove colorscript directory\n" "${ERROR}"
 		exit 1
 	}
