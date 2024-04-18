@@ -153,7 +153,7 @@ else
 fi
 
 # Install pipes.sh
-cd $HOME
+cd $HOME || exit 1
 printf "\n%.0s" {1..2}
 if [ -d pipes.sh ]; then
 	rm -rf pipes.sh
