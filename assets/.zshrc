@@ -64,7 +64,7 @@ alias snu='sudo nala update'
 alias sni='sudo nala install -y'
 alias snr='sudo nala remove'
 alias snl='sudo nala list --installed | grep'
-alias snr='sudo nala clean'
+alias snc='sudo nala clean'
 
 # Apt
 alias sauu='sudo apt update && sudo apt upgrade -y'
