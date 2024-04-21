@@ -61,16 +61,18 @@ function nvims() {
 # Nala
 alias snuu='sudo nala update && sudo nala upgrade -y'
 alias snu='sudo nala update'
-alias sai='sudo apt install -y'
+alias sni='sudo nala install -y'
 alias snr='sudo nala remove'
 alias snl='sudo nala list --installed | grep'
+alias snr='sudo nala clean'
 
 # Apt
 alias sauu='sudo apt update && sudo apt upgrade -y'
+alias sai='sudo apt install -y'
 alias sau='sudo apt update'
-alias sni='sudo nala install -y'
 alias sar='sudo apt remove'
 alias saa='sudo add-apt-repository'
+alias sac='sudo apt autoremove'
 
 # Homebrew
 alias buu='brew update && brew upgrade'
