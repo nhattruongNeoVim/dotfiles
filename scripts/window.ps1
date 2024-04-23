@@ -83,11 +83,26 @@ MsgDone
 
 # Config Neovim
 StartMsg -msg "Config Neovim"
-    $DestinationPath = "~\AppData\Local"
+    $DestinationPath = "$env:LOCALAPPDATA"
     If (-not (Test-Path $DestinationPath)) {
         New-Item -ItemType Directory -Path $DestinationPath -Force
     }
-    Copy-Item ".\config\window\nvim" -Destination $DestinationPath -Force -Recurse
+
+    $NvimPath = Join-Path $DestinationPath "nvim"
+    $NvimDataPath = Join-Path $DestinationPath "nvim-data"
+
+    if (Test-Path $NvimPath) {
+        Remove-Item -Path $NvimPath -Recurse -Force
+        Write-Host "Đã xoá thư mục nvim"
+    }
+
+    if (Test-Path $NvimDataPath) {
+        Remove-Item -Path $NvimDataPath -Recurse -Force
+        Write-Host "Đã xoá thư mục nvim-data"
+    }
+
+    git clone https://github.com/nhattruongNeoVim/MYnvim "$NvimPath" --depth 1
+
     pip install pynvim
     npm install neovim -g
 MsgDone
