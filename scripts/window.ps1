@@ -45,8 +45,8 @@ StartMsg -msg "Initializing Scoop..."
 MsgDone
 
 StartMsg -msg "Installing Scoop's packages"
-    scoop install <# apps #> flow-launcher oh-my-posh fzf winrar lsd
-    scoop install <# coding #> git neovim neovide vscode gcc nodejs openjdk python postman alacritty make winfetch lazygit
+    scoop install <# apps #> flow-launcher oh-my-posh fzf winrar lsd neovim neovide winfetch lazygit
+    scoop install <# coding #> git gcc nodejs openjdk python make ripgrep
     scoop install <# reauirement for mason_neovim #> unzip wget gzip pwsh
 MsgDone
 
@@ -58,8 +58,9 @@ StartMsg -msg "Start config"
 
 # Clone dotfiles
 StartMsg -msg "Clone dotfiles"
-    cd ~
-    git clone https://github.com/nhattruongNeoVim/dotfiles
+    cd $HOME
+    git clone https://github.com/nhattruongNeoVim/dotfiles 
+    git clone -b window https://github.com/nhattruongNeoVim/dotfiles.git --depth 1
     cd dotfiles
 MsgDone
 
@@ -72,13 +73,13 @@ StartMsg -msg "Config Powershell"
 MsgDone
 
 # Config Alacritty
-StartMsg -msg "Config Alacritty"
-    $DestinationPath = "~\AppData\Roaming\alacritty"
-    If (-not (Test-Path $DestinationPath)) {
-        New-Item -ItemType Directory -Path $DestinationPath -Force
-    }
-    Copy-Item ".\config\window\alacritty\alacritty.yml" -Destination $DestinationPath -Force
-MsgDone
+# StartMsg -msg "Config Alacritty"
+#     $DestinationPath = "~\AppData\Roaming\alacritty"
+#     If (-not (Test-Path $DestinationPath)) {
+#         New-Item -ItemType Directory -Path $DestinationPath -Force
+#     }
+#     Copy-Item ".\config\window\alacritty\alacritty.yml" -Destination $DestinationPath -Force
+# MsgDone
 
 # Config Neovim
 StartMsg -msg "Config Neovim"
@@ -93,25 +94,25 @@ MsgDone
 
 # Remove dotfiles
 StartMsg -msg "Remove dotfiles"
-    cd ~
+    cd $HOME
     Remove-Item dotfiles -Recurse -Force
 MsgDone
 
-StartMsg -msg "Installing choco..."
-if (Get-Command choco -errorAction SilentlyContinue)
-{
-    Write-Warning "Choco already installed"
-}
-else {
-    Start-Process -Wait powershell -verb runas -ArgumentList "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"
-    Start-Process -Wait powershell -verb runas -ArgumentList "choco feature enable -n allowGlobalConfirmation"
-}
-MsgDone
-
-StartMsg -msg "Installing Choco's packages"
-    Start-Process -Wait powershell -verb runas -ArgumentList "choco install zalopc internet-download-manager vmwareworkstation" 
-    # Start-Process -Wait powershell -verb runas -ArgumentList "choco install steam bluestacks" 
-MsgDone
+# StartMsg -msg "Installing choco..."
+# if (Get-Command choco -errorAction SilentlyContinue)
+# {
+#     Write-Warning "Choco already installed"
+# }
+# else {
+#     Start-Process -Wait powershell -verb runas -ArgumentList "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"
+#     Start-Process -Wait powershell -verb runas -ArgumentList "choco feature enable -n allowGlobalConfirmation"
+# }
+# MsgDone
+#
+# StartMsg -msg "Installing Choco's packages"
+#     Start-Process -Wait powershell -verb runas -ArgumentList "choco install zalopc internet-download-manager vmwareworkstation" 
+#     # Start-Process -Wait powershell -verb runas -ArgumentList "choco install steam bluestacks" 
+# MsgDone
 
 StartMsg -msg "Enable Virtualiztion"
 Start-Process -Wait powershell -verb runas -ArgumentList @"
