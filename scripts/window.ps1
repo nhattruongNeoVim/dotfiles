@@ -60,7 +60,6 @@ StartMsg -msg "Start config"
 # Clone dotfiles
 StartMsg -msg "Clone dotfiles"
     cd $HOME
-    git clone https://github.com/nhattruongNeoVim/dotfiles 
     git clone -b window https://github.com/nhattruongNeoVim/dotfiles.git --depth 1
     cd dotfiles
 MsgDone
