@@ -47,7 +47,7 @@ MsgDone
 StartMsg -msg "Installing Scoop's packages"
     scoop install <# apps #> flow-launcher oh-my-posh fzf winrar lsd neovim neovide winfetch lazygit
     scoop install <# coding #> git gcc nodejs openjdk python make ripgrep
-    scoop install <# reauirement for mason_neovim #> unzip wget gzip pwsh
+    scoop install <# requirements for mason_neovim #> unzip wget gzip pwsh
 MsgDone
 
 StartMsg -msg "Installing TGPT(Chat GTP)..."
