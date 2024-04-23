@@ -35,8 +35,8 @@ elif [ "$aur_helper" == "yay" ]; then
 fi
 
 pacman_packages=(
-    git
-    unzip
+	git
+	unzip
 	tmux
 	starship
 	zsh
@@ -58,9 +58,9 @@ pacman_packages=(
 	curl
 	wget
 	nvtop
-    cargo
-    openssh
-    lolcat
+	cargo
+	openssh
+	lolcat
 	python-virtualenv
 )
 
@@ -157,6 +157,19 @@ cp -r assets/.fonts/* ~/.fonts/ && { echo "${OK} Copy fonts completed!"; } || {
 printf "\n%.0s" {1..2}
 fc-cache -fv
 
+# Clone tpm
+if [ -d "$HOME/.tmux/plugins/tpm" ]; then
+	echo "${NOTE} TPM (Tmux Plugin Manager) is already installed."
+else
+	# Clone TPM repository
+	echo "${NOTE} Cloning TPM (Tmux Plugin Manager)..."
+	if git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm --depth 1; then
+		echo "${OK} TPM (Tmux Plugin Manager) cloned successfully!"
+	else
+		echo "${ERROR} Failed to clone TPM (Tmux Plugin Manager)."
+	fi
+fi
+
 # zsh
 if [ "$zsh" == "Y" ]; then
 	exScriptHypr "zsh.sh"
@@ -172,7 +185,7 @@ fi
 # clear packages
 printf "\n${NOTE} Clear packages.\n"
 if sudo pacman -Sc --noconfirm && yay -Sc --noconfirm && yay -Yc --noconfirm; then
-    printf "\n${OK} Clear packages succesfully.\n"
+	printf "\n${OK} Clear packages succesfully.\n"
 fi
 
 printf "\n%.0s" {1..2}

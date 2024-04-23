@@ -78,8 +78,8 @@ nala_packages=(
 	curl
 	gnupg
 	ranger
-    unzip
-    python3.10-venv
+	unzip
+	python3.10-venv
 )
 
 printf "\n%.0s" {1..2}
@@ -323,6 +323,19 @@ cp -r assets/.fonts/* ~/.fonts/ && { echo "${OK} Copy fonts completed!"; } || {
 # Reload fonts
 printf "\n%.0s" {1..2}
 fc-cache -fv
+
+# Clone tpm
+if [ -d "$HOME/.tmux/plugins/tpm" ]; then
+	echo "${NOTE} TPM (Tmux Plugin Manager) is already installed."
+else
+	# Clone TPM repository
+	echo "${NOTE} Cloning TPM (Tmux Plugin Manager)..."
+	if git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm --depth 1; then
+		echo "${OK} TPM (Tmux Plugin Manager) cloned successfully!"
+	else
+		echo "${ERROR} Failed to clone TPM (Tmux Plugin Manager)."
+	fi
+fi
 
 # Remove dotfiles
 cd $HOME

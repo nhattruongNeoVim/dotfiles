@@ -138,7 +138,7 @@ fi
 ### Copy Config Files ###
 set -e # Exit immediately if a command exits with a non-zero status.
 
-printf "${NOTE} - copying dotfiles\n"
+printf "${NOTE} - Copying dotfiles\n"
 folder=(
 	ranger
 	mpv
@@ -196,10 +196,25 @@ cp -r wallpapers ~/Pictures/ && { echo "${OK} Copy completed!"; } || {
 	echo "${ERROR} Failed to copy wallpapers."
 }
 
-# Copying 
+# Copying
 cp assets/.ideavimrc ~ && { echo "${OK} Copy completed!"; } || {
 	echo "${ERROR} Failed to copy .ideavimrc"
 }
+
+printf "\n%.0s" {1..2}
+
+# Clone tpm
+if [ -d "$HOME/.tmux/plugins/tpm" ]; then
+	echo "${NOTE} TPM (Tmux Plugin Manager) is already installed."
+else
+	# Clone TPM repository
+	echo "${NOTE} Cloning TPM (Tmux Plugin Manager)..."
+	if git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm --depth 1; then
+		echo "${OK} TPM (Tmux Plugin Manager) cloned successfully!"
+	else
+		echo "${ERROR} Failed to clone TPM (Tmux Plugin Manager)."
+	fi
+fi
 
 printf "\n%.0s" {1..2}
 
