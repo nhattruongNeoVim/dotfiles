@@ -93,12 +93,12 @@ StartMsg -msg "Config Neovim"
 
     if (Test-Path $NvimPath) {
         Remove-Item -Path $NvimPath -Recurse -Force
-        Write-Host "Đã xoá thư mục nvim"
+        Write-Host "!!!Remove nvim folder"
     }
 
     if (Test-Path $NvimDataPath) {
         Remove-Item -Path $NvimDataPath -Recurse -Force
-        Write-Host "Đã xoá thư mục nvim-data"
+        Write-Host "!!!Remove nvim data folder"
     }
 
     git clone https://github.com/nhattruongNeoVim/MYnvim "$NvimPath" --depth 1
