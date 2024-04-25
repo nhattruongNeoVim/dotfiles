@@ -68,8 +68,7 @@ MsgDone
 StartMsg -msg "Config Powershell"
     New-Item -Path $PROFILE -Type File -Force
     $PROFILEPath = $PROFILE
-    $profileContent = Get-Content -Path ".\config\window\powershell\Microsoft.PowerShell_profile.ps1"
-    $profileContent | Set-Content -Path $PROFILEPath
+    Get-Content -Path ".\powershell\Microsoft.PowerShell_profile.ps1" | Set-Content -Path $PROFILEPath
 MsgDone
 
 # Config Alacritty
@@ -78,7 +77,7 @@ MsgDone
 #     If (-not (Test-Path $DestinationPath)) {
 #         New-Item -ItemType Directory -Path $DestinationPath -Force
 #     }
-#     Copy-Item ".\config\window\alacritty\alacritty.yml" -Destination $DestinationPath -Force
+#     Copy-Item ".\alacritty\alacritty.yml" -Destination $DestinationPath -Force
 # MsgDone
 
 # Config Neovim
