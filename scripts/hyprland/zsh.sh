@@ -60,8 +60,8 @@ fi
 # optional zsh plugin
 printf "\n"
 if gum confirm "${CAT} - Do you want to add zsh plugin (OPTIONAL)?"; then
-	echo -e "${CAT} - Do you want to add zsh plugin (OPTIONAL)? ${YELLOW} Yes ${RESET}\n"
-	echo "${PINK} SPACE = select/unselect | j/k = down/up | ENTER = confirm. No selection = CANCEL${YELLOW}"
+	echo "${CAT} - Do you want to add zsh plugin (OPTIONAL)? ${YELLOW} Yes ${RESET}"
+	echo -e "\n${PINK} SPACE = select/unselect | j/k = down/up | ENTER = confirm. No selection = CANCEL${YELLOW}"
 	plugin=$(gum choose --no-limit --cursor-prefix "( ) " --selected-prefix "(x) " --unselected-prefix "( ) " "zsh-autosuggestions" "zsh-syntax-highlighting")
 
 	if [ -z "${plugin}" ]; then
