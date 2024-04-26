@@ -153,10 +153,6 @@ cp -r assets/.fonts/* ~/.fonts/ && { echo "${OK} Copy fonts completed!"; } || {
 	echo "${ERROR} Failed to copy fonts files."
 }
 
-# Reload fonts
-printf "\n%.0s" {1..2}
-fc-cache -fv
-
 # Clone tpm
 if [ -d "$HOME/.tmux/plugins/tpm" ]; then
 	echo "${NOTE} TPM (Tmux Plugin Manager) is already installed."
