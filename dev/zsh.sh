@@ -9,12 +9,12 @@ clear
 gum style \
 	--foreground 213 --border-foreground 213 --border rounded \
 	--align center --width 50 --margin "1 2" --padding "2 4" \
-	"███████╗███████╗██╗  ██╗" \
-	"╚══███╔╝██╔════╝██║  ██║" \
-	"  ███╔╝ ███████╗███████║" \
-	" ███╔╝  ╚════██║██╔══██║" \
-	"███████╗███████║██║  ██║" \
-	"╚══════╝╚══════╝╚═╝  ╚═╝"
+	"â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—â–ˆâ–ˆâ•—  â–ˆâ–ˆâ•—" \
+	"â•â•â•â–ˆâ–ˆâ–ˆâ•”â•â–ˆâ–ˆâ•”â•â•â•â•â•â–ˆâ–ˆâ•‘  â–ˆâ–ˆâ•‘" \
+	"  â–ˆâ–ˆâ–ˆâ•”â• â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•‘" \
+	" â–ˆâ–ˆâ–ˆâ•”â•  â•â•â•â•â•â–ˆâ–ˆâ•‘â–ˆâ–ˆâ•”â•â•â–ˆâ–ˆâ•‘" \
+	"â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•‘â–ˆâ–ˆâ•‘  â–ˆâ–ˆâ•‘" \
+	"â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•  â•â•â•"
 
 # check dotfiles
 cd "$HOME" || exit 1
@@ -44,31 +44,43 @@ pacman=(
 # optional color scripts
 printf "\n"
 if gum confirm "${CAT} - Do you want to add color scripts (OPTIONAL)?"; then
-	echo "${CAT} - Do you want to add color scripts (OPTIONAL)?" ${YELLOW} Yes ${RESET}
-	if gum confirm "${YELLOW} Choose your colors cripts" --affirmative "pokemon-colorscripts" --negative "shell-color-scripts"; then
+	echo -e "${CAT} - Do you want to add color scripts (OPTIONAL)? ${YELLOW} Yes ${RESET}\n"
+	echo "${BLUE} SPACE = select/unselect | j/k = down/up | ENTER = confirm. No selection = CANCEL"
+	clscript=$(gum choose --no-limit --cursor-prefix "( ) " --selected-prefix "(x) " --unselected-prefix "( ) " "pokemon-colorscripts-git" "shell-color-scripts")
+
+	if [ -z "${clscript}" ]; then
+		echo -e "\n\t ${YELLOW} No colorscript selected. Installation canceled."
+		exit
+	else
+		echo -e "\n\t ${YELLOW} Colorscript selected: " $clscript
+	fi
+
+	if [[ $clscript == *"pokemon-colorscripts-git"* ]]; then
 		aur+=('pokemon-colorscripts-git')
 		sed -i '/^# pokemon-colorscripts --no-title -s -r/s/^# *//' assets/.zshrc
-	else
+	fi
+
+	if [[ $clscript == *"shell-color-scripts"* ]]; then
 		aur+=('shell-color-scripts')
 		sed -i '/^# colorscript -e tiefighter2/ s/^# //' assets/.zshrc
 	fi
 else
-	echo "${CAT} - Do you want to add command prompt (OPTIONAL)?" ${YELLOW} No ${RESET}
-	echo "${NOTE} - Skipping color scripts installation."
+	echo -e "${CAT} - Do you want to add color scripts (OPTIONAL)? ${YELLOW} No ${RESET}"
+	echo "${NOTE} - Skipping zsh plugin installation."
 fi
 
 # optional zsh plugin
 printf "\n"
 if gum confirm "${CAT} - Do you want to add zsh plugin (OPTIONAL)?"; then
 	echo -e "${CAT} - Do you want to add zsh plugin (OPTIONAL)? ${YELLOW} Yes ${RESET}\n"
-	echo "${PINK} SPACE = select/unselect | j/k = down/up | ENTER = confirm. No selection = CANCEL"
+	echo "${BLUE} SPACE = select/unselect | j/k = down/up | ENTER = confirm. No selection = CANCEL"
 	plugin=$(gum choose --no-limit --cursor-prefix "( ) " --selected-prefix "(x) " --unselected-prefix "( ) " "zsh-autosuggestions" "zsh-syntax-highlighting")
 
 	if [ -z "${plugin}" ]; then
-		echo -e "\n\t ${YELLOW} No plugin selected. Installation canceled.${RESET}"
+		echo -e "\n\t ${YELLOW} No plugin selected. Installation canceled."
 		exit
 	else
-		echo -e "\n\t ${YELLOW} Plugin selected: " $plugin ${RESET}
+		echo -e "\n\t ${YELLOW} Plugin selected: " $plugin
 	fi
 
 	if [[ $plugin == *"zsh-autosuggestions"* ]]; then
@@ -99,6 +111,7 @@ for pkg1 in "${pacman[@]}"; do
 		echo -e "\e[1A\e[K${ERROR} - $pkg1 install had failed"
 	fi
 done
+
 for pkg2 in "${aur[@]}"; do
 	install_aur_pkg "$pkg2"
 	if [ $? -ne 0 ]; then
