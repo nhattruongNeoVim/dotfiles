@@ -112,6 +112,7 @@ dependencies=(
 	hollywood
 	python3.11-venv
 	grub-customizer
+    python3-neovim
 )
 
 # Function to install packages

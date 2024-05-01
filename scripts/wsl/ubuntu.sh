@@ -80,6 +80,7 @@ nala_packages=(
 	ranger
 	unzip
 	python3.10-venv
+    python3-neovim
 )
 
 printf "\n%.0s" {1..2}
