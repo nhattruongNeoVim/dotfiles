@@ -28,12 +28,12 @@ if gum confirm "${NOTE} Do you want to install grub custom theme?"; then
 			printf "%s - Failed to remove old grub themes folder\n" "${ERROR}"
 			exit 1
 		}
-		printf "\n${NOTE} Clone grub_themes. " && git clone https://github.com/nhattruongNeoVim/grub_themes.git --depth 1 || {
+		printf "\n${NOTE} Clone grub_themes. " && git clone https://github.com/voidlhf/StarRailGrubThemes.git --depth 1 || {
 			printf "%s - Failed to cd grub_themes directory\n" "${ERROR}"
 			exit 1
 		}
 	else
-		printf "\n${NOTE} Clone grub_themes. " && git clone https://github.com/nhattruongNeoVim/grub_themes.git --depth 1 || {
+		printf "\n${NOTE} Clone grub_themes. " && git clone https://github.com/voidlhf/StarRailGrubThemes.git --depth 1 || {
 			printf "%s - Failed to clone grub_themes\n" "${ERROR}"
 			exit 1
 		}
