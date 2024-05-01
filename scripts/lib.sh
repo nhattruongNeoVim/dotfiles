@@ -1,5 +1,5 @@
 #!/bin/bash
-# library for arch 
+# library for arch
 
 # check root
 if [[ $EUID -eq 0 ]]; then
@@ -95,7 +95,7 @@ ask_yes_no() {
 
 # function to ask and return custom answer
 ask_custom_option() {
-    if gum confirm "$CAT - $1" --affirmative "$2" --negative "$3" ;then
+	if gum confirm "$CAT - $1" --affirmative "$2" --negative "$3"; then
 		eval "$4=$2"
 		echo "$CAT - $1 $YELLOW ${!4}"
 	else

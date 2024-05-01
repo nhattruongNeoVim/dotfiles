@@ -175,7 +175,7 @@ fi
 # clear packages
 printf "\n${NOTE} Clear packages.\n"
 if sudo pacman -Sc --noconfirm && yay -Sc --noconfirm && yay -Yc --noconfirm; then
-    printf "\n${OK} Clear packages succesfully.\n"
+	printf "\n${OK} Clear packages succesfully.\n"
 fi
 
 printf "\n%.0s" {1..2}
