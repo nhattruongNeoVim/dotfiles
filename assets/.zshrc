@@ -38,7 +38,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export VISUAL="nvim"
+export VISUAL="$HOME/.local/bin/nvim"
 
 # NeoVim Switcher
 alias nvim-chad="NVIM_APPNAME=NvChad nvim"
@@ -104,6 +104,7 @@ alias cd..='cd ..'
 alias cd-='cd -'
 alias lc='lolcat'
 alias bat='batcat'
+alias se='sudoedit'
 alias nf='neofetch'
 alias cf='cpufetch'
 alias nf='neofetch'
