@@ -15,9 +15,14 @@ printf "\n%.0s" {1..2}
 echo -e "${NOTE} Setting up grub theme."
 
 # Check file
-if [ ! -f "$grub" ]; then
+if [[ ! -f "$grub" ]]; then
 	echo "${NOTE} $grub does not exist. Skipping"
 	exit 1
+fi
+
+# Check file
+if [[ ! -d "$grub_dir" ]]; then
+    sudo mkdir -p "$grub_dir"
 fi
 
 # Ask user
