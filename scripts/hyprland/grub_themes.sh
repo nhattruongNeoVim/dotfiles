@@ -7,7 +7,7 @@ source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 # Variables
 theme="Acheron"
 grub="/etc/default/grub"
-grub_dir="$HOME/.grub/theme"
+grub_dir="/boot/grub/themes"
 grub_theme="$grub_dir/$theme/theme.txt"
 
 # start script
