@@ -128,14 +128,14 @@ MsgDone
 #     # Start-Process -Wait powershell -verb runas -ArgumentList "choco install steam bluestacks" 
 # MsgDone
 
-StartMsg -msg "Enable Virtualiztion"
-Start-Process -Wait powershell -verb runas -ArgumentList @"
-    Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All -Norestart
-    Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All -Norestart
-    Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -Norestart
-    Enable-WindowsOptionalFeature -Online -FeatureName Contaniners -All -Norestart
-"@
-MsgDone
+# StartMsg -msg "Enable Virtualiztion"
+# Start-Process -Wait powershell -verb runas -ArgumentList @"
+#     Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All -Norestart
+#     Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All -Norestart
+#     Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -Norestart
+#     Enable-WindowsOptionalFeature -Online -FeatureName Contaniners -All -Norestart
+# "@
+# MsgDone
 
 # StartMsg -msg "Installing WSl..."
 # if(!(wsl -l -v)){
@@ -147,3 +147,5 @@ MsgDone
 #     Write-Warning "Wsl installed"
 # }
 # MsgDone
+ 
+MsgDone
