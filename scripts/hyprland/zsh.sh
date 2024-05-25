@@ -86,9 +86,7 @@ else
 fi
 
 # init starship
-if command -v starship >/dev/null; then
-	sed -i '/^# eval "$(starship init zsh)"/ s/^# //' assets/.zshrc
-fi
+sed -i '/^# eval "$(starship init zsh)"/ s/^# //' assets/.zshrc
 
 # installing zsh packages
 printf "\n"
