@@ -101,6 +101,7 @@ alias ltl='lsd --tree --long'
 
 # Tools
 alias cd..='cd ..'
+alias sd='sudo'
 alias cd-='cd -'
 alias lc='lolcat'
 alias bat='batcat'
