@@ -21,7 +21,10 @@ echo -e " -------------- Github: https://github.com/nhattruongNeoVim -----------
 echo
 
 echo -e "${NOTE} Adding Extra Spice in pacman.conf ... ${RESET}"
+
+# Variable
 pacman_conf="/etc/pacman.conf"
+mirrorlist="/etc/pacman.d/mirrorlist"
 
 # Remove comments '#' from specific lines
 lines_to_edit=(
@@ -51,21 +54,32 @@ fi
 
 echo -e "${CAT} Pacman.conf spicing up completed ${RESET}"
 
-# updating pacman.conf
+# Backup and update mirrorlist
+if sudo cp "$mirrorlist" "${mirrorlist}.bak"; then
+	echo -e "${CAT} Backup mirrorlist to mirrorlist.bak. ${RESET}"
+    if sudo reflector --verbose --latest 10 --protocol https --sort rate --save "$mirrorlist"; then
+	    echo -e "${CAT} Updated mirrorlist. ${RESET}"
+    else
+        echo -e "${ERROR} Failed to update mirrorlist. ${RESET}"
+    fi
+else
+	echo -e "${ERROR} Failed to backup mirrorlist. ${RESET}"
+fi
+
+# Updating pacman.conf
 sudo pacman -Syyuu --noconfirm
 
-# install requirement
-printf "\n${NOTE} Install requirement...\n"
-if pacman -Q gum &>/dev/null; then
-	echo -e "${OK} gum is already installed. Skipping..."
-else
-	echo -e "${NOTE} Installing gum ..."
-	sudo pacman -S --noconfirm gum
-	if pacman -Q gum &>/dev/null; then
-		echo -e "${OK} gum was installed."
-	else
-		echo -e "${ERROR} gum failed to install. You may need to install manually."
-		echo "-> gum failed to install. You may need to install manually! Sorry I have tried :(" >>~/install.log
-		exit 1
+# Package
+pkgs=(
+    gum
+    reflector
+)
+
+# Install requirement
+printf "\n%s - Installing components\n" "${NOTE}"
+for PKG1 in "${pkgs[@]}"; do
+	install_pacman_pkg "$PKG1"
+	if [ $? -ne 0 ]; then
+		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"
 	fi
-fi
+done
