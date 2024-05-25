@@ -55,16 +55,16 @@ fi
 echo -e "${CAT} Pacman.conf spicing up completed ${RESET}"
 
 # Backup and update mirrorlist
-if sudo cp "$mirrorlist" "${mirrorlist}.bak"; then
-	echo -e "${CAT} Backup mirrorlist to mirrorlist.bak. ${RESET}"
-    if sudo reflector --verbose --latest 10 --protocol https --sort rate --save "$mirrorlist"; then
-	    echo -e "${CAT} Updated mirrorlist. ${RESET}"
-    else
-        echo -e "${ERROR} Failed to update mirrorlist. ${RESET}"
-    fi
-else
-	echo -e "${ERROR} Failed to backup mirrorlist. ${RESET}"
-fi
+# if sudo cp "$mirrorlist" "${mirrorlist}.bak"; then
+# 	echo -e "${CAT} Backup mirrorlist to mirrorlist.bak. ${RESET}"
+#     if sudo reflector --verbose --latest 10 --protocol https --sort rate --save "$mirrorlist"; then
+# 	    echo -e "${CAT} Updated mirrorlist. ${RESET}"
+#     else
+#         echo -e "${ERROR} Failed to update mirrorlist. ${RESET}"
+#     fi
+# else
+# 	echo -e "${ERROR} Failed to backup mirrorlist. ${RESET}"
+# fi
 
 # Updating pacman.conf
 sudo pacman -Syyuu --noconfirm
