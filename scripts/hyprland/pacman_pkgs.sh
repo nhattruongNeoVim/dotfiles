@@ -44,6 +44,7 @@ pacman_pkgs=(
     cmatrix
     telegram-desktop
     foot
+    cargo
 )
 
 hypr_pkgs=(
