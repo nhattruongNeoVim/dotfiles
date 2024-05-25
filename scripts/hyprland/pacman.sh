@@ -73,6 +73,8 @@ sudo pacman -Syyuu --noconfirm
 pkgs=(
     gum
     reflector
+    linux-lts
+    linux-lts-headers
 )
 
 # Install requirement
