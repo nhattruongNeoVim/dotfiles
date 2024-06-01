@@ -10,7 +10,7 @@ aur_pkgs=(
 	arttime-git
 	pipes.sh
 	tgpt-bin
-    vmware-workstation
+    # vmware-workstation
     # xampp
 )
 
@@ -68,13 +68,13 @@ for PKG1 in "${hypr_pkgs[@]}" "${fonts[@]}" "${aur_pkgs[@]}"; do
 	fi
 done
 
-printf "\n%s - Initializing vmware.... \n" "${NOTE}"
-sudo modprobe -a vmw_vmci vmmon && { echo "${OK} Enable vmware module successfully!"; } || {
-	echo "${ERROR} Failed to enable vmware module"
-}
-sudo systemctl enable --now vmware-networks.service && { echo "${OK} Enable vmware network service successfully!"; } || {
-	echo "${ERROR} Failed to enable vmware network service"
-}
-sudo systemctl enable --now vmware-usbarbitrator.service && { echo "${OK} Enable vmware usb service successfully!"; } || {
-	echo "${ERROR} Failed to enable vmware usb service"
-}
+# printf "\n%s - Initializing vmware.... \n" "${NOTE}"
+# sudo modprobe -a vmw_vmci vmmon && { echo "${OK} Enable vmware module successfully!"; } || {
+# 	echo "${ERROR} Failed to enable vmware module"
+# }
+# sudo systemctl enable --now vmware-networks.service && { echo "${OK} Enable vmware network service successfully!"; } || {
+# 	echo "${ERROR} Failed to enable vmware network service"
+# }
+# sudo systemctl enable --now vmware-usbarbitrator.service && { echo "${OK} Enable vmware usb service successfully!"; } || {
+# 	echo "${ERROR} Failed to enable vmware usb service"
+# }
