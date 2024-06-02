@@ -10,8 +10,8 @@ aur_pkgs=(
 	arttime-git
 	pipes.sh
 	tgpt-bin
-    # vmware-workstation
-    # xampp
+	# vmware-workstation
+	# xampp
 )
 
 hypr_pkgs=(
@@ -67,14 +67,3 @@ for PKG1 in "${hypr_pkgs[@]}" "${fonts[@]}" "${aur_pkgs[@]}"; do
 		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"
 	fi
 done
-
-# printf "\n%s - Initializing vmware.... \n" "${NOTE}"
-# sudo modprobe -a vmw_vmci vmmon && { echo "${OK} Enable vmware module successfully!"; } || {
-# 	echo "${ERROR} Failed to enable vmware module"
-# }
-# sudo systemctl enable --now vmware-networks.service && { echo "${OK} Enable vmware network service successfully!"; } || {
-# 	echo "${ERROR} Failed to enable vmware network service"
-# }
-# sudo systemctl enable --now vmware-usbarbitrator.service && { echo "${OK} Enable vmware usb service successfully!"; } || {
-# 	echo "${ERROR} Failed to enable vmware usb service"
-# }
