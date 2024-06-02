@@ -62,6 +62,19 @@ if [ ! -f ~/.config/hypr/.boot_done ]; then
 		fi
 	fi
 
+	# initial vmware
+	if command -v vmware &>/dev/null; then
+		sudo modprobe -a vmw_vmci vmmon && { notify-send -u low -i "$notif" "Enable vmware module successfully"; } || {
+			notify-send -u low -i "$notif" "Failed to enable vmware module"
+		}
+		sudo systemctl enable --now vmware-networks.service && { notify-send -u low -i "$notif" "Enable vmware network service successfully!"; } || {
+			notify-send -u low -i "$notif" "Failed to enable vmware network service"
+		}
+		sudo systemctl enable --now vmware-usbarbitrator.service && { notify-send -u low -i "$notif" "Enable vmware usb service successfully!"; } || {
+			notify-send -u low -i "$notif" "Failed to enable vmware usb service"
+		}
+	fi
+
 	# Create a marker file to indicate that the script has been executed.
 	touch ~/.config/hypr/.boot_done
 
