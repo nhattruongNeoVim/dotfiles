@@ -5,7 +5,7 @@
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 printf "${NOTE} Adding Microsoft GPG key...\n"
-if curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg; then
+if curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc; then
     printf "\n${OK} Microsoft GPG key added successfully.\n"
 else
     printf "\n${ERROR} Failed to add Microsoft GPG key.\n"
