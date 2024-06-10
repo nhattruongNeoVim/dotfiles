@@ -5,10 +5,10 @@
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # start script
-echo -e "${NOTE} Setting up battery charge limit."
+echo "${NOTE} Setting up battery charge limit."
 
 if hostnamectl | grep -q 'Chassis: vm' || hostnamectl | grep -q 'Chassis: desktop'; then
-	echo -e "${NOTE} Setting up battery charge limit is not applicable on desktop or virtual machine. Skipping..."
+	echo "${NOTE} Setting up battery charge limit is not applicable on desktop or virtual machine. Skipping..."
 	exit 1
 fi
 

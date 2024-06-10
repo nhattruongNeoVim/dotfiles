@@ -4,70 +4,69 @@
  
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
-echo "${NOTE} Adding Microsoft GPG key..."
+printf "${NOTE} Adding Microsoft GPG key...\n"
 if curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg; then
-    echo "${OK} Microsoft GPG key added successfully."
+    printf "\n${OK} Microsoft GPG key added successfully.\n"
 else
-    echo "${ERROR} Failed to add Microsoft GPG key."
+    printf "\n${ERROR} Failed to add Microsoft GPG key.\n"
     exit 1
 fi
 
-echo "${NOTE} Adding Microsoft SQL Server repository..."
+printf "\n${NOTE} Adding Microsoft SQL Server repository...\n"
 if curl -fsSL https://packages.microsoft.com/config/ubuntu/22.04/mssql-server-2022.list | sudo tee /etc/apt/sources.list.d/mssql-server-2022.list; then
-    echo "${OK} Microsoft SQL Server repository added successfully."
+    printf "\n${OK} Microsoft SQL Server repository added successfully.\n"
 else
-    echo "${ERROR} Failed to add Microsoft SQL Server repository."
+    printf "\n${ERROR} Failed to add Microsoft SQL Server repository.\n"
     exit 1
 fi
 
-echo "${NOTE} Updating package list..."
+printf "\n${NOTE} Updating package list...\n"
 if sudo apt-get update; then
-    echo "${OK} Package list updated successfully."
+    printf "\n${OK} Package list updated successfully.\n"
 else
-    echo "${ERROR} Failed to update package list."
+    printf "\n${ERROR} Failed to update package list.\n"
     exit 1
 fi
 
-echo "${NOTE} Installing SQL Server..."
+printf "\n${NOTE} Installing SQL Server...\n"
 if sudo apt-get install -y mssql-server; then
-    echo "${OK} SQL Server installed successfully."
+    printf "\n${OK} SQL Server installed successfully.\n"
 else
-    echo "${ERROR} Failed to install SQL Server."
+    printf "\n${ERROR} Failed to install SQL Server.\n"
     exit 1
 fi
 
-echo "${NOTE} Running SQL Server setup..."
+printf "\n${NOTE} Running SQL Server setup...\n"
 if sudo /opt/mssql/bin/mssql-conf setup; then
-    echo "${OK} SQL Server setup completed successfully."
+    printf "\n${OK} SQL Server setup completed successfully.\n"
 else
-    echo "${ERROR} Failed to complete SQL Server setup."
+    printf "\n${ERROR} Failed to complete SQL Server setup.\n"
     exit 1
 fi
 
-echo "${NOTE} Checking SQL Server status..."
+printf "\n${NOTE} Checking SQL Server status...\n"
 if systemctl status mssql-server --no-pager; then
-    echo "${OK} SQL Server is running."
+    printf "\n${OK} SQL Server is running.\n"
 else
-    echo "${ERROR} SQL Server is not running. Check the status for more details."
+    printf "\n${ERROR} SQL Server is not running. Check the status for more details.\n"
     exit 1
 fi
 
-echo "${NOTE} Configuring firewall to allow SQL Server traffic on port 1433..."
+printf "\n${NOTE} Configuring firewall to allow SQL Server traffic on port 1433...\n"
 if sudo ufw allow 1433/tcp; then
-    echo "${OK} Firewall configured successfully."
+    printf "\n${OK} Firewall configured successfully.\n"
 else
-    echo "${ERROR} Failed to configure firewall."
+    printf "\n${ERROR} Failed to configure firewall.\n"
     exit 1
 fi
 
-echo "${NOTE} Restarting SQL Server..."
+printf "\n${NOTE} Restarting SQL Server...\n"
 if sudo systemctl restart mssql-server; then
-    echo "${OK} SQL Server restarted successfully."
+    printf "\n${OK} SQL Server restarted successfully.\n"
 else
-    echo "${ERROR} Failed to restart SQL Server."
+    printf "\n${ERROR} Failed to restart SQL Server.\n"
     exit 1
 fi
 
-ip=$(ifconfig | grep broadcast | awk '{print $2}')
-echo "${OK} SQL Server is installed and configured."
-echo "${OK} You can use IP address '${ip}' to connect to SQL Server."
+printf "\n${OK} SQL Server is installed and configured.\n"
+printf "\n${OK} You can use IP address '%s' to connect to SQL Server.\n" "$(ifconfig | grep 'broadcast' | awk '{print $2}')"
