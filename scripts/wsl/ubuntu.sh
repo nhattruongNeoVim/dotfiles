@@ -210,7 +210,7 @@ fi
 # Install nodejs
 printf "\n%.0s" {1..2}
 printf "\n${NOTE} Installing nodejs...\n"
-if curl -fsSL https://deb.nodesource.com/setup_21.x | sudo -E bash - && sudo nala install -y nodejs; then
+if curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh && sudo -E bash nodesource_setup.sh && sudo nala install -y nodejs; then
 	printf "\n${OK} Install nodejs successfully!\n"
 else
 	printf "\n${ERROR} Failed to install nodejs!\n"
@@ -223,7 +223,7 @@ LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/re
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 tar xf lazygit.tar.gz lazygit && rm -fr lazygit.tar.gz
 if sudo install lazygit /usr/local/bin && rm -rf lazygit; then
-	printf "\n${OK} Install nodejs successfully!\n"
+	printf "\n${OK} Install lazygit successfully!\n"
 else
 	printf "\n${ERROR} Failed to install lazygit.!\n"
 fi
