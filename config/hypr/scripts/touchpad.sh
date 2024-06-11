@@ -1,22 +1,29 @@
 #!/bin/bash
-# For disabling touchpad.
+# Edit the Touchpad_Device on ~/.config/hypr/configs/laptop.conf according to your system
+# Use hyprctl devices to get your system touchpad device name
 
-touchpad=$(hyprctl devices | grep touchpad | sed -e 's/\s*//')
-settings_file="$HOME/.config/hypr/configs/settings.conf"
 notif="$HOME/.config/swaync/images/bell.png"
 
-toggle_touchpad() {
-    enabled=$(awk '/device/,/^}/{if ($1 == "enabled") print $3}' "$settings_file" | tr -d '[:space:]')
+export STATUS_FILE="$XDG_RUNTIME_DIR/touchpad.status"
 
-    if [[ "$enabled" == "true" ]]; then
-        action="false"
-    else
-        action="true"
-    fi
-    
-    sed -i "/device/,/^}/{s/name = .*/name = $touchpad/; s/enabled = $enabled/enabled = $action/}" "$settings_file"
-    
-    notify-send -u low -i "$notif" "Touchpad enabled $action"
+enable_touchpad() {
+    printf "true" >"$STATUS_FILE"
+    notify-send -u low -i $notif "Enabling touchpad"
+    hyprctl keyword '$TOUCHPAD_ENABLED' "true" -r
 }
 
-toggle_touchpad
+disable_touchpad() {
+    printf "false" >"$STATUS_FILE"
+    notify-send -u low -i $notif "Disabling touchpad"
+    hyprctl keyword '$TOUCHPAD_ENABLED' "false" -r
+}
+
+if ! [ -f "$STATUS_FILE" ]; then
+    enable_touchpad
+else
+    if [ $(cat "$STATUS_FILE") = "true" ]; then
+        disable_touchpad
+    elif [ $(cat "$STATUS_FILE") = "false" ]; then
+        enable_touchpad
+    fi
+fi
