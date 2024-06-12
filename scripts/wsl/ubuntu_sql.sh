@@ -60,13 +60,5 @@ else
     exit 1
 fi
 
-printf "\n${NOTE} Restarting SQL Server...\n"
-if sudo systemctl restart mssql-server; then
-    printf "\n${OK} SQL Server restarted successfully.\n"
-else
-    printf "\n${ERROR} Failed to restart SQL Server.\n"
-    exit 1
-fi
-
 printf "\n${OK} SQL Server is installed and configured.\n"
 printf "\n${OK} You can use IP address '%s' to connect to SQL Server.\n" "$(ifconfig | grep 'broadcast' | awk '{print $2}')"
