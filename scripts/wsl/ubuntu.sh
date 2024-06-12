@@ -211,6 +211,7 @@ fi
 printf "\n%.0s" {1..2}
 printf "\n${NOTE} Installing nodejs...\n"
 if curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh && sudo -E bash nodesource_setup.sh && sudo nala install -y nodejs; then
+    rm nodesource_setup.sh
 	printf "\n${OK} Install nodejs successfully!\n"
 else
 	printf "\n${ERROR} Failed to install nodejs!\n"
