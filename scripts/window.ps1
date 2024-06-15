@@ -51,9 +51,9 @@ StartMsg -msg "Installing Scoop's packages"
     scoop cache rm *
 MsgDone
 
-StartMsg -msg "Installing TGPT(Chat GTP)..."
-    scoop install https://raw.githubusercontent.com/aandrew-me/tgpt/main/tgpt.json
-MsgDone
+#StartMsg -msg "Installing TGPT(Chat GTP)..."
+#    scoop install https://raw.githubusercontent.com/aandrew-me/tgpt/main/tgpt.json
+#MsgDone
 
 StartMsg -msg "Start config"
 
