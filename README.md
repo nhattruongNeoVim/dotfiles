@@ -7,7 +7,7 @@
 
 </div>
 
-![](https://github.com/nhattruongNeoVim/media/blob/master/dotfiles/rice1.png?raw=true)
+![](https://github.com/nhattruongNeoVim/assets/blob/master/dotfiles/rice1.png?raw=true)
 
 ## Window
 
@@ -33,7 +33,7 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_wsl)
 
 ## Ubuntu _(gnome)_
 
-![](https://github.com/nhattruongNeoVim/media/blob/master/dotfiles/rice2.png?raw=true)
+![](https://github.com/nhattruongNeoVim/assets/blob/master/dotfiles/rice2.png?raw=true)
 
 #### Dependencies
 
@@ -84,7 +84,7 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
 
 ## Arch _(hyprland)_
 
-![](https://github.com/nhattruongNeoVim/media/blob/master/dotfiles/rice5.png?raw=true)
+![](https://github.com/nhattruongNeoVim/assets/blob/master/dotfiles/rice5.png?raw=true)
 
 > The majority of this script comes from [JaKooLit](https://github.com/JaKooLit), that's the beauty of open-source :wink:
 
@@ -93,7 +93,7 @@ bash <(curl -sSL https://is.gd/nhattruongNeoVim_ubuntu)
 bash <(curl -sSL https://is.gd/nhattruongNeoVim_arch)
 ```
 
-![](https://github.com/nhattruongNeoVim/media/blob/master/dotfiles/rice4.png?raw=true)
+![](https://github.com/nhattruongNeoVim/assets/blob/master/dotfiles/rice4.png?raw=true)
 
 > **Congratulations!** at this point have successfully configured your linux distribution.
 >
