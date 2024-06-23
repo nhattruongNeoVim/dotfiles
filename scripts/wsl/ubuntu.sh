@@ -17,6 +17,22 @@ echo -e "-------------------- Script developed by nhattruongNeoVim -------------
 echo -e " -------------- Github: https://github.com/nhattruongNeoVim -----------------"
 echo
 
+# Fix DNS
+printf "\n${NOTE} Fix DNS to 8.8.8.8\n"
+if grep -q "nameserver" "/etc/resolv.conf"; then
+	if sudo sed -i 's/nameserver.*/nameserver 8.8.8.8/' "/etc/resolv.conf"; then
+		printf "\n${OK} Fix DNS successfully!\n"
+	else
+		printf "\n${ERROR} Failed to fix DNS!\n"
+	fi
+else
+	if echo "nameserver 8.8.8.8" | sudo tee -a "/etc/resolv.conf" >/dev/null; then
+		printf "\n${OK} Fix DNS successfully!\n"
+	else
+		printf "\n${ERROR} Failed to fix DNS!\n"
+	fi
+fi
+
 # Update apt
 printf "\n${NOTE} Check for update...\n"
 if sudo apt update && sudo apt upgrade -y; then
@@ -75,12 +91,11 @@ nala_packages=(
 	lolcat
 	sl
 	ca-certificates
-	curl
 	gnupg
 	ranger
 	unzip
 	python3.10-venv
-    python3-neovim
+	python3-neovim
 )
 
 printf "\n%.0s" {1..2}
@@ -211,7 +226,7 @@ fi
 printf "\n%.0s" {1..2}
 printf "\n${NOTE} Installing nodejs...\n"
 if curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh && sudo -E bash nodesource_setup.sh && sudo nala install -y nodejs; then
-    rm nodesource_setup.sh
+	rm nodesource_setup.sh
 	printf "\n${OK} Install nodejs successfully!\n"
 else
 	printf "\n${ERROR} Failed to install nodejs!\n"
