@@ -1,19 +1,21 @@
 #!/bin/bash
-# base devel
+# install pacman package
 
 # source library
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # start script
 pacman_pkgs=(
+	linux-lts
+	linux-lts-headers
 	base-devel
 	git
 	libxcrypt-compat
 	alacritty
 	tmux
 	zsh
-    nano
-    vim
+	nano
+	vim
 	make
 	python-pip
 	nodejs
@@ -40,11 +42,11 @@ pacman_pkgs=(
 	mpv
 	mpv-mpris
 	yt-dlp
-    ffmpeg
-    cmatrix
-    telegram-desktop
-    foot
-    cargo
+	ffmpeg
+	cmatrix
+	telegram-desktop
+	foot
+	cargo
 )
 
 hypr_pkgs=(
@@ -73,7 +75,7 @@ hypr_pkgs=(
 	xdg-utils
 	yad
 	nvtop
-    chromium
+	chromium
 )
 
 # Installation of main components

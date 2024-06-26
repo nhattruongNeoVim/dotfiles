@@ -4,7 +4,7 @@
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # start script
-exScriptHypr "pacman.sh"
+exScriptHypr "base.sh"
 
 clear
 gum style \
@@ -75,7 +75,7 @@ fi
 
 exScriptHypr "swapfile.sh"
 sleep 0.5
-exScriptHypr "pacman_pkgs.sh"
+exScriptHypr "pkgs_pacman.sh"
 
 # Check if dotfiles exist
 cd $HOME
@@ -96,7 +96,7 @@ elif [ "$aur_helper" == "yay" ]; then
 	exScriptHypr "yay.sh"
 fi
 
-exScriptHypr "aur_pkgs.sh"
+exScriptHypr "pkgs_aur.sh"
 sleep 0.5
 exScriptHypr "pipewire.sh"
 

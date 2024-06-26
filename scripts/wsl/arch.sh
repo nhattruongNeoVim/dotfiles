@@ -5,9 +5,8 @@
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # start script
-exScriptHypr "pacman.sh"
+exScriptHypr "base.sh"
 
-clear
 gum style \
 	--foreground 213 --border-foreground 213 --border rounded \
 	--align center --width 90 --margin "1 2" --padding "2 4" \
