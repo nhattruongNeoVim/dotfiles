@@ -84,7 +84,7 @@ pkgs=(
 )
 
 # Install requirement
-printf "\n%s - Installing components\n" "$(tput setaf 3)[NOTE]$(tput sgr0)"
+printf "\n%s - Installing required package\n" "$(tput setaf 3)[NOTE]$(tput sgr0)"
 for PKG1 in "${pkgs[@]}"; do
 	sudo pacman -S --noconfirm "$PKG1"
 	if [ $? -ne 0 ]; then

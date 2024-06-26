@@ -11,12 +11,13 @@ thunar=(
 	tumbler
 	ffmpegthumbnailer
 	thunar-archive-plugin
+	file-roller
 )
 
 # install thunar
 printf "${NOTE} Installing Thunar Packages...\n"
 for THUNAR in "${thunar[@]}"; do
-	install_aur_pkg "$THUNAR"
+	install_pacman_pkg "$THUNAR"
 	[ $? -ne 0 ] && {
 		echo -e "\e[1A\e[K${ERROR} - $THUNAR install had failed"
 	}

@@ -94,7 +94,7 @@ if gum confirm "${CAT} OPTIONAL - Would you like to install SDDM themes?"; then
 		fi
 
 		sudo mv simple-sddm /usr/share/sddm/themes/
-		echo -e "[Theme]\nCurrent=simple-sddm" | sudo tee "$sddm_conf_dir/10-theme.conf"
+		echo -e "[Theme]\nCurrent=simple-sddm" | sudo tee "$sddm_conf_dir/theme.conf.user"
 	else
 		echo -e "\e[1A\e[K${ERROR} - Failed to clone the theme repository. Please check your internet connection"
 	fi
