@@ -33,6 +33,16 @@ else
 	fi
 fi
 
+# Configure /etc/wsl.conf
+printf "\n${NOTE} Configuring /etc/wsl.conf\n"
+if ! grep -q "\[network\]" "/etc/wsl.conf"; then
+	if echo -e "\n[network]\ngenerateResolvConf = false" | sudo tee -a "/etc/wsl.conf" >/dev/null; then
+		printf "\n${OK} Added network configuration to /etc/wsl.conf\n"
+	else
+		printf "\n${ERROR} Failed to add network configuration to /etc/wsl.conf\n"
+	fi
+fi
+
 # Update apt
 printf "\n${NOTE} Check for update...\n"
 if sudo apt update && sudo apt upgrade -y; then
