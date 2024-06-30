@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This script installs and configures Microsoft SQL Server on an Ubuntu 22.04 system, including setting up the repository, installing the necessary packages, configuring the firewall, and displaying the server's IP address for connecting to SQL Server from window
- 
+
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 printf "${NOTE} Adding Microsoft GPG key...\n"
@@ -21,7 +21,7 @@ else
 fi
 
 printf "\n${NOTE} Updating package list...\n"
-if sudo apt-get update; then
+if sudo apt update; then
     printf "\n${OK} Package list updated successfully.\n"
 else
     printf "\n${ERROR} Failed to update package list.\n"
@@ -29,7 +29,7 @@ else
 fi
 
 printf "\n${NOTE} Installing SQL Server...\n"
-if sudo apt-get install -y mssql-server; then
+if sudo $(command -v nala || command -v apt) install -y mssql-server; then
     printf "\n${OK} SQL Server installed successfully.\n"
 else
     printf "\n${ERROR} Failed to install SQL Server.\n"
