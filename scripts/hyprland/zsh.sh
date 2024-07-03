@@ -105,7 +105,7 @@ for pkg2 in "${aur[@]}"; do
 done
 
 # copying the preconfigured zsh themes and profile
-cp assets/.zshrc $HOME && cp assets/.zprofile $HOME && { echo "${OK} Copy completed!"; } || {
+cp assets/.zshrc $HOME && cp assets/.zprofile $HOME && { echo "${OK} Copy completed"; } || {
 	echo "${ERROR} Failed to copy .zshrc"
 }
 

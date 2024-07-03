@@ -21,15 +21,15 @@ echo
 printf "\n${NOTE} Fix DNS to 8.8.8.8\n"
 if grep -q "nameserver" "/etc/resolv.conf"; then
 	if sudo sed -i 's/nameserver.*/nameserver 8.8.8.8/' "/etc/resolv.conf"; then
-		printf "\n${OK} Fix DNS successfully!\n"
+		printf "\n${OK} Fix DNS successfully\n"
 	else
-		printf "\n${ERROR} Failed to fix DNS!\n"
+		printf "\n${ERROR} Failed to fix DNS\n"
 	fi
 else
 	if echo "nameserver 8.8.8.8" | sudo tee -a "/etc/resolv.conf" >/dev/null; then
-		printf "\n${OK} Fix DNS successfully!\n"
+		printf "\n${OK} Fix DNS successfully\n"
 	else
-		printf "\n${ERROR} Failed to fix DNS!\n"
+		printf "\n${ERROR} Failed to fix DNS\n"
 	fi
 fi
 
@@ -46,9 +46,9 @@ fi
 # Update apt
 printf "\n${NOTE} Check for update...\n"
 if sudo apt update && sudo apt upgrade -y; then
-	printf "\n${OK} Apt update successfully!\n"
+	printf "\n${OK} Apt update successfully\n"
 else
-	printf "\n${ERROR} Failed to update apt!\n"
+	printf "\n${ERROR} Failed to update apt\n"
 fi
 
 # Install nala
@@ -65,9 +65,9 @@ fi
 printf "\n%.0s" {1..2}
 printf "\n${CAT} Update nala...${RESET}\n"
 if sudo nala update && sudo nala upgrade -y; then
-	printf "\n${OK} Nala update successfully!\n"
+	printf "\n${OK} Nala update successfully\n"
 else
-	printf "\n${ERROR} Failed to update nala!\n"
+	printf "\n${ERROR} Failed to update nala\n"
 fi
 
 # Initial nala
@@ -75,9 +75,9 @@ printf "\n%.0s" {1..2}
 printf "\n${NOTE} Initializing Nala...\n"
 printf "\n${NOTE} Press 1 2 3 and press Enter \n"
 if sudo nala fetch; then
-	printf "\n${OK} Initializing nala successfully!\n"
+	printf "\n${OK} Initializing nala successfully\n"
 else
-	printf "\n${ERROR} Failed to initial nala!\n"
+	printf "\n${ERROR} Failed to initial nala\n"
 fi
 
 nala_packages=(
@@ -212,24 +212,24 @@ fi
 printf "\n%.0s" {1..2}
 printf "\n${NOTE} Installing rust...\n"
 if curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh; then
-	printf "\n${OK} Install rust successfully!\n"
+	printf "\n${OK} Install rust successfully\n"
 else
-	printf "\n${ERROR} Failed to install rust!\n"
+	printf "\n${ERROR} Failed to install rust\n"
 fi
 printf "\n%.0s" {1..2}
 if source $HOME/.cargo/env && cargo --version; then
-	printf "\n${OK} Initial rust successfully!\n"
+	printf "\n${OK} Initial rust successfully\n"
 else
-	printf "\n${ERROR} Failed to initial rust!\n"
+	printf "\n${ERROR} Failed to initial rust\n"
 fi
 
 # Install cargo packages
 printf "\n%.0s" {1..2}
 printf "\n${NOTE} Installing lsd, starship ...\n"
 if cargo install lsd --locked && cargo install starship --locked; then
-	printf "\n${OK} Install lsd, starship successfully!\n"
+	printf "\n${OK} Install lsd, starship successfully\n"
 else
-	printf "\n${ERROR} Failed to install lsd, starship!\n"
+	printf "\n${ERROR} Failed to install lsd, starship\n"
 fi
 
 # Install nodejs
@@ -237,9 +237,9 @@ printf "\n%.0s" {1..2}
 printf "\n${NOTE} Installing nodejs...\n"
 if curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh && sudo -E bash nodesource_setup.sh && sudo nala install -y nodejs; then
 	rm nodesource_setup.sh
-	printf "\n${OK} Install nodejs successfully!\n"
+	printf "\n${OK} Install nodejs successfully\n"
 else
-	printf "\n${ERROR} Failed to install nodejs!\n"
+	printf "\n${ERROR} Failed to install nodejs\n"
 fi
 
 # Install lazygit
@@ -249,43 +249,43 @@ LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/re
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 tar xf lazygit.tar.gz lazygit && rm -fr lazygit.tar.gz
 if sudo install lazygit /usr/local/bin && rm -rf lazygit; then
-	printf "\n${OK} Install lazygit successfully!\n"
+	printf "\n${OK} Install lazygit successfully\n"
 else
-	printf "\n${ERROR} Failed to install lazygit.!\n"
+	printf "\n${ERROR} Failed to install lazygit.\n"
 fi
 
 # Install arttime
 printf "\n%.0s" {1..2}
-printf "\n${NOTE} Install arttime...!\n"
+printf "\n${NOTE} Install arttime...\n"
 if zsh -c '{url="https://gist.githubusercontent.com/poetaman/bdc598ee607e9767fe33da50e993c650/raw/d0146d258a30daacb9aee51deca9410d106e4237/arttime_online_installer.sh"; zsh -c "$(curl -fsSL $url || wget -qO- $url)"}'; then
-	printf "\n${OK} Arttime install successfully!\n"
+	printf "\n${OK} Arttime install successfully\n"
 else
-	printf "\n${ERROR} Failed to install arttime!\n"
+	printf "\n${ERROR} Failed to install arttime\n"
 fi
 
 # Install and initial neovim
 cd $HOME
 printf "\n%.0s" {1..2}
-printf "\n${NOTE} Install neovim!\n"
+printf "\n${NOTE} Install neovim\n"
 if sudo dpkg -l | grep -q -w nvim; then
 	sudo nala remove neovim -y
 fi
 printf "\n%.0s" {1..2}
 if curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz; then
-	printf "\n${OK} Download lastest version neovim successfully!\n"
+	printf "\n${OK} Download lastest version neovim successfully\n"
 else
-	printf "\n${ERROR} Failed to download neovim!\n"
+	printf "\n${ERROR} Failed to download neovim\n"
 fi
 printf "\n%.0s" {1..2}
-mkdir -p ~/.local/bin && mv nvim-linux64.tar.gz ~/.local/bin && cd ~/.local/bin && tar xzvf nvim-linux64.tar.gz && rm -fr nvim-linux64.tar.gz && ln -s ./nvim-linux64/bin/nvim ./nvim && printf "\n${OK} Install neovim successfully!\n\n\n" || {
-	printf "\n${OK} Failed to install neovim!\n"
+mkdir -p ~/.local/bin && mv nvim-linux64.tar.gz ~/.local/bin && cd ~/.local/bin && tar xzvf nvim-linux64.tar.gz && rm -fr nvim-linux64.tar.gz && ln -s ./nvim-linux64/bin/nvim ./nvim && printf "\n${OK} Install neovim successfully\n\n\n" || {
+	printf "\n${OK} Failed to install neovim\n"
 }
 printf "\n%.0s" {1..2}
-printf "\n${NOTE} Setup neovim!\n"
+printf "\n${NOTE} Setup neovim\n"
 if rm -rf ~/.config/nvim && rm -rf ~/.local/share/nvim && git clone https://github.com/nhattruongNeoVim/MYnvim.git ~/.config/nvim --depth 1; then
-	printf "\n${OK} Setup neovim successfully!\n"
+	printf "\n${OK} Setup neovim successfully\n"
 else
-	printf "\n${ERROR} Failed to setup neovim!\n"
+	printf "\n${ERROR} Failed to setup neovim\n"
 fi
 
 # Clone dotfiles
@@ -307,7 +307,7 @@ else
 fi
 
 printf "\n%.0s" {1..2}
-printf "\n${NOTE} Start config!\n"
+printf "\n${NOTE} Start config\n"
 
 folder=(
 	neofetch
@@ -337,13 +337,13 @@ for ITEM in "${folder[@]}"; do
 done
 
 # Copying other
-cp assets/.zshrc ~ && cp assets/.ideavimrc ~ && { echo "${OK} Copy completed!"; } || {
+cp assets/.zshrc ~ && cp assets/.ideavimrc ~ && { echo "${OK} Copy completed"; } || {
 	echo "${ERROR} Failed to copy .zshrc && .ideavimrc"
 }
 
 # Copying font
 mkdir -p ~/.fonts
-cp -r assets/.fonts/* ~/.fonts/ && { echo "${OK} Copy fonts completed!"; } || {
+cp -r assets/.fonts/* ~/.fonts/ && { echo "${OK} Copy fonts completed"; } || {
 	echo "${ERROR} Failed to copy fonts files."
 }
 
@@ -358,7 +358,7 @@ else
 	# Clone TPM repository
 	echo "${NOTE} Cloning TPM (Tmux Plugin Manager)..."
 	if git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm --depth 1; then
-		echo "${OK} TPM (Tmux Plugin Manager) cloned successfully!"
+		echo "${OK} TPM (Tmux Plugin Manager) cloned successfully"
 	else
 		echo "${ERROR} Failed to clone TPM (Tmux Plugin Manager)."
 	fi
@@ -372,7 +372,7 @@ if [ -d dotfiles ]; then
 fi
 
 # Chang shell to zsh
-printf "\n${NOTE} Change shell to zsh!\n"
+printf "\n${NOTE} Change shell to zsh\n"
 chsh -s $(which zsh)
 
 printf "\n%.0s" {1..2}
