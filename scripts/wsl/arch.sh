@@ -187,6 +187,19 @@ if [ -d dotfiles ]; then
     echo -e "${NOTE} Remove dotfile successfully "
 fi
 
+printf "\n%.0s" {1..2}
+
+if [ -f $HOME/install.log ]; then
+	if gum confirm "${CAT} Do you want to check log?"; then
+		if pacman -Q bat &>/dev/null; then
+			cat_command="bat"
+		else
+			cat_command="cat"
+		fi
+		$cat_command $HOME/install.log
+	fi
+fi
+
 # clear packages
 printf "\n${NOTE} Clear packages.\n"
 if sudo pacman -Sc --noconfirm && yay -Sc --noconfirm && yay -Yc --noconfirm; then
