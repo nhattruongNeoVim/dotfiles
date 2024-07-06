@@ -17,6 +17,7 @@ declare -A menu_options=(
 	["7.Relaxing Music"]="https://youtube.com/playlist?list=PLMIbmfP_9vb8BCxRoraJpoo4q1yMFg4CE"
 	["8.Youtube Remix"]="https://youtube.com/playlist?list=PLeqTkIUlrZXlSNn3tcXAa-zbo95j0iN-0"
 	["9.Korean Drama OST"]="https://youtube.com/playlist?list=PLUge_o9AIFp4HuA-A3e3ZqENh63LuRRlQ"
+	["10.Coder Relax Music"]="https://youtu.be/KWX8lzzzrzA?si=YslYNHb40vHNMU04"
 )
 
 # Function for displaying notifications
