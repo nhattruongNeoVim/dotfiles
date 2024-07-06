@@ -4,7 +4,7 @@
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # start script
-exScriptHypr "base.sh"
+exScriptHypr "boot.sh"
 
 clear
 gum style \

@@ -49,7 +49,7 @@ if gum confirm "${CAT} - Do you want to add color scripts (OPTIONAL)?"; then
 		aur+=('pokemon-colorscripts-git')
 		sed -i '/^# pokemon-colorscripts --no-title -s -r/s/^# *//' assets/.zshrc
 	else
-		aur+=('shell-color-scripts')
+		aur+=('shell-color-scripts-git')
 		sed -i '/^# colorscript -e tiefighter2/ s/^# //' assets/.zshrc
 	fi
 else
