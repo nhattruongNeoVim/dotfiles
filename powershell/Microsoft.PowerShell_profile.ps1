@@ -59,6 +59,11 @@ function scl {
     scoop list
 }
 
+# Scoop help
+function sch {
+    scoop help
+}
+
 # Scoop cache rm *
 function scc {
     scoop cache rm *
