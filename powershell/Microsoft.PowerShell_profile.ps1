@@ -38,6 +38,24 @@ function nvims() {
     nvim $args
 }
 
+# Nvim AstroNvim
+function nvim-astro {
+    $env:NVIM_APPNAME="nvim-astro"
+    nvim
+}
+
+# Nvim NvChad
+function nvim-chad {
+    $env:NVIM_APPNAME="nvim-nvchad"
+    nvim
+}
+
+# Nvim LazyVim
+function nvim-lazy {
+    $env:NVIM_APPNAME="nvim-lazy"
+    nvim
+}
+
 # Which
 function which ($command) {
     Get-Command -Name $command -ErrorAction SilentlyContinue |
