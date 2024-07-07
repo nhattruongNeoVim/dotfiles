@@ -55,22 +55,22 @@ function la {
 }
 
 # Scoop list
-function sl {
+function scl {
     scoop list
 }
 
 # Scoop cache rm *
-function sc {
+function scc {
     scoop cache rm *
 }
 
 # Scoop cleanup *
-function scc {
+function sccc {
     scoop cleanup *
 }
 
 # Scoop search
-function ss {
+function scs {
     param (
         [string]$keyword
     )
@@ -78,7 +78,7 @@ function ss {
 }
 
 # Scoop install
-function si {
+function sci {
     param (
         [string]$packageName
     )
@@ -86,7 +86,7 @@ function si {
 }
 
 # Scoop uninstall
-function sr {
+function scr {
     param (
         [string]$packageName
     )
