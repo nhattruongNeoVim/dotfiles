@@ -54,14 +54,44 @@ function la {
     lsd -alh $args
 }
 
+# Scoop list
+function sl {
+    scoop list
+}
 
-# Alias
-Set-Alias -Name sl -Value scoop list
-Set-Alias -Name ss -Value scoop search
-Set-Alias -Name si -Value scoop install
-Set-Alias -Name sr -Value scoop uninstall
-Set-Alias -Name sc -Value scoop cache rm *
-Set-Alias -Name scc -Value scoop cleanup *
+# Scoop cache rm *
+function sc {
+    scoop cache rm *
+}
+
+# Scoop cleanup *
+function scc {
+    scoop cleanup *
+}
+
+# Scoop search
+function ss {
+    param (
+        [string]$keyword
+    )
+    scoop search $keyword
+}
+
+# Scoop install
+function si {
+    param (
+        [string]$packageName
+    )
+    scoop install $packageName
+}
+
+# Scoop uninstall
+function sr {
+    param (
+        [string]$packageName
+    )
+    scoop uninstall $packageName
+}
 
 # Config prompt
 oh-my-posh init pwsh --config 'C:/Users/nhatt/scoop/apps/oh-my-posh/current/themes/amro.omp.json' | Invoke-Expression
