@@ -30,7 +30,7 @@ install_pacman_pkg() {
         echo -e "${OK} $1 is already installed. Skipping..."
     else
         echo -e "${NOTE} Installing $1 ..."
-        sudo pacman -Sy --noconfirm "$1"
+        sudo pacman -Syu --noconfirm "$1"
         if pacman -Q "$1" &>/dev/null; then
             echo -e "${OK} $1 was installed."
         else
@@ -46,7 +46,7 @@ install_aur_pkg() {
         echo -e "${OK} $1 is already installed. Skipping..."
     else
         echo -e "${NOTE} Installing $1 ..."
-        $ISAUR -Sy --noconfirm "$1"
+        $ISAUR -Syu --noconfirm "$1"
         if $ISAUR -Q "$1" &>>/dev/null; then
             echo -e "${OK} $1 was installed."
         else
