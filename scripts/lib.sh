@@ -62,7 +62,7 @@ install_nala_package() {
         echo -e "${OK} $1 is already installed. Skipping..."
     else
         echo -e "${NOTE} Installing $1 ..."
-        sudo PKGMN install -y "$1"
+        sudo $PKGMN install -y "$1"
         if sudo dpkg -l | grep -q -w "$1"; then
             echo -e "${OK} $1 was installed."
         else
