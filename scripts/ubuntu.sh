@@ -115,28 +115,13 @@ dependencies=(
     python3-neovim
 )
 
-# Function to install packages
-install_package() {
-	if sudo dpkg -l | grep -q -w "$1"; then
-		echo -e "${OK} $1 is already installed. Skipping..."
-	else
-		echo -e "${NOTE} Installing $1 ..."
-		sudo nala install -y "$1"
-		if sudo dpkg -l | grep -q -w "$1"; then
-			echo -e "\e[1A\e[K${OK} $1 was installed."
-		else
-			echo -e "\e[1A\e[K${ERROR} $1 failed to install. You may need to install manually! Sorry, I have tried :("
-			exit 1
-		fi
-	fi
-}
 
 # Install packages
 write_start "Installing packages..."
 for PKG1 in "${dependencies[@]}"; do
-	install_package "$PKG1"
+	install_nala_package "$PKG1"
 	if [ $? -ne 0 ]; then
-		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed, please check the script."
+		echo -e "${ERROR} - $PKG1 install had failed, please check the script."
 		exit 1
 	fi
 done

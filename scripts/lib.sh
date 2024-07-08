@@ -7,9 +7,6 @@ if [[ $EUID -eq 0 ]]; then
     exit 1
 fi
 
-# exit immediately if a command exits with a non-zero status
-set -e
-
 # set some colors for output messages
 OK="$(tput setaf 2)[OK]$(tput sgr0)"
 ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"

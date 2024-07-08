@@ -6,8 +6,10 @@ if [[ $EUID -eq 0 ]]; then
     exit 1
 fi
 
-# start script
+# init
 clear
+
+# start script
 echo -e "\e[34m   ____   __ __   ____  ______      ______  ____   __ __   ___   ____    ____"
 echo -e " |    \ |  |  | /    ||      |    |      ||    \ |  |  | /   \ |    \  /    |      "
 echo -e " |  _  ||  |  ||  o  ||      |    |      ||  D  )|  |  ||     ||  _  ||   __|      "
@@ -22,42 +24,38 @@ echo -e " -------------- Github: https://github.com/nhattruongNeoVim -----------
 echo
 
 GUM_VERSION="0.14.1"
-RUNNING_GNOME=$([[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]] && echo true || echo false)
-
-# Script only run on GNOME
-if $RUNNING_GNOME; then
-    gsettings set org.gnome.desktop.screensaver lock-enabled false
-    gsettings set org.gnome.desktop.session idle-delay 0
-else
-    echo "$(tput setaf 3)[NOTE]$(tput sgr0) This script is only available on Gnome, Exit."
-    exit 1
-fi
+GUM_LINKDOWNLOADS="https://github.com/charmbracelet/gum/releases/latest/download/gum_${GUM_VERSION}_amd64.deb"
 
 # update system
 echo -e "$(tput setaf 3)[NOTE]$(tput sgr0) Update system... "
 if sudo apt update && sudo apt upgrade; then
-    echo -e "$(tput setaf 2)[OK]$(tput sgr0) Update system successfully"
+    echo -e "\n$(tput setaf 2)[OK]$(tput sgr0) Update system successfully\n"
 else
-    echo -e "$(tput setaf 1)[ERROR]$(tput sgr0) Failed to update your system"
+    echo -e "\n$(tput setaf 1)[ERROR]$(tput sgr0) Failed to update your system\n"
 fi
 
 # install nala
 echo -e "$(tput setaf 3)[NOTE]$(tput sgr0) Check nala..."
 if ! command -v nala &>/dev/null; then
-    echo -e "$(tput setaf 6)[ACTION]$(tput sgr0) Installing nala..."
-    sudo apt install nala -y
+    echo -e "$(tput setaf 6)[ACTION]$(tput sgr0) Installing and initializing nala...\n"
+    if sudo apt install nala -y && sudo nala update && sudo nala upgrade -y; then
+        echo -e "\n$(tput setaf 3)[NOTE]$(tput sgr0) Press 1 2 3 and press Enter\n"
+        sudo nala fetch
+    else
+        echo -e "\n$(tput setaf 1)[ERROR]$(tput sgr0) Failed to install nala\n"
+    fi
 else
-    echo -e "$(tput setaf 1)[ERROR]$(tput sgr0) Failed to install nala"
+    echo -e "$(tput setaf 2)[OK]$(tput sgr0) nala is already installed. Skipping...\n"
 fi
 
-# init nala
-echo -e "$(tput setaf 3)[NOTE]$(tput sgr0) Initializing nala..."
-if sudo nala update && sudo nala upgrade -y; then
-    echo -e "$(tput setaf 3)[NOTE]$(tput sgr0) Press 1 2 3 and press Enter"
-    sudo nala fetch
+# check ubuntu package manager
+if command -v nala &>/dev/null; then
+    PKGMN="nala"
+elif command -v apt &>/dev/null; then
+    PKGMN="apt"
 fi
 
-# Package
+# package
 pkgs=(
     curl
     wget
@@ -66,20 +64,23 @@ pkgs=(
 )
 
 # install some required packages
-printf "\n%s - Installing required packages...\n" "$(tput setaf 3)[NOTE]$(tput sgr0)"
-for PKG1 in "${pkgs[@]}"; do
-    sudo nala install -y "$PKG1"
+printf "\n%s Installing required packages...\n" "$(tput setaf 3)[NOTE]$(tput sgr0)"
+for PKG in "${pkgs[@]}"; do
+    sudo $PKGMN install -y "$PKG"
     if [ $? -ne 0 ]; then
-        echo -e "\e[1A\e[K$(tput setaf 1)[ERROR]$(tput sgr0) - $PKG1 install had failed"
+        echo -e "$(tput setaf 1)[ERROR]$(tput sgr0) - $PKG install had failed"
     fi
 done
 
-cd /tmp
-wget -qO gum.deb "https://github.com/charmbracelet/gum/releases/latest/download/gum_${GUM_VERSION}_amd64.deb"
-sudo nala install -y ./gum.deb
-if [ $? -ne 0 ]; then
-    echo -e "\e[1A\e[K$(tput setaf 1)[ERROR]$(tput sgr0) - gum install had failed"
-    exit 1
+# install gum (requirement)
+printf "\n%s - Installing gum...\n" "$(tput setaf 3)[NOTE]$(tput sgr0)"
+if cd /tmp && wget -qO gum.deb "$GUM_LINKDOWNLOADS"; then
+    echo -e "$(tput setaf 2)[OK]$(tput sgr0) Download gum.deb successfully"
+    if sudo $PKGMN install -y ./gum.deb; then
+        echo -e "$(tput setaf 2)[OK]$(tput sgr0) Install gum successfully" && rm gum.deb && cd $HOME
+    else
+        echo -e "$(tput setaf 1)[ERROR]$(tput sgr0) - gum install had failed"
+    fi
+else
+    echo -e "$(tput setaf 1)[ERROR]$(tput sgr0) Failed to install gum"
 fi
-rm gum.deb
-cd -
