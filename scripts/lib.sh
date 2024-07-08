@@ -34,7 +34,7 @@ install_pacman_pkg() {
         if pacman -Q "$1" &>/dev/null; then
             echo -e "${OK} $1 was installed."
         else
-            erMsg="${ERROR} $package failed to install. You may need to install manually! Sorry I have tried :("
+            erMsg="${ERROR} $1 failed to install. You may need to install manually! Sorry I have tried :("
             echo -e "$erMsg" && echo "-> $erMsg" >>"$HOME/install.log"
         fi
     fi
@@ -48,9 +48,9 @@ install_aur_pkg() {
         echo -e "${NOTE} Installing $1 ..."
         $ISAUR -Sy --noconfirm "$1"
         if $ISAUR -Q "$1" &>>/dev/null; then
-            echo -e "\e[1A\e[K${OK} $1 was installed."
+            echo -e "${OK} $1 was installed."
         else
-            erMsg="${ERROR} $package failed to install. You may need to install manually! Sorry I have tried :("
+            erMsg="${ERROR} $1 failed to install. You may need to install manually! Sorry I have tried :("
             echo -e "$erMsg" && echo "-> $erMsg" >>"$HOME/install.log"
         fi
     fi
@@ -66,7 +66,7 @@ install_nala_package() {
         if sudo dpkg -l | grep -q -w "$1"; then
             echo -e "${OK} $1 was installed."
         else
-            erMsg="${ERROR} $package failed to install. You may need to install manually! Sorry I have tried :("
+            erMsg="${ERROR} $1 failed to install. You may need to install manually! Sorry I have tried :("
             echo -e "$erMsg" && echo "-> $erMsg" >>"$HOME/install.log"
         fi
     fi
