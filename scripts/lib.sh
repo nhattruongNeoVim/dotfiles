@@ -21,8 +21,24 @@ BLUE=$(tput setaf 6)
 PINK=$(tput setaf 213)
 
 # check package manager
-ISAUR=$(command -v yay || command -v paru)
-PKGMN=$(command -v nala || command -v apt)
+# ISAUR=$(command -v yay || command -v paru)
+# PKGMN=$(command -v nala || command -v apt)
+
+if command -v yay &>/dev/null; then
+    ISAUR="yay"
+elif command -v paru &>/dev/null; then
+    ISAUR="paru"
+else
+    ISAUR=""
+fi
+
+if command -v nala &>/dev/null; then
+    PKGMN="nala"
+elif command -v apt &>/dev/null; then
+    PKGMN="apt"
+else
+    PKGMN=""
+fi
 
 # function to install pacman package
 install_pacman_pkg() {
