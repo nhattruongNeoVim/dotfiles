@@ -20,24 +20,18 @@ RESET=$(tput sgr0)
 BLUE=$(tput setaf 6)
 PINK=$(tput setaf 213)
 
-# check package manager
-# ISAUR=$(command -v yay || command -v paru)
-# PKGMN=$(command -v nala || command -v apt)
-
+# check arch(AUR) package manager
 if command -v yay &>/dev/null; then
     ISAUR="yay"
 elif command -v paru &>/dev/null; then
     ISAUR="paru"
-else
-    ISAUR=""
 fi
 
+# check ubuntu package manager
 if command -v nala &>/dev/null; then
     PKGMN="nala"
 elif command -v apt &>/dev/null; then
     PKGMN="apt"
-else
-    PKGMN=""
 fi
 
 # function to install pacman package
@@ -74,12 +68,12 @@ install_aur_pkg() {
 
 # function to install nala packages
 install_nala_package() {
-    if sudo dpkg -l | grep -q -w "$1" &>/dev/null; then
+    if dpkg-query -W -f='${Status}' "$1" 2>/dev/null | grep -q "installed"; then
         echo -e "${OK} $1 is already installed. Skipping..."
     else
         echo -e "${NOTE} Installing $1 ..."
         sudo $PKGMN install -y "$1"
-        if sudo dpkg -l | grep -q -w "$1"; then
+        if dpkg-query -W -f='${Status}' "$1" 2>/dev/null | grep -q "installed"; then
             echo -e "${OK} $1 was installed."
         else
             erMsg="${ERROR} $1 failed to install. You may need to install manually! Sorry I have tried :("
