@@ -62,3 +62,4 @@ fi
 
 printf "\n${OK} SQL Server is installed and configured.\n"
 printf "\n${OK} You can use IP address '%s' to connect to SQL Server.\n" "$(ifconfig | grep 'broadcast' | awk '{print $2}')"
+
