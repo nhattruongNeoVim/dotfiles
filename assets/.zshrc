@@ -60,6 +60,7 @@ function nvims() {
 
 # Nala
 alias snuu='sudo nala update && sudo nala upgrade -y'
+alias sncc='sudo nala autoremove'
 alias snu='sudo nala update'
 alias sni='sudo nala install -y'
 alias snr='sudo nala remove'
