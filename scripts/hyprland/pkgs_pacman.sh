@@ -83,6 +83,6 @@ printf "\n%s - Installing components\n" "${NOTE}"
 for PKG1 in "${pacman_pkgs[@]}" "${hypr_pkgs[@]}"; do
 	install_pacman_pkg "$PKG1"
 	if [ $? -ne 0 ]; then
-		echo -e "\e[1A\e[K${ERROR} - $PKG1 install had failed"
+		echo -e "${ERROR} - $PKG1 install had failed"
 	fi
 done

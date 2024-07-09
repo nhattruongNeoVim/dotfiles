@@ -53,7 +53,6 @@ for PKG in "${pkgs[@]}"; do
     install_ubuntu_packages "$PKG"
     if [ $? -ne 0 ]; then
         printf "\n%s - $PKG install had failed, please check the script. \n" "${ERROR}"
-        exit 1
     fi
 done
 
