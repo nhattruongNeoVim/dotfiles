@@ -64,7 +64,7 @@ install_aur_pkg() {
 }
 
 # function to install nala packages
-install_nala_package() {
+install_ubuntu_packages() {
     if dpkg-query -W -f='${Status}' "$1" 2>/dev/null | grep -q "installed"; then
         echo -e "${OK} $1 is already installed. Skipping..."
     else
@@ -118,6 +118,12 @@ ask_custom_option() {
 # function to execute hyprland script
 exScriptHypr() {
     local script_url="https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/hyprland/$1"
+    bash <(curl -sSL "$script_url")
+}
+
+# function to execute hyprland gnome script
+exScriptGnome() {
+    local script_url="https://raw.githubusercontent.com/nhattruongNeoVim/dotfiles/master/scripts/gnome/$1"
     bash <(curl -sSL "$script_url")
 }
 
