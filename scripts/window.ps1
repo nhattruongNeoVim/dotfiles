@@ -45,8 +45,8 @@ StartMsg -msg "Initializing Scoop..."
 MsgDone
 
 StartMsg -msg "Installing Scoop's packages"
-    scoop install <# apps #> flow-launcher oh-my-posh fzf winrar lsd neovim neovide winfetch lazygit tere autoclicker
-    scoop install <# coding #> git gcc nodejs openjdk python make ripgrep
+    scoop install <# apps #> flow-launcher oh-my-posh fzf winrar lsd winfetch lazygit tere autoclicker windhawk
+    scoop install <# coding #> git gcc nodejs openjdk python make ripgrep neovim neovide
     scoop install <# requirements for mason_neovim #> unzip wget gzip pwsh
     scoop cache rm *
 MsgDone
