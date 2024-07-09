@@ -53,6 +53,7 @@ folder=(
     ranger
     rofi
     tmux
+    gtk-4.0
 )
 
 # backup folders
@@ -76,9 +77,13 @@ cp -r config/* $HOME/.config/ && { echo "${OK} - Copy completed"; } || {
 }
 
 # copying assets folder
-cp -r assets/* ~/ && { echo "${OK} - Copy completed"; } || {
-    echo "${ERROR} Failed to copy config files."
+cp -r assets/* $HOME/ && { echo "${OK} - Copy completed"; } || {
+    echo "${ERROR} - Failed to copy config files."
 }
+
+cd $HOME/.themes/Catppuccin-Mocha-Standard-Mauve-Dark
+mkdir -p ~/.config/gtk-4.0
+cp -rf gtk-4.0 $HOME/.config
 
 # Reload fonts
 fc-cache -fv
