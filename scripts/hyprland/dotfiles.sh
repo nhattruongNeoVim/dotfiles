@@ -7,14 +7,10 @@ source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 wallpaper=$HOME/Pictures/wallpapers/anime-kanji.jpg
 waybar_style="$HOME/.config/waybar/style/simple [pywal].css"
 
-# check if running as root. If root, script will exit
-if [[ $EUID -eq 0 ]]; then
-	echo "This script should not be executed as root! Exiting......."
-	exit 1
-fi
-
-# author
+# init 
 clear
+
+# start script
 gum style \
 	--foreground 213 --border-foreground 213 --border rounded \
 	--align center --width 90 --margin "1 2" --padding "2 4" \
@@ -141,7 +137,6 @@ set -e # Exit immediately if a command exits with a non-zero status.
 printf "${NOTE} - Copying dotfiles\n"
 folder=(
 	ranger
-	mpv
 	alacritty
 	btop
 	cava
@@ -169,16 +164,6 @@ for DIR in "${folder[@]}"; do
 		BACKUP_DIR=$(get_backup_dirname)
 		mv "$DIRPATH" "$DIRPATH-backup-$BACKUP_DIR"
 		echo -e "${NOTE} - Backed up $DIR to $DIRPATH-backup-$BACKUP_DIR."
-	fi
-done
-
-for DIRw in wallpapers; do
-	DIRPATH=~/Pictures/"$DIRw"
-	if [ -d "$DIRPATH" ]; then
-		echo -e "${NOTE} - Wallpapers in $DIRw found, attempting to back up."
-		BACKUP_DIR=$(get_backup_dirname)
-		mv "$DIRPATH" "$DIRPATH-backup-$BACKUP_DIR"
-		echo -e "${NOTE} - Backed up $DIRw to $DIRPATH-backup-$BACKUP_DIR."
 	fi
 done
 

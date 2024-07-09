@@ -26,11 +26,11 @@ gum style \
 gum style \
     --foreground 6 --border-foreground 6 --border rounded \
     --align left --width 104 --margin "1 2" --padding "2 4" \
-    "$(tput setaf 3)NOTE:$(tput setaf 6) Ensure that you have a stable internet connection $(tput setaf 3)(Highly Recommended!!!!)" \
-    "                                                                                                                             " \
-    "$(tput setaf 3)NOTE:$(tput setaf 6) You will be required to answer some questions during the installation!!                  " \
-    "                                                                                                                             " \
-    "$(tput setaf 3)NOTE:$(tput setaf 6) If you are installing on a VM, ensure to enable 3D acceleration else Hyprland wont start!"
+    "$(tput setaf 3)NOTE:$(tput setaf 6) Ensure that you have a stable internet connection $(tput setaf 3)(Highly Recommended!!!!)$(tput sgr0)" \
+    "                                                                                                                             $(tput sgr0)" \
+    "$(tput setaf 3)NOTE:$(tput setaf 6) You will be required to answer some questions during the installation!!                  $(tput sgr0)" \
+    "                                                                                                                             $(tput sgr0)" \
+    "$(tput setaf 3)NOTE:$(tput setaf 6) If you are installing on a VM, ensure to enable 3D acceleration else Hyprland wont start!$(tput sgr0)"
 
 printf "\n"
 ask_custom_option "Choose your AUR helper" "yay" "paru" aur_helper
@@ -62,9 +62,8 @@ printf "\n"
 ask_yes_no "Do you want to download pre-configured Hyprland dotfiles?" dots
 printf "\n"
 
-printf "\n%.0s" {1..2}
 if [ "$dual_boot" == "Y" ]; then
-    printf "${CAT} I will set the local time on Arch to display the correct time on Windows."
+    printf "\n%s - I will set the local time on Arch to display the correct time on Windows. \n" "${CAT}"
     timedatectl set-local-rtc 1 --adjust-system-clock
 fi
 

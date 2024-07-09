@@ -31,7 +31,6 @@ pkgs=(
     libsecret-tools
     cava
     net-tools
-    unzip
     lolcat
     cpufetch
     bpytop
@@ -138,14 +137,6 @@ if wget -O /tmp/nvim-linux64.tar.gz "$NEOVIM"; then
         printf "\n%s - Failed to install neovim \n" "${ERROR}"
         exit 1
     }
-    rm -rf ~/.config/nvim
-    rm -rf ~/.local/share/nvim
-    printf "\n%s - Setup neovim... \n" "${NOTE}"
-    if git clone https://github.com/nhattruongNeoVim/MYnvim.git $HOME/.config/nvim --depth 1; then
-        printf "\n%s - Setup neovim successfully \n" "${OK}"
-    else
-        printf "\n%s - Failed to setup neovim \n" "${ERROR}"
-    fi
 else
     printf "\n%s - Failed to download neovim \n" "${ERROR}"
 fi

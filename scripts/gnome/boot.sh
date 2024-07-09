@@ -1,8 +1,14 @@
 #!/bin/bash
 
+# Color util
+OK="$(tput setaf 2)[OK]$(tput sgr0)"
+ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
+NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
+CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
+
 # check root
 if [[ $EUID -eq 0 ]]; then
-    printf "$(tput setaf 3)[NOTE]$(tput sgr0) This script should not be executed as root! Exiting......."
+    printf "%s - This script should not be executed as root! Exiting....... \n" "${NOTE}"
     exit 1
 fi
 
@@ -27,25 +33,25 @@ GUM_VERSION="0.14.1"
 GUM_LINKDOWNLOADS="https://github.com/charmbracelet/gum/releases/latest/download/gum_${GUM_VERSION}_amd64.deb"
 
 # update system
-printf "$(tput setaf 3)[NOTE]$(tput sgr0) Update system... "
+printf "\n%s - Update system.... \n" "${NOTE}"
 if sudo apt update && sudo apt upgrade; then
-    printf "\n$(tput setaf 2)[OK]$(tput sgr0) Update system successfully\n"
+    printf "\n%s - Update system successfully \n" "${OK}"
 else
-    printf "\n$(tput setaf 1)[ERROR]$(tput sgr0) Failed to update your system\n"
+    printf "\n%s - Failed to update your system \n" "${ERROR}"
 fi
 
 # install nala
-printf "$(tput setaf 3)[NOTE]$(tput sgr0) Check nala..."
+printf "\n%s - Check nala... \n" "${NOTE}"
 if ! command -v nala &>/dev/null; then
-    printf "$(tput setaf 6)[ACTION]$(tput sgr0) Installing and initializing nala...\n"
+    printf "\n%s - Installing and initializing nala... \n" "${CAT}"
     if sudo apt install nala -y && sudo nala update && sudo nala upgrade -y; then
-        printf "\n$(tput setaf 3)[NOTE]$(tput sgr0) Press 1 2 3 and press Enter\n"
+        printf "\n%s - Press 1 2 3 and press Enter \n" "${NOTE}"
         sudo nala fetch
     else
-        printf "\n$(tput setaf 1)[ERROR]$(tput sgr0) Failed to install nala\n"
+        printf "\n%s - Failed to install nala \n" "${ERROR}"
     fi
 else
-    printf "$(tput setaf 2)[OK]$(tput sgr0) nala is already installed. Skipping...\n"
+    printf "\n%s - Nala is already installed. Skipping... \n" "${OK}"
 fi
 
 # check ubuntu package manager
@@ -64,23 +70,23 @@ pkgs=(
 )
 
 # install some required packages
-printf "\n%s Installing required packages...\n" "$(tput setaf 3)[NOTE]$(tput sgr0)"
+printf "\n%s - Installing required packages...\n" "${NOTE}"
 for PKG in "${pkgs[@]}"; do
     sudo $PKGMN install -y "$PKG"
     if [ $? -ne 0 ]; then
-        printf "$(tput setaf 1)[ERROR]$(tput sgr0) - $PKG install had failed"
+        printf "\n%s - $PKG install had failed, please check the script. \n" "${ERROR}"
     fi
 done
 
 # install gum (requirement)
-printf "\n%s - Installing gum...\n" "$(tput setaf 3)[NOTE]$(tput sgr0)"
+printf "\n%s - Installing gum...\n" "${NOTE}"
 if wget -qO /tmp/gum.deb "$GUM_LINKDOWNLOADS"; then
-    printf "$(tput setaf 2)[OK]$(tput sgr0) Download gum.deb successfully"
+    printf "\n%s - Download gum.deb successfully \n" "${OK}"
     if sudo $PKGMN install -y /tmp/gum.deb; then
-        printf "$(tput setaf 2)[OK]$(tput sgr0) Install gum successfully"
+        printf "\n%s - Install gum successfully \n" "${OK}"
     else
-        printf "$(tput setaf 1)[ERROR]$(tput sgr0) - gum install had failed"
+        printf "\n%s - Failed to install gum \n" "${ERROR}"
     fi
 else
-    printf "$(tput setaf 1)[ERROR]$(tput sgr0) Failed to install gum"
+    printf "\n%s - Failed to download gum \n" "${ERROR}"
 fi

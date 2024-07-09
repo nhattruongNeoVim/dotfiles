@@ -26,19 +26,73 @@ gum style \
 gum style \
     --foreground 6 --border-foreground 6 --border rounded \
     --align left --width 90 --margin "1 2" --padding "2 4" \
-    "$(tput setaf 3)NOTE:$(tput setaf 6) Ensure that you have a stable internet connection $(tput setaf 3)(Highly Recommended!!!!)" \
-    "                                                                                                                             " \
-    "$(tput setaf 3)NOTE:$(tput setaf 6) You will be required to answer some questions during the installation!!                  " \
-    "                                                                                                                             " \
-    "$(tput setaf 3)NOTE:$(tput setaf 6) If you are installing on a VM, ensure to enable 3D acceleration!"
+    "$(tput setaf 3)NOTE:$(tput setaf 6) Ensure that you have a stable internet connection $(tput setaf 3)(Highly Recommended!!!!)$(tput sgr0)" \
+    "                                                                                                                             $(tput sgr0)" \
+    "$(tput setaf 3)NOTE:$(tput setaf 6) You will be required to answer some questions during the installation!!                  $(tput sgr0)" \
+    "                                                                                                                             $(tput sgr0)" \
+    "$(tput setaf 3)NOTE:$(tput setaf 6) If you are installing on a VM, ensure to enable 3D acceleration!                         $(tput sgr0)"
 
 printf "\n"
 ask_yes_no "Do you dual boot with window?" dual_boot
+printf "\n"
+ask_yes_no "Do you want to download pre-configured Hyprland dotfiles?" dots
+printf "\n"
+ask_yes_no "Do you want to set battery charging limit (only for laptop)?" battery
+printf "\n"
 
-printf "\n%.0s" {1..2}
 if [ "$dual_boot" == "Y" ]; then
-    printf "${CAT} I will set the local time on Arch to display the correct time on Windows."
+    printf "\n%s - I will set the local time on Ubuntu to display the correct time on Windows. \n" "${CAT}"
     timedatectl set-local-rtc 1 --adjust-system-clock
 fi
 
 exScriptGnome "pkgs.sh"
+
+# Check if dotfiles exist
+cd $HOME
+if [ -d dotfiles ]; then
+    rm -rf dotfiles
+    printf "\n%s - Remove dotfile successfully \n" "${OK}"
+fi
+
+# Clone dotfiles
+printf "\n%s - Clone dotfiles. \n" "${NOTE}"
+if git clone -b gnome https://github.com/nhattruongNeoVim/dotfiles.git --depth 1; then
+    printf "\n%s - Clone dotfiles succesfully. \n" "${OK}"
+else
+    printf "\n%s - Failed to clone dotfiles. \n" "${ERROR}"
+    exit 1
+fi
+
+if [ "$battery" == "Y" ]; then
+    exScriptHypr "battery.sh"
+fi
+
+if [ "$dots" == "Y" ]; then
+    exScriptGnome "dotfiles.sh"
+fi
+
+# remove dotfiles
+cd $HOME
+if [ -d dotfiles ]; then
+    rm -rf dotfiles
+    printf "\n%s - Remove dotfile successfully \n" "${NOTE}"
+fi
+
+# check log
+if [ -f $HOME/install.log ]; then
+    if gum confirm "${CAT} - Do you want to check log?"; then
+        if pacman -Q bat &>/dev/null; then
+            cat_command="bat"
+        else
+            cat_command="cat"
+        fi
+        $cat_command $HOME/install.log
+    fi
+fi
+
+printf "\n%s - Yey! Installation Completed. Rebooting... \n" "${OK}"
+for i in {10..1}; do
+    printf "\n%s $i" "${NOTE}"
+    sleep 1
+done
+sudo reboot
