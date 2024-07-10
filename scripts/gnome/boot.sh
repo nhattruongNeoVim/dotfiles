@@ -33,7 +33,7 @@ GUM_VERSION="0.14.1"
 GUM_LINKDOWNLOADS="https://github.com/charmbracelet/gum/releases/latest/download/gum_${GUM_VERSION}_amd64.deb"
 
 # update system
-printf "\n%s - Update system.... \n" "${NOTE}"
+printf "\n%s - Update system .... \n" "${NOTE}"
 if sudo apt update && sudo apt upgrade; then
     printf "\n%s - Update system successfully \n" "${OK}"
 else
@@ -41,7 +41,7 @@ else
 fi
 
 # install nala
-printf "\n%s - Check nala... \n" "${NOTE}"
+printf "\n%s - Check nala ... \n" "${NOTE}"
 if ! command -v nala &>/dev/null; then
     printf "\n%s - Installing and initializing nala... \n" "${CAT}"
     if sudo apt install nala -y && sudo nala update && sudo nala upgrade -y; then
@@ -70,7 +70,7 @@ pkgs=(
 )
 
 # install some required packages
-printf "\n%s - Installing required packages...\n" "${NOTE}"
+printf "\n%s - Installing required packages ...\n" "${NOTE}"
 for PKG in "${pkgs[@]}"; do
     sudo $PKGMN install -y "$PKG"
     if [ $? -ne 0 ]; then
@@ -79,7 +79,7 @@ for PKG in "${pkgs[@]}"; do
 done
 
 # install gum (requirement)
-printf "\n%s - Installing gum...\n" "${NOTE}"
+printf "\n%s - Installing gum ...\n" "${NOTE}"
 if wget -qO /tmp/gum.deb "$GUM_LINKDOWNLOADS"; then
     printf "\n%s - Download gum.deb successfully \n" "${OK}"
     if sudo $PKGMN install -y /tmp/gum.deb; then

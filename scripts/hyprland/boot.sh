@@ -3,7 +3,7 @@
 
 # check root
 if [[ $EUID -eq 0 ]]; then
-    printf "%s - This script should not be executed as root! Exiting....... \n" "${NOTE}"
+    printf "%s - This script should not be executed as root! Exiting ....... \n" "${NOTE}"
     exit 1
 fi
 
@@ -85,7 +85,7 @@ pkgs=(
 )
 
 # install requirement
-printf "\n%s - Installing required packages... \n" "${NOTE}"
+printf "\n%s - Installing required packages ... \n" "${NOTE}"
 for PKG1 in "${pkgs[@]}"; do
     sudo pacman -S --noconfirm "$PKG1"
     if [ $? -ne 0 ]; then
