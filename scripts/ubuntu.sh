@@ -3,10 +3,13 @@
 # source library
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
-# start script
-# exScriptGnome "boot.sh"
+# require
+exScriptGnome "boot.sh"
 
+# init
 clear
+
+# start script
 gum style \
     --foreground 213 --border-foreground 213 --border rounded \
     --align center --width 90 --margin "1 2" --padding "2 4" \
@@ -91,8 +94,6 @@ if [ -f $HOME/install.log ]; then
 fi
 
 printf "\n%s - Yey! Installation Completed. Rebooting... \n" "${OK}"
-for i in {10..1}; do
-    printf "\n%s $i" "${NOTE}"
-    sleep 1
-done
-sudo reboot
+if gum confirm "${CAT} Would you like to reboot now?"; then
+    sudo reboot
+fi

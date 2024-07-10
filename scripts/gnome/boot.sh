@@ -1,6 +1,7 @@
 #!/bin/bash
+# required
 
-# Color util
+# color util
 OK="$(tput setaf 2)[OK]$(tput sgr0)"
 ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
 NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
@@ -27,7 +28,6 @@ echo -e "                                                                       
 echo -e "                                                                                   "
 echo -e "-------------------- Script developed by nhattruongNeoVim --------------------     "
 echo -e " -------------- Github: https://github.com/nhattruongNeoVim -----------------      "
-echo
 
 GUM_VERSION="0.14.1"
 GUM_LINKDOWNLOADS="https://github.com/charmbracelet/gum/releases/latest/download/gum_${GUM_VERSION}_amd64.deb"

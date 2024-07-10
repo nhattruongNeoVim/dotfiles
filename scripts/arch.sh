@@ -177,9 +177,7 @@ if sudo pacman -Sc --noconfirm && yay -Sc --noconfirm && yay -Yc --noconfirm; th
     printf "\n${OK} Clear packages succesfully.\n"
 fi
 
-printf "\n%.0s" {1..2}
 printf "\n${OK} Yey! Installation Completed.\n"
-printf "\n%.0s" {1..2}
 printf "\n${NOTE} You can start Hyprland by typing Hyprland (IF SDDM is not installed) (note the capital H!).\n"
 printf "\n${NOTE} It is highly recommended to reboot your system.\n\n"
 

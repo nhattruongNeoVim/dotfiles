@@ -1,14 +1,22 @@
 #!/bin/bash
 # pacman adding up extra-spices
 
+# color util
+OK="$(tput setaf 2)[OK]$(tput sgr0)"
+ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
+NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
+CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
+
 # check root
 if [[ $EUID -eq 0 ]]; then
-	echo "This script should not be executed as root! Exiting......."
-	exit 1
+    printf "%s - This script should not be executed as root! Exiting....... \n" "${NOTE}"
+    exit 1
 fi
 
-# start script
+# init
 clear
+
+# start script
 echo -e "\e[34m   ____   __ __   ____  ______      ______  ____   __ __   ___   ____    ____"
 echo -e " |    \ |  |  | /    ||      |    |      ||    \ |  |  | /   \ |    \  /    |      "
 echo -e " |  _  ||  |  ||  o  ||      |    |      ||  D  )|  |  ||     ||  _  ||   __|      "
@@ -20,41 +28,40 @@ echo -e "                                                                       
 echo -e "                                                                                   "
 echo -e "-------------------- Script developed by nhattruongNeoVim --------------------     "
 echo -e " -------------- Github: https://github.com/nhattruongNeoVim -----------------      "
-echo
 
-echo -e "$(tput setaf 3)[NOTE]$(tput sgr0) Adding Extra Spice in pacman.conf ... "
+printf "\n%s - Adding Extra Spice in pacman.conf ... \n" "${NOTE}"
 
-# Variable
+# variable
 pacman_conf="/etc/pacman.conf"
 mirrorlist="/etc/pacman.d/mirrorlist"
 
-# Remove comments '#' from specific lines
+# remove comments '#' from specific lines
 lines_to_edit=(
-	"Color"
-	"CheckSpace"
-	"VerbosePkgLists"
-	"ParallelDownloads"
+    "Color"
+    "CheckSpace"
+    "VerbosePkgLists"
+    "ParallelDownloads"
 )
 
-# Uncomment specified lines if they are commented out
+# uncomment specified lines if they are commented out
 for line in "${lines_to_edit[@]}"; do
-	if grep -q "^#$line" "$pacman_conf"; then
-		sudo sed -i "s/^#$line/$line/" "$pacman_conf"
-		echo -e "$(tput setaf 6)[ACTION]$(tput sgr0) Uncommented: $line"
-	else
-		echo -e "$(tput setaf 6)[ACTION]$(tput sgr0) $line is already uncommented."
-	fi
+    if grep -q "^#$line" "$pacman_conf"; then
+        sudo sed -i "s/^#$line/$line/" "$pacman_conf"
+        printf "\n%s - Uncommented: $line \n" "${CAT}"
+    else
+        printf "\n%s - $line is already uncommented. \n" "${CAT}"
+    fi
 done
 
-# Add "ILoveCandy" below ParallelDownloads if it doesn't exist
+# add "ILoveCandy" below ParallelDownloads if it doesn't exist
 if grep -q "^ParallelDownloads" "$pacman_conf" && ! grep -q "^ILoveCandy" "$pacman_conf"; then
-	sudo sed -i "/^ParallelDownloads/a ILoveCandy" "$pacman_conf"
-	echo -e "$(tput setaf 6)[ACTION]$(tput sgr0) Added ILoveCandy below ParallelDownloads."
+    sudo sed -i "/^ParallelDownloads/a ILoveCandy" "$pacman_conf"
+    printf "\n%s - Added ILoveCandy below ParallelDownloads. \n" "${CAT}"
 else
-	echo -e "$(tput setaf 6)[ACTION]$(tput sgr0) ILoveCandy already exists"
+    printf "\n%s - ILoveCandy already exists \n" "${CAT}"
 fi
 
-echo -e "$(tput setaf 6)[ACTION]$(tput sgr0) Pacman.conf spicing up completed"
+printf "\n%s - Pacman.conf spicing up completed \n" "${CAT}"
 
 # Backup and update mirrorlist
 # if sudo cp "$mirrorlist" "${mirrorlist}.bak"; then
@@ -68,28 +75,28 @@ echo -e "$(tput setaf 6)[ACTION]$(tput sgr0) Pacman.conf spicing up completed"
 # 	echo -e "$(tput setaf 1)[ERROR]$(tput sgr0) Failed to backup mirrorlist. $(tput sgr0)"
 # fi
 
-# Updating pacman.conf
+# updating pacman.conf
 sudo pacman -Syyuu --noconfirm
 if [ $? -ne 0 ]; then
-	echo -e "$(tput setaf 1)[ERROR]$(tput sgr0) Failed to update the package database."
+    printf "\n%s - Failed to update the package database. \n" "${ERROR}"
 fi
 
 # Package
 pkgs=(
-	gum
-	reflector
-	curl
-	git
-	unzip
+    gum
+    reflector
+    curl
+    git
+    unzip
 )
 
-# Install requirement
-printf "\n%s - Installing required package\n" "$(tput setaf 3)[NOTE]$(tput sgr0)"
+# install requirement
+printf "\n%s - Installing required packages... \n" "${NOTE}"
 for PKG1 in "${pkgs[@]}"; do
-	sudo pacman -S --noconfirm "$PKG1"
-	if [ $? -ne 0 ]; then
-		echo -e "\e[1A\e[K$(tput setaf 1)[ERROR]$(tput sgr0) - $PKG1 install had failed"
-	fi
+    sudo pacman -S --noconfirm "$PKG1"
+    if [ $? -ne 0 ]; then
+        echo -e "\e[1A\e[K$(tput setaf 1)[ERROR]$(tput sgr0) - $PKG1 install had failed"
+    fi
 done
 
 clear
