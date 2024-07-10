@@ -95,7 +95,7 @@ printf "\n%s - Installing required packages... \n" "${NOTE}"
 for PKG1 in "${pkgs[@]}"; do
     sudo pacman -S --noconfirm "$PKG1"
     if [ $? -ne 0 ]; then
-        echo -e "\e[1A\e[K$(tput setaf 1)[ERROR]$(tput sgr0) - $PKG1 install had failed"
+        printf "\n%s - $PKG install had failed, please check the script. \n" "${ERROR}"
     fi
 done
 
