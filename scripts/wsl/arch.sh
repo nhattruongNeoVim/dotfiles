@@ -4,9 +4,13 @@
 # source library
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
-# start script
+# require
 exScriptHypr "boot.sh"
 
+# init
+clear
+
+# start script
 gum style \
     --foreground 213 --border-foreground 213 --border rounded \
     --align center --width 90 --margin "1 2" --padding "2 4" \
@@ -190,14 +194,14 @@ fi
 printf "\n%.0s" {1..2}
 
 if [ -f $HOME/install.log ]; then
-	if gum confirm "${CAT} Do you want to check log?"; then
-		if pacman -Q bat &>/dev/null; then
-			cat_command="bat"
-		else
-			cat_command="cat"
-		fi
-		$cat_command $HOME/install.log
-	fi
+    if gum confirm "${CAT} Do you want to check log?"; then
+        if pacman -Q bat &>/dev/null; then
+            cat_command="bat"
+        else
+            cat_command="cat"
+        fi
+        $cat_command $HOME/install.log
+    fi
 fi
 
 # clear packages

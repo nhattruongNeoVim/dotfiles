@@ -1,12 +1,6 @@
 #!/bin/bash
 # pacman adding up extra-spices
 
-# color util
-OK="$(tput setaf 2)[OK]$(tput sgr0)"
-ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
-NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
-CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
-
 # check root
 if [[ $EUID -eq 0 ]]; then
     printf "%s - This script should not be executed as root! Exiting....... \n" "${NOTE}"
@@ -98,5 +92,3 @@ for PKG1 in "${pkgs[@]}"; do
         printf "\n%s - $PKG install had failed, please check the script. \n" "${ERROR}"
     fi
 done
-
-clear

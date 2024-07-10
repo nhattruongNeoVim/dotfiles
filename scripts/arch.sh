@@ -1,4 +1,5 @@
 #!/bin/bash
+# config arch
 
 # source library
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
@@ -6,7 +7,10 @@ source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 # start script
 exScriptHypr "boot.sh"
 
+# init
 clear
+
+# start script
 gum style \
     --foreground 213 --border-foreground 213 --border rounded \
     --align center --width 90 --margin "1 2" --padding "2 4" \

@@ -34,15 +34,15 @@ fi
 # function to install pacman package
 install_pacman_pkg() {
     if pacman -Q "$1" &>/dev/null; then
-        echo -e "${OK} $1 is already installed. Skipping..."
+        printf "\n%s - $1 is already installed. Skipping ... \n" "${OK}"
     else
-        echo -e "${NOTE} Installing $1 ..."
+        printf "\n%s - Installing $1 ... \n" "${NOTE}"
         sudo pacman -Syu --noconfirm "$1"
         if pacman -Q "$1" &>/dev/null; then
-            echo -e "${OK} $1 was installed."
+            printf "\n%s - $1 was installed \n" "${OK}"
         else
-            erMsg="${ERROR} $1 failed to install. You may need to install manually! Sorry I have tried :("
-            echo -e "$erMsg" && echo "-> $erMsg" >>"$HOME/install.log"
+            erMsg="$1 failed to install. You may need to install manually! Sorry I have tried :("
+            printf "\n -> %s $erMsg \n" "${ERROR}" && echo "-> $erMsg" >>"$HOME/install.log"
         fi
     fi
 }
@@ -50,15 +50,15 @@ install_pacman_pkg() {
 # function to install aur package
 install_aur_pkg() {
     if $ISAUR -Q "$1" &>>/dev/null; then
-        echo -e "${OK} $1 is already installed. Skipping..."
+        printf "\n%s - $1 is already installed. Skipping ... \n" "${OK}"
     else
-        echo -e "${NOTE} Installing $1 ..."
+        printf "\n%s - Installing $1 ... \n" "${NOTE}"
         $ISAUR -Syu --noconfirm "$1"
         if $ISAUR -Q "$1" &>>/dev/null; then
-            echo -e "${OK} $1 was installed."
+            printf "\n%s - $1 was installed \n" "${OK}"
         else
-            erMsg="${ERROR} $1 failed to install. You may need to install manually! Sorry I have tried :("
-            echo -e "$erMsg" && echo "-> $erMsg" >>"$HOME/install.log"
+            erMsg="$1 failed to install. You may need to install manually! Sorry I have tried :("
+            printf "\n -> %s $erMsg \n" "${ERROR}" && echo "-> $erMsg" >>"$HOME/install.log"
         fi
     fi
 }
@@ -66,15 +66,15 @@ install_aur_pkg() {
 # function to install nala packages
 install_ubuntu_packages() {
     if dpkg-query -W -f='${Status}' "$1" 2>/dev/null | grep -q "installed"; then
-        echo -e "${OK} $1 is already installed. Skipping..."
+        printf "\n%s - $1 is already installed. Skipping ... \n" "${OK}"
     else
-        echo -e "${NOTE} Installing $1 ..."
+        printf "\n%s - Installing $1 ... \n" "${NOTE}"
         sudo $PKGMN install -y "$1"
         if dpkg-query -W -f='${Status}' "$1" 2>/dev/null | grep -q "installed"; then
-            echo -e "${OK} $1 was installed."
+            printf "\n%s - $1 was installed \n" "${OK}"
         else
-            erMsg="${ERROR} $1 failed to install. You may need to install manually! Sorry I have tried :("
-            echo -e "$erMsg" && echo "-> $erMsg" >>"$HOME/install.log"
+            erMsg="$1 failed to install. You may need to install manually! Sorry I have tried :("
+            printf "\n -> %s $erMsg \n" "${ERROR}" && echo "-> $erMsg" >>"$HOME/install.log"
         fi
     fi
 }
@@ -82,13 +82,13 @@ install_ubuntu_packages() {
 # function to uninstall pacman package
 uninstall_pacman_pkg() {
     if pacman -Qi "$1" &>>/dev/null; then
-        echo -e "${NOTE} Uninstalling $1 ..."
+        printf "\n%s - Uninstalling $1 ... \n" "${NOTE}"
         sudo pacman -Rns --noconfirm "$1"
         if ! pacman -Qi "$1" &>>/dev/null; then
-            echo -e "${OK} $1 was uninstalled."
+            printf "\n%s - $1 was uninstalled \n" "${OK}"
         else
-            erMsg="${ERROR} $1 failed to uninstall"
-            echo -e "$erMsg" && echo "-> $erMsg" >>"$HOME/install.log"
+            erMsg="$1 failed to uninstall"
+            printf "\n -> %s $erMsg \n" "${ERROR}" && echo "-> $erMsg" >>"$HOME/install.log"
         fi
     fi
 }

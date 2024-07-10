@@ -3,7 +3,7 @@
 # source library
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
-# start script
+# init
 clear
 
 # check if the system is running under WSL and determine the distribution

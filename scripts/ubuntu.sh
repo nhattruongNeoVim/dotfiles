@@ -1,10 +1,11 @@
 #!/bin/bash
-
-# source library
-source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
+# config ubuntu
 
 # require
 exScriptGnome "boot.sh"
+
+# source library
+source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # init
 clear
