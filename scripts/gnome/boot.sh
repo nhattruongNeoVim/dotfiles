@@ -58,7 +58,7 @@ fi
 
 # update system
 printf "\n%s - Update system .... \n" "${NOTE}"
-if sudo apt update && sudo apt upgrade; then
+if sudo apt update && sudo apt upgrade -y; then
     printf "\n%s - Update system successfully \n" "${OK}"
 else
     printf "\n%s - Failed to update your system \n" "${ERROR}"
