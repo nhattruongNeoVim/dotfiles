@@ -45,6 +45,13 @@ NEOVIM="https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.t
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 LAZYGIT="https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 
+# reload package manager
+if command -v nala &>/dev/null; then
+    PKGMN="nala"
+elif command -v apt &>/dev/null; then
+    PKGMN="apt"
+fi
+
 # list packages
 pkgs=(
     build-essential
