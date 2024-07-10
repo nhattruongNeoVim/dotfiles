@@ -45,26 +45,6 @@ NEOVIM="https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.t
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 LAZYGIT="https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 
-# fix DNS
-printf "\n%s - Fix DNS to 8.8.8.8 \n" "${NOTE}"
-if grep -q "nameserver" "/etc/resolv.conf"; then
-    if sudo sed -i 's/nameserver.*/nameserver 8.8.8.8/' "/etc/resolv.conf"; then
-        printf "\n%s - Fix DNS successfully \n" "${OK}"
-    else
-        printf "\n%s - Failed to fix DNS \n" "${ERROR}"
-    fi
-fi
-
-# configure /etc/wsl.conf
-printf "\n%s - Configuring /etc/wsl.conf \n" "${NOTE}"
-if ! grep -q "\[network\]" "/etc/wsl.conf"; then
-    if echo -e "\n[network]\ngenerateResolvConf = false" | sudo tee -a "/etc/wsl.conf" >/dev/null; then
-        printf "\n%s - Added network configuration to /etc/wsl.conf \n" "${OK}"
-    else
-        printf "\n%s - Failed to add network configuration to /etc/wsl.conf \n" "${ERROR}"
-    fi
-fi
-
 # list packages
 pkgs=(
     build-essential
