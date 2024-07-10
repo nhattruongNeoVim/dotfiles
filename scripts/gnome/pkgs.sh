@@ -4,6 +4,7 @@
 # source library
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
+# variable
 PIPES="https://github.com/pipeseroni/pipes.sh"
 COLORSCRIPT="https://gitlab.com/dwt1/shell-color-scripts.git"
 NODEJS="https://deb.nodesource.com/setup_22.x"
@@ -12,6 +13,7 @@ NEOVIM="https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.t
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 LAZYGIT="https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 
+# list pkgs
 pkgs=(
     build-essential
     neofetch
@@ -52,6 +54,7 @@ pkgs=(
     gnupg
 )
 
+# install packages
 printf "\n%s - Install packages .... \n" "${NOTE}"
 for PKG in "${pkgs[@]}"; do
     install_ubuntu_packages "$PKG"
@@ -60,6 +63,7 @@ for PKG in "${pkgs[@]}"; do
     fi
 done
 
+# install Nodejs
 if command -v node &>/dev/null; then
     printf "\n%s - Node already installed, moving on \n" "${OK}"
 else
@@ -76,6 +80,7 @@ else
     fi
 fi
 
+# install Rust
 if command -v rustc &>/dev/null; then
     printf "\n%s - Rust already installed, moving on \n" "${OK}"
 else
@@ -88,6 +93,7 @@ else
     fi
 fi
 
+# install Lsd
 if command -v lsd &>/dev/null; then
     printf "\n%s - Lsd already installed, moving on \n" "${OK}"
 else
@@ -99,6 +105,7 @@ else
     fi
 fi
 
+# install Starship
 if command -v starship &>/dev/null; then
     printf "\n%s - Starship already installed, moving on \n" "${OK}"
 else
@@ -110,6 +117,7 @@ else
     fi
 fi
 
+# install Arttime
 if command -v arttime &>/dev/null; then
     printf "\n%s - Arttime already installed, moving on \n" "${OK}"
 else
@@ -126,6 +134,7 @@ else
     fi
 fi
 
+# install Colorscript
 if command -v colorscript &>/dev/null; then
     printf "\n%s - Colorscript already installed, moving on \n" "${OK}"
 else
@@ -147,6 +156,7 @@ else
     fi
 fi
 
+# install Pipes
 if command -v pipes.sh &>/dev/null; then
     printf "\n%s - Pipes.sh already installed, moving on.\n" "${OK}"
 else
@@ -167,6 +177,7 @@ else
     fi
 fi
 
+# install Lazygit
 if command -v lazygit &>/dev/null; then
     printf "\n%s - Lazygit already installed, moving on.\n" "${OK}"
 else
@@ -181,6 +192,7 @@ else
     fi
 fi
 
+# install Neovim
 printf "\n%s - Install neovim ... \n" "${NOTE}"
 if command -v nvim &>/dev/null; then
     sudo $PKGMN remove neovim -y

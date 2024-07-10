@@ -36,6 +36,15 @@ gum style \
     "                                                                                                                             $(tput sgr0)" \
     "$(tput setaf 3)NOTE:$(tput setaf 6) If you are installing on a VM, ensure to enable 3D acceleration!                         $(tput sgr0)"
 
+# variable
+PIPES="https://github.com/pipeseroni/pipes.sh"
+COLORSCRIPT="https://gitlab.com/dwt1/shell-color-scripts.git"
+NODEJS="https://deb.nodesource.com/setup_22.x"
+ARTTIME="https://github.com/poetaman/arttime/releases/download/v2.3.4/arttime_2.3.4-1_all.deb"
+NEOVIM="https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz"
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+LAZYGIT="https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+
 # fix DNS
 printf "\n%s - Fix DNS to 8.8.8.8 \n" "${NOTE}"
 if grep -q "nameserver" "/etc/resolv.conf"; then
@@ -93,6 +102,7 @@ for PKG in "${pkgs[@]}"; do
     fi
 done
 
+# install Nodejs
 if command -v node &>/dev/null; then
     printf "\n%s - Node already installed, moving on \n" "${OK}"
 else
@@ -109,6 +119,7 @@ else
     fi
 fi
 
+# install Rust
 if command -v rustc &>/dev/null; then
     printf "\n%s - Rust already installed, moving on \n" "${OK}"
 else
@@ -121,6 +132,7 @@ else
     fi
 fi
 
+# install Lsd
 if command -v lsd &>/dev/null; then
     printf "\n%s - Lsd already installed, moving on \n" "${OK}"
 else
@@ -132,6 +144,7 @@ else
     fi
 fi
 
+# install Starship
 if command -v starship &>/dev/null; then
     printf "\n%s - Starship already installed, moving on \n" "${OK}"
 else
@@ -143,6 +156,7 @@ else
     fi
 fi
 
+# install Arttime
 if command -v arttime &>/dev/null; then
     printf "\n%s - Arttime already installed, moving on \n" "${OK}"
 else
@@ -159,6 +173,7 @@ else
     fi
 fi
 
+# install Colorscript
 if command -v colorscript &>/dev/null; then
     printf "\n%s - Colorscript already installed, moving on \n" "${OK}"
 else
@@ -180,6 +195,7 @@ else
     fi
 fi
 
+# install Pipes
 if command -v pipes.sh &>/dev/null; then
     printf "\n%s - Pipes.sh already installed, moving on.\n" "${OK}"
 else
@@ -200,6 +216,7 @@ else
     fi
 fi
 
+# install Lazygit
 if command -v lazygit &>/dev/null; then
     printf "\n%s - Lazygit already installed, moving on.\n" "${OK}"
 else
@@ -214,6 +231,7 @@ else
     fi
 fi
 
+# install Neovim
 printf "\n%s - Install neovim ... \n" "${NOTE}"
 if command -v nvim &>/dev/null; then
     sudo $PKGMN remove neovim -y
@@ -307,19 +325,31 @@ else
     fi
 fi
 
-# Remove dotfiles
-cd $HOME
+# remove dotfiles
+cd $HOME || exit 1
 if [ -d dotfiles ]; then
     rm -rf dotfiles
-    echo -e "${NOTE} Remove dotfile successfully "
+    printf "\n%s - Remove dotfile successfully \n" "${NOTE}"
+fi
+
+# check log
+if [ -f $HOME/install.log ]; then
+    if gum confirm "${CAT} - Do you want to check log?"; then
+        if pacman -Q bat &>/dev/null; then
+            cat_command="bat"
+        else
+            cat_command="cat"
+        fi
+        $cat_command $HOME/install.log
+    fi
 fi
 
 # Chang shell to zsh
-printf "\n${NOTE} Change shell to zsh\n"
+printf "\n%s - Change shell to zsh \n" "${NOTE}"
 chsh -s $(which zsh)
 
 printf "\n%.0s" {1..2}
-printf "\n${OK} Yey! Setup Completed.\n"
+printf "\n%s - Yey! Setup Completed \n" "${OK}"
 printf "\n%.0s" {1..2}
 
 zsh
