@@ -93,177 +93,146 @@ for PKG in "${pkgs[@]}"; do
     fi
 done
 
-# install colorscript
-cd $HOME || exit 1
-printf "\n%.0s" {1..2}
-if [ -d shell-color-scripts ]; then
-    rm -rf shell-color-scripts
+if command -v node &>/dev/null; then
+    printf "\n%s - Node already installed, moving on \n" "${OK}"
+else
+    printf "\n%s - Install Node.js .... \n" "${NOTE}"
+    if curl -fsSL "$NODEJS" -o nodesource_setup.sh; then
+        printf "\n%s - Download the Node.js setup script successfully \n" "${OK}"
+        if sudo -E bash nodesource_setup.sh && sudo $PKGMN install -y nodejs; then
+            printf "\n%s - Install Node.js successfully \n" "${OK}"
+        else
+            printf "\n%s - Install Node.js had failed \n" "${ERROR}"
+        fi
+    else
+        printf "\n%s - Download the Node.js setup script had failed \n" "${ERROR}"
+    fi
+fi
+
+if command -v rustc &>/dev/null; then
+    printf "\n%s - Rust already installed, moving on \n" "${OK}"
+else
+    printf "\n%s - Install Rust ... \n" "${NOTE}"
+    if curl --proto '=https' --tlsv1.2 -sSf "https://sh.rustup.rs" | sh; then
+        printf "%s - Rust was installed \n" "${OK}"
+        source $HOME/.cargo/env
+    else
+        printf "\n%s - Rust install had failed \n" "${ERROR}"
+    fi
+fi
+
+if command -v lsd &>/dev/null; then
+    printf "\n%s - Lsd already installed, moving on \n" "${OK}"
+else
+    printf "\n%s - Install lsd ... \n" "${NOTE}"
+    if cargo install lsd --locked; then
+        printf "%s - Lsd was installed \n" "${OK}"
+    else
+        printf "\n%s - Lsd install had failed \n" "${ERROR}"
+    fi
+fi
+
+if command -v starship &>/dev/null; then
+    printf "\n%s - Starship already installed, moving on \n" "${OK}"
+else
+    printf "\n%s - Install starship ... \n" "${NOTE}"
+    if cargo install starship --locked; then
+        printf "%s - Starship was installed \n" "${OK}"
+    else
+        printf "\n%s - Starship install had failed \n" "${ERROR}"
+    fi
+fi
+
+if command -v arttime &>/dev/null; then
+    printf "\n%s - Arttime already installed, moving on \n" "${OK}"
+else
+    printf "\n%s - Installing arttime .... \n" "${NOTE}"
+    if wget -O /tmp/arttime.deb "$ARTTIME"; then
+        printf "\n%s - Download arttime.deb successfully.... \n" "${OK}"
+        if sudo $PKGMN install -y /tmp/arttime.deb; then
+            printf "\n%s - Install arttime successfully \n" "${OK}"
+        else
+            printf "\n%s - Arttime install had failed \n" "${ERROR}"
+        fi
+    else
+        printf "\n%s - Failed to install arttime.deb \n" "${ERROR}"
+    fi
 fi
 
 if command -v colorscript &>/dev/null; then
-    printf "\n%s - Colorscript already installed, moving on.\n" "${OK}"
+    printf "\n%s - Colorscript already installed, moving on \n" "${OK}"
 else
-    printf "\n%s - Colorscript was NOT located\n" "${NOTE}"
-    printf "\n%s - Installing colorscript\n" "${NOTE}"
-    git clone https://gitlab.com/dwt1/shell-color-scripts.git --depth 1 || {
-        printf "%s - Failed to clone colorscript\n" "${ERROR}"
-        exit 1
-    }
-    cd shell-color-scripts || {
-        printf "%s - Failed to enter colorscript directory\n" "${ERROR}"
-        exit 1
-    }
-    sudo make install && sudo cp completions/_colorscript /usr/share/zsh/site-functions || {
-        printf "%s - Failed to install colorscript\n" "${ERROR}"
-        exit 1
-    }
-    cd .. && rm -rf shell-color-scripts || {
-        printf "%s - Failed to remove colorscript directory\n" "${ERROR}"
-        exit 1
-    }
-fi
-
-# Install colorscript
-cd $HOME || exit 1
-printf "\n%.0s" {1..2}
-if [ -d pokemon-colorscripts ]; then
-    rm -rf pokemon-colorscripts
-fi
-
-if command -v pokemon-colorscripts &>/dev/null; then
-    printf "\n%s - Pokemon colorscript already installed, moving on.\n" "${OK}"
-else
-    printf "\n%s - Pokemon Colorscript was NOT located\n" "${NOTE}"
-    printf "\n%s - Installing Pokemon colorscript\n" "${NOTE}"
-    git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git --depth 1 || {
-        printf "%s - Failed to clone pokemon-colorscripts\n" "${ERROR}"
-        exit 1
-    }
-    cd pokemon-colorscripts || {
-        printf "%s - Failed to enter colorscript directory\n" "${ERROR}"
-        exit 1
-    }
-    sudo ./install.sh || {
-        printf "%s - Failed to install colorscript\n" "${ERROR}"
-        exit 1
-    }
-    cd .. && rm -rf pokemon-colorscripts || {
-        printf "%s - Failed to remove colorscript directory\n" "${ERROR}"
-        exit 1
-    }
-fi
-
-# Install pipes.sh
-cd $HOME || exit 1
-printf "\n%.0s" {1..2}
-if [ -d pipes.sh ]; then
-    rm -rf pipes.sh
+    printf "\n%s - Installing colorscript .... \n" "${NOTE}"
+    if git clone "$COLORSCRIPT" /tmp/colorscript; then
+        printf "\n%s - Clone shell-color-scripts successfully \n" "${OK}"
+        if
+            cd /tmp/colorscript &&
+                sudo make install &&
+                sudo cp completions/_colorscript /usr/share/zsh/site-functions &&
+                cd - &>/dev/null
+        then
+            printf "\n%s - Install shell-color-scripts successfully \n" "${OK}"
+        else
+            printf "\n%s - Failed to install shell-color-scripts \n" "${ERROR}"
+        fi
+    else
+        printf "\n%s - Failed to clone shell-color-scripts repository \n" "${ERROR}"
+    fi
 fi
 
 if command -v pipes.sh &>/dev/null; then
     printf "\n%s - Pipes.sh already installed, moving on.\n" "${OK}"
 else
-    printf "\n%s - Pipes.sh was NOT located\n" "${NOTE}"
-    printf "\n%s - Installing pipes.sh\n" "${NOTE}"
-    git clone https://github.com/pipeseroni/pipes.sh --depth 1 || {
-        printf "%s - Failed to clone pipes.sh\n" "${ERROR}"
-        exit 1
+    printf "\n%s - Install pipes.sh ... \n" "${NOTE}"
+    if git clone "$PIPES" /tmp/pipes.sh; then
+        printf "\n%s - Clone pipe.sh successfully \n" "${OK}"
+        if
+            cd /tmp/pipes.sh &&
+                make PREFIX=$HOME/.local install &&
+                cd - &>/dev/null
+        then
+            printf "\n%s - Install pipes.sh successfully \n" "${OK}"
+        else
+            printf "\n%s - Failed to install pipes.sh \n" "${ERROR}"
+        fi
+    else
+        printf "\n%s - Failed to clone pipe.sh repository \n" "${ERROR}"
+    fi
+fi
+
+if command -v lazygit &>/dev/null; then
+    printf "\n%s - Lazygit already installed, moving on.\n" "${OK}"
+else
+    printf "\n%s - Install lazygit ... \n" "${NOTE}"
+    if wget -O /tmp/lazygit.tar.gz "$LAZYGIT" && tar -xf lazygit.tar.gz lazygit; then
+        printf "\n%s - Download lazygit.tar successfully \n" "${OK}"
+        if sudo install /tmp/lazygit /usr/local/bin; then
+            printf "\n%s - Install lazygit successfully \n" "${OK}"
+        else
+            printf "\n%s - Failed to install lazygit \n" "${ERROR}"
+        fi
+    fi
+fi
+
+printf "\n%s - Install neovim ... \n" "${NOTE}"
+if command -v nvim &>/dev/null; then
+    sudo $PKGMN remove neovim -y
+fi
+if wget -O /tmp/nvim-linux64.tar.gz "$NEOVIM"; then
+    printf "\n%s - Download lastest version neovim successfully \n" "${OK}"
+    mkdir -p $HOME/.local/bin &&
+        mv /tmp/nvim-linux64.tar.gz $HOME/.local/bin &&
+        tar -xf $HOME/.local/bin/nvim-linux64.tar.gz -C $HOME/.local/bin &&
+        rm -fr $HOME/.local/bin/nvim-linux64.tar.gz &&
+        ln -s $HOME/.local/bin/nvim-linux64/bin/nvim $HOME/.local/bin/nvim &&
+        printf "\n%s - Install neovim successfully \n" "${OK}" || {
+        printf "\n%s - Failed to install neovim \n" "${ERROR}"
     }
-    cd pipes.sh || {
-        printf "%s - Failed to enter pipes.sh directory\n" "${ERROR}"
-        exit 1
-    }
-    make PREFIX=$HOME/.local install || {
-        printf "%s - Failed to install pipes.sh\n" "${ERROR}"
-        exit 1
-    }
-    cd .. && rm -rf pipes.sh || {
-        printf "%s - Failed to remove pipes.sh directory\n" "${ERROR}"
-        exit 1
-    }
+else
+    printf "\n%s - Failed to download neovim \n" "${ERROR}"
 fi
 
-# Install and initial rust
-printf "\n%.0s" {1..2}
-printf "\n${NOTE} Installing rust...\n"
-if curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh; then
-    printf "\n${OK} Install rust successfully\n"
-else
-    printf "\n${ERROR} Failed to install rust\n"
-fi
-printf "\n%.0s" {1..2}
-if source $HOME/.cargo/env && cargo --version; then
-    printf "\n${OK} Initial rust successfully\n"
-else
-    printf "\n${ERROR} Failed to initial rust\n"
-fi
-
-# Install cargo packages
-printf "\n%.0s" {1..2}
-printf "\n${NOTE} Installing lsd, starship ...\n"
-if cargo install lsd --locked && cargo install starship --locked; then
-    printf "\n${OK} Install lsd, starship successfully\n"
-else
-    printf "\n${ERROR} Failed to install lsd, starship\n"
-fi
-
-# Install nodejs
-printf "\n%.0s" {1..2}
-printf "\n${NOTE} Installing nodejs...\n"
-if curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh && sudo -E bash nodesource_setup.sh && sudo nala install -y nodejs; then
-    rm nodesource_setup.sh
-    printf "\n${OK} Install nodejs successfully\n"
-else
-    printf "\n${ERROR} Failed to install nodejs\n"
-fi
-
-# Install lazygit
-printf "\n%.0s" {1..2}
-printf "\n${NOTE} Installing lazygit...\n"
-LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-tar xf lazygit.tar.gz lazygit && rm -fr lazygit.tar.gz
-if sudo install lazygit /usr/local/bin && rm -rf lazygit; then
-    printf "\n${OK} Install lazygit successfully\n"
-else
-    printf "\n${ERROR} Failed to install lazygit.\n"
-fi
-
-# Install arttime
-printf "\n%.0s" {1..2}
-printf "\n${NOTE} Install arttime...\n"
-if zsh -c '{url="https://gist.githubusercontent.com/poetaman/bdc598ee607e9767fe33da50e993c650/raw/d0146d258a30daacb9aee51deca9410d106e4237/arttime_online_installer.sh"; zsh -c "$(curl -fsSL $url || wget -qO- $url)"}'; then
-    printf "\n${OK} Arttime install successfully\n"
-else
-    printf "\n${ERROR} Failed to install arttime\n"
-fi
-
-# Install and initial neovim
-cd $HOME
-printf "\n%.0s" {1..2}
-printf "\n${NOTE} Install neovim\n"
-if sudo dpkg -l | grep -q -w nvim; then
-    sudo nala remove neovim -y
-fi
-printf "\n%.0s" {1..2}
-if curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz; then
-    printf "\n${OK} Download lastest version neovim successfully\n"
-else
-    printf "\n${ERROR} Failed to download neovim\n"
-fi
-printf "\n%.0s" {1..2}
-mkdir -p ~/.local/bin && mv nvim-linux64.tar.gz ~/.local/bin && cd ~/.local/bin && tar xzvf nvim-linux64.tar.gz && rm -fr nvim-linux64.tar.gz && ln -s ./nvim-linux64/bin/nvim ./nvim && printf "\n${OK} Install neovim successfully\n\n\n" || {
-    printf "\n${OK} Failed to install neovim\n"
-}
-printf "\n%.0s" {1..2}
-printf "\n${NOTE} Setup neovim\n"
-if rm -rf ~/.config/nvim && rm -rf ~/.local/share/nvim && git clone https://github.com/nhattruongNeoVim/MYnvim.git ~/.config/nvim --depth 1; then
-    printf "\n${OK} Setup neovim successfully\n"
-else
-    printf "\n${ERROR} Failed to setup neovim\n"
-fi
-
-# Clone dotfiles
+# clone dotfiles
 cd $HOME
 if [ -d dotfiles ]; then
     cd dotfiles || {
@@ -281,8 +250,7 @@ else
     }
 fi
 
-printf "\n%.0s" {1..2}
-printf "\n${NOTE} Start config\n"
+printf "\n%s - Start config .... \n" "${NOTE}"
 
 folder=(
     neofetch
@@ -291,7 +259,7 @@ folder=(
     starship.toml
 )
 
-# Back up configuration file
+# back up configuration file
 for DIR in "${folder[@]}"; do
     DIRPATH=~/.config/"$DIR"
     if [ -d "$DIRPATH" ]; then
@@ -302,7 +270,7 @@ for DIR in "${folder[@]}"; do
     fi
 done
 
-# Copying configuration file
+# copying configuration file
 for ITEM in "${folder[@]}"; do
     if [[ -d "config/$ITEM" ]]; then
         cp -r "config/$ITEM" ~/.config/ && echo "${OK} Copy completed" || echo "${ERROR} Failed to copy config files."

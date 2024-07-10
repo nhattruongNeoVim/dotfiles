@@ -39,7 +39,7 @@ gum style \
 printf "\n"
 ask_yes_no "Do you dual boot with window?" dual_boot
 printf "\n"
-ask_yes_no "Do you want to download pre-configured Hyprland dotfiles?" dots
+ask_yes_no "Do you want to download pre-configured Gnome dotfiles?" dots
 printf "\n"
 ask_yes_no "Do you want to set battery charging limit (only for laptop)?" battery
 printf "\n"
@@ -52,7 +52,7 @@ fi
 exScriptGnome "pkgs.sh"
 
 # Check if dotfiles exist
-cd $HOME
+cd $HOME || exit 1
 if [ -d dotfiles ]; then
     rm -rf dotfiles
     printf "\n%s - Remove dotfile successfully \n" "${OK}"
@@ -76,7 +76,7 @@ if [ "$dots" == "Y" ]; then
 fi
 
 # remove dotfiles
-cd $HOME
+cd $HOME || exit 1
 if [ -d dotfiles ]; then
     rm -rf dotfiles
     printf "\n%s - Remove dotfile successfully \n" "${NOTE}"
