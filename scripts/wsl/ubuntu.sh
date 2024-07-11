@@ -52,8 +52,21 @@ elif command -v apt &>/dev/null; then
     PKGMN="apt"
 fi
 
+# add repository
+printf "\n%s - Add repository .... \n" "${NOTE}"
+sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
+
+# reupdate system
+printf "\n%s - Update system .... \n" "${NOTE}"
+if sudo $PKGMN update && sudo $PKGMN upgrade -y; then
+    printf "\n%s - Update system successfully \n" "${OK}"
+else
+    printf "\n%s - Failed to update your system \n" "${ERROR}"
+fi
+
 # list packages
 pkgs=(
+    fastfetch
     build-essential
     python3
     python3-pip
@@ -81,7 +94,7 @@ pkgs=(
 )
 
 # install packages
-printf "\n%s - Install packages.... \n" "${NOTE}"
+printf "\n%s - Install packages .... \n" "${NOTE}"
 for PKG in "${pkgs[@]}"; do
     install_ubuntu_packages "$PKG"
     if [ $? -ne 0 ]; then
