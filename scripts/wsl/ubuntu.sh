@@ -46,11 +46,7 @@ LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/re
 LAZYGIT="https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 
 # reload package manager
-if command -v nala &>/dev/null; then
-    PKGMN="nala"
-elif command -v apt &>/dev/null; then
-    PKGMN="apt"
-fi
+PKGMN=$(command -v nala || command -v apt)
 
 # add repository
 printf "\n%s - Add repository .... \n" "${NOTE}"
