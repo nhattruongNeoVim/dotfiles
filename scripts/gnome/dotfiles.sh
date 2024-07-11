@@ -88,7 +88,7 @@ cp -rf gtk-4.0 $HOME/.config
 # Reload fonts
 fc-cache -fv
 
-# Clone tpm
+# clone tpm
 if [ -d "$HOME/.tmux/plugins/tpm" ]; then
     printf "\n%s - TPM (Tmux Plugin Manager) is already installed. \n" "${NOTE}"
 else
@@ -101,16 +101,17 @@ else
     fi
 fi
 
-# Clone neovim
-if [ -d "$HOME/.config/nvim" ]; then
-    printf "\n%s - Removed nvim and nvim-data folder \n" "${NOTE}"
-    rm -rf ~/.config/nvim
-    rm -rf ~/.local/share/nvim
-fi
-printf "\n%s - Setup neovim... \n" "${NOTE}"
+# config Neovim
+printf "\n%s - Setup MYnvim ... \n" "${NOTE}"
+[ -d "$HOME/.config/nvim" ] && mv $HOME/.config/nvim $HOME/.config/nvim.bak || {
+    printf "\n%s - Failed to backup nvim folder \n" "${OK}"
+}
+[ -d "$HOME/.local/share/nvim" ] && mv $HOME/.local/share/nvim $HOME/.local/share/nvim.bak || {
+    printf "\n%s - Failed to backup nvim-data folder \n" "${OK}"
+}
 if git clone https://github.com/nhattruongNeoVim/MYnvim.git $HOME/.config/nvim --depth 1; then
     npm install neovim -g
-    printf "\n%s - Setup neovim successfully \n" "${OK}"
+    printf "\n%s - Setup MYnvim successfully \n" "${OK}"
 else
-    printf "\n%s - Failed to setup neovim \n" "${ERROR}"
+    printf "\n%s - Failed to setup MYnvim \n" "${ERROR}"
 fi

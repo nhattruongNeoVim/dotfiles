@@ -93,9 +93,10 @@ done
 if command -v node &>/dev/null; then
     printf "\n%s - Node already installed, moving on \n" "${OK}"
 else
-    printf "\n%s - Install Node.js .... \n" "${NOTE}"
+    printf "\n%s - Download Node.js setup script .... \n" "${NOTE}"
     if curl -fsSL "$NODEJS" -o nodesource_setup.sh; then
         printf "\n%s - Download the Node.js setup script successfully \n" "${OK}"
+        printf "\n%s - Install Node.js .... \n" "${NOTE}"
         if sudo -E bash nodesource_setup.sh && sudo $PKGMN install -y nodejs; then
             printf "\n%s - Install Node.js successfully \n" "${OK}"
         else
@@ -112,7 +113,7 @@ if command -v rustc &>/dev/null; then
 else
     printf "\n%s - Install Rust ... \n" "${NOTE}"
     if curl --proto '=https' --tlsv1.2 -sSf "https://sh.rustup.rs" | sh; then
-        printf "%s - Rust was installed \n" "${OK}"
+        printf "\n%s - Rust was installed \n" "${OK}"
         source $HOME/.cargo/env
     else
         printf "\n%s - Rust install had failed \n" "${ERROR}"
@@ -125,7 +126,7 @@ if command -v lsd &>/dev/null; then
 else
     printf "\n%s - Install lsd ... \n" "${NOTE}"
     if cargo install lsd --locked; then
-        printf "%s - Lsd was installed \n" "${OK}"
+        printf "\n%s - Lsd was installed \n" "${OK}"
     else
         printf "\n%s - Lsd install had failed \n" "${ERROR}"
     fi
@@ -137,7 +138,7 @@ if command -v starship &>/dev/null; then
 else
     printf "\n%s - Install starship ... \n" "${NOTE}"
     if cargo install starship --locked; then
-        printf "%s - Starship was installed \n" "${OK}"
+        printf "\n%s - Starship was installed \n" "${OK}"
     else
         printf "\n%s - Starship install had failed \n" "${ERROR}"
     fi
@@ -147,16 +148,17 @@ fi
 if command -v arttime &>/dev/null; then
     printf "\n%s - Arttime already installed, moving on \n" "${OK}"
 else
-    printf "\n%s - Installing arttime .... \n" "${NOTE}"
+    printf "\n%s - Download arttime.deb .... \n" "${NOTE}"
     if wget -O /tmp/arttime.deb "$ARTTIME"; then
         printf "\n%s - Download arttime.deb successfully.... \n" "${OK}"
+        printf "\n%s - Install arttime .... \n" "${NOTE}"
         if sudo $PKGMN install -y /tmp/arttime.deb; then
             printf "\n%s - Install arttime successfully \n" "${OK}"
         else
             printf "\n%s - Arttime install had failed \n" "${ERROR}"
         fi
     else
-        printf "\n%s - Failed to install arttime.deb \n" "${ERROR}"
+        printf "\n%s - Failed to download arttime.deb \n" "${ERROR}"
     fi
 fi
 
@@ -164,9 +166,10 @@ fi
 if command -v colorscript &>/dev/null; then
     printf "\n%s - Colorscript already installed, moving on \n" "${OK}"
 else
-    printf "\n%s - Installing colorscript .... \n" "${NOTE}"
+    printf "\n%s - Clone colorscript .... \n" "${NOTE}"
     if git clone "$COLORSCRIPT" /tmp/colorscript; then
         printf "\n%s - Clone shell-color-scripts successfully \n" "${OK}"
+        printf "\n%s - Install colorscript .... \n" "${NOTE}"
         if
             cd /tmp/colorscript &&
                 sudo make install &&
@@ -186,9 +189,10 @@ fi
 if command -v pipes.sh &>/dev/null; then
     printf "\n%s - Pipes.sh already installed, moving on.\n" "${OK}"
 else
-    printf "\n%s - Install pipes.sh ... \n" "${NOTE}"
+    printf "\n%s - Clone pipes.sh ... \n" "${NOTE}"
     if git clone "$PIPES" /tmp/pipes.sh; then
         printf "\n%s - Clone pipe.sh successfully \n" "${OK}"
+        printf "\n%s - Install pipes.sh ... \n" "${NOTE}"
         if
             cd /tmp/pipes.sh &&
                 make PREFIX=$HOME/.local install &&
@@ -207,24 +211,28 @@ fi
 if command -v lazygit &>/dev/null; then
     printf "\n%s - Lazygit already installed, moving on.\n" "${OK}"
 else
-    printf "\n%s - Install lazygit ... \n" "${NOTE}"
-    if wget -O /tmp/lazygit.tar.gz "$LAZYGIT" && tar -xf lazygit.tar.gz lazygit; then
+    printf "\n%s - Download lazygit ... \n" "${NOTE}"
+    if wget -O /tmp/lazygit.tar.gz "$LAZYGIT" && tar -xf /tmp/lazygit.tar.gz -C /tmp; then
         printf "\n%s - Download lazygit.tar successfully \n" "${OK}"
+        printf "\n%s - Install lazygit ... \n" "${NOTE}"
         if sudo install /tmp/lazygit /usr/local/bin; then
             printf "\n%s - Install lazygit successfully \n" "${OK}"
         else
             printf "\n%s - Failed to install lazygit \n" "${ERROR}"
         fi
+    else
+        printf "\n%s - Failed to download lazygit \n" "${ERROR}"
     fi
 fi
 
 # install Neovim
-printf "\n%s - Install neovim ... \n" "${NOTE}"
 if command -v nvim &>/dev/null; then
     sudo $PKGMN remove neovim -y
 fi
+printf "\n%s - Download lastest version of neovim ... \n" "${NOTE}"
 if wget -O /tmp/nvim-linux64.tar.gz "$NEOVIM"; then
-    printf "\n%s - Download lastest version neovim successfully \n" "${OK}"
+    printf "\n%s - Download lastest version of neovim successfully \n" "${OK}"
+    printf "\n%s - Install neovim ... \n" "${NOTE}"
     mkdir -p $HOME/.local/bin &&
         mv /tmp/nvim-linux64.tar.gz $HOME/.local/bin &&
         tar -xf $HOME/.local/bin/nvim-linux64.tar.gz -C $HOME/.local/bin &&
@@ -237,15 +245,31 @@ else
     printf "\n%s - Failed to download neovim \n" "${ERROR}"
 fi
 
+# config MYnvim
+printf "\n%s - Setup MYnvim ... \n" "${NOTE}"
+[ -d "$HOME/.config/nvim" ] && mv $HOME/.config/nvim $HOME/.config/nvim.bak || {
+    printf "\n%s - Failed to backup nvim folder \n" "${OK}"
+}
+[ -d "$HOME/.local/share/nvim" ] && mv $HOME/.local/share/nvim $HOME/.local/share/nvim.bak || {
+    printf "\n%s - Failed to backup nvim-data folder \n" "${OK}"
+}
+if git clone https://github.com/nhattruongNeoVim/MYnvim.git $HOME/.config/nvim --depth 1; then
+    npm install neovim -g
+    printf "\n%s - Setup MYnvim successfully \n" "${OK}"
+else
+    printf "\n%s - Failed to setup MYnvim \n" "${ERROR}"
+fi
+
 # clone dotfiles
 cd $HOME
 if [ -d dotfiles ]; then
     cd dotfiles || {
-        printf "%s - Failed to enter dotfiles config directory\n" "${ERROR}"
+        printf "%s - Failed to enter dotfiles config directory \n" "${ERROR}"
         exit 1
     }
 else
-    printf "\n${NOTE} Clone dotfiles. " && git clone -b gnome https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1 || {
+    printf "\n%s - Clone dotfiles ... \n" "${NOTE}"
+    git clone -b gnome https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1 || {
         printf "%s - Failed to clone dotfiles \n" "${ERROR}"
         exit 1
     }
