@@ -54,12 +54,8 @@ else
     printf "\n%s - Nala is already installed. Skipping... \n" "${OK}"
 fi
 
-# check ubuntu package manager
-if command -v nala &>/dev/null; then
-    PKGMN="nala"
-elif command -v apt &>/dev/null; then
-    PKGMN="apt"
-fi
+# reload package manager
+PKGMN=$(command -v nala || command -v apt)
 
 # package
 pkgs=(
