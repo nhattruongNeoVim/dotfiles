@@ -32,30 +32,6 @@ echo -e " -------------- Github: https://github.com/nhattruongNeoVim -----------
 GUM_VERSION="0.14.1"
 GUM_LINKDOWNLOADS="https://github.com/charmbracelet/gum/releases/latest/download/gum_${GUM_VERSION}_amd64.deb"
 
-# fix DNS on wsl
-if [ -f "/etc/resolv.conf" ]; then
-    printf "\n%s - Fix DNS to 8.8.8.8 \n" "${NOTE}"
-    if grep -q "nameserver" "/etc/resolv.conf"; then
-        if sudo sed -i 's/nameserver.*/nameserver 8.8.8.8/' "/etc/resolv.conf"; then
-            printf "\n%s - Fix DNS successfully \n" "${OK}"
-        else
-            printf "\n%s - Failed to fix DNS \n" "${ERROR}"
-        fi
-    fi
-fi
-
-# configure wsl.conf on wsl
-if [ -f "/etc/wsl.conf" ]; then
-    printf "\n%s - Configuring /etc/wsl.conf \n" "${NOTE}"
-    if ! grep -q "\[network\]" "/etc/wsl.conf"; then
-        if echo -e "\n[network]\ngenerateResolvConf = false" | sudo tee -a "/etc/wsl.conf" >/dev/null; then
-            printf "\n%s - Added network configuration to /etc/wsl.conf \n" "${OK}"
-        else
-            printf "\n%s - Failed to add network configuration to /etc/wsl.conf \n" "${ERROR}"
-        fi
-    fi
-fi
-
 # update system
 printf "\n%s - Update system .... \n" "${NOTE}"
 if sudo apt update && sudo apt upgrade -y; then

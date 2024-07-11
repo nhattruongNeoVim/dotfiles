@@ -67,6 +67,8 @@ for DIR in "${folder[@]}"; do
     fi
 done
 
+printf "\n%.0s" {1..2}
+
 # delete old file
 rm ~/.zshrc ~/.ideavimrc && rm -rf ~/.fonts ~/.icons ~/.themes
 
@@ -82,7 +84,7 @@ cp -r assets/* $HOME/ && { echo "${OK} - Copy completed"; } || {
 }
 
 cd $HOME/.themes/Catppuccin-Mocha-Standard-Mauve-Dark
-mkdir -p ~/.config/gtk-4.0
+mkdir -p $HOME/.config/gtk-4.0
 cp -rf gtk-4.0 $HOME/.config
 
 # Reload fonts

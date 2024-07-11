@@ -261,23 +261,16 @@ else
 fi
 
 # clone dotfiles
-cd $HOME
-if [ -d dotfiles ]; then
-    cd dotfiles || {
-        printf "%s - Failed to enter dotfiles config directory \n" "${ERROR}"
-        exit 1
-    }
-else
-    printf "\n%s - Clone dotfiles ... \n" "${NOTE}"
-    git clone -b gnome https://github.com/nhattruongNeoVim/dotfiles.git ~/dotfiles --depth 1 || {
-        printf "%s - Failed to clone dotfiles \n" "${ERROR}"
-        exit 1
-    }
-    cd dotfiles || {
-        printf "%s - Failed to enter dotfiles directory\n" "${ERROR}"
-        exit 1
-    }
-fi
+printf "\n%s - Clone dotfiles ... \n" "${NOTE}"
+[[ -d /tmp/dotfiles ]] && rm -rf /tmp/dotfiles
+git clone -b gnome https://github.com/nhattruongNeoVim/dotfiles.git /tmp/dotfiles --depth 1 || {
+    printf "\n%s - Failed to clone dotfiles \n" "${ERROR}"
+    exit 1
+}
+cd /tmp/dotfiles || {
+    printf "\n%s - Failed to enter dotfiles directory \n" "${ERROR}"
+    exit 1
+}
 
 printf "\n%s - Start config .... \n" "${NOTE}"
 
@@ -292,19 +285,21 @@ folder=(
 for DIR in "${folder[@]}"; do
     DIRPATH=~/.config/"$DIR"
     if [ -d "$DIRPATH" ]; then
-        echo -e "${NOTE} - Config for $DIR found, attempting to back up."
+        printf "\n%s - Config for $DIR found, attempting to back up. \n" "${NOTE}"
         BACKUP_DIR=$(get_backup_dirname)
         mv "$DIRPATH" "$DIRPATH-backup-$BACKUP_DIR"
-        echo -e "${NOTE} - Backed up $DIR to $DIRPATH-backup-$BACKUP_DIR."
+        printf "\n%s - Backed up $DIR to $DIRPATH-backup-$BACKUP_DIR. \n" "${NOTE}"
     fi
 done
 
 # copying configuration file
 for ITEM in "${folder[@]}"; do
     if [[ -d "config/$ITEM" ]]; then
-        cp -r "config/$ITEM" ~/.config/ && echo "${OK} Copy completed" || echo "${ERROR} Failed to copy config files."
+        cp -r "config/$ITEM" ~/.config
+        echo "${OK} Copy completed" || echo "${ERROR} Failed to copy config files."
     elif [[ -f "config/$ITEM" ]]; then
-        cp "config/$ITEM" ~/.config/ && echo "${OK} Copy completed" || echo "${ERROR} Failed to copy config files."
+        cp "config/$ITEM" ~/.config
+        echo "${OK} Copy completed" || echo "${ERROR} Failed to copy config files."
     fi
 done
 
@@ -334,13 +329,6 @@ else
     else
         echo "${ERROR} Failed to clone TPM (Tmux Plugin Manager)."
     fi
-fi
-
-# remove dotfiles
-cd $HOME || exit 1
-if [ -d dotfiles ]; then
-    rm -rf dotfiles
-    printf "\n%s - Remove dotfile successfully \n" "${NOTE}"
 fi
 
 # check log
