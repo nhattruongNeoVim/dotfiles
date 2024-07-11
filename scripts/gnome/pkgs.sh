@@ -85,6 +85,7 @@ else
         printf "\n%s - Download the Node.js setup script successfully \n" "${OK}"
         printf "\n%s - Install Node.js .... \n" "${NOTE}"
         if sudo -E bash nodesource_setup.sh && sudo $PKGMN install -y nodejs; then
+            rm nodesource_setup.sh
             printf "\n%s - Install Node.js successfully \n" "${OK}"
         else
             printf "\n%s - Install Node.js had failed \n" "${ERROR}"
