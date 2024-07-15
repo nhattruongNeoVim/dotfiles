@@ -257,14 +257,12 @@ fi
 
 # config MYnvim
 printf "\n%s - Setup MYnvim ... \n" "${NOTE}"
-[ -d "$HOME/.config/nvim" ] && mv $HOME/.config/nvim $HOME/.config/nvim.bak || {
-    printf "\n%s - Failed to backup nvim folder \n" "${OK}"
-}
-[ -d "$HOME/.local/share/nvim" ] && mv $HOME/.local/share/nvim $HOME/.local/share/nvim.bak || {
-    printf "\n%s - Failed to backup nvim-data folder \n" "${OK}"
-}
+[ -d "$HOME/.config/nvim" ] && mv $HOME/.config/nvim $HOME/.config/nvim.bak &&
+printf "\n%s - Backup nvim folder successfully \n" "${OK}"
+[ -d "$HOME/.local/share/nvim" ] && mv $HOME/.local/share/nvim $HOME/.local/share/nvim.bak &&
+printf "\n%s - Failed to backup nvim-data folder \n" "${OK}"
 if git clone https://github.com/nhattruongNeoVim/MYnvim.git $HOME/.config/nvim --depth 1; then
-    npm install neovim -g
+    sudo npm install neovim -g
     printf "\n%s - Setup MYnvim successfully \n" "${OK}"
 else
     printf "\n%s - Failed to setup MYnvim \n" "${ERROR}"
