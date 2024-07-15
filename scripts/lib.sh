@@ -65,12 +65,12 @@ install_aur_pkg() {
 
 # function to install nala packages
 install_ubuntu_packages() {
-    if dpkg-query -W -f='${Status}' "$1" 2>/dev/null | grep -q "installed"; then
+    if dpkg-query -W -f='${Status}' "$1" 2>/dev/null | grep -q " installed"; then
         printf "\n%s - $1 is already installed. Skipping ... \n" "${OK}"
     else
         printf "\n%s - Installing $1 ... \n" "${NOTE}"
         sudo $PKGMN install -y "$1"
-        if dpkg-query -W -f='${Status}' "$1" 2>/dev/null | grep -q "installed"; then
+        if dpkg-query -W -f='${Status}' "$1" 2>/dev/null | grep -q " installed"; then
             printf "\n%s - $1 was installed \n" "${OK}"
         else
             erMsg="$1 failed to install. You may need to install manually! Sorry I have tried :("
