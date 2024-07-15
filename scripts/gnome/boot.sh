@@ -66,7 +66,7 @@ pkgs=(
 )
 
 # install some required packages
-printf "\n%s - Installing required packages ...\n" "${NOTE}"
+printf "\n%s - Installing required packages ... \n" "${NOTE}"
 for PKG in "${pkgs[@]}"; do
     sudo $PKGMN install -y "$PKG"
     if [ $? -ne 0 ]; then
@@ -75,9 +75,10 @@ for PKG in "${pkgs[@]}"; do
 done
 
 # install gum (requirement)
-printf "\n%s - Installing gum ...\n" "${NOTE}"
+printf "\n%s - Download gum.deb ... \n" "${NOTE}"
 if wget -qO /tmp/gum.deb "$GUM_LINKDOWNLOADS"; then
     printf "\n%s - Download gum.deb successfully \n" "${OK}"
+    printf "\n%s - Installing gum ... \n" "${NOTE}"
     if sudo $PKGMN install -y /tmp/gum.deb; then
         printf "\n%s - Install gum successfully \n" "${OK}"
     else
