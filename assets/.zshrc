@@ -101,7 +101,6 @@ alias brs='brew search'
 alias bru='brew update' 
 alias brl='brew list' 
 alias brf='brew info' 
-alias br='brew' 
 
 # Git
 alias gg="git add . && git commit -m 'update' && git push origin"
