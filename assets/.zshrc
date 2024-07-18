@@ -66,6 +66,7 @@ alias sni='sudo nala install -y'
 alias snr='sudo nala remove'
 alias snl='sudo nala list --installed | grep'
 alias snc='sudo nala clean'
+alias sn='sudo nala'
 
 # Apt
 alias sauu='sudo apt update && sudo apt upgrade -y'
@@ -74,15 +75,17 @@ alias sau='sudo apt update'
 alias sar='sudo apt remove'
 alias saa='sudo add-apt-repository'
 alias sac='sudo apt autoremove'
+alias sa='sudo apt'
 
 # Homebrew
-alias buu='brew update && brew upgrade'
-alias br='brew uninstall'
-alias bi='brew install'
-alias bs='brew search'
-alias bu='brew update' 
-alias bl='brew list' 
-alias bf='brew info' 
+alias bruu='brew update && brew upgrade'
+alias brr='brew uninstall'
+alias bri='brew install'
+alias brs='brew search'
+alias bru='brew update' 
+alias brl='brew list' 
+alias brf='brew info' 
+alias br='brew' 
 
 # Git
 alias ga='git add .'
