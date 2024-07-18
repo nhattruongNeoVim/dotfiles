@@ -94,13 +94,14 @@ alias sys='yay -Sy --noconfirm'
 alias syr='yay -Rns'
 
 # Homebrew
-alias buu='brew update && brew upgrade'
-alias br='brew uninstall'
-alias bi='brew install'
-alias bs='brew search'
-alias bu='brew update' 
-alias bl='brew list' 
-alias bf='brew info' 
+alias bruu='brew update && brew upgrade'
+alias brr='brew uninstall'
+alias bri='brew install'
+alias brs='brew search'
+alias bru='brew update' 
+alias brl='brew list' 
+alias brf='brew info' 
+alias br='brew' 
 
 # Git
 alias gg="git add . && git commit -m 'update' && git push origin"
