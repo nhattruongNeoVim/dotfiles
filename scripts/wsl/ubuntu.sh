@@ -1,11 +1,11 @@
 #!/bin/bash
 # config wsl
 
-# require
-exScriptGnome "boot.sh"
-
 # source library
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
+
+# require
+exScriptGnome "boot.sh"
 
 # init
 clear
