@@ -23,8 +23,8 @@ echo -e "                                                                       
 echo -e "-------------------- Script developed by nhattruongNeoVim --------------------     "
 echo -e " -------------- Github: https://github.com/nhattruongNeoVim -----------------      "
 
-GUM_VERSION="0.14.1"
-GUM_LINKDOWNLOADS="https://github.com/charmbracelet/gum/releases/latest/download/gum_${GUM_VERSION}_amd64.deb"
+GUM_VERSION="0.14.3"
+GUM_LINKDOWNLOADS="https://github.com/charmbracelet/gum/releases/download/v${GUM_VERSION}/gum_${GUM_VERSION}_amd64.deb"
 
 # update system
 printf "\n%s - Update system .... \n" "${NOTE}"
