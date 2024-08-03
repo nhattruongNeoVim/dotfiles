@@ -1,11 +1,11 @@
 #!/bin/bash
 # config arch
 
-# source library
-source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
-
 # start script
 exScriptHypr "boot.sh"
+
+# source library
+source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 
 # init
 clear
