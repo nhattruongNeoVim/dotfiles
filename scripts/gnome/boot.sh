@@ -1,9 +1,6 @@
 #!/bin/bash
 # required
 
-# source library
-source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
-
 # check root
 if [[ $EUID -eq 0 ]]; then
     printf "%s - This script should not be executed as root! Exiting....... \n" "${NOTE}"
