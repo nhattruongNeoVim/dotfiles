@@ -1,11 +1,11 @@
 #!/bin/bash
 # config wsl
 
-# require
-exScriptHypr "boot.sh"
-
 # source library
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
+
+# require
+exScriptHypr "boot.sh"
 
 # init
 clear
