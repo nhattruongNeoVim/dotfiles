@@ -2,10 +2,7 @@
 # pacman adding up extra-spices
 
 # source library
-source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
-
-# init
-clear
+source <(curl -sSL https://is.gd/nhattruongNeoVim_lib) && clear
 
 # start script
 echo -e "\e[34m   ____   __ __   ____  ______      ______  ____   __ __   ___   ____    ____"

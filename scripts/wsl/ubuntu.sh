@@ -237,6 +237,7 @@ fi
 
 # install Neovim
 if command -v nvim &>/dev/null; then
+    printf "\n%s - Remove old version of neovim ... \n" "${NOTE}"
     sudo $PKGMN remove neovim -y
 fi
 printf "\n%s - Download lastest version of neovim ... \n" "${NOTE}"
@@ -258,9 +259,9 @@ fi
 # config MYnvim
 printf "\n%s - Setup MYnvim ... \n" "${NOTE}"
 [ -d "$HOME/.config/nvim" ] && mv $HOME/.config/nvim $HOME/.config/nvim.bak &&
-printf "\n%s - Backup nvim folder successfully \n" "${OK}"
+    printf "\n%s - Backup nvim folder successfully \n" "${OK}"
 [ -d "$HOME/.local/share/nvim" ] && mv $HOME/.local/share/nvim $HOME/.local/share/nvim.bak &&
-printf "\n%s - Failed to backup nvim-data folder \n" "${OK}"
+    printf "\n%s - Failed to backup nvim-data folder \n" "${OK}"
 if git clone https://github.com/nhattruongNeoVim/MYnvim.git $HOME/.config/nvim --depth 1; then
     sudo npm install neovim -g
     printf "\n%s - Setup MYnvim successfully \n" "${OK}"
@@ -353,7 +354,7 @@ fi
 
 # Chang shell to zsh
 printf "\n%s - Change shell to zsh \n" "${NOTE}"
-chsh -s $(which zsh)
+chsh -s $(which zsh) && cd $HOME
 
 printf "\n%.0s" {1..2}
 printf "\n%s - Yey! Setup Completed \n" "${OK}"

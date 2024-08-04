@@ -2,10 +2,7 @@
 # required
 
 # source library
-source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
-
-# init
-clear
+source <(curl -sSL https://is.gd/nhattruongNeoVim_lib) && clear
 
 # start script
 echo -e "\e[34m   ____   __ __   ____  ______      ______  ____   __ __   ___   ____    ____"
@@ -67,7 +64,7 @@ done
 
 # install gum (requirement)
 printf "\n%s - Download gum.deb ... \n" "${NOTE}"
-if wget -qO /tmp/gum.deb "$GUM_LINKDOWNLOADS"; then
+if wget -O /tmp/gum.deb "$GUM_LINKDOWNLOADS"; then
     printf "\n%s - Download gum.deb successfully \n" "${OK}"
     printf "\n%s - Installing gum ... \n" "${NOTE}"
     if sudo $PKGMN install -y /tmp/gum.deb; then
