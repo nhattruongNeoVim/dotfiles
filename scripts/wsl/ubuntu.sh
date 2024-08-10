@@ -328,15 +328,16 @@ printf "\n%.0s" {1..2}
 fc-cache -fv
 
 # Clone tpm
+printf "\n%s - Install TPM (Tmux Plugin Manager) ... \n" "${NOTE}"
 if [ -d "$HOME/.tmux/plugins/tpm" ]; then
-    echo "${NOTE} TPM (Tmux Plugin Manager) is already installed."
+    printf "\n%s - TPM (Tmux Plugin Manager) is already installed. Skipping... \n" "${OK}"
 else
     # Clone TPM repository
-    echo "${NOTE} Cloning TPM (Tmux Plugin Manager)..."
+    printf "\n%s - Cloning TPM (Tmux Plugin Manager) ... \n" "${NOTE}"
     if git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm --depth 1; then
-        echo "${OK} TPM (Tmux Plugin Manager) cloned successfully"
+        printf "\n%s - TPM (Tmux Plugin Manager) cloned successfully. \n" "${OK}"
     else
-        echo "${ERROR} Failed to clone TPM (Tmux Plugin Manager)."
+        printf "\n%s - Failed to clone TPM (Tmux Plugin Manager). \n" "${ERROR}"
     fi
 fi
 
