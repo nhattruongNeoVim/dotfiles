@@ -8,9 +8,9 @@ source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
 printf "\n%s - Setting up battery charge limit. \n" "${NOTE}"
 
 if hostnamectl | grep -q 'Chassis: vm' ||
-    hostnamectl | grep -q 'Virtualization: wsl' ||
+    hostnamectl | grep -q 'Chassis: container' ||
     hostnamectl | grep -q 'Chassis: desktop'; then
-    printf "\n%s - Setting up battery charge limit is not applicable on desktop, virtual machine and vm. Skipping... \n" "${NOTE}"
+    printf "\n%s - Setting up battery charge limit is not applicable on desktop, container and vm. Skipping... \n" "${NOTE}"
     exit 1
 fi
 
