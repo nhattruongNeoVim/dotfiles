@@ -98,6 +98,7 @@ alias ls='lsd'
 alias la='lsd -la'
 alias ll='lsd -ll'
 alias lt='lsd --tree'
+alias lt='lsd --tree -a'
 alias ltl='lsd --tree --long'
 
 # Tools
