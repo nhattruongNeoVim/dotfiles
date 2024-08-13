@@ -52,12 +52,13 @@ else
     exit 1
 fi
 
-printf "\n%s - Configuring firewall to allow SQL Server traffic on port 1433 ... \n" "${NOTE}"
-if sudo ufw allow 1433/tcp; then
-    printf "\n%s - Firewall configured successfully \n" "${OK}"
-else
-    printf "\n%s - Failed to configure firewall \n" "${ERROR}"
-    exit 1
+if hostnamectl | grep -q 'wsl'; then
+    printf "\n%s - Configuring firewall to allow SQL Server traffic on port 1433 ... \n" "${NOTE}"
+    if sudo ufw allow 1433/tcp; then
+        printf "\n%s - Firewall configured successfully \n" "${OK}"
+    else
+        printf "\n%s - Failed to configure firewall \n" "${ERROR}"
+    fi
 fi
 
 printf "\n%s - SQL Server is installed and configured \n" "${OK}"
