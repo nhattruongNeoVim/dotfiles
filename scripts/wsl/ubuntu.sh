@@ -49,8 +49,8 @@ LAZYGIT="https://github.com/jesseduffield/lazygit/releases/latest/download/lazyg
 PKGMN=$(command -v nala || command -v apt)
 
 # add repository
-printf "\n%s - Add repository .... \n" "${NOTE}"
-sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
+#printf "\n%s - Add repository .... \n" "${NOTE}"
+#sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
 
 # reupdate system
 printf "\n%s - Update system .... \n" "${NOTE}"
@@ -62,7 +62,7 @@ fi
 
 # list packages
 pkgs=(
-    fastfetch
+    #fastfetch
     build-essential
     python3
     python3-pip
