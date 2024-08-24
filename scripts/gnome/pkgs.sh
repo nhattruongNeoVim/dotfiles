@@ -14,8 +14,8 @@ LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/re
 LAZYGIT="https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 
 # add repository
-printf "\n%s - Add repository .... \n" "${NOTE}"
-sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
+# printf "\n%s - Add repository .... \n" "${NOTE}"
+# sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
 
 # reupdate system
 printf "\n%s - Update system .... \n" "${NOTE}"
@@ -27,7 +27,7 @@ fi
 
 # list pkgs
 pkgs=(
-    fastfetch
+    # fastfetch
     build-essential
     neofetch
     xclip
