@@ -1,11 +1,11 @@
 #!/bin/bash
 # config wsl
 
-# require
-exScriptGnome "boot.sh"
-
 # source library
 source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
+
+# require
+exScriptGnome "boot.sh"
 
 # init
 clear
@@ -48,6 +48,9 @@ LAZYGIT="https://github.com/jesseduffield/lazygit/releases/latest/download/lazyg
 # add repository
 # printf "\n%s - Add repository .... \n" "${NOTE}"
 # sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
+
+# reload package manager
+PKGMN=$(command -v nala || command -v apt)
 
 # reupdate system
 printf "\n%s - Update system .... \n" "${NOTE}"
