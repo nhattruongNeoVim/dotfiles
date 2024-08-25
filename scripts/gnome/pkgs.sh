@@ -78,14 +78,15 @@ done
 
 # install Nodejs
 if command -v node &>/dev/null; then
-    printf "\n%s - Node already installed, moving on \n" "${OK}"
+    printf "\n%s - Removing old version of NodeJS \n" "${OK}"
+    sudo $PKGMN remove -y nodejs
 else
     printf "\n%s - Download Node.js setup script .... \n" "${NOTE}"
     if curl -fsSL "$NODEJS" -o nodesource_setup.sh; then
         printf "\n%s - Download the Node.js setup script successfully \n" "${OK}"
         printf "\n%s - Install Node.js .... \n" "${NOTE}"
-        if sudo -E bash nodesource_setup.sh && sudo $PKGMN install -y nodejs; then
-            rm nodesource_setup.sh
+        if sudo -E bash nodesource_setup.sh; then
+            sudo $PKGMN install -y nodejs && rm nodesource_setup.sh
             printf "\n%s - Install Node.js successfully \n" "${OK}"
         else
             printf "\n%s - Install Node.js had failed \n" "${ERROR}"
@@ -215,6 +216,7 @@ fi
 
 # install Neovim
 if command -v nvim &>/dev/null; then
+    printf "\n%s - Removing old version of neovim ... \n" "${NOTE}"
     sudo $PKGMN remove neovim -y
 fi
 printf "\n%s - Download lastest version of neovim ... \n" "${NOTE}"
