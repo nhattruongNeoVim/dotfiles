@@ -13,10 +13,6 @@ NEOVIM="https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.t
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 LAZYGIT="https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 
-# add repository
-# printf "\n%s - Add repository .... \n" "${NOTE}"
-# sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
-
 # reupdate system
 printf "\n%s - Update system .... \n" "${NOTE}"
 if sudo $PKGMN update && sudo $PKGMN upgrade -y; then
@@ -25,47 +21,77 @@ else
     printf "\n%s - Failed to update your system \n" "${ERROR}"
 fi
 
-# list pkgs
-pkgs=(
-    # fastfetch
-    build-essential
-    neofetch
-    xclip
-    zsh
-    kitty
-    bat
-    rofi
-    ibus-unikey
-    python3
-    python3-pip
-    python3.11-venv
-    python3-neovim
-    default-jdk
-    htop
-    stow
-    fzf
-    make
-    ripgrep
-    cmake
-    aria2
-    pip
-    tmux
-    libsecret-tools
-    cava
-    net-tools
-    lolcat
-    cpufetch
-    bpytop
-    figlet
-    sl
-    cmatrix
-    trash-cli
-    ranger
-    hollywood
-    grub-customizer
-    ca-certificates
-    gnupg
-)
+# check system
+if grep -qi microsoft /proc/version; then
+    printf "\n%s - Running on WSL, installing CLI tools only... \n" "${NOTE}"
+    pkgs=(
+        build-essential
+        python3
+        python3-pip
+        neofetch
+        xclip
+        zsh
+        bat
+        default-jdk
+        htop
+        fzf
+        make
+        ripgrep
+        cmake
+        tmux
+        cava
+        net-tools
+        lolcat
+        sl
+        ca-certificates
+        gnupg
+        ranger
+        unzip
+        python3.10-venv
+        python3-neovim
+    )
+else
+    printf "\n%s - Running on Ubuntu, installing full packages... \n" "${NOTE}"
+    pkgs=(
+        build-essential
+        neofetch
+        xclip
+        zsh
+        kitty
+        bat
+        rofi
+        ibus-unikey
+        python3
+        python3-pip
+        python3.11-venv
+        python3-neovim
+        default-jdk
+        htop
+        stow
+        fzf
+        make
+        ripgrep
+        cmake
+        aria2
+        pip
+        tmux
+        libsecret-tools
+        cava
+        net-tools
+        lolcat
+        cpufetch
+        bpytop
+        figlet
+        sl
+        cmatrix
+        trash-cli
+        ranger
+        hollywood
+        grub-customizer
+        ca-certificates
+        gnupg
+    )
+fi
 
 # install packages
 printf "\n%s - Install packages .... \n" "${NOTE}"
@@ -233,4 +259,17 @@ if wget -O /tmp/nvim-linux64.tar.gz "$NEOVIM"; then
     }
 else
     printf "\n%s - Failed to download neovim \n" "${ERROR}"
+fi
+
+# clone tpm
+if [ -d "$HOME/.tmux/plugins/tpm" ]; then
+    printf "\n%s - TPM (Tmux Plugin Manager) is already installed. \n" "${NOTE}"
+else
+    # Clone TPM repository
+    printf "\n%s - Cloning TPM (Tmux Plugin Manager)... \n" "${NOTE}"
+    if git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm --depth 1; then
+        printf "\n%s - TPM (Tmux Plugin Manager) cloned successfully \n" "${OK}"
+    else
+        printf "\n%s - Failed to clone TPM (Tmux Plugin Manager). \n" "${ERROR}"
+    fi
 fi

@@ -90,19 +90,6 @@ cp -rf gtk-4.0 $HOME/.config
 # Reload fonts
 fc-cache -fv
 
-# clone tpm
-if [ -d "$HOME/.tmux/plugins/tpm" ]; then
-    printf "\n%s - TPM (Tmux Plugin Manager) is already installed. \n" "${NOTE}"
-else
-    # Clone TPM repository
-    printf "\n%s - Cloning TPM (Tmux Plugin Manager)... \n" "${NOTE}"
-    if git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm --depth 1; then
-        printf "\n%s - TPM (Tmux Plugin Manager) cloned successfully \n" "${OK}"
-    else
-        printf "\n%s - Failed to clone TPM (Tmux Plugin Manager). \n" "${ERROR}"
-    fi
-fi
-
 # config Neovim
 printf "\n%s - Setup MYnvim ... \n" "${NOTE}"
 [ -d "$HOME/.config/nvim" ] && mv $HOME/.config/nvim $HOME/.config/nvim.bak || {

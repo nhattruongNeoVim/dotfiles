@@ -75,3 +75,5 @@ if wget -O /tmp/gum.deb "$GUM_LINKDOWNLOADS"; then
 else
     printf "\n%s - Failed to download gum \n" "${ERROR}"
 fi
+
+clear

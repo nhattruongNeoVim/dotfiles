@@ -2,13 +2,10 @@
 # config ubuntu
 
 # source library
-source <(curl -sSL https://is.gd/nhattruongNeoVim_lib)
+source <(curl -sSL https://is.gd/nhattruongNeoVim_lib) && clear
 
 # require
 exScriptGnome "boot.sh"
-
-# init
-clear
 
 # start script
 gum style \
@@ -49,6 +46,7 @@ if [ "$dual_boot" == "Y" ]; then
     timedatectl set-local-rtc 1 --adjust-system-clock
 fi
 
+# install package
 exScriptGnome "pkgs.sh"
 
 # Check if dotfiles exist
