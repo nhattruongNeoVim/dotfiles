@@ -92,34 +92,20 @@ for ITEM in "${folder[@]}"; do
     fi
 done
 
-# Copying other
+# copying other
 cp assets/.zshrc ~ && cp assets/.ideavimrc ~ && { echo "${OK} Copy completed"; } || {
     echo "${ERROR} Failed to copy .zshrc && .ideavimrc"
 }
 
-# Copying font
+# copying font
 mkdir -p ~/.fonts
 cp -r assets/.fonts/* ~/.fonts/ && { echo "${OK} Copy fonts completed"; } || {
     echo "${ERROR} Failed to copy fonts files."
 }
 
-# Reload fonts
+# reload fonts
 printf "\n%.0s" {1..2}
 fc-cache -fv
-
-# Clone tpm
-printf "\n%s - Install TPM (Tmux Plugin Manager) ... \n" "${NOTE}"
-if [ -d "$HOME/.tmux/plugins/tpm" ]; then
-    printf "\n%s - TPM (Tmux Plugin Manager) is already installed. Skipping... \n" "${OK}"
-else
-    # Clone TPM repository
-    printf "\n%s - Cloning TPM (Tmux Plugin Manager) ... \n" "${NOTE}"
-    if git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm --depth 1; then
-        printf "\n%s - TPM (Tmux Plugin Manager) cloned successfully. \n" "${OK}"
-    else
-        printf "\n%s - Failed to clone TPM (Tmux Plugin Manager). \n" "${ERROR}"
-    fi
-fi
 
 # check log
 if [ -f $HOME/install.log ]; then
