@@ -106,6 +106,7 @@ cp -r assets/.fonts/* ~/.fonts/ && { echo "${OK} Copy fonts completed"; } || {
 # reload fonts
 printf "\n%.0s" {1..2}
 fc-cache -fv
+printf "\n%.0s" {1..2}
 
 # check log
 if [ -f $HOME/install.log ]; then
