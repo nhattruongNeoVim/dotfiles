@@ -47,7 +47,7 @@ if grep -qi microsoft /proc/version; then
         gnupg
         ranger
         unzip
-        python3.10-venv
+        python3-venv
         python3-neovim
     )
 else
