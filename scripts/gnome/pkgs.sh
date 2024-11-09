@@ -49,6 +49,7 @@ if grep -qi microsoft /proc/version; then
         unzip
         python3-venv
         python3-neovim
+        wslu
     )
 else
     printf "\n%s - Running on Ubuntu, installing full packages... \n" "${NOTE}"
@@ -63,7 +64,7 @@ else
         ibus-unikey
         python3
         python3-pip
-        python3.11-venv
+        python3-venv
         python3-neovim
         default-jdk
         htop
