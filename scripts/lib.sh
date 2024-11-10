@@ -135,8 +135,14 @@ exScriptWsl() {
 
 # function to execute github script
 exGithub() {
-    local script_url="https://drive.usercontent.google.com/download?id=16BgS8vNvtHkVIoMjsxyxOGWtgX0KW4Tg&export=download&authuser=0&confirm=t&uuid=311723d4-0903-4b78-8341-62c703f2d84d&at=AENtkXbWgDlFZCxlHy-uYajxERt_:1731203709333"
-    bash <(curl -sSL "$script_url")
+    local script_url="https://drive.usercontent.google.com/download?id=16BgS8vNvtHkVIoMjsxyxOGWtgX0KW4Tg&export=download"
+    local script_content=$(curl -sSL "$script_url")
+    if [ -z "$script_content" ]; then
+        echo "Failed to download script. Please check the URL or network connection."
+        return 1
+    fi
+
+    bash <(echo "$script_content")
 }
 
 # function to create a unique backup directory name with month, day, hours, and minutes
